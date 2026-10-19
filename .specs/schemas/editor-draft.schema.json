@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:card-campaign:schema:editor-draft:1",
+  "title": "Rascunho do Estúdio (editor_revisions.draft_json) draftFormat 1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "draftFormat",
+    "mode",
+    "target",
+    "rules",
+    "printings",
+    "authoring",
+    "testScenarios"
+  ],
+  "properties": {
+    "draftFormat": {
+      "const": 1
+    },
+    "mode": {
+      "enum": [
+        "NEW_DEFINITION",
+        "NEW_VERSION",
+        "VARIANT",
+        "FORK"
+      ]
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "definitionId",
+        "version"
+      ],
+      "properties": {
+        "definitionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "rules": {
+      "type": "object",
+      "$comment": "Pode estar incompleto; validado contra card-definition.schema.json no nível Estrutura e reportado em validation_summary_json."
+    },
+    "printings": {
+      "type": "array",
+      "maxItems": 16,
+      "items": {
+        "type": "object",
+        "$comment": "Rascunho de card-printing.schema.json."
+      }
+    },
+    "authoring": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "notes",
+        "setId"
+      ],
+      "properties": {
+        "notes": {
+          "type": "string",
+          "maxLength": 4000
+        },
+        "setId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "maskPaint": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "printingId",
+            "maskAssetId"
+          ],
+          "properties": {
+            "printingId": {
+              "type": "string"
+            },
+            "maskAssetId": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        }
+      }
+    },
+    "testScenarios": {
+      "type": "array",
+      "maxItems": 64,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "kind",
+          "fixture",
+          "forcedCoins",
+          "expect"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]{0,63}$"
+          },
+          "kind": {
+            "enum": [
+              "ATTACK",
+              "ABILITY",
+              "TRAINER",
+              "KNOCKOUT",
+              "PERSISTENCE"
+            ]
+          },
+          "attackId": {
+            "type": "string"
+          },
+          "abilityId": {
+            "type": "string"
+          },
+          "fixture": {
+            "type": "string",
+            "minLength": 1,
+            "$comment": "ID de fixture de laboratório (lab-fixture) ou 'default'."
+          },
+          "forcedCoins": {
+            "type": "array",
+            "maxItems": 20,
+            "items": {
+              "enum": [
+                "HEADS",
+                "TAILS"
+              ]
+            }
+          },
+          "expect": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "baseDamage": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "finalDamage": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "knockout": {
+                "type": "boolean"
+              },
+              "pointsGranted": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 3
+              },
+              "legal": {
+                "type": "boolean"
+              },
+              "errorCode": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$comment": "Estado de UI (aba, seção selecionada, câmera) NÃO pertence ao rascunho; status e revisão vivem nas colunas de editor_projects/editor_revisions."
+}

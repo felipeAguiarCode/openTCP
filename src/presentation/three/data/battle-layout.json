@@ -1,0 +1,1012 @@
+{
+  "documentVersion": "3.2.0",
+  "visualProfileId": "pocket-light-v1",
+  "status": "PROJECTED_LAYOUT_TARGETS_NOT_RENDERED_OR_GPU_VALIDATED",
+  "units": "CSS_PIXELS",
+  "rectangleFormat": "[x, y, width, height]",
+  "cardAspect": [
+    5,
+    7
+  ],
+  "world": {
+    "up": "+Y",
+    "boardPlane": "XZ",
+    "playerSide": "+Z",
+    "cardWidth": 1,
+    "cardHeight": 1.4,
+    "cardThickness": 0.012,
+    "matWidth": 12.8,
+    "matHeight": 9.6,
+    "structureWidth": 13.8,
+    "structureDepth": 10.2,
+    "rimSide": 0.5,
+    "rimFrontBack": 0.3,
+    "worldSeedFormat": "[x, z, scale]; scale multiplica a largura-base da carta (1)."
+  },
+  "profiles": [
+    {
+      "id": "desktop1080",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "camera": {
+        "kind": "PerspectiveCamera",
+        "fovDegrees": 28,
+        "initialPosition": [
+          0,
+          20.15,
+          4.62
+        ],
+        "lookAt": [
+          0,
+          0,
+          0.33
+        ],
+        "near": 0.1,
+        "far": 80,
+        "fitBoundsRequired": true,
+        "freeOrbitDuringBattle": false
+      },
+      "worldSeeds": {
+        "NPC_ACTIVE": [
+          0,
+          -1.49,
+          1.73
+        ],
+        "HUMAN_ACTIVE": [
+          0,
+          1.65,
+          1.68
+        ],
+        "NPC_BENCH_0": [
+          -2.34,
+          -3.9,
+          1.17
+        ],
+        "NPC_BENCH_1": [
+          0,
+          -3.9,
+          1.17
+        ],
+        "NPC_BENCH_2": [
+          2.34,
+          -3.9,
+          1.17
+        ],
+        "HUMAN_BENCH_0": [
+          -2.16,
+          3.95,
+          1.08
+        ],
+        "HUMAN_BENCH_1": [
+          0,
+          3.95,
+          1.08
+        ],
+        "HUMAN_BENCH_2": [
+          2.16,
+          3.95,
+          1.08
+        ]
+      },
+      "regions": {
+        "hud": [
+          24,
+          6,
+          1872,
+          40
+        ],
+        "humanBar": [
+          24,
+          1036,
+          1872,
+          40
+        ],
+        "board": [
+          24,
+          80,
+          1872,
+          788
+        ],
+        "protectedCards": [
+          448,
+          108,
+          1024,
+          730
+        ],
+        "inspector": [
+          24,
+          112,
+          320,
+          720
+        ],
+        "actions": [
+          1104,
+          476,
+          420,
+          360
+        ],
+        "hand": [
+          400,
+          860,
+          1120,
+          220
+        ],
+        "attackCutin": [
+          640,
+          172,
+          640,
+          648
+        ],
+        "humanDeck": [
+          1360,
+          624,
+          80,
+          112
+        ],
+        "humanDiscard": [
+          1240,
+          624,
+          80,
+          112
+        ],
+        "npcDeck": [
+          480,
+          178,
+          80,
+          112
+        ],
+        "npcDiscard": [
+          600,
+          178,
+          80,
+          112
+        ],
+        "humanEnergy": [
+          1216,
+          528,
+          128,
+          72
+        ],
+        "npcEnergy": [
+          576,
+          314,
+          128,
+          72
+        ],
+        "humanPoints": [
+          240,
+          1000,
+          140,
+          40
+        ],
+        "npcPoints": [
+          1540,
+          40,
+          140,
+          40
+        ],
+        "stadium": [
+          1240,
+          397,
+          80,
+          112
+        ],
+        "turnBanner": [
+          680,
+          436,
+          560,
+          42
+        ],
+        "endTurn": [
+          1524,
+          433,
+          232,
+          48
+        ],
+        "history": [
+          40,
+          812,
+          64,
+          64
+        ],
+        "menu": [
+          40,
+          892,
+          64,
+          64
+        ],
+        "npcHand": [
+          840,
+          0,
+          240,
+          64
+        ],
+        "humanPlate": [
+          32,
+          984,
+          356,
+          72
+        ],
+        "npcPlate": [
+          1532,
+          24,
+          356,
+          72
+        ],
+        "actionButtons": [
+          1490,
+          493,
+          300,
+          352
+        ],
+        "toast": [
+          520,
+          40,
+          880,
+          60
+        ],
+        "setupReset": [
+          440,
+          433,
+          232,
+          48
+        ],
+        "guide": [
+          1560,
+          108,
+          360,
+          300
+        ],
+        "trainerZone": [
+          448,
+          250,
+          1024,
+          450
+        ]
+      },
+      "overlays": {
+        "inspector": {
+          "overlay": false,
+          "presentation": "RESERVED_LEFT_MARGIN",
+          "defaultState": "CLOSED"
+        },
+        "attackCutin": {
+          "overlay": true,
+          "presentation": "TRANSIENT_STAGE",
+          "blocksPickingBehind": true
+        },
+        "turnBanner": {
+          "overlay": true,
+          "presentation": "TRANSIENT_BANNER_BETWEEN_ACTIVES",
+          "blocksPickingBehind": false
+        },
+        "history": {
+          "overlay": true,
+          "presentation": "DRAWER_RIGHT_FROM_FLOATING_BUTTON",
+          "expandedRect": [
+            1536,
+            112,
+            360,
+            392
+          ]
+        },
+        "actions": {
+          "overlay": true,
+          "presentation": "FLOATING_BUTTONS_BELOW_END_TURN",
+          "region": "actionButtons",
+          "blocksPickingBehind": false
+        }
+      },
+      "inspectorDefault": "CLOSED",
+      "handCardSize": [
+        176,
+        246.4
+      ],
+      "handPolicy": {
+        "restCardSize": [
+          176,
+          246.4
+        ],
+        "maxCards": 10,
+        "layout": "OVERLAPPING_FAN",
+        "fanStepRatio": 0.62,
+        "maxFanTiltDegrees": 10,
+        "bottomBleedPx": 48,
+        "focusScale": 1.06,
+        "focusLiftPx": 104,
+        "focusRendering": "CardTransitScene"
+      },
+      "pileCardSize": [
+        80,
+        112
+      ],
+      "energyTokenDiameterPx": {
+        "ready": 64,
+        "next": 40
+      },
+      "slots": [
+        {
+          "id": "NPC_ACTIVE",
+          "center": [
+            960,
+            340
+          ],
+          "size": [
+            132,
+            184.8
+          ]
+        },
+        {
+          "id": "HUMAN_ACTIVE",
+          "center": [
+            960,
+            574
+          ],
+          "size": [
+            132,
+            184.8
+          ]
+        },
+        {
+          "id": "NPC_BENCH_0",
+          "center": [
+            788,
+            170
+          ],
+          "size": [
+            88,
+            123.2
+          ]
+        },
+        {
+          "id": "NPC_BENCH_1",
+          "center": [
+            960,
+            170
+          ],
+          "size": [
+            88,
+            123.2
+          ]
+        },
+        {
+          "id": "NPC_BENCH_2",
+          "center": [
+            1132,
+            170
+          ],
+          "size": [
+            88,
+            123.2
+          ]
+        },
+        {
+          "id": "HUMAN_BENCH_0",
+          "center": [
+            788,
+            756
+          ],
+          "size": [
+            88,
+            123.2
+          ]
+        },
+        {
+          "id": "HUMAN_BENCH_1",
+          "center": [
+            960,
+            756
+          ],
+          "size": [
+            88,
+            123.2
+          ]
+        },
+        {
+          "id": "HUMAN_BENCH_2",
+          "center": [
+            1132,
+            756
+          ],
+          "size": [
+            88,
+            123.2
+          ]
+        }
+      ]
+    },
+    {
+      "id": "compact720",
+      "viewport": [
+        1280,
+        720
+      ],
+      "camera": {
+        "kind": "PerspectiveCamera",
+        "fovDegrees": 28,
+        "initialPosition": [
+          0,
+          19.36,
+          4.17
+        ],
+        "lookAt": [
+          0,
+          0,
+          0.05
+        ],
+        "near": 0.1,
+        "far": 80,
+        "fitBoundsRequired": true,
+        "freeOrbitDuringBattle": false
+      },
+      "worldSeeds": {
+        "NPC_ACTIVE": [
+          -0.08,
+          -1.32,
+          1.94
+        ],
+        "HUMAN_ACTIVE": [
+          -0.07,
+          1.73,
+          1.88
+        ],
+        "NPC_BENCH_0": [
+          -2.99,
+          -3.88,
+          1.14
+        ],
+        "NPC_BENCH_1": [
+          -0.08,
+          -3.88,
+          1.14
+        ],
+        "NPC_BENCH_2": [
+          2.83,
+          -3.88,
+          1.14
+        ],
+        "HUMAN_BENCH_0": [
+          -2.76,
+          3.97,
+          1.05
+        ],
+        "HUMAN_BENCH_1": [
+          -0.07,
+          3.97,
+          1.05
+        ],
+        "HUMAN_BENCH_2": [
+          2.61,
+          3.97,
+          1.05
+        ]
+      },
+      "regions": {
+        "hud": [
+          16,
+          4,
+          1248,
+          30
+        ],
+        "humanBar": [
+          16,
+          688,
+          1248,
+          28
+        ],
+        "board": [
+          152,
+          60,
+          976,
+          508
+        ],
+        "protectedCards": [
+          312,
+          76,
+          648,
+          486
+        ],
+        "inspector": [
+          16,
+          60,
+          304,
+          644
+        ],
+        "actions": [
+          708,
+          300,
+          320,
+          260
+        ],
+        "hand": [
+          260,
+          556,
+          752,
+          164
+        ],
+        "attackCutin": [
+          406,
+          88,
+          460,
+          460
+        ],
+        "humanDeck": [
+          894,
+          440,
+          60,
+          84
+        ],
+        "humanDiscard": [
+          826,
+          440,
+          60,
+          84
+        ],
+        "npcDeck": [
+          318,
+          122,
+          60,
+          84
+        ],
+        "npcDiscard": [
+          386,
+          122,
+          60,
+          84
+        ],
+        "humanEnergy": [
+          836,
+          376,
+          96,
+          52
+        ],
+        "npcEnergy": [
+          340,
+          218,
+          96,
+          52
+        ],
+        "humanPoints": [
+          150,
+          666,
+          100,
+          28
+        ],
+        "npcPoints": [
+          1030,
+          26,
+          100,
+          28
+        ],
+        "stadium": [
+          854,
+          281,
+          60,
+          84
+        ],
+        "turnBanner": [
+          436,
+          40,
+          400,
+          40
+        ],
+        "endTurn": [
+          1000,
+          305,
+          168,
+          36
+        ],
+        "history": [
+          24,
+          548,
+          44,
+          44
+        ],
+        "menu": [
+          24,
+          598,
+          44,
+          44
+        ],
+        "npcHand": [
+          576,
+          0,
+          120,
+          44
+        ],
+        "humanPlate": [
+          16,
+          656,
+          240,
+          48
+        ],
+        "npcPlate": [
+          1024,
+          16,
+          240,
+          48
+        ],
+        "actionButtons": [
+          974,
+          349,
+          220,
+          200
+        ],
+        "toast": [
+          336,
+          30,
+          608,
+          44
+        ],
+        "setupReset": [
+          136,
+          305,
+          168,
+          36
+        ],
+        "guide": [
+          1044,
+          72,
+          236,
+          220
+        ],
+        "trainerZone": [
+          312,
+          165,
+          648,
+          300
+        ]
+      },
+      "overlays": {
+        "inspector": {
+          "overlay": true,
+          "presentation": "DRAWER_LEFT",
+          "defaultState": "CLOSED",
+          "blocksPickingBehind": true,
+          "closesOnMandatoryDecision": true
+        },
+        "attackCutin": {
+          "overlay": true,
+          "presentation": "TRANSIENT_STAGE",
+          "blocksPickingBehind": true
+        },
+        "turnBanner": {
+          "overlay": true,
+          "presentation": "TRANSIENT_BANNER_BETWEEN_ACTIVES",
+          "blocksPickingBehind": false
+        },
+        "history": {
+          "overlay": true,
+          "presentation": "DRAWER_RIGHT_FROM_FLOATING_BUTTON",
+          "expandedRect": [
+            1008,
+            60,
+            256,
+            300
+          ]
+        },
+        "actions": {
+          "overlay": true,
+          "presentation": "FLOATING_BUTTONS_BELOW_END_TURN",
+          "region": "actionButtons",
+          "blocksPickingBehind": false
+        }
+      },
+      "inspectorDefault": "DRAWER_CLOSED",
+      "handCardSize": [
+        129.2,
+        180.88
+      ],
+      "handPolicy": {
+        "restCardSize": [
+          129.2,
+          180.88
+        ],
+        "maxCards": 10,
+        "layout": "OVERLAPPING_FAN",
+        "fanStepRatio": 0.62,
+        "maxFanTiltDegrees": 10,
+        "bottomBleedPx": 34,
+        "focusScale": 1.06,
+        "focusLiftPx": 76,
+        "focusRendering": "CardTransitScene"
+      },
+      "pileCardSize": [
+        60,
+        84
+      ],
+      "energyTokenDiameterPx": {
+        "ready": 44,
+        "next": 28
+      },
+      "slots": [
+        {
+          "id": "NPC_ACTIVE",
+          "center": [
+            636,
+            246
+          ],
+          "size": [
+            100,
+            140
+          ]
+        },
+        {
+          "id": "HUMAN_ACTIVE",
+          "center": [
+            636,
+            400
+          ],
+          "size": [
+            100,
+            140
+          ]
+        },
+        {
+          "id": "NPC_BENCH_0",
+          "center": [
+            492,
+            124
+          ],
+          "size": [
+            58,
+            81.2
+          ]
+        },
+        {
+          "id": "NPC_BENCH_1",
+          "center": [
+            636,
+            124
+          ],
+          "size": [
+            58,
+            81.2
+          ]
+        },
+        {
+          "id": "NPC_BENCH_2",
+          "center": [
+            780,
+            124
+          ],
+          "size": [
+            58,
+            81.2
+          ]
+        },
+        {
+          "id": "HUMAN_BENCH_0",
+          "center": [
+            492,
+            520
+          ],
+          "size": [
+            58,
+            81.2
+          ]
+        },
+        {
+          "id": "HUMAN_BENCH_1",
+          "center": [
+            636,
+            520
+          ],
+          "size": [
+            58,
+            81.2
+          ]
+        },
+        {
+          "id": "HUMAN_BENCH_2",
+          "center": [
+            780,
+            520
+          ],
+          "size": [
+            58,
+            81.2
+          ]
+        }
+      ]
+    }
+  ],
+  "piles": {
+    "humanDeckSide": "RIGHT",
+    "humanDiscardSide": "RIGHT",
+    "npcDeckSide": "LEFT",
+    "npcDiscardSide": "LEFT",
+    "npcMirrorRule": "NPC rect = espelho do humano: x' = 2*cx - x - w; y' = 2*cy - y - h",
+    "mirrorCenters": {
+      "desktop1080": [
+        960,
+        457
+      ],
+      "compact720": [
+        636,
+        323
+      ]
+    }
+  },
+  "anchors": {
+    "slotAnchorsFrom": "profiles[].slots[].id",
+    "regionAnchors": {
+      "HUMAN_DECK_TOP": "humanDeck",
+      "HUMAN_DISCARD": "humanDiscard",
+      "HUMAN_ENERGY_READY": "humanEnergy",
+      "HUMAN_ENERGY_NEXT": "humanEnergy",
+      "HUMAN_HAND": "hand",
+      "HUMAN_POINTS": "humanPoints",
+      "NPC_DECK_TOP": "npcDeck",
+      "NPC_DISCARD": "npcDiscard",
+      "NPC_ENERGY_READY": "npcEnergy",
+      "NPC_ENERGY_NEXT": "npcEnergy",
+      "NPC_HAND": "npcHand",
+      "NPC_HAND_ENTRY": "npcHand",
+      "NPC_POINTS": "npcPoints",
+      "STADIUM": "stadium",
+      "HUMAN_END_TURN": "endTurn"
+    }
+  },
+  "npcHandPolicy": {
+    "presentation": "COMPACT_FAN_OF_BACKS_WITH_COUNTER",
+    "placement": "Topo central, atrás da barra do adversário: leque compacto de versos com contador.",
+    "backCardSize": {
+      "desktop1080": [
+        44,
+        61.6
+      ],
+      "compact720": [
+        28,
+        39.2
+      ]
+    },
+    "revealsIdentity": false
+  },
+  "layoutPresets": {
+    "default": "FOCUS_TABLE",
+    "presets": [
+      {
+        "id": "FOCUS_TABLE",
+        "profiles": [
+          "desktop1080",
+          "compact720"
+        ],
+        "description": "Mesa ampla entre duas barras (adversário no topo, jogador no rodapé) com os contadores de pontos centralizados; mão grande em leque no rodapé; ações contextuais e botões flutuantes, sem painel lateral.",
+        "regionOverrides": {}
+      },
+      {
+        "id": "TACTICAL_PANELS",
+        "profiles": [
+          "desktop1080"
+        ],
+        "description": "Inspector fixo à esquerda; histórico e ações num painel único à direita. Slots, região protegida, mão e zonas do campo não mudam.",
+        "regionOverrides": {
+          "desktop1080": {
+            "inspector": [
+              24,
+              112,
+              360,
+              720
+            ],
+            "historyAndActions": [
+              1536,
+              112,
+              360,
+              936
+            ]
+          }
+        },
+        "replacesRegions": [
+          "actions",
+          "history"
+        ],
+        "slotsUnchanged": true,
+        "protectedCardsUnchanged": true
+      }
+    ],
+    "compact720": "TACTICAL_PANELS indisponível em 720p; inspector e histórico abrem como drawers."
+  },
+  "scalingRules": {
+    "appliesTo": "Metas projetadas da batalha; não é transform: scale() global da aplicação e não reduz texto HTML abaixo do mínimo.",
+    "profileSelectionByHeight": [
+      {
+        "minHeight": 900,
+        "profileId": "desktop1080",
+        "scale": "min(w/1920, h/1080)"
+      },
+      {
+        "minHeight": 720,
+        "maxHeight": 899,
+        "profileId": "compact720",
+        "scale": "min(w/1280, h/720)"
+      },
+      {
+        "maxHeight": 719,
+        "profileId": "compact720",
+        "scale": "min(w/1280, h/720)",
+        "minimumScale": 0.75,
+        "belowMinimumScale": "COMPACT_2D_FALLBACK"
+      }
+    ],
+    "wideAspect": {
+      "condition": "w/h > 16/9",
+      "contentMaxWidth": "16/9 * h",
+      "extraWidth": "FUNCTIONAL_MARGINS",
+      "centerContent": true
+    },
+    "narrowLandscape": {
+      "condition": "w >= h and w/h < 16/9",
+      "scaleLimitedBy": "WIDTH",
+      "extraHeight": "CENTERED_VERTICAL_MARGINS"
+    },
+    "portrait": {
+      "condition": "w < h",
+      "battle": "COMPACT_2D_FALLBACK",
+      "threeJsBattleField": false,
+      "menus": "RESPONSIVE_HTML"
+    },
+    "minimumEssentialTextPx": 14,
+    "examples": [
+      {
+        "viewport": [
+          1366,
+          768
+        ],
+        "profileId": "compact720",
+        "scale": 1.067
+      },
+      {
+        "viewport": [
+          1600,
+          900
+        ],
+        "profileId": "desktop1080",
+        "scale": 0.833
+      },
+      {
+        "viewport": [
+          2560,
+          1440
+        ],
+        "profileId": "desktop1080",
+        "scale": 1.333
+      },
+      {
+        "viewport": [
+          3440,
+          1440
+        ],
+        "profileId": "desktop1080",
+        "scale": 1.333,
+        "contentWidth": 2560,
+        "sideMargins": 440
+      },
+      {
+        "viewport": [
+          1080,
+          1920
+        ],
+        "profileId": null,
+        "battle": "COMPACT_2D_FALLBACK"
+      }
+    ],
+    "recompute": "Resize recalcula viewports, câmera, HUD projetado e raycast na mesma passagem."
+  },
+  "input": {
+    "worldToScreenAnchorContract": true,
+    "raycastPerViewport": true,
+    "decorationsPickable": false,
+    "dragToPlay": "Hand cards are played by dragging them onto a highlighted target (empty bench slot, own Pokemon, or anywhere on the field for target-less Trainers). A drop on the field outside the highlights is denied: the card shakes red, returns to the hand and the reason is shown. Click/keyboard selection stays as the alternative."
+  },
+  "notes": [
+    "Targets apply to projected card bounds. Fit camera and semantic anchors together; do not use pixels as world units.",
+    "Layout adjustments preserve proportions, eight slots and text visibility. A real Three.js projection test is a separate implementation gate.",
+    "HUD anchor labels use screen space. The temporary cut-in overlays play and blocks incompatible picking.",
+    "No region may overlap the eight slot rectangles (slot rect = center +/- size/2). Piles, Energy, Stadium and the NPC hand fan live inside protectedCards; the player plates (photo + points) sit in the screen corners and the floating action buttons below End Turn, outside protectedCards.",
+    "Interface sections 23.5 (1920x1080) and 23.14 (1280x720) mirror every region of this file; change both together.",
+    "Camera and world seeds are per profile (calibrated so the eight projected slots meet their screen targets); fitBounds still runs after layout. At 720p the near rim may be cut by about 14 px, a cosmetic margin allowed by runtime section 14.9; cards and controls are never cut."
+  ]
+}

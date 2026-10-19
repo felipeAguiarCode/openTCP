@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:card-campaign:schema:reward-table:1",
+  "title": "Tabela de prêmio",
+  "type": "object",
+  "properties": {
+    "rewardTableId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+    },
+    "credits": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100000
+    },
+    "packs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10
+          }
+        },
+        "required": [
+          "productId",
+          "count"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 4,
+      "minItems": 0
+    },
+    "medal": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "cosmetics": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+      },
+      "maxItems": 4,
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "unlocks": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 80
+      },
+      "maxItems": 8,
+      "minItems": 0,
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "rewardTableId",
+    "credits",
+    "packs",
+    "medal",
+    "cosmetics",
+    "unlocks"
+  ],
+  "additionalProperties": false
+}

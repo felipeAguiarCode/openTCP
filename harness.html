@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>Harness 3D · open-tcgp</title>
+    <style>
+      html, body { margin: 0; height: 100%; overflow: hidden; background: #F4F8FC; font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; color: #263A50; }
+      #gl { position: fixed; inset: 0; width: 100vw; height: 100vh; display: block; touch-action: none; }
+      #hud { position: fixed; inset: 0; pointer-events: none; }
+      #toolbar { position: fixed; top: 8px; right: 8px; display: flex; flex-wrap: wrap; gap: 4px; justify-content: flex-end; width: min(270px, 22vw); z-index: 5; }
+      #toolbar button, #toolbar select { font: 600 11px system-ui, sans-serif; height: 24px; padding: 0 8px; border-radius: 999px; border: 1px solid #CBDCEB; background: #FFFFFF; color: #153F65; cursor: pointer; box-shadow: 0 2px 8px rgb(100 125 154 / 0.12); }
+      #toolbar button.primary { background: #75C7FA; border-color: #75C7FA; }
+      #toolbar button[aria-pressed='true'] { background: #C8FAF5; border-color: #2DECE5; }
+      #status { position: fixed; bottom: 6px; right: 8px; font: 11px ui-monospace, monospace; color: #526780; background: rgb(255 255 255 / 0.8); padding: 4px 8px; border-radius: 8px; z-index: 5; max-width: 40vw; white-space: pre; }
+      #log { position: fixed; right: 12px; bottom: 60px; display: flex; flex-direction: column; gap: 4px; z-index: 4; pointer-events: none; }
+      #log div { background: #FFFFFF; border: 1px solid #CBDCEB; border-radius: 10px; padding: 4px 10px; font: 600 12px system-ui, sans-serif; box-shadow: 0 2px 8px rgb(100 125 154 / 0.12); }
+      /* HP como na referência: número grande no canto superior direito da carta, barra verde logo abaixo. */
+      .hp { position: absolute; transform: translate(-100%, -58%); text-align: right; font: 900 30px system-ui, sans-serif; color: #263A50; line-height: 1; white-space: nowrap;
+        text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 4px #fff, 0 1px 0 #fff; }
+      .hp .bar { height: 6px; width: 100%; min-width: 48px; background: #DFEBF5; border-radius: 4px; margin-top: 2px; overflow: hidden; box-shadow: 0 0 0 1.5px #fff; }
+      .hp .bar i { display: block; height: 100%; background: #57D995; margin-left: auto; }
+      .hp.ko { color: #A93243; }
+      .end-turn { position: absolute; z-index: 3; white-space: nowrap; justify-content: center; box-sizing: border-box; padding: 0 20px; display: flex; align-items: center; border-radius: 999px; background: #FFFFFF; border: 2px solid #75C7FA; color: #357DE4; font: 800 18px system-ui, sans-serif; box-shadow: 0 4px 14px rgb(100 125 154 / 0.25); }
+      .end-turn.off { color: #8FA3B8; border-color: #CBDCEB; }
+      body.clean #toolbar, body.clean #status, body.clean #log { display: none; }
+      .cond { position: absolute; transform: translate(-100%, 0); display: flex; gap: 2px; }
+      .cond span { background: #8F5EC0; color: #fff; font: 800 10px system-ui; border-radius: 6px; padding: 1px 4px; }
+      .counter { position: absolute; transform: translate(-50%, 0); background: #FFFFFF; border-radius: 8px; padding: 0 6px; font: 800 12px system-ui; color: #263A50; box-shadow: 0 1px 4px rgb(100 125 154 / 0.25); }
+      .pbar { position: absolute; z-index: 2; display: flex; align-items: center; padding: 0 18px; box-sizing: border-box; border-radius: 14px; background: rgb(34 46 68 / 0.82); color: #fff; font: 800 15px system-ui, sans-serif; box-shadow: 0 4px 14px rgb(20 30 45 / 0.25); }
+      .pbar-name { display: flex; align-items: center; gap: 8px; }
+      .pbar-name i { width: 24px; height: 24px; border-radius: 50%; background: #75C7FA; border: 2px solid #fff; }
+      .pbar-name i.npc { background: #F2857D; }
+      .points { position: absolute; z-index: 3; display: flex; align-items: center; justify-content: center; gap: 6px; }
+      .points i { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font: 900 14px system-ui; font-style: normal; background: #4b5870; color: #4b5870; box-shadow: inset 0 2px 3px rgb(0 0 0 / 0.35); }
+      .points i.on { background: radial-gradient(circle at 35% 30%, #fff3b0, #F6CE3D 60%, #d9a514); color: #5b4300; box-shadow: 0 0 0 2px #fff, 0 0 10px rgb(246 206 61 / 0.85); }
+      .float-round { position: absolute; z-index: 3; border-radius: 50%; display: grid; place-items: center; background: rgb(255 255 255 / 0.92); color: #153F65; font: 900 24px system-ui; box-shadow: 0 4px 14px rgb(20 30 45 / 0.3); }
+      .banner { position: absolute; display: flex; align-items: center; justify-content: center; font: 900 20px system-ui; color: #fff; border-radius: 999px; background: linear-gradient(90deg, #22DCEA, #357DE4); box-shadow: 0 4px 16px rgb(100 125 154 / 0.3); transition: opacity 0.3s; }
+      .banner.npc { background: linear-gradient(90deg, #F2857D, #C2417A); }
+      .float { position: absolute; transform: translate(-50%, -50%); font: 900 34px system-ui; color: #fff; -webkit-text-stroke: 2px #A93243; text-shadow: 0 2px 6px rgb(0 0 0 / 0.25); transition: transform 0.9s ease-out, opacity 0.9s ease-in; }
+      .float.heal { -webkit-text-stroke-color: #15704B; }
+      .anchor { position: absolute; outline: 1px dashed rgb(53 125 228 / 0.55); }
+      .regions .anchor { outline-color: rgb(169 50 67 / 0.45); }
+      .error { position: fixed; inset: 0; display: grid; place-items: center; font: 700 18px system-ui; }
+    </style>
+  </head>
+  <body>
+    <canvas id="gl"></canvas>
+    <div id="hud"></div>
+    <div id="log"></div>
+    <div id="toolbar"></div>
+    <div id="status"></div>
+    <script type="module" src="./src/presentation/three/harness/main.ts"></script>
+  </body>
+</html>

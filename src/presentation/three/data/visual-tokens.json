@@ -1,0 +1,197 @@
+{
+  "documentVersion": "3.2.0",
+  "visualProfileId": "pocket-light-v1",
+  "status": "AUTHORIAL_APPROXIMATION_FROM_IDENTIFIED_OFFICIAL_REFERENCE_NOT_EXTRACTED_TOKENS",
+  "colorSpace": "sRGB",
+  "colors": {
+    "canvas": "#F4F8FC",
+    "surface": "#FFFFFF",
+    "surfaceSoft": "#EAF4FA",
+    "surfaceInset": "#DFEBF5",
+    "text": "#263A50",
+    "textSecondary": "#526780",
+    "textDisabled": "#8797AA",
+    "line": "#CBDCEB",
+    "primary": "#75C7FA",
+    "primaryStrong": "#357DE4",
+    "primaryInk": "#153F65",
+    "cyan": "#2DECE5",
+    "cyanSoft": "#C8FAF5",
+    "playerBand": "#22DCEA",
+    "opponentBand": "#F2857D",
+    "boardNear": "#86BCE7",
+    "boardFar": "#D8D5F4",
+    "boardLine": "#F5FAFF",
+    "rim": "#F4F8FF",
+    "pointGold": "#F6CE3D",
+    "success": "#15704B",
+    "hpFill": "#57D995",
+    "warning": "#875600",
+    "danger": "#A93243",
+    "shadow": "#647D9A"
+  },
+  "typeColors": {
+    "GRASS": "#72B75D",
+    "FIRE": "#EF785B",
+    "WATER": "#60ADE7",
+    "LIGHTNING": "#E8C83E",
+    "PSYCHIC": "#A279CB",
+    "FIGHTING": "#C48D61",
+    "DARKNESS": "#536A80",
+    "METAL": "#A2B1BC",
+    "DRAGON": "#B8A65D",
+    "COLORLESS": "#BAC5D0"
+  },
+  "attackStripColors": {
+    "GRASS": "#4B823A",
+    "FIRE": "#D83B15",
+    "WATER": "#1D79BF",
+    "LIGHTNING": "#8A7310",
+    "PSYCHIC": "#8F5EC0",
+    "FIGHTING": "#A0683C",
+    "DARKNESS": "#475B6D",
+    "METAL": "#627888",
+    "DRAGON": "#837439",
+    "COLORLESS": "#61778E"
+  },
+  "typography": {
+    "family": "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+    "cardFace": {
+      "family": "Nunito",
+      "license": "OFL-1.1",
+      "source": "Arquivo local empacotado no build (@fontsource); nunca carregado da rede.",
+      "reason": "Textura gerada da face da carta idêntica em qualquer sistema operacional."
+    },
+    "bodyPx": 16,
+    "smallPx": 14,
+    "pageTitlePx": 30,
+    "buttonWeight": 600,
+    "numericVariant": "tabular-nums"
+  },
+  "radiiPx": {
+    "panel": 20,
+    "dialog": 24,
+    "cardTile": 12,
+    "button": 999
+  },
+  "spacingPx": [
+    4,
+    8,
+    12,
+    16,
+    24,
+    32,
+    48
+  ],
+  "shadows": {
+    "panel": "0 6px 24px rgb(100 125 154 / 0.12)",
+    "raisedCard": "0 10px 24px rgb(100 125 154 / 0.18)"
+  },
+  "focus": {
+    "outlineColor": "#357DE4",
+    "outlinePx": 3,
+    "offsetPx": 3
+  },
+  "battle": {
+    "whiteRoundedRim": true,
+    "playerBandToken": "playerBand",
+    "opponentBandToken": "opponentBand",
+    "neutralGradientTokens": [
+      "boardFar",
+      "boardNear"
+    ],
+    "threePointMarkers": true,
+    "independentMonsterModels": false
+  },
+  "rendering": {
+    "outputColorSpace": "SRGBColorSpace",
+    "toneMapping": "NoToneMapping",
+    "cardFaceToneMapped": false,
+    "dataTextureColorSpace": "NoColorSpace",
+    "battleDepthOfField": false,
+    "globalBloom": false
+  },
+  "prohibitedDefaultElements": [
+    "dark-room",
+    "orange-global-cta",
+    "wooden-table",
+    "brass-ornament",
+    "black-vignette",
+    "permanent-embers",
+    "mana-cost-badge"
+  ],
+  "contrastPairs": [
+    [
+      "text",
+      "surface"
+    ],
+    [
+      "textSecondary",
+      "surface"
+    ],
+    [
+      "primaryInk",
+      "primary"
+    ],
+    [
+      "text",
+      "cyanSoft"
+    ],
+    [
+      "success",
+      "surface"
+    ],
+    [
+      "danger",
+      "surface"
+    ]
+  ],
+  "stripContrastPairs": [
+    [
+      "#FFFFFF",
+      "GRASS"
+    ],
+    [
+      "#FFFFFF",
+      "FIRE"
+    ],
+    [
+      "#FFFFFF",
+      "WATER"
+    ],
+    [
+      "#FFFFFF",
+      "LIGHTNING"
+    ],
+    [
+      "#FFFFFF",
+      "PSYCHIC"
+    ],
+    [
+      "#FFFFFF",
+      "FIGHTING"
+    ],
+    [
+      "#FFFFFF",
+      "DARKNESS"
+    ],
+    [
+      "#FFFFFF",
+      "METAL"
+    ],
+    [
+      "#FFFFFF",
+      "DRAGON"
+    ],
+    [
+      "#FFFFFF",
+      "COLORLESS"
+    ]
+  ],
+  "notes": [
+    "Color values are implementation targets, not official design-system tokens.",
+    "Type colors do not imply readable white text; attack strips use attackStripColors (white text >= 4.5:1).",
+    "cyan marks card selection and focus; in the menus it also allows thin accents (active tab underline, badges, current chapter ring); the near (human) band uses playerBand.",
+    "The spec package distributes no font files or official artworks; the game build bundles the OFL card-face font locally."
+  ]
+}

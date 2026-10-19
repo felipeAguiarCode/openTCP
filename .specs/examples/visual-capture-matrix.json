@@ -1,0 +1,461 @@
+{
+  "documentVersion": "3.2.0",
+  "visualProfileId": "pocket-light-v1",
+  "status": "PLANNED_NOT_EXECUTED",
+  "viewportProfilesSource": "battle-layout.json#profiles[].id",
+  "captures": [
+    {
+      "id": "battle-empty",
+      "description": "Preparação com 1 Ativo e 3 slots por lado, aro e paleta padrão",
+      "viewportProfiles": [
+        "desktop1080",
+        "compact720"
+      ],
+      "referenceDocument": "direcao-visual-pocket.md",
+      "requirementIds": [
+        "VS-006",
+        "VS-007",
+        "VS-008",
+        "VS-009"
+      ],
+      "executionStatus": "PENDING_IMPLEMENTATION",
+      "screenshotPath": null,
+      "requiredEvidenceMetadata": [
+        "appBuild",
+        "catalogVersion",
+        "visualProfileId",
+        "viewportCss",
+        "devicePixelRatio",
+        "graphicsQuality",
+        "motionMode",
+        "fixtureId"
+      ]
+    },
+    {
+      "id": "battle-full",
+      "description": "Oito Pokémon, anexos e condições com HUD legível",
+      "viewportProfiles": [
+        "desktop1080",
+        "compact720"
+      ],
+      "referenceDocument": "direcao-visual-pocket.md",
+      "requirementIds": [
+        "VS-012",
+        "VS-013",
+        "VS-016"
+      ],
+      "executionStatus": "PENDING_IMPLEMENTATION",
+      "screenshotPath": null,
+      "requiredEvidenceMetadata": [
+        "appBuild",
+        "catalogVersion",
+        "visualProfileId",
+        "viewportCss",
+        "devicePixelRatio",
+        "graphicsQuality",
+        "motionMode",
+        "fixtureId"
+      ]
+    },
+    {
+      "id": "hand-ten",
+      "description": "Mão de dez cartas; seleção e inspeção sem esconder ações",
+      "viewportProfiles": [
+        "desktop1080",
+        "compact720"
+      ],
+      "referenceDocument": "direcao-visual-pocket.md",
+      "requirementIds": [
+        "VS-013",
+        "VS-015"
+      ],
+      "executionStatus": "PENDING_IMPLEMENTATION",
+      "screenshotPath": null,
+      "requiredEvidenceMetadata": [
+        "appBuild",
+        "catalogVersion",
+        "visualProfileId",
+        "viewportCss",
+        "devicePixelRatio",
+        "graphicsQuality",
+        "motionMode",
+        "fixtureId"
+      ]
+    },
+    {
+      "id": "turn-opponent",
+      "description": "Turno do NPC; ataque humano indisponível e mão oculta",
+      "viewportProfiles": [
+        "desktop1080",
+        "compact720"
+      ],
+      "referenceDocument": "direcao-visual-pocket.md",
+      "requirementIds": [
+        "VS-011",
+        "VS-027"
+      ],
+      "executionStatus": "PENDING_IMPLEMENTATION",
+      "screenshotPath": null,
+      "requiredEvidenceMetadata": [
+        "appBuild",
+        "catalogVersion",
+        "visualProfileId",
+        "viewportCss",
+        "devicePixelRatio",
+        "graphicsQuality",
+        "motionMode",
+        "fixtureId"
+      ]
+    },
+    {
+      "id": "draw-own",
+      "description": "Compra própria do deck à mão; não usar tela de recompensa",
+      "viewportProfiles": [
+        "desktop1080",
+        "compact720"
+      ],
+      "referenceDocument": "direcao-visual-pocket.md",
+      "requirementIds": [
+        "VS-028"
+      ],
+      "executionStatus": "PENDING_IMPLEMENTATION",
+      "screenshotPath": null,
+      "requiredEvidenceMetadata": [
+        "appBuild",
+        "catalogVersion",
+        "visualProfileId",
+        "viewportCss",
+        "devicePixelRatio",
+        "graphicsQuality",
+        "motionMode",
+        "fixtureId"
+      ]
+    },
+    {
+      "id": "draw-opponent",
+      "description": "Somente verso e contadores públicos",
+      "viewportProfiles": [
+        "desktop1080",
+        "compact720"
+      ],
+      "referenceDocument": "direcao-visual-pocket.md",
+      "requirementIds": [
+        "VS-027",
+        "VS-029"
+      ],
+      "executionStatus": "PENDING_IMPLEMENTATION",
+      "screenshotPath": null,
+      "requiredEvidenceMetadata": [
+        "appBuild",
+        "catalogVersion",
+        "visualProfileId",
+        "viewportCss",
+        "devicePixelRatio",
+        "graphicsQuality",
+        "motionMode",
+        "fixtureId"
+      ]
+    },
+    {
+      "id": "attack-cutin",
+      "description": "Carta ampliada, nome do ataque e faixa do tipo",
+      "viewportProfiles": [
+        "desktop1080",
+        "compact720"
+      ],
+      "referenceDocument": "direcao-visual-pocket.md",
+      "requirementIds": [
+        "VS-034",
+        "VS-035",
+        "VS-036"
+      ],
+      "executionStatus": "PENDING_IMPLEMENTATION",
+      "screenshotPath": null,
+      "requiredEvidenceMetadata": [
+        "appBuild",
+        "catalogVersion",
+        "visualProfileId",
+        "viewportCss",
+        "devicePixelRatio",
+        "graphicsQuality",
+        "motionMode",
+        "fixtureId"
+      ]
+    },
+    {
+      "id": "damage-hp",
+      "description": "Impacto localizado, valor e HP confirmados",
+      "viewportProfiles": [
+        "desktop1080",
+        "compact720"
+      ],
+      "referenceDocument": "direcao-visual-pocket.md",
+      "requirementIds": [
+        "VS-039"
+      ],
+      "executionStatus": "PENDING_IMPLEMENTATION",
+      "screenshotPath": null,
+      "requiredEvidenceMetadata": [
+        "appBuild",
+        "catalogVersion",
+        "visualProfileId",
+        "viewportCss",
+        "devicePixelRatio",
+        "graphicsQuality",
+        "motionMode",
+        "fixtureId"
+      ]
+    },
+    {
+      "id": "playmat-custom",
+      "description": "Arte clara/escura customizada com etiquetas estáveis",
+      "viewportProfiles": [
+        "desktop1080",
+        "compact720"
+      ],
+      "referenceDocument": "direcao-visual-pocket.md",
+      "requirementIds": [
+        "VS-043",
+        "VS-045"
+      ],
+      "executionStatus": "PENDING_IMPLEMENTATION",
+      "screenshotPath": null,
+      "requiredEvidenceMetadata": [
+        "appBuild",
+        "catalogVersion",
+        "visualProfileId",
+        "viewportCss",
+        "devicePixelRatio",
+        "graphicsQuality",
+        "motionMode",
+        "fixtureId"
+      ]
+    },
+    {
+      "id": "playmat-transition",
+      "description": "Tapete inteiro troca por crossfade de 280 ms sem mover slots",
+      "viewportProfiles": [
+        "desktop1080",
+        "compact720"
+      ],
+      "referenceDocument": "direcao-visual-pocket.md",
+      "requirementIds": [
+        "VS-044"
+      ],
+      "executionStatus": "PENDING_IMPLEMENTATION",
+      "screenshotPath": null,
+      "requiredEvidenceMetadata": [
+        "appBuild",
+        "catalogVersion",
+        "visualProfileId",
+        "viewportCss",
+        "devicePixelRatio",
+        "graphicsQuality",
+        "motionMode",
+        "fixtureId"
+      ]
+    },
+    {
+      "id": "pack-tear",
+      "description": "Corte superior, fita e fundo azul-claro",
+      "viewportProfiles": [
+        "desktop1080",
+        "compact720"
+      ],
+      "referenceDocument": "direcao-visual-pocket.md",
+      "requirementIds": [
+        "VS-047"
+      ],
+      "executionStatus": "PENDING_IMPLEMENTATION",
+      "screenshotPath": null,
+      "requiredEvidenceMetadata": [
+        "appBuild",
+        "catalogVersion",
+        "visualProfileId",
+        "viewportCss",
+        "devicePixelRatio",
+        "graphicsQuality",
+        "motionMode",
+        "fixtureId"
+      ]
+    },
+    {
+      "id": "pack-reveal",
+      "description": "Carta frontal desliza para revelar a próxima",
+      "viewportProfiles": [
+        "desktop1080",
+        "compact720"
+      ],
+      "referenceDocument": "direcao-visual-pocket.md",
+      "requirementIds": [
+        "VS-048",
+        "VS-049"
+      ],
+      "executionStatus": "PENDING_IMPLEMENTATION",
+      "screenshotPath": null,
+      "requiredEvidenceMetadata": [
+        "appBuild",
+        "catalogVersion",
+        "visualProfileId",
+        "viewportCss",
+        "devicePixelRatio",
+        "graphicsQuality",
+        "motionMode",
+        "fixtureId"
+      ]
+    },
+    {
+      "id": "collection",
+      "description": "Grade em superfícies claras sem um renderer por miniatura",
+      "viewportProfiles": [
+        "desktop1080",
+        "compact720"
+      ],
+      "referenceDocument": "direcao-visual-pocket.md",
+      "requirementIds": [
+        "VS-003",
+        "VS-004",
+        "VS-022"
+      ],
+      "executionStatus": "PENDING_IMPLEMENTATION",
+      "screenshotPath": null,
+      "requiredEvidenceMetadata": [
+        "appBuild",
+        "catalogVersion",
+        "visualProfileId",
+        "viewportCss",
+        "devicePixelRatio",
+        "graphicsQuality",
+        "motionMode",
+        "fixtureId"
+      ]
+    },
+    {
+      "id": "deck-editor",
+      "description": "Coleção/lista/inspector com 20 cartas e limite por nome",
+      "viewportProfiles": [
+        "desktop1080",
+        "compact720"
+      ],
+      "referenceDocument": "direcao-visual-pocket.md",
+      "requirementIds": [
+        "VS-052"
+      ],
+      "executionStatus": "PENDING_IMPLEMENTATION",
+      "screenshotPath": null,
+      "requiredEvidenceMetadata": [
+        "appBuild",
+        "catalogVersion",
+        "visualProfileId",
+        "viewportCss",
+        "devicePixelRatio",
+        "graphicsQuality",
+        "motionMode",
+        "fixtureId"
+      ]
+    },
+    {
+      "id": "card-studio",
+      "description": "Formulário claro, EX e FOIL separados, preview real",
+      "viewportProfiles": [
+        "desktop1080",
+        "compact720"
+      ],
+      "referenceDocument": "direcao-visual-pocket.md",
+      "requirementIds": [
+        "VS-021",
+        "VS-053",
+        "VS-054",
+        "VS-055"
+      ],
+      "executionStatus": "PENDING_IMPLEMENTATION",
+      "screenshotPath": null,
+      "requiredEvidenceMetadata": [
+        "appBuild",
+        "catalogVersion",
+        "visualProfileId",
+        "viewportCss",
+        "devicePixelRatio",
+        "graphicsQuality",
+        "motionMode",
+        "fixtureId"
+      ]
+    },
+    {
+      "id": "campaign-map",
+      "description": "Porto claro em miniatura, briefing branco",
+      "viewportProfiles": [
+        "desktop1080",
+        "compact720"
+      ],
+      "referenceDocument": "direcao-visual-pocket.md",
+      "requirementIds": [
+        "VS-023",
+        "VS-051"
+      ],
+      "executionStatus": "PENDING_IMPLEMENTATION",
+      "screenshotPath": null,
+      "requiredEvidenceMetadata": [
+        "appBuild",
+        "catalogVersion",
+        "visualProfileId",
+        "viewportCss",
+        "devicePixelRatio",
+        "graphicsQuality",
+        "motionMode",
+        "fixtureId"
+      ]
+    },
+    {
+      "id": "reduced-motion",
+      "description": "Sem shake/órbita, decisões preservadas",
+      "viewportProfiles": [
+        "desktop1080",
+        "compact720"
+      ],
+      "referenceDocument": "direcao-visual-pocket.md",
+      "requirementIds": [
+        "VS-057",
+        "VS-058"
+      ],
+      "executionStatus": "PENDING_IMPLEMENTATION",
+      "screenshotPath": null,
+      "requiredEvidenceMetadata": [
+        "appBuild",
+        "catalogVersion",
+        "visualProfileId",
+        "viewportCss",
+        "devicePixelRatio",
+        "graphicsQuality",
+        "motionMode",
+        "fixtureId"
+      ]
+    },
+    {
+      "id": "restored-snapshot",
+      "description": "Retomada sem duplicar resultados ou recolorir arte importada",
+      "viewportProfiles": [
+        "desktop1080",
+        "compact720"
+      ],
+      "referenceDocument": "direcao-visual-pocket.md",
+      "requirementIds": [
+        "VS-056",
+        "VS-059"
+      ],
+      "executionStatus": "PENDING_IMPLEMENTATION",
+      "screenshotPath": null,
+      "requiredEvidenceMetadata": [
+        "appBuild",
+        "catalogVersion",
+        "visualProfileId",
+        "viewportCss",
+        "devicePixelRatio",
+        "graphicsQuality",
+        "motionMode",
+        "fixtureId"
+      ]
+    }
+  ],
+  "comparisonPolicy": "Manual review against the identified official screenshots. Exact pixels and timing are not claimed. Test keyboard, reduced motion, state and high/low graphics separately."
+}

@@ -1,0 +1,33 @@
+# dependencies
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+
+# build output
+dist/
+card-campaign/
+*.zip
+coverage/
+playwright-report/
+test-results/
+.vite/
+
+# local
+# referências de terceiros (sets do Pocket, vídeos, prompts): nunca vão para o git
+.inspo/
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.*
+public/vendor/
+# gerado por npm run content:build
+public/content/
+.claude/
+
+# release
+release-report.json
+
+# capturas do harness Three.js
+harness-shots/

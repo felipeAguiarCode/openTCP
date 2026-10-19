@@ -1,0 +1,340 @@
+{
+  "documentVersion": "3.2.0",
+  "status": "AUTHORIAL_DEFAULTS_NOT_MEASURED_FROM_POCKET",
+  "unit": "milliseconds",
+  "readPolicy": "User-controlled reading and mandatory decisions are never auto-skipped.",
+  "modes": {
+    "NORMAL": {
+      "durationMultiplier": 1
+    },
+    "FAST": {
+      "durationMultiplier": 0.55,
+      "minimumNonzeroDurationMs": 80
+    },
+    "INSTANT": {
+      "durationMultiplier": 0,
+      "reconcileConfirmedEvents": true
+    },
+    "REDUCED_MOTION": {
+      "maximumFadeMs": 150,
+      "disableCameraShake": true,
+      "disableWideTrajectories": true,
+      "disableRepeatedFlashes": true
+    }
+  },
+  "presets": [
+    {
+      "id": "BOARD_INTRO",
+      "description": "Entrada da mesa",
+      "durationMs": 900,
+      "includes": [],
+      "excludes": []
+    },
+    {
+      "id": "INITIAL_DEAL",
+      "description": "Distribuição inicial agrupada",
+      "durationMs": 1100,
+      "includes": [],
+      "excludes": []
+    },
+    {
+      "id": "SETUP_REVEAL",
+      "description": "Revelação pública do campo",
+      "durationMs": 650,
+      "includes": [],
+      "excludes": []
+    },
+    {
+      "id": "TURN_BANNER",
+      "description": "Faixa de novo turno",
+      "durationMs": 1000,
+      "includes": [],
+      "excludes": []
+    },
+    {
+      "id": "PLAYMAT_TRANSITION",
+      "description": "Troca de superfície",
+      "durationMs": 600,
+      "includes": [],
+      "excludes": []
+    },
+    {
+      "id": "DRAW_SELF",
+      "description": "Compra única humana",
+      "durationMs": 1100,
+      "includes": [],
+      "excludes": []
+    },
+    {
+      "id": "DRAW_OPPONENT",
+      "description": "Compra única do NPC, sempre verso",
+      "durationMs": 360,
+      "includes": [],
+      "excludes": []
+    },
+    {
+      "id": "DRAW_BATCH",
+      "description": "Compra agrupada, até 5 cartas",
+      "durationMs": 900,
+      "includes": [],
+      "excludes": []
+    },
+    {
+      "id": "PLAY_BASIC",
+      "description": "Entrada comum",
+      "durationMs": 1200,
+      "includes": [],
+      "excludes": []
+    },
+    {
+      "id": "PLAY_SPECIAL",
+      "description": "Entrada especial / flair",
+      "durationMs": 1400,
+      "includes": [],
+      "excludes": []
+    },
+    {
+      "id": "EVOLVE",
+      "description": "Evolução",
+      "durationMs": 780,
+      "includes": [],
+      "excludes": []
+    },
+    {
+      "id": "PLAY_ITEM",
+      "description": "Destaque de Item, sem espera de decisão",
+      "durationMs": 1200,
+      "includes": [],
+      "excludes": []
+    },
+    {
+      "id": "PLAY_SUPPORTER",
+      "description": "Destaque de Apoiador",
+      "durationMs": 1200,
+      "includes": [],
+      "excludes": []
+    },
+    {
+      "id": "ATTACH_TOOL",
+      "description": "Ligação de Ferramenta",
+      "durationMs": 500,
+      "includes": [],
+      "excludes": []
+    },
+    {
+      "id": "PLAY_STADIUM",
+      "description": "Substituição de Estádio",
+      "durationMs": 700,
+      "includes": [],
+      "excludes": []
+    },
+    {
+      "id": "ATTACH_ENERGY",
+      "description": "Movimento de Energia",
+      "durationMs": 420,
+      "includes": [],
+      "excludes": []
+    },
+    {
+      "id": "ABILITY_FOCUS",
+      "description": "Habilidade, sem espera de decisão",
+      "durationMs": 650,
+      "includes": [],
+      "excludes": []
+    },
+    {
+      "id": "RETREAT",
+      "description": "Recuo após seleção e pagamento",
+      "durationMs": 650,
+      "includes": [],
+      "excludes": []
+    },
+    {
+      "id": "SWITCH",
+      "description": "Troca por efeito",
+      "durationMs": 580,
+      "includes": [],
+      "excludes": []
+    },
+    {
+      "id": "PROMOTE",
+      "description": "Promoção após escolha",
+      "durationMs": 520,
+      "includes": [],
+      "excludes": []
+    },
+    {
+      "id": "ATTACK_FOCUS",
+      "description": "Destaque opcional da carta",
+      "durationMs": 700,
+      "includes": [],
+      "excludes": []
+    },
+    {
+      "id": "ATTACK_STANDARD",
+      "description": "Ataque completo, inclui destaque/impacto",
+      "durationMs": 2600,
+      "includes": [
+        "ATTACK_FOCUS",
+        "DAMAGE_FEEDBACK"
+      ],
+      "excludes": [
+        "COIN_FIRST",
+        "COIN_NEXT",
+        "KNOCKOUT",
+        "POINTS"
+      ]
+    },
+    {
+      "id": "ATTACK_SPECIAL",
+      "description": "Ataque especial completo",
+      "durationMs": 3000,
+      "includes": [
+        "ATTACK_FOCUS",
+        "DAMAGE_FEEDBACK"
+      ],
+      "excludes": [
+        "COIN_FIRST",
+        "COIN_NEXT",
+        "KNOCKOUT",
+        "POINTS"
+      ]
+    },
+    {
+      "id": "DAMAGE_FEEDBACK",
+      "description": "Número, pulso e barra de HP",
+      "durationMs": 380,
+      "includes": [],
+      "excludes": []
+    },
+    {
+      "id": "HEAL_FEEDBACK",
+      "description": "Cura",
+      "durationMs": 450,
+      "includes": [],
+      "excludes": []
+    },
+    {
+      "id": "STATUS_FEEDBACK",
+      "description": "Aplicar/remover condição",
+      "durationMs": 450,
+      "includes": [],
+      "excludes": []
+    },
+    {
+      "id": "COIN_FIRST",
+      "description": "Primeira moeda",
+      "durationMs": 2400,
+      "includes": [],
+      "excludes": []
+    },
+    {
+      "id": "COIN_NEXT",
+      "description": "Moedas subsequentes",
+      "durationMs": 350,
+      "includes": [],
+      "excludes": []
+    },
+    {
+      "id": "KNOCKOUT",
+      "description": "Saída da pilha Nocauteada",
+      "durationMs": 1500,
+      "includes": [],
+      "excludes": []
+    },
+    {
+      "id": "POINTS",
+      "description": "Apresentação de pontos",
+      "durationMs": 2600,
+      "includes": [],
+      "excludes": []
+    },
+    {
+      "id": "DISCARD",
+      "description": "Descarte sem Nocaute",
+      "durationMs": 420,
+      "includes": [],
+      "excludes": []
+    },
+    {
+      "id": "RETURN_TO_HAND",
+      "description": "Retorno à mão",
+      "durationMs": 520,
+      "includes": [],
+      "excludes": []
+    },
+    {
+      "id": "SHUFFLE",
+      "description": "Embaralhamento visual",
+      "durationMs": 480,
+      "includes": [],
+      "excludes": []
+    },
+    {
+      "id": "PACK_TEAR",
+      "description": "Corte da embalagem",
+      "durationMs": 700,
+      "includes": [],
+      "excludes": []
+    },
+    {
+      "id": "PACK_EXTRACT",
+      "description": "Saída da pilha",
+      "durationMs": 520,
+      "includes": [],
+      "excludes": []
+    },
+    {
+      "id": "PACK_REVEAL",
+      "description": "Revelação de carta normal",
+      "durationMs": 600,
+      "includes": [],
+      "excludes": []
+    },
+    {
+      "id": "PACK_REVEAL_SPECIAL",
+      "description": "Revelação especial",
+      "durationMs": 850,
+      "includes": [],
+      "excludes": []
+    },
+    {
+      "id": "RESULT_TRANSITION",
+      "description": "Entrada do resumo da luta",
+      "durationMs": 850,
+      "includes": [],
+      "excludes": []
+    }
+  ],
+  "uiPresets": [
+    {
+      "id": "UI_HOVER",
+      "description": "Hover e foco de controles e cartas",
+      "durationMs": 120
+    },
+    {
+      "id": "UI_DRAWER",
+      "description": "Abrir ou fechar drawer",
+      "durationMs": 200
+    },
+    {
+      "id": "UI_DRAG_RETURN",
+      "description": "Retorno de arrasto cancelado ou inválido à origem",
+      "durationMs": 200
+    },
+    {
+      "id": "DUEL_INTRO",
+      "description": "Abertura VS do duelo: faixas do rival e do jogador fecham a tela, retratos descem com impacto, VS e saudação",
+      "durationMs": 2600
+    }
+  ],
+  "visualProfileId": "pocket-light-v1",
+  "choreographyFile": "motion-choreography.json",
+  "notes": [
+    "Durations are authored targets, not measurements from the official app.",
+    "Composite attack durations include their focus stage; do not append ATTACK_FOCUS again.",
+    "Read pauses and pending choices are not included in visual durations.",
+    "Skipping reconciles committed events without repeating gameplay commands.",
+    "uiPresets are interface micro-timings; they are not counted among the 38 gameplay presets and never form a battle barrier."
+  ]
+}

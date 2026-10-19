@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:card-campaign:schema:content-deck:1",
+  "title": "Deck de conteúdo (inicial, apoio ou NPC)",
+  "type": "object",
+  "properties": {
+    "deckId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 999
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 60
+    },
+    "kind": {
+      "enum": [
+        "STARTER",
+        "SUPPORT",
+        "NPC",
+        "TUTORIAL"
+      ]
+    },
+    "energyTypes": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "GRASS",
+          "FIRE",
+          "WATER",
+          "LIGHTNING",
+          "PSYCHIC",
+          "FIGHTING",
+          "DARKNESS",
+          "METAL"
+        ]
+      },
+      "maxItems": 3,
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "printingId": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2
+          }
+        },
+        "required": [
+          "printingId",
+          "count"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 20,
+      "minItems": 1
+    },
+    "cosmeticPresetId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "strategyNote": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300
+    }
+  },
+  "required": [
+    "deckId",
+    "version",
+    "name",
+    "kind",
+    "energyTypes",
+    "entries"
+  ],
+  "additionalProperties": false,
+  "$comment": "A soma de count deve ser 20 e o limite por deckLimitKey é 2 (validação semântica do build)."
+}

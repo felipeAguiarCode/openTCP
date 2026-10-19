@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:card-campaign:schema:npc:1",
+  "title": "Personagem controlado por IA",
+  "type": "object",
+  "properties": {
+    "npcId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 40
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "chapterId": {
+      "enum": [
+        "P00",
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "F00"
+      ]
+    },
+    "portraitAssetKey": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "style": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "notebook": {
+      "type": "object",
+      "properties": {
+        "origin": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "hints": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "maxItems": 6,
+          "minItems": 1
+        }
+      },
+      "required": [
+        "origin",
+        "hints"
+      ],
+      "additionalProperties": false
+    },
+    "cosmeticPresetId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+    }
+  },
+  "required": [
+    "npcId",
+    "name",
+    "title",
+    "chapterId",
+    "portraitAssetKey",
+    "style",
+    "notebook",
+    "cosmeticPresetId"
+  ],
+  "additionalProperties": false
+}

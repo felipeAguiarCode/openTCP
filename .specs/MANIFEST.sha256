@@ -1,0 +1,139 @@
+# SHA-256 manifest; excludes this manifest. Sizes shown on preceding comment lines.
+# 116117 bytes
+5d568c04a0fb63892a8d4148cabac5ca96844db7bd89ce72d6a12d5c7471d87e  campanha.md
+# 60246 bytes
+fdd6993a56955d635a30486513d9d894a39ca34aa6be047cba92c76d6d59c719  catalogo/cartas-a1.md
+# 19378 bytes
+f20037b4b2b55a154ab9cc2f34844bfde94dcd9607a42ccce3abe336d5f3a79f  catalogo/cartas-a1a.md
+# 46955 bytes
+4b970373f203a1cae76a5c9b142f6bfcc76810231dded317310646c796f7464c  catalogo/cartas-a2.md
+# 21842 bytes
+76605d88515dd1b2db7668dbc499fdfe9bdbfb7dad418bbdd98947ff26401f3d  catalogo/cartas-a2a.md
+# 54038 bytes
+ddc48f260ffe7a177e53ab7d0d9bcae28846de6bca7bc07f1acbd2d8c1edce7a  catalogo/cartas-a3.md
+# 23561 bytes
+81a619e17ccfc8f4bd7fe3ff2776f93d97558423a433b1797050cf60aa418b89  catalogo/cartas-a3a.md
+# 23344 bytes
+4a8d7ad7ef5a3af6aedd028f321fac41999d6be27e0c3917e72ba62407d125bf  catalogo/cartas-a3b.md
+# 55545 bytes
+121a5d0a50fdbee6f53722ca5f689193bb8d416f32bbd8d40e2385a4d52e764f  catalogo/cartas-a4.md
+# 23304 bytes
+b34985e5bbf97bc2d20bee495eecedcb1a56813e6de4709643222f1fcc834f1d  catalogo/cartas-a4a.md
+# 78406 bytes
+b701fc2254231343c03ea1737a58b22e1df88b0b7601d6fa3a373c415f86d572  catalogo/cartas-a4b.md
+# 27142 bytes
+b05cee8dc763fa8bb5dccdaf5d91196aa40c287214fccd000c40d690a013bf01  catalogo/cartas-pa.md
+# 25841 bytes
+e71ffd68216243ebc6d180f117cc2caaeeda197c6dfda58e8a0e6017c0ebb2f0  catalogo/cartas-pb.md
+# 180460 bytes
+2336a3c4aba9bea240289b98cf77f64168f78e1fd5cf2c3e9f50dbd891462485  catalogo-conteudo.md
+# 57059 bytes
+876d94a790e0e67f2678bc408de89a38ef63fc8c12615372349fd4a94b7b2bcd  CHANGELOG.md
+# 15649 bytes
+7b42ed4273ef590b600047a87c3b4e9655b08a164b0e03eaaada4288ace59d4d  database/build_seed.py
+# 581632 bytes
+9f35d4bccdba468474b57cbfdb840a4b197c230f5f089b89e1718f975969a04a  database/demo.sqlite3
+# 3638 bytes
+c9e3bcb64a9c2a17ed6f4e7823ce33f51e62c32fdc22d3b803e56c3aa5b49a77  database/README.md
+# 32509 bytes
+9941bbccba8e360b5b1e08ac197af037629f4261ebc67dc8924d1f5b19f90d13  database/schema-v1.sql
+# 25153 bytes
+15b3c236b48d30deb055cc29ad7778cb25fb9319e0c494d46e39698f245f5043  database/seed-demo.sql
+# 7504 bytes
+2e281f03c6cec80e7d2b28dc60d2dc109f518bf4d3fc8babe47db6b88ac63794  database/sqlite-test-results.json
+# 23017 bytes
+46e8d85508b4aecf54548b9a2669f5f4eff917499b7bc54b746c82559a8ed21a  database/test_schema.py
+# 3500 bytes
+d473a98b2b3e6639434dd19a9deffaf4c00f63e42aa74de8c3197a59d13e1998  design/theme-pocket.css
+# 57425 bytes
+11734eed2eaa73be89c150e114b4b4985541ac1d0e5616616dd1ca4e96d172f2  direcao-visual-pocket.md
+# 3043 bytes
+7a95ef6d10119fe1d34802fc48b19387eee55e43c31f43a28758b8b95dd43581  documentation-test-results.json
+# 76863 bytes
+9f4953280068252b6e008bbafe93ad12f59e4f4ed6eb26ec413262e0cf9e6605  editor-de-cartas.md
+# 81057 bytes
+0f556aee52d582905cce8043ecaeafdd7088b9060b0d3d41028697aebce6d215  efeitos-dsl.md
+# 8052 bytes
+8b9857d421a2f5efa3a1180772e0d927ecd8a4e3d90e01cb441636a01f38010c  examples/animation-presets.json
+# 5749 bytes
+e8eda4b27fc27da7d1b1a603a870b05c4bc713bfbbf6ef7ea1593cfaa9966a64  examples/art-briefs.json
+# 20732 bytes
+11d5c1f93e8ffc090c665aa56f21b250772f5cd55b84d2fb8b997e9dd58b027c  examples/battle-layout.json
+# 1687 bytes
+35fa55aad935b1c3bd846087d7ca5c41e9acbd9906caa1e7c88b988a55b2ce24  examples/card-definition.example.json
+# 2851 bytes
+92a7c57cb2a7f5c883d9fa46b3ac86b2e7a62dede9c8729367b4f35424102f07  examples/card-printings.example.json
+# 550 bytes
+1ff427662cdf788a5cf57dae2b6d0b35183847d94cf7f4addc776d20bd5ff0b8  examples/cosmetic-preset.example.json
+# 810 bytes
+3e0148b394fbc243247b1eeca26c2f7dcb9e899a3e063ad406fe498f0cfd94a6  examples/database-backup-manifest.example.json
+# 5916 bytes
+1d8f5ed41f512150ee0e8082bb80338433c7c27f4a6bb5764aa9c198e5d45735  examples/editor-project.example.json
+# 15976 bytes
+5b71be6075e8644473111b407ce10ce483fa5fdca0a37b049c018c4d8246ce22  examples/motion-choreography.json
+# 9132 bytes
+0b1692f82f30598b19c3796882f825519158beceda6b83a05b9bb3f7c9cfa3c5  examples/playmats.example.json
+# 1685 bytes
+382fde053bc82d830bf3ce9f8399797ade601a80e872d493c2287bc5b99babae  examples/presentation-plan.example.json
+# 11967 bytes
+9a524eaccb52e14fb7195236a46c36f106fa4bb241172b0feebf53a4318a6dd0  examples/visual-capture-matrix.json
+# 4331 bytes
+e55098c4e24023e3b22b96b4598ac4efab29e128226093729d5611d806f8c12d  examples/visual-tokens.json
+# 39695 bytes
+5a00b5a9334d38c951952740a7df8d2d92071d587feb230cbaac67b1f80ee24a  gameplay-pocket.md
+# 133581 bytes
+3765312a09ffaf727e00ab54e0262d34467073cb3a82ce75180acc5b87eaaf0a  gameplay.md
+# 255647 bytes
+a1895b2629cca58020fc646e09dabca13f32c74b7362375869e6c98443e419f7  interface-16x9.md
+# 101365 bytes
+c585ee18a191d7b8a3074c6aa1fbf8a93953b181444c84ec44d5e2f661f6b196  persistencia-sqlite.md
+# 10658 bytes
+987890bb304e5b6837fb8ddb25699fb981d2b14d3ced3628b6ecc7927a24ba66  README.md
+# 55284 bytes
+567c0172fcf136a8fb7bd7a73246fca93e1aff9930ee669bc455def3b47d6fe2  referencias/gameplay-pocket-observacoes.md
+# 8417 bytes
+81a8a1cae32fc0ee771bfd95233ffd28b567572b267b93c2f2644665310b0426  referencias-visuais.md
+# 125745 bytes
+f40771dd6c73cbea21e4c2430fa53eed9c2d7034752c7f83b10851a698208494  runtime-offline-threejs.md
+# 3841 bytes
+08f1248fe88be459b92e9a364e5a6a6a8a1d89c9615d3b1da2b5a5a00190ad79  schemas/ai-profile.schema.json
+# 19673 bytes
+084d01be21acf4d248aa907547020234e1661f855370e29027db06aec5ab0284  schemas/battle-fixture.schema.json
+# 9206 bytes
+6694b477b0529aa9eaf9b8b1967b543d1df4d844d7d837631936f9eebefb20d8  schemas/campaign-node.schema.json
+# 96449 bytes
+e3045e21b86ee598d7e458e74ff4360ce21bb7b66490e6f338c14048a67fa64f  schemas/card-definition.schema.json
+# 9150 bytes
+362f405b4f49d5116907943213fc1d50e3000552ae9182ee02f6bcfd38c62b3e  schemas/card-printing.schema.json
+# 1902 bytes
+0d475a438073f8b9514f55590966bd8bc5ed65a166d1fa92273d353a1093fa7e  schemas/content-deck.schema.json
+# 3839 bytes
+9de8a19a6119d43ff89247f2fb3df9a9cfa5c09fe7f9520e4db5b2321ef035ee  schemas/cosmetic.schema.json
+# 2247 bytes
+8a8de75265e3b8e905b5b1834d403cdf5da5b663a9c2ff2fbbf1f28183330f18  schemas/deck-recipe.schema.json
+# 1054 bytes
+395afa8c179d07598e61dca509c2f9dc5ebfe52cd1bb75428df0bd7e2c21aac4  schemas/dialogue.schema.json
+# 4194 bytes
+fb18c5ed07a90b0d739cc0d3066c662d71aaa22eb3e8dc79d96017568f8af771  schemas/editor-draft.schema.json
+# 1616 bytes
+78ce9aef1254c404187ce8bed6a7543d21e7e941944ef4e2acaf44a29db4aa23  schemas/npc.schema.json
+# 9237 bytes
+c919e6d518fee2993b63da04a0158f332a55fd88b7262777fc8a623dfe0012bd  schemas/objective.schema.json
+# 11670 bytes
+81face9da934f1bf3ecdfaa1e105d16acdf4a33bdc8e6c722648ca23a6ad9a8f  schemas/product.schema.json
+# 1559 bytes
+d6f5cb47e8a7a7e93a230ad42678a62f19e151896cbcc47603867fe60ae269f0  schemas/reward-table.schema.json
+# 5155 bytes
+0e8959237d459bba6bc6fe10b8f28dd75222b2b0b0c09ea230f309ea0fcddd0e  scripts/anchors-3.1.0.json
+# 855 bytes
+2c704378720ae66744e26cce953987737772120d07b945c15f568c7279feea56  scripts/build_manifest.py
+# 25106 bytes
+2df47b02110483176c7ed7b196679cd35710c31376ab776ae37a635a6c91fde4  scripts/gen_card_schema.py
+# 16559 bytes
+918072852ca706aabd6ed47e7ce616c7458c29822ed549e72ead8f3e25cf89ce  scripts/gen_content_schemas.py
+# 20554 bytes
+79c5331a1280f2b27a166048814fecb14dfd677c235cd5ad7eee4dba7cd83ac3  scripts/validate_specs.py
+# 2298 bytes
+53b4e47ad81c1057cde0e46c4391bb26a7461875e7161ced1e44c8f65ed1a610  source-preservation-results.json
+# 4327 bytes
+6db05ba9fc9c090dbbd96c72b25c74c4690d359dd7ddfd2081748803652b1417  VALIDACAO.md

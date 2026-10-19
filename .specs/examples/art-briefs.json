@@ -1,0 +1,130 @@
+{
+  "documentVersion": "3.2.0",
+  "visualProfileId": "pocket-light-v1",
+  "status": "PRODUCTION_BRIEFS_ONLY_NO_ARTWORK_INCLUDED",
+  "listPolicy": "Lista idêntica à seção 16 de direcao-visual-pocket.md (7 briefs).",
+  "briefs": [
+    {
+      "id": "card-braseiro-classic",
+      "kind": "CARD_ART",
+      "target": "Braseiro ex, impressão nova; regras do exemplo mantidas",
+      "composition": "Criatura de fogo com silhueta clara, expressão confiante e chamas simplificadas; enquadramento 3/4 em ambiente natural luminoso.",
+      "style": "Ilustração japonesa de carta, linhas limpas e pintura digital suave; volume estilizado, não criatura de horror com armadura de lava.",
+      "palette": "Laranja/coral da criatura, azul suave e vegetação clara no ambiente; não tornar toda a carta preta.",
+      "exclude": [
+        "texto pintado na ilustração",
+        "brasas permanentes de interface",
+        "moldura medieval",
+        "logo de outra marca"
+      ],
+      "gameplayOverlay": {
+        "hp": 140,
+        "stage": "STAGE_1",
+        "ruleBox": "EX",
+        "weaknessOperation": "ADD",
+        "weaknessValue": 20
+      },
+      "notes": "A composição da impressão gera textos a partir dos dados; o brief não altera os ataques."
+    },
+    {
+      "id": "card-harbor-illustration",
+      "kind": "CARD_ART",
+      "target": "Criatura de Água autoral / carta ilustrada",
+      "composition": "Criatura aquática expressiva em doca ou onda turquesa, cenário narrativo legível e luz suave.",
+      "style": "Ilustração de coleção colorida, traço e pintura com detalhe moderado; natureza e aventura leve.",
+      "palette": "Turquesa, azul-céu, creme e pequenos acentos coral.",
+      "exclude": [
+        "porto gótico noturno",
+        "astrolábio em primeiro plano",
+        "fotografia militar",
+        "cinema teal-orange"
+      ]
+    },
+    {
+      "id": "npc-portrait",
+      "kind": "NPC_PORTRAIT",
+      "target": "Curadores da campanha",
+      "composition": "Busto ou meio corpo, expressão clara e gesto simples, adequado a recorte circular ou painel branco.",
+      "style": "Personagem de aventura contemporânea estilizado, linhas nítidas, sombras suaves.",
+      "palette": "Clara e saturação moderada; cores do capítulo em detalhes da roupa.",
+      "exclude": [
+        "operador militar",
+        "couro negro e armas",
+        "realismo sombrio",
+        "texto dentro da arte"
+      ]
+    },
+    {
+      "id": "harbor-chapter",
+      "kind": "CAMPAIGN_DIORAMA",
+      "target": "C02 Porto das Marés",
+      "composition": "Pequeno porto diurno em base clara, seis plataformas de nós conectadas e áreas livres para rótulos.",
+      "style": "Diorama Three.js de formas simplificadas, materiais mates claros e água turquesa.",
+      "palette": "Branco, azul-céu, areia clara, turquesa e coral contido.",
+      "exclude": [
+        "cidade gótica realista",
+        "cinema noturno",
+        "castelos negros",
+        "fumaça volumétrica"
+      ],
+      "notes": "Mapa não é o fundo da batalha; combate usa board abstrato claro."
+    },
+    {
+      "id": "playmat-harbor-v2",
+      "kind": "PLAYMAT_ART",
+      "target": "mat-c02-harbor definitionVersion 2",
+      "composition": "Imagem contínua 4:3, ondas e símbolos periféricos; centro mais calmo para Ativos/Banco.",
+      "style": "Ilustração plana de card game, textura fina facultativa; layout sem marcas interativas falsas.",
+      "palette": "Azul claro, turquesa, creme; contrastes baixos nos slots.",
+      "exclude": [
+        "moldura dourada",
+        "couro escuro",
+        "divisão em dois tapetes",
+        "textos de regras pintados"
+      ],
+      "output": {
+        "master": [
+          4096,
+          3072
+        ],
+        "runtimeTarget": [
+          2048,
+          1536
+        ],
+        "alpha": false,
+        "colorSpace": "sRGB",
+        "filesAreDelivered": false
+      }
+    },
+    {
+      "id": "battle-screen",
+      "kind": "SCREEN_MOCKUP",
+      "target": "Tela de batalha 16:9 e instante do cut-in de ataque",
+      "composition": "Campo azul/lavanda arredondado, aro branco, faixas playerBand/opponentBand, dois Ativos, três Bancos por lado, mão de cinco, pilhas na diagonal e três marcadores de pontos; segundo quadro com Braseiro ampliado e inclinado, faixa “Golpe de Brasa” e linhas de velocidade claras.",
+      "style": "UI clara do perfil pocket-light-v1, fonte simples, carta selecionada com contorno cyan; véu de ataque temporário de 20–30%.",
+      "palette": "Tokens de visual-tokens.json; faixa de ataque com attackStripColors.",
+      "exclude": [
+        "cenário fotorrealista atrás da mesa",
+        "criatura modelada no lugar da carta",
+        "contadores incompatíveis com baralho de 20",
+        "paleta preta durante o turno"
+      ],
+      "notes": "Captura de referência para homologação; geometria em battle-layout.json."
+    },
+    {
+      "id": "card-studio-screen",
+      "kind": "SCREEN_MOCKUP",
+      "target": "Estúdio de Cartas (S44) em 1920×1080",
+      "composition": "Três áreas em branco/azul pálido: estrutura, formulário de ataque e prévia da carta clássica; toggle ex separado do seletor Normal/Foil; ações Validar/Testar/Publicar.",
+      "style": "Formulários claros do mesmo shell; prévia com o CardVisual e o shader da batalha.",
+      "palette": "Tokens de visual-tokens.json; sem neon laranja.",
+      "exclude": [
+        "geração remota de arte",
+        "login ou sincronização",
+        "campo de Resistência",
+        "tema escuro"
+      ]
+    }
+  ],
+  "identity": "Match the visual family; produce or supply artwork separately. Do not use old dark conceptual images as approved reference."
+}

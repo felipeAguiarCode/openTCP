@@ -1,0 +1,312 @@
+{
+  "documentVersion": "3.2.0",
+  "status": "EXAMPLE_CATALOG_ASSETS_NOT_INCLUDED",
+  "assetKeyPolicy": "albedoAssetId e thumbnailAssetKey são chaves lógicas <playmatId>:v<definitionVersion>:<papel>, resolvidas pelo manifesto de conteúdo para sha256; não são hashes nem caminhos de arquivo.",
+  "fallbackPolicy": "fallbackPlaymatId aponta para mat-neutral; mat-neutral usa null porque é o fallback final, desenhado proceduralmente a partir dos tokens.",
+  "surface": {
+    "width": 12.8,
+    "height": 9.6,
+    "textureAspect": [
+      4,
+      3
+    ],
+    "standardTextureSize": [
+      2048,
+      1536
+    ],
+    "productionMasterTextureSize": [
+      4096,
+      3072
+    ]
+  },
+  "playmats": [
+    {
+      "id": "mat-neutral",
+      "definitionVersion": 2,
+      "name": "Mesa Neutra",
+      "names": {
+        "pt-BR": "Mesa Neutra"
+      },
+      "variantIds": [
+        "standard",
+        "calm"
+      ],
+      "albedoAssetId": "mat-neutral:v2:albedo",
+      "thumbnailAssetKey": "mat-neutral:v2:thumb",
+      "defaultAccentHex": "#75C7FA",
+      "defaultMaterialProfile": "MATTE",
+      "allowedAmbientEffects": [
+        "OFF",
+        "LOW"
+      ],
+      "acquisition": {
+        "kind": "FREE",
+        "requiredCompletedNodeId": null,
+        "credits": 0
+      },
+      "gameplayModifiers": [],
+      "artDirection": "Azul-claro e lavanda, linhas brancas, sem cenário ao redor.",
+      "visualProfileId": "pocket-light-v1",
+      "safeCenter": true,
+      "fallbackPlaymatId": null,
+      "status": "ASSET_SPECIFICATION_NOT_BUNDLED"
+    },
+    {
+      "id": "mat-academy",
+      "definitionVersion": 2,
+      "name": "Academia dos Arquivos",
+      "names": {
+        "pt-BR": "Academia dos Arquivos"
+      },
+      "variantIds": [
+        "standard",
+        "calm"
+      ],
+      "albedoAssetId": "mat-academy:v2:albedo",
+      "thumbnailAssetKey": "mat-academy:v2:thumb",
+      "defaultAccentHex": "#357DE4",
+      "defaultMaterialProfile": "MATTE",
+      "allowedAmbientEffects": [
+        "OFF",
+        "LOW"
+      ],
+      "acquisition": {
+        "kind": "FREE",
+        "requiredCompletedNodeId": null,
+        "credits": 0
+      },
+      "gameplayModifiers": [],
+      "artDirection": "Branco perolado com diagramas azul/lavanda.",
+      "visualProfileId": "pocket-light-v1",
+      "safeCenter": true,
+      "fallbackPlaymatId": "mat-neutral",
+      "status": "ASSET_SPECIFICATION_NOT_BUNDLED"
+    },
+    {
+      "id": "mat-c01-grove",
+      "definitionVersion": 2,
+      "name": "Bosque das Reservas",
+      "names": {
+        "pt-BR": "Bosque das Reservas"
+      },
+      "variantIds": [
+        "standard",
+        "calm"
+      ],
+      "albedoAssetId": "mat-c01-grove:v2:albedo",
+      "thumbnailAssetKey": "mat-c01-grove:v2:thumb",
+      "defaultAccentHex": "#72B75D",
+      "defaultMaterialProfile": "MATTE",
+      "allowedAmbientEffects": [
+        "OFF",
+        "LOW",
+        "STANDARD"
+      ],
+      "acquisition": {
+        "kind": "SHOP_AFTER_NODE",
+        "requiredCompletedNodeId": "C01-E06",
+        "credits": 500
+      },
+      "gameplayModifiers": [],
+      "artDirection": "Folhas ilustradas menta e luz difusa diurna.",
+      "visualProfileId": "pocket-light-v1",
+      "safeCenter": true,
+      "fallbackPlaymatId": "mat-neutral",
+      "status": "ASSET_SPECIFICATION_NOT_BUNDLED"
+    },
+    {
+      "id": "mat-c02-harbor",
+      "definitionVersion": 2,
+      "name": "Porto das Marés",
+      "names": {
+        "pt-BR": "Porto das Marés"
+      },
+      "variantIds": [
+        "standard",
+        "calm"
+      ],
+      "albedoAssetId": "mat-c02-harbor:v2:albedo",
+      "thumbnailAssetKey": "mat-c02-harbor:v2:thumb",
+      "defaultAccentHex": "#2DECE5",
+      "defaultMaterialProfile": "MATTE",
+      "allowedAmbientEffects": [
+        "OFF",
+        "LOW",
+        "STANDARD"
+      ],
+      "acquisition": {
+        "kind": "SHOP_AFTER_NODE",
+        "requiredCompletedNodeId": "C02-E06",
+        "credits": 500
+      },
+      "gameplayModifiers": [],
+      "artDirection": "Água turquesa e porto ilustrado claro, não noturno.",
+      "visualProfileId": "pocket-light-v1",
+      "safeCenter": true,
+      "fallbackPlaymatId": "mat-neutral",
+      "status": "ASSET_SPECIFICATION_NOT_BUNDLED"
+    },
+    {
+      "id": "mat-c03-circuits",
+      "definitionVersion": 2,
+      "name": "Usina dos Circuitos",
+      "names": {
+        "pt-BR": "Usina dos Circuitos"
+      },
+      "variantIds": [
+        "standard",
+        "calm"
+      ],
+      "albedoAssetId": "mat-c03-circuits:v2:albedo",
+      "thumbnailAssetKey": "mat-c03-circuits:v2:thumb",
+      "defaultAccentHex": "#E8C83E",
+      "defaultMaterialProfile": "MATTE",
+      "allowedAmbientEffects": [
+        "OFF",
+        "LOW",
+        "STANDARD"
+      ],
+      "acquisition": {
+        "kind": "SHOP_AFTER_NODE",
+        "requiredCompletedNodeId": "C03-E06",
+        "credits": 500
+      },
+      "gameplayModifiers": [],
+      "artDirection": "Circuitos ciano/amarelo em base branca azulada.",
+      "visualProfileId": "pocket-light-v1",
+      "safeCenter": true,
+      "fallbackPlaymatId": "mat-neutral",
+      "status": "ASSET_SPECIFICATION_NOT_BUNDLED"
+    },
+    {
+      "id": "mat-c04-observatory",
+      "definitionVersion": 2,
+      "name": "Observatório dos Ecos",
+      "names": {
+        "pt-BR": "Observatório dos Ecos"
+      },
+      "variantIds": [
+        "standard",
+        "calm"
+      ],
+      "albedoAssetId": "mat-c04-observatory:v2:albedo",
+      "thumbnailAssetKey": "mat-c04-observatory:v2:thumb",
+      "defaultAccentHex": "#A279CB",
+      "defaultMaterialProfile": "MATTE",
+      "allowedAmbientEffects": [
+        "OFF",
+        "LOW",
+        "STANDARD"
+      ],
+      "acquisition": {
+        "kind": "SHOP_AFTER_NODE",
+        "requiredCompletedNodeId": "C04-E06",
+        "credits": 500
+      },
+      "gameplayModifiers": [],
+      "artDirection": "Lavanda clara, prata e pequenas estrelas.",
+      "visualProfileId": "pocket-light-v1",
+      "safeCenter": true,
+      "fallbackPlaymatId": "mat-neutral",
+      "status": "ASSET_SPECIFICATION_NOT_BUNDLED"
+    },
+    {
+      "id": "mat-c05-foundry",
+      "definitionVersion": 2,
+      "name": "Fundição dos Símbolos",
+      "names": {
+        "pt-BR": "Fundição dos Símbolos"
+      },
+      "variantIds": [
+        "standard",
+        "calm"
+      ],
+      "albedoAssetId": "mat-c05-foundry:v2:albedo",
+      "thumbnailAssetKey": "mat-c05-foundry:v2:thumb",
+      "defaultAccentHex": "#EF785B",
+      "defaultMaterialProfile": "MATTE",
+      "allowedAmbientEffects": [
+        "OFF",
+        "LOW",
+        "STANDARD"
+      ],
+      "acquisition": {
+        "kind": "SHOP_AFTER_NODE",
+        "requiredCompletedNodeId": "C05-E06",
+        "credits": 500
+      },
+      "gameplayModifiers": [],
+      "artDirection": "Prata clara e pêssego; símbolos suaves.",
+      "visualProfileId": "pocket-light-v1",
+      "safeCenter": true,
+      "fallbackPlaymatId": "mat-neutral",
+      "status": "ASSET_SPECIFICATION_NOT_BUNDLED"
+    },
+    {
+      "id": "mat-c06-archive",
+      "definitionVersion": 2,
+      "name": "Arquivo Elevado",
+      "names": {
+        "pt-BR": "Arquivo Elevado"
+      },
+      "variantIds": [
+        "standard",
+        "calm"
+      ],
+      "albedoAssetId": "mat-c06-archive:v2:albedo",
+      "thumbnailAssetKey": "mat-c06-archive:v2:thumb",
+      "defaultAccentHex": "#75C7FA",
+      "defaultMaterialProfile": "MATTE",
+      "allowedAmbientEffects": [
+        "OFF",
+        "LOW",
+        "STANDARD"
+      ],
+      "acquisition": {
+        "kind": "SHOP_AFTER_NODE",
+        "requiredCompletedNodeId": "C06-E06",
+        "credits": 500
+      },
+      "gameplayModifiers": [],
+      "artDirection": "Marfim e azul-claro; páginas e selos delicados.",
+      "visualProfileId": "pocket-light-v1",
+      "safeCenter": true,
+      "fallbackPlaymatId": "mat-neutral",
+      "status": "ASSET_SPECIFICATION_NOT_BUNDLED"
+    },
+    {
+      "id": "mat-circuit-complete",
+      "definitionVersion": 2,
+      "name": "Circuito Completo",
+      "names": {
+        "pt-BR": "Circuito Completo"
+      },
+      "variantIds": [
+        "standard",
+        "calm"
+      ],
+      "albedoAssetId": "mat-circuit-complete:v2:albedo",
+      "thumbnailAssetKey": "mat-circuit-complete:v2:thumb",
+      "defaultAccentHex": "#F6CE3D",
+      "defaultMaterialProfile": "MATTE",
+      "allowedAmbientEffects": [
+        "OFF",
+        "LOW",
+        "STANDARD"
+      ],
+      "acquisition": {
+        "kind": "GRANT_AFTER_NODE",
+        "requiredCompletedNodeId": "F00-D03",
+        "credits": 0
+      },
+      "gameplayModifiers": [],
+      "artDirection": "Branco, ciano e lavanda; medalhão amarelo e símbolos dos capítulos.",
+      "visualProfileId": "pocket-light-v1",
+      "safeCenter": true,
+      "fallbackPlaymatId": "mat-neutral",
+      "status": "ASSET_SPECIFICATION_NOT_BUNDLED"
+    }
+  ],
+  "visualProfileId": "pocket-light-v1",
+  "versionPolicy": "Playmats nascem na definitionVersion 2 nesta linha; não há presets legados nem migração (G1). Novas artes criam nova definitionVersion sem nova cobrança."
+}

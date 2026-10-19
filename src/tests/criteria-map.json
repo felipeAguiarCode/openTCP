@@ -1,0 +1,2934 @@
+{
+  "C-001": {
+    "status": "AUTOMATED",
+    "ref": "src/content/bundle.test.ts::pacote de conteúdo base 3.5.0 (todos os sets do Pocket até o A4b + Promo-A e Promo-B) > tem a estrutura de campanha §2.1",
+    "note": "45 nós: 39 batalha/puzzle e 6 Descobertas."
+  },
+  "C-002": {
+    "status": "AUTOMATED",
+    "ref": "src/content/campaign.test.ts::grafo da campanha real (C-001, C-002, C-003) > C-002: as 27 vitórias essenciais abrem o final sem exigir nenhum nó opcional",
+    "note": "Também jogado de ponta a ponta em campaign-route.test (27 vitórias)."
+  },
+  "C-003": {
+    "status": "AUTOMATED",
+    "ref": "src/content/campaign.test.ts::grafo da campanha real (C-001, C-002, C-003) > C-003: todos os 45 nós são alcançáveis e não há ciclo nem pré-requisito inexistente",
+    "note": "validateGraph sem erros e todos os 45 nós alcançados."
+  },
+  "C-004": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/commit.test.ts::commit: criação de perfil e recibo > criar um perfil que já existe é REVISION_CONFLICT sem efeito",
+    "note": "Onboarding repetido para o mesmo perfil não concede de novo (grant key onboarding única)."
+  },
+  "C-005": {
+    "status": "AUTOMATED",
+    "ref": "src/content/campaign.test.ts::perfil novo e decks iniciais (C-005, C-006, C-049) > C-005: as 76 cartas iniciais permitem montar os oito decks de 20 ao mesmo tempo",
+    "note": "76 cartas e os oito decks válidos com o inventário inicial."
+  },
+  "C-006": {
+    "status": "AUTOMATED",
+    "ref": "src/content/campaign.test.ts::perfil novo e decks iniciais (C-005, C-006, C-049) > C-006: cada deck inicial tem quatro Básicos e no máximo duas cópias por nome",
+    "note": "Quatro Básicos e ≤ 2 cópias por nome em cada deck inicial."
+  },
+  "C-007": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/app-flow.test.ts::fluxo da aplicação sobre SQLite > onboarding idempotente, pacote, compra e duelo de campanha até o resultado",
+    "note": "Com favorito Fogo, todos os decks iniciais do conteúdo de teste ficam CONFIRMED; no conteúdo real os oito são concedidos (C-005)."
+  },
+  "C-008": {
+    "status": "AUTOMATED",
+    "ref": "src/content/fixtures.test.ts::tutoriais e puzzles são resolvíveis pelo motor real > fx-p00-t01: solução vence e cumpre o objetivo composto em 5 sementes",
+    "note": "Fixture guiada identificada pelo nó e executada no motor real."
+  },
+  "C-009": {
+    "status": "AUTOMATED",
+    "ref": "src/content/campaign.test.ts::desbloqueios por nó (C-009, C-010, C-011, C-012, C-037) > C-009: concluir P00-T06 libera C01-E01 (e só ele no capítulo)",
+    "note": "Só com T06 concluído o C01-E01 fica disponível."
+  },
+  "C-010": {
+    "status": "AUTOMATED",
+    "ref": "src/content/campaign.test.ts::desbloqueios por nó (C-009, C-010, C-011, C-012, C-037) > C-010: o puzzle E02 não bloqueia E03 nem E06",
+    "note": "Em todos os capítulos."
+  },
+  "C-011": {
+    "status": "AUTOMATED",
+    "ref": "src/content/campaign.test.ts::desbloqueios por nó (C-009, C-010, C-011, C-012, C-037) > C-011: a Descoberta E04 conclui pela escolha, sem vitória, e não bloqueia o chefe",
+    "note": "Sem vitória, sem fixture; chefe não depende de E04."
+  },
+  "C-012": {
+    "status": "AUTOMATED",
+    "ref": "src/content/campaign.test.ts::desbloqueios por nó (C-009, C-010, C-011, C-012, C-037) > C-012: ignorar a Elite E05 não bloqueia o capítulo seguinte",
+    "note": "C02-E01 disponível sem E05; nenhum pré-requisito opcional."
+  },
+  "C-013": {
+    "status": "AUTOMATED",
+    "ref": "src/content/campaign.test.ts::prêmios por tipo de nó e repetição (C-013, C-019, C-022, C-023, C-024, C-025, C-051, G-068) > C-013: a primeira vitória de cada chefe concede exatamente uma medalha; repetir não concede outra",
+    "note": "Medalha só na primeira vitória; route test confirma medalhas gravadas."
+  },
+  "C-014": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::resultados de campanha sobre o SQLite > C-014: revisitar e perder não remove desbloqueios históricos",
+    "note": "Derrota na revisita mantém CLEARED e o nó seguinte disponível."
+  },
+  "C-015": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/campaign-route.test.ts::rota principal da campanha com o catálogo real > 27 vitórias essenciais concluem o Circuito com a economia da auditoria",
+    "note": "Rota inteira em História concede o conteúdo essencial e a economia prevista."
+  },
+  "C-016": {
+    "status": "AUTOMATED",
+    "ref": "src/content/campaign.test.ts::dificuldade, Arena e regras (C-016, C-035, G-077) > C-016/G-077: Especialista muda só o deck/IA do NPC — decks legais, mesma regra, HP e moedas do catálogo",
+    "note": "Decks EXPERT legais; mesma ruleset/HP; sem moedas roteirizadas."
+  },
+  "C-017": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/campaign-route.test.ts::rota principal da campanha com o catálogo real > 27 vitórias essenciais concluem o Circuito com a economia da auditoria",
+    "note": "Com deck de apoio, o inventário só cresce pelas cartas-chave."
+  },
+  "C-018": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::resultados de campanha sobre o SQLite > C-018/G-066: derrota no chefe não retira cartas, não cobra entrada e permite nova tentativa",
+    "note": "Sem perda de cartas nem custo de entrada."
+  },
+  "C-019": {
+    "status": "AUTOMATED",
+    "ref": "src/content/campaign.test.ts::prêmios por tipo de nó e repetição (C-013, C-019, C-022, C-023, C-024, C-025, C-051, G-068) > C-019: empate não conclui objetivo que exige vitória nem concede primeira vitória",
+    "note": "Todos os objetivos exigem vitória; empate não conclui nem dá primeira vitória."
+  },
+  "C-020": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::resultados de campanha sobre o SQLite > C-020/G-067/UI-022: objetivo opcional incompatível com o deck não bloqueia a batalha válida",
+    "note": "Objetivo extra incompatível não bloqueia a entrada."
+  },
+  "C-021": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::resultados de campanha sobre o SQLite > C-021: objetivo de composição usa o snapshot do deck na entrada, não a lista editada durante o duelo",
+    "note": "Deck editado/confirmado no meio do duelo não afeta o objetivo de composição."
+  },
+  "C-022": {
+    "status": "AUTOMATED",
+    "ref": "src/content/campaign.test.ts::prêmios por tipo de nó e repetição (C-013, C-019, C-022, C-023, C-024, C-025, C-051, G-068) > C-022: limite de turnos conta os turnos próprios do jogador, não o turno global",
+    "note": "OWN_TURNS_AT_MOST e WIN_IN_PREPARED_TURN usam turnos próprios."
+  },
+  "C-023": {
+    "status": "AUTOMATED",
+    "ref": "src/content/campaign.test.ts::prêmios por tipo de nó e repetição (C-013, C-019, C-022, C-023, C-024, C-025, C-051, G-068) > C-023/G-068: objetivos cumpridos em vitórias diferentes se unem, sem prêmio duplicado",
+    "note": "Domínio por união em partidas distintas."
+  },
+  "C-024": {
+    "status": "AUTOMATED",
+    "ref": "src/content/campaign.test.ts::prêmios por tipo de nó e repetição (C-013, C-019, C-022, C-023, C-024, C-025, C-051, G-068) > C-024: o prêmio inicial não acumula com o repetível da mesma vitória",
+    "note": "Primeira vitória só FIRST_CLEAR; depois só REPEAT."
+  },
+  "C-025": {
+    "status": "AUTOMATED",
+    "ref": "src/content/campaign.test.ts::prêmios por tipo de nó e repetição (C-013, C-019, C-022, C-023, C-024, C-025, C-051, G-068) > C-025: objetivo já concluído não concede Créditos de novo",
+    "note": "Grant key de objetivo impede crédito repetido."
+  },
+  "C-026": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/economy-flow.test.ts::Descoberta e cosméticos com o conteúdo real > G-069/C-026/UI-049: Descoberta registra uma escolha; recarregar preserva opções e escolha, sem nova concessão",
+    "note": "Recarregar preserva opções e escolha registrada."
+  },
+  "C-027": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/commit.test.ts::commit: recompensas e cosméticos > DB-034: o direito pendente sobrevive e a escolha credita uma única vez",
+    "note": "Escolha de ex (C06) pendente sobrevive e é retomada; route test resgata uma vez."
+  },
+  "C-028": {
+    "status": "AUTOMATED",
+    "ref": "src/content/campaign.test.ts::Empório, produtos e cosméticos (C-028, C-050, C-053, C-056) > C-028: nenhum produto usa dinheiro real ou prazo real — só Créditos e progresso de campanha",
+    "note": "Preços só em Créditos; disponibilidade só por progresso."
+  },
+  "C-029": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/economy-flow.test.ts::relógio, saldo e acesso > C-029: sem saldo, os decks gratuitos continuam utilizáveis",
+    "note": "Créditos esgotados e duelo iniciado com deck inicial."
+  },
+  "C-030": {
+    "status": "AUTOMATED",
+    "ref": "src/content/bundle.test.ts::economia (campanha §15.4) > pacotes do A1 seguem §16.2 e nenhum pool positivo é vazio; PROMO fora dos pools",
+    "note": "Cada posição soma 100%."
+  },
+  "C-031": {
+    "status": "AUTOMATED",
+    "ref": "src/content/validation.test.ts::validador do content-build rejeita conteúdo inválido > categoria com chance positiva e pool vazio",
+    "note": "content-build falha; openRandomPack também recusa (packs.test)."
+  },
+  "C-032": {
+    "status": "AUTOMATED",
+    "ref": "src/content/bundle.test.ts::economia (campanha §15.4) > pacote tutorial: cinco cartas ◊ do A1 fora da coleção inicial, não vendido",
+    "note": "FIXED_PACK guiado, sem tabela aleatória (pacote fixo não consome RNG em packs.test)."
+  },
+  "C-033": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/economy-flow.test.ts::pacotes e recibos > G-046/C-033/DB-026/UI-043/UI-089/UI-095: abertura retomada mostra o mesmo recibo e as mesmas cartas, com um único crédito",
+    "note": "Mesmo recibo e cartas ao retomar."
+  },
+  "C-034": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/economy-flow.test.ts::relógio, saldo e acesso > G-062/C-034/UI-051: relógio do sistema adiantado não gera pacotes, Créditos nem desbloqueios",
+    "note": "Relógio alterado não gera recursos nem desbloqueios."
+  },
+  "C-035": {
+    "status": "AUTOMATED",
+    "ref": "src/content/campaign.test.ts::dificuldade, Arena e regras (C-016, C-035, G-077) > C-035: Arena só sorteia NPCs elegíveis (duelos já vencidos após C01-E06) e não concede primeiras vitórias",
+    "note": "Arena vazia antes de C01-E06; só duelos vencidos; sem primeira vitória/objetivos."
+  },
+  "C-036": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/campaign/campaign.test.ts::concessões do resultado > treino e LAB não concedem nada; Arena não conclui objetivos de campanha",
+    "note": "Treino não altera economia nem objetivos."
+  },
+  "C-037": {
+    "status": "AUTOMATED",
+    "ref": "src/content/campaign.test.ts::desbloqueios por nó (C-009, C-010, C-011, C-012, C-037) > C-037: perder F00-D03 não invalida D01/D02 já concluídos",
+    "note": "D01/D02 continuam concluídos."
+  },
+  "C-038": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::resultados de campanha sobre o SQLite > G-079/C-038/UI-084: concluir o final libera o pós-jogo e preserva perfil, coleção e objetivos",
+    "note": "Conclusão não arquiva perfil nem apaga coleção/objetivos."
+  },
+  "C-039": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::pausa, retomada e reinício > G-063/C-039/R-020/UI-040: pausa real — a IA não aplica ação suspensa e o plano que chega depois é descartado",
+    "note": "IA não aplica comandos durante a suspensão."
+  },
+  "C-040": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::pausa, retomada e reinício > C-040: reiniciar um puzzle cria tentativa nova sobre a mesma fixture autoral",
+    "note": "Duelo normal: nova tentativa e sementes (G-080); puzzle: mesma fixture."
+  },
+  "C-041": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::pausa, retomada e reinício > G-064/R-018/DB-031/UI-041/C-041: retomar restaura mão, ordem do baralho, efeitos, decisão pendente e RNG",
+    "note": "Estado e fluxo de escolhas preservados."
+  },
+  "C-042": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/saves.test.ts::perfil portátil .campaign-profile.zip formato 4 (persistencia §24.1) > importar o mesmo arquivo duas vezes cria dois perfis (fingerprint não único) e reutiliza o conteúdo por ID + hash",
+    "note": "Cada importação cria perfil próprio, sem mesclar carteira/histórico."
+  },
+  "C-043": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#C-043",
+    "note": "Cena ausente/placeholder só observável no navegador."
+  },
+  "C-044": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#C-044",
+    "note": "Navegação por teclado na lista do mapa."
+  },
+  "C-045": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#C-045",
+    "note": "Perda de contexto 3D no navegador."
+  },
+  "C-046": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#C-046",
+    "note": "Primeiro uso offline do pacote servido."
+  },
+  "C-047": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/campaign-route.test.ts::rota principal da campanha com o catálogo real > 27 vitórias essenciais concluem o Circuito com a economia da auditoria",
+    "note": "Deck de apoio vence os 27 cenários essenciais (≤ 12 tentativas, registradas no log)."
+  },
+  "C-048": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#C-048",
+    "note": "Relatório de diagnóstico gerado pela UI."
+  },
+  "C-049": {
+    "status": "AUTOMATED",
+    "ref": "src/content/campaign.test.ts::perfil novo e decks iniciais (C-005, C-006, C-049) > C-049: o perfil novo recebe Neutro/Academia e acessórios básicos gratuitos, sem consumir Créditos",
+    "note": "Cosméticos gratuitos do onboarding sem custo."
+  },
+  "C-050": {
+    "status": "AUTOMATED",
+    "ref": "src/content/campaign.test.ts::Empório, produtos e cosméticos (C-028, C-050, C-053, C-056) > C-050: cada chefe C01–C06 libera apenas o seu produto de playmat, por 500 Créditos",
+    "note": "Seis produtos de 500 Créditos, um por chefe; chefes não doam os tapetes."
+  },
+  "C-051": {
+    "status": "AUTOMATED",
+    "ref": "src/content/campaign.test.ts::prêmios por tipo de nó e repetição (C-013, C-019, C-022, C-023, C-024, C-025, C-051, G-068) > C-051: F00-D03 concede Circuito Completo uma vez, além do prêmio normal; nenhum outro nó concede",
+    "note": "Além do prêmio normal; nenhum outro nó concede. Concessão real no SQLite em attempts.test (G-079)."
+  },
+  "C-052": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::resultados de campanha sobre o SQLite > C-052: o NPC exibe tema ainda bloqueado ao humano; ver não concede posse",
+    "note": "Snapshot do NPC usa mat-c01-grove sem conceder posse; preset recusado."
+  },
+  "C-053": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/economy-flow.test.ts::Descoberta e cosméticos com o conteúdo real > C-053: comprar verso é permanente, debita só Créditos e não toca nas cartas",
+    "note": "Preços 200/300 conferidos em content/campaign.test (C-053)."
+  },
+  "C-054": {
+    "status": "NA",
+    "note": "Declarado N/A na própria spec (campanha §21.7): não há perfis legados nesta linha nem migração implementada."
+  },
+  "C-055": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::aparência congelada na tentativa e independente das regras > G-081/C-055/VS-057: trocar tapete, verso ou moeda preserva ações legais, dano, distribuição e resultado",
+    "note": "Arena/tema não mudam estado de regras nem resultado."
+  },
+  "C-056": {
+    "status": "AUTOMATED",
+    "ref": "src/content/campaign.test.ts::Empório, produtos e cosméticos (C-028, C-050, C-053, C-056) > C-056: cosméticos não alteram os 4.010 Créditos da rota principal nem criam gate obrigatório",
+    "note": "Economia principal intacta; nenhum gate cosmético."
+  },
+  "C-057": {
+    "status": "AUTOMATED",
+    "ref": "src/content/bundle.test.ts::pacote de conteúdo base 3.5.0 (todos os sets do Pocket até o A4b + Promo-A e Promo-B) > catálogo: 1.210 cartas de jogo, 2.069 impressões, todas em Impressão completa com a imagem empacotada",
+    "note": "1.210 definições, 2.069 impressões, 220 PROMO, 100 brilhantes, artKey art:<set>:NNN; arquivos conferidos em card-art.test."
+  },
+  "C-058": {
+    "status": "AUTOMATED",
+    "ref": "src/content/source/pocket/pocket.test.ts::identidade das cartas do Pocket > reimpressões apontam para as definições do A1 e das promos antigas",
+    "note": "A4b Pikachu ex → pikachu-ex; A4b-132 (outras regras) → pikachu-ex-<set>-<NNN>; ids únicos com sufixo no caso dos 1.210 ids."
+  },
+  "C-059": {
+    "status": "AUTOMATED",
+    "ref": "src/content/golden.test.ts::conteúdo legado (A1 + 6 promos do P-A) intacto > pacote tutorial, 3 pacotes do A1 e 286 cartas dirigidas idênticos aos da 2.2.0",
+    "note": "Hash JCS dos produtos do A1; definições e impressões nos outros dois casos do mesmo describe."
+  },
+  "C-060": {
+    "status": "AUTOMATED",
+    "ref": "src/content/bundle.test.ts::economia (campanha §15.4) > pacotes dos outros sets: taxas oficiais por símbolo, pools coerentes, PROMO só nos pacotes promocionais",
+    "note": "14 pacotes, soma 100000, 100 Créditos desde o início; tabela exata também no content-build (TIER_PACK_RULES)."
+  },
+  "C-061": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/economy/packs-tier.test.ts::pacote por símbolo (taxas oficiais) > é válido e determinístico; 5 cartas ou 6 com a carta extra no fim",
+    "note": "Mesma semente, mesmo pacote; a 6ª carta vem por último."
+  },
+  "C-062": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/economy/packs-tier.test.ts::pacote por símbolo (taxas oficiais) > converge para as taxas: símbolos da 5ª carta, 6ª carta e pacote raro (200 mil aberturas)",
+    "note": "±4σ com a tabela Brilhante."
+  },
+  "C-063": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/economy/packs-tier.test.ts::pacote por símbolo (taxas oficiais) > Deluxe: 4 cartas, a 4ª sempre ◊◊◊◊; ☆☆☆ único 1,111% e cada ✵✵ 0,8335% na 3ª posição",
+    "note": "Quatro cartas e chance por carta da 3ª posição."
+  },
+  "C-064": {
+    "status": "AUTOMATED",
+    "ref": "src/content/bundle.test.ts::pacote de conteúdo base 3.5.0 (todos os sets do Pocket até o A4b + Promo-A e Promo-B) > monta e passa em todas as validações (schemas + semântica)",
+    "note": "O validador do content-build recusa impressão sem origem (coleção inicial, pool, pacote fixo, dirigida ou carta-chave)."
+  },
+  "C-065": {
+    "status": "AUTOMATED",
+    "ref": "src/content/bundle.test.ts::decks > oito decks iniciais exatos e legais, um por tipo de Energia (§3.5)",
+    "note": "Oito tipos distintos, 10 entradas × 2 cópias, legais com o inventário inicial."
+  },
+  "C-066": {
+    "status": "AUTOMATED",
+    "ref": "src/content/bundle.test.ts::decks > objetivos de composição (-DECK) nunca são cumpridos pelos decks iniciais",
+    "note": "27 objetivos -DECK × 8 decks iniciais."
+  },
+  "C-067": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/ai/catalog-matches.test.ts::IA — decks dos sets novos (iniciais, modelos e variações) jogam partidas completas > há 5 iniciais novos, 8 modelos e uma variação por capítulo",
+    "note": "Cada deck novo joga uma partida no mesmo describe (casos “<deckId>: partida sem ação ilegal nem erro”)."
+  },
+  "DB-001": {
+    "status": "AUTOMATED",
+    "ref": "e2e/journeys.spec.ts::origem isolada: COOP/COEP, crossOriginIsolated e conteúdo local íntegro",
+    "note": "Boot com toda requisição externa abortada pelo guard; SQLite WASM e workers locais."
+  },
+  "DB-002": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/errors.test.ts::cliente do navegador > checa capacidades na ordem do boot e com o código de produto certo",
+    "note": "Sem OPFS/Worker/WASM: STORAGE_CAPABILITY_MISSING; banco em memória recusado em open.test (DB-005)."
+  },
+  "DB-003": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/errors.test.ts::cliente do navegador > checa capacidades na ordem do boot e com o código de produto certo",
+    "note": "Sem COOP/COEP: ORIGIN_ISOLATION_REQUIRED antes de abrir campanha."
+  },
+  "DB-004": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#DB-004",
+    "note": "Mensagem de ajuda sobre origem diferente (UI)."
+  },
+  "DB-005": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/open.test.ts::boot do banco > DB-005: PRAGMAs de conexão aplicados e lidos de volta; application_id e user_version conferidos"
+  },
+  "DB-006": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/open.test.ts::boot do banco > DB-006: banco novo recebe DDL, schema_migrations, application_id e user_version uma única vez",
+    "note": "Falha de migração faz ROLLBACK (teste vizinho DB-006)."
+  },
+  "DB-007": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/open.test.ts::boot do banco > DB-007: reabrir um banco existente não reexecuta o DDL nem zera conteúdo"
+  },
+  "DB-008": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/open.test.ts::boot do banco > DB-008: user_version futuro abre só para leitura e recusa escrita sem reduzir a versão"
+  },
+  "DB-009": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/constraints.test.ts::tipos e JSON (DB-009, DB-010) > DB-009: tabelas STRICT recusam valor de tipo incompatível; o executor valida antes do bind"
+  },
+  "DB-010": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/constraints.test.ts::tipos e JSON (DB-009, DB-010) > DB-010: JSON malformado de regras, snapshots ou preferências não é gravado"
+  },
+  "DB-011": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/constraints.test.ts::catálogo publicado (DB-011, DB-012, DB-013, DB-014, DB-015) > DB-011: inventário de printingId inexistente é recusado sem escrita parcial"
+  },
+  "DB-012": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/constraints.test.ts::catálogo publicado (DB-011, DB-012, DB-013, DB-014, DB-015) > DB-012: versão ex com pontuação incompatível com a ruleset é bloqueada na instalação"
+  },
+  "DB-013": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/constraints.test.ts::catálogo publicado (DB-011, DB-012, DB-013, DB-014, DB-015) > DB-013: impressões normal e foil compartilham a mesma definição/versão quando só a aparência muda"
+  },
+  "DB-014": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/constraints.test.ts::catálogo publicado (DB-011, DB-012, DB-013, DB-014, DB-015) > DB-014: versão publicada recusa UPDATE/DELETE comum; mudança exige nova versão"
+  },
+  "DB-015": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/constraints.test.ts::catálogo publicado (DB-011, DB-012, DB-013, DB-014, DB-015) > DB-015: impressão publicada não troca asset nem definição no lugar; vínculo fora dos bindings é recusado"
+  },
+  "DB-016": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/light-writes.test.ts::assets BLOB > DB-016 / DB-017: bytes, hash e tamanho conferem após reabrir; mesmo conteúdo não duplica"
+  },
+  "DB-017": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/light-writes.test.ts::assets BLOB > DB-016 / DB-017: bytes, hash e tamanho conferem após reabrir; mesmo conteúdo não duplica"
+  },
+  "DB-018": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/constraints.test.ts::assets, ledger e SQL parametrizado (DB-018, DB-030, DB-052, R-082) > DB-018: asset referenciado não pode ser removido por limpeza; miniaturas não vivem no banco"
+  },
+  "DB-019": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/commit.test.ts::commit: publicação do editor (persistencia §18) > publicação com hash de regras divergente ou impressão sem asset é recusada sem escrita parcial",
+    "note": "Impressão com referência órfã não publica."
+  },
+  "DB-020": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/commit.test.ts::commit: idempotência e concessão única > DB-020: mesmo commandId e payloadHash devolve o recibo gravado, sem segundo efeito"
+  },
+  "DB-021": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/commit.test.ts::commit: idempotência e concessão única > DB-021: mesmo commandId com payload diferente é COMMAND_PAYLOAD_MISMATCH sem efeito"
+  },
+  "DB-022": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/commit.test.ts::commit: idempotência e concessão única > DB-022: a grant key impede a segunda primeira vitória com outro commandId"
+  },
+  "DB-023": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/commit.test.ts::commit: rollback econômico > DB-023: saldo insuficiente é INSUFFICIENT_CREDITS sem carteira, inventário, ledger ou operação parciais"
+  },
+  "DB-024": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/commit.test.ts::commit: rollback econômico > DB-024 / DB-027: rollback devolve carteira, inventário, ledger e RNG juntos; commit válido avança o RNG"
+  },
+  "DB-025": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/economy-flow.test.ts::pacotes e recibos > DB-025/R-015: resposta perdida depois do COMMIT recupera o recibo gravado, sem segundo efeito",
+    "note": "O barramento consulta GET_OPERATION e devolve o recibo gravado."
+  },
+  "DB-026": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/economy-flow.test.ts::pacotes e recibos > G-046/C-033/DB-026/UI-043/UI-089/UI-095: abertura retomada mostra o mesmo recibo e as mesmas cartas, com um único crédito",
+    "note": "Abertura retomada com as mesmas impressões."
+  },
+  "DB-027": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/commit.test.ts::commit: rollback econômico > DB-024 / DB-027: rollback devolve carteira, inventário, ledger e RNG juntos; commit válido avança o RNG"
+  },
+  "DB-028": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/commit.test.ts::commit: CAS de perfil e de partida > DB-028: revisão ou época incorretas alteram zero linhas e não gravam o candidato"
+  },
+  "DB-029": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/commit.test.ts::commit: CAS de perfil e de partida > DB-029: state_version da partida tem CAS próprio, distinto de profiles.revision"
+  },
+  "DB-030": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/constraints.test.ts::assets, ledger e SQL parametrizado (DB-018, DB-030, DB-052, R-082) > DB-030: cada operação de saldo grava movimentos coerentes no mesmo commit (saldo = soma; balance_after encadeado)"
+  },
+  "DB-031": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::pausa, retomada e reinício > G-064/R-018/DB-031/UI-041/C-041: retomar restaura mão, ordem do baralho, efeitos, decisão pendente e RNG",
+    "note": "Mão, ordem do baralho, decisão e RNGs (batalha e IA) idênticos após retomar."
+  },
+  "DB-032": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/commit.test.ts::commit: CAS de perfil e de partida > DB-032: não aceita duas tentativas RUNNING/SUSPENDED no mesmo perfil"
+  },
+  "DB-033": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/commit.test.ts::commit: CAS de perfil e de partida > DB-033: status terminal exige resultado; tentativa terminal não volta a mudar"
+  },
+  "DB-034": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/commit.test.ts::commit: recompensas e cosméticos > DB-034: o direito pendente sobrevive e a escolha credita uma única vez"
+  },
+  "DB-035": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/editor.test.ts::autosave (editor §27; persistencia §19) > resposta atrasada da revisão N não marca N+1 como salva; conflito pede revisão",
+    "note": "CAS de autosave sem operations em light-writes/studio.test."
+  },
+  "DB-036": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/commit.test.ts::commit: publicação do editor (persistencia §18) > DB-036: regra, impressão, asset, vínculo projeto/revisão/operação e head confirmam juntos"
+  },
+  "DB-037": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/decks.test.ts::decks sobre SQLite > rascunho, versão confirmada e duelo com a última versão confirmada",
+    "note": "Rascunho inválido (19 cartas) recuperável, mas confirmação e duelo recusados."
+  },
+  "DB-038": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/errors.test.ts::cliente do navegador > o lock exclusivo do banco fica retido até release; a segunda aba recebe null (DATABASE_IN_USE)",
+    "note": "Segunda aba não obtém o lock (DATABASE_IN_USE); e2e “segunda aba”."
+  },
+  "DB-039": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::concorrência, versões e falhas de gravação > DB-039/R-023/R-025: troca de perfil ou de aba — a tentativa antiga não grava no perfil seguinte nem com época antiga",
+    "note": "Job do perfil anterior falha com REVISION_CONFLICT sem gravar no perfil seguinte."
+  },
+  "DB-040": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#DB-040",
+    "note": "Transferência de aba exige duas abas reais (Web Locks/OPFS)."
+  },
+  "DB-041": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/open.test.ts::boot do banco > DB-006: migração com falha faz ROLLBACK e deixa user_version 0 sem tabelas",
+    "note": "Banco original recuperável; staging de restauração em restore.test."
+  },
+  "DB-042": {
+    "status": "NA",
+    "note": "Declarado N/A na spec (persistência §22): sem implementação 2.x, o build não contém conversor nem leitor de IndexedDB."
+  },
+  "DB-043": {
+    "status": "NA",
+    "note": "Declarado N/A na spec (persistência §22): sem conversão 2.x; reimportar o formato 4 cria outro perfil (coberto em saves.test)."
+  },
+  "DB-044": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/saves.test.ts::backup completo .sqlite3 + manifesto (persistencia §23) > DB-044: exporta bytes de um SQLite comum com manifesto medido; a pré-checagem confere transporte e versões",
+    "note": "Também open/restore.test (DB-044)."
+  },
+  "DB-045": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/saves.test.ts::perfil portátil .campaign-profile.zip formato 4 (persistencia §24.1) > exporta só o perfil escolhido, com manifesto no formato da spec e conteúdo autoral válido pelos schemas",
+    "note": "Nada do outro perfil no arquivo."
+  },
+  "DB-046": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/saves.test.ts::backup completo .sqlite3 + manifesto (persistencia §23) > DB-044: exporta bytes de um SQLite comum com manifesto medido; a pré-checagem confere transporte e versões",
+    "note": "Manifesto declara requiredContentPackages e bundledAssetsIncluded=false; pré-checagem acusa conteúdo ausente."
+  },
+  "DB-047": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/content.test.ts::installContent > DB-047: nova versão reutiliza linhas idênticas e recusa impressão/regra conflitante sem escrita parcial",
+    "note": "Importação de perfil com mesmo ID/versão e hash diferente também bloqueia (saves.test DB-047)."
+  },
+  "DB-048": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/restore.test.ts::backup completo: validação e staging (persistencia §25.1) > DB-048: recusa tabela, gatilho ou visão estranhos ao schema canônico"
+  },
+  "DB-049": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/saves.test.ts::arquivos de perfil maliciosos ou adulterados são recusados antes de qualquer escrita (DB-049, R-080, R-027) > ZIP com traversal, nomes absolutos, entrada não prevista, excesso de entradas, bomba de descompressão e link simbólico"
+  },
+  "DB-050": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::concorrência, versões e falhas de gravação > G-071/UI-088/R-016/DB-050: falha ao gravar o resultado final não mostra crédito nem perde a tentativa",
+    "note": "STORAGE_FULL não sinaliza sucesso nem apaga dados; tradução do código em errors.test."
+  },
+  "DB-051": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/restore.test.ts::backup completo: validação e staging (persistencia §25.1) > DB-051: recusa arquivo com páginas danificadas ou referências quebradas",
+    "note": "integrity_check e foreign_key_check nos gates de restauração."
+  },
+  "DB-052": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/constraints.test.ts::assets, ledger e SQL parametrizado (DB-018, DB-030, DB-052, R-082) > DB-052: texto do usuário é sempre parâmetro — não executa SQL"
+  },
+  "DB-053": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#DB-053",
+    "note": "Limpeza de cache visual (Cache Storage) é ação da UI no navegador."
+  },
+  "DB-054": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/studio.test.ts::Estúdio — concessão e arquivamento (§28) > perfil STANDARD não recebe cópias autorais"
+  },
+  "DB-055": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#DB-055",
+    "note": "Fluxo de limpeza total (OPFS) com confirmação e backup é da UI."
+  },
+  "ED-001": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/studio.test.ts::ED-001/003",
+    "note": "Projeto NEW_DEFINITION com ID estável, revisão MANUAL 1, nada publicado."
+  },
+  "ED-002": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/studio.test.ts::ED-002",
+    "note": "FORK de carta BASE com source_definition_id/version; NEW_VERSION de BASE recusado."
+  },
+  "ED-003": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/studio.test.ts::ED-001/003",
+    "note": "Reabrir preserva rascunho e validation_summary_json; arte referenciada em editor_asset_refs."
+  },
+  "ED-004": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/studio.test.ts::ED-004",
+    "note": "VARIANT publica só card_printings; regras bloqueadas (RULES_LOCKED_VARIANT)."
+  },
+  "ED-005": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/editor.test.ts::ED-005",
+    "note": "ruleBox EX: nome/chave/pontos derivados; HP, dano, custo, raridade e acabamento intactos."
+  },
+  "ED-006": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/editor.test.ts::ED-006",
+    "note": "Desativar ex recalcula pontos sem mudar o foil."
+  },
+  "ED-007": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/editor.test.ts::ED-007",
+    "note": "MEGA_EX = 3 pontos, estágio inalterado; o laboratório confirma 3 pontos no Nocaute."
+  },
+  "ED-008": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/editor.test.ts::ED-008",
+    "note": "TRAINER_FIELD_INVALID; o seletor ex não age em Treinador."
+  },
+  "ED-009": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/editor.test.ts::ED-009",
+    "note": "NAME_SHARED_LIMIT + mesma deckLimitKey."
+  },
+  "ED-010": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/editor.test.ts::ED-001",
+    "note": "Renomear não muda o ID funcional."
+  },
+  "ED-011": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/editor.test.ts::ED-011",
+    "note": "EVOLUTION_SOURCE_MISSING/UNKNOWN/STAGE_MISMATCH/CYCLE."
+  },
+  "ED-012": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/editor.test.ts::ED-012",
+    "note": "Tipo do Pokémon e custo do ataque independentes."
+  },
+  "ED-013": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/editor.test.ts::ED-013",
+    "note": "SECOND_TYPE_UNSUPPORTED bloqueia publicação; rascunho preservado."
+  },
+  "ED-014": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/editor.test.ts::ED-014",
+    "note": "HP negativo/fracionário/fora da guarda: HP_INVALID."
+  },
+  "ED-015": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/lab.test.ts::cenários-padrão gerados passam",
+    "note": "Ataques de modelos compilam, validam e executam no motor real."
+  },
+  "ED-016": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/editor.test.ts::ED-016",
+    "note": "Duplicar: ID novo, blocos únicos, referências remapeadas."
+  },
+  "ED-017": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/editor.test.ts::ED-017",
+    "note": "Reordenar mantém identidade e custo; diff mostra MOVED."
+  },
+  "ED-018": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/editor.test.ts::ED-018",
+    "note": "Ataque sem custo continua vazio (sem Incolor inserido)."
+  },
+  "ED-019": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/lab.test.ts::ED-019/020",
+    "note": "Incolor pago por outro tipo no laboratório; a UI tem testador de combinações (canPay do motor)."
+  },
+  "ED-020": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/lab.test.ts::ED-019/020",
+    "note": "Energia permanece ligada após atacar."
+  },
+  "ED-021": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/lab.test.ts::ED-021",
+    "note": "Energia insuficiente: recusado sem consumir; a UI separa custos adicionais de efeitos."
+  },
+  "ED-022": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/editor.test.ts::ED-022",
+    "note": "DAMAGE_FORMULA_CONFLICT."
+  },
+  "ED-023": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/editor.test.ts::ED-023",
+    "note": "FORMULA_REFERENCE_MISSING para variável inexistente ou produzida depois."
+  },
+  "ED-024": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/lab.test.ts::ED-024",
+    "note": "Moedas forçadas 0/1/2 caras: 0/40/80 (PASS); persistido em card_test_runs na integração."
+  },
+  "ED-025": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/lab.test.ts::ED-025",
+    "note": "A decisão de alvo vai ao oponente (DECISION_REQUESTED do jogador B)."
+  },
+  "ED-026": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/lab.test.ts::ED-026",
+    "note": "Sem alvo no Banco: resolve e encerra o turno sem travar."
+  },
+  "ED-027": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/editor.test.ts::ED-027",
+    "note": "UNKNOWN_OPCODE bloqueia a publicação."
+  },
+  "ED-028": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/editor.test.ts::ED-028",
+    "note": "Texto é texto; a importação recusa HTML/URL/SQL (cardpack.test)."
+  },
+  "ED-029": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/lab.test.ts::ED-029",
+    "note": "CONDITION_APPLIED pelo pipeline do motor."
+  },
+  "ED-030": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/lab.test.ts::ED-030/031",
+    "note": "Habilidade ativada usável com limite."
+  },
+  "ED-031": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/lab.test.ts::ED-030/031",
+    "note": "Habilidade contínua não gera USE_ABILITY."
+  },
+  "ED-032": {
+    "status": "MANUAL",
+    "note": "Gatilho editável (evento + filtro); TRIGGER_MISSING/TRIGGER_NOT_ALLOWED na validação; a execução de gatilhos é coberta pelos testes do motor."
+  },
+  "ED-033": {
+    "status": "MANUAL",
+    "note": "Escopos de limite com exemplo de duas cópias na UI; a contagem por escopo é do motor."
+  },
+  "ED-034": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/lab.test.ts::ED-034",
+    "note": "TURN_ENDED depois de ABILITY_ACTIVATED; aviso ABILITY_ENDS_TURN."
+  },
+  "ED-035": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/lab.test.ts::ED-035",
+    "note": "Item jogado, cura e descarte."
+  },
+  "ED-036": {
+    "status": "MANUAL",
+    "note": "Ferramenta com MODIFY MAX_HP passa nos cenários-padrão; perda de HP e Nocaute são do motor."
+  },
+  "ED-037": {
+    "status": "MANUAL",
+    "note": "Estádio é subtipo de Treinador com texto próprio; sem relação com playmat na UI."
+  },
+  "ED-038": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/lab.test.ts::ED-038",
+    "note": "Fóssil entra no Banco como Pokémon; texto informa que não é Básico."
+  },
+  "ED-039": {
+    "status": "MANUAL",
+    "note": "Smoke Playwright: PNG local importado pelo Media Worker, normalizado e salvo (SHA-256)."
+  },
+  "ED-040": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/editor.test.ts::ED-039/040",
+    "note": "APNG/GIF/SVG/executável/excesso recusados; o smoke confirma que a arte anterior é mantida."
+  },
+  "ED-041": {
+    "status": "MANUAL",
+    "note": "Recorte e transformação não destrutivos com Restabelecer; CROP_OUT_OF_BOUNDS na validação."
+  },
+  "ED-042": {
+    "status": "MANUAL",
+    "note": "Espelhamento aplicado só à camada da ilustração (HTML e PNG)."
+  },
+  "ED-043": {
+    "status": "MANUAL",
+    "note": "FULL_PRINTING_REVIEW + aviso na UI; nada é lido da imagem."
+  },
+  "ED-044": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/editor.test.ts::ED-044",
+    "note": "CARD_TEXT_OVERFLOW (DESIGN/ERROR) bloqueia a publicação."
+  },
+  "ED-045": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/editor.test.ts::ED-045/046",
+    "note": "NORMAL exige intensidade 0."
+  },
+  "ED-046": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/editor.test.ts::ED-045/046",
+    "note": "FOIL não muda o rulesHash nem a raridade."
+  },
+  "ED-047": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/editor.test.ts::ED-045/046",
+    "note": "Raridade é campo de impressão separado."
+  },
+  "ED-048": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/editor.test.ts::ED-048",
+    "note": "Máscara em luminância; proteção de texto sempre ativa."
+  },
+  "ED-049": {
+    "status": "MANUAL",
+    "note": "Trocar a arte com máscara importada/pintada pede manter ou reiniciar a máscara."
+  },
+  "ED-050": {
+    "status": "MANUAL",
+    "note": "Smoke: a máscara pintada vira novo asset (hash próprio) só na impressão editada."
+  },
+  "ED-051": {
+    "status": "NA",
+    "note": "A prévia Three.js pertence à equipe de 3D; o Estúdio entrega os dados de impressão/acabamento e usa a mesma face HTML do jogo."
+  },
+  "ED-052": {
+    "status": "NA",
+    "note": "O renderer WebGL compartilhado é da equipe de 3D; a prévia do Estúdio é HTML (sem canvas WebGL por carta)."
+  },
+  "ED-053": {
+    "status": "MANUAL",
+    "note": "A vista Carta oculta do NPC mostra só o verso uniforme."
+  },
+  "ED-054": {
+    "status": "MANUAL",
+    "note": "A prévia de animação e os eventos do laboratório não reexecutam o ataque."
+  },
+  "ED-055": {
+    "status": "NA",
+    "note": "Sem WebGL na prévia do Estúdio (HTML 2D); recuperação de GPU é da equipe de 3D."
+  },
+  "ED-056": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/lab.test.ts::ED-056",
+    "note": "Aprovação ligada ao rulesHash; a publicação exige PASS no hash atual (integração)."
+  },
+  "ED-057": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/studio.test.ts::ED-057/058/059",
+    "note": "PUBLISH_CARD único com definição, versão, publicação, head, impressões, dependências e revisão PUBLISHED; diff exibido."
+  },
+  "ED-058": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/studio.test.ts::ED-057/058/059",
+    "note": "Reenvio do mesmo plano: REPLAYED sem duplicar."
+  },
+  "ED-059": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/studio.test.ts::ED-057/058/059",
+    "note": "Segunda publicação = v2; v1 intacta; UPDATE recusado por trigger."
+  },
+  "ED-060": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/studio.test.ts::ED-060",
+    "note": "GRANT_CUSTOM_COPIES só em CUSTOM/LAB; lote repetido não duplica; STANDARD recusado."
+  },
+  "ED-061": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/studio.test.ts::ED-057/058/059",
+    "note": "Normal e foil na mesma deckLimitKey."
+  },
+  "ED-062": {
+    "status": "MANUAL",
+    "note": "Cartas autorais só recebem cópias em CUSTOM/LAB; a campanha personalizada é de outra equipe."
+  },
+  "ED-063": {
+    "status": "MANUAL",
+    "note": "Smoke: PNG exportado com o selo de imagem de apresentação (não é carta jogável)."
+  },
+  "ED-064": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/files/cardpack.test.ts::ED-064",
+    "note": "Pacote com definições, impressões, assets e testes; sem carteira ou progresso."
+  },
+  "ED-065": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/files/cardpack.test.ts::ED-065",
+    "note": "Conflito exige cópia ou cancelar; a versão local fica intacta."
+  },
+  "ED-066": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/editor.test.ts::desfaz/refaz",
+    "note": "Histórico só do rascunho; publicação e concessão fora do Desfazer."
+  },
+  "ED-067": {
+    "status": "MANUAL",
+    "note": "Smoke: Ctrl+S grava revisão MANUAL sem o diálogo do navegador; retenção MANUAL coberta na integração."
+  },
+  "ED-068": {
+    "status": "MANUAL",
+    "note": "Custos +/-, Subir/Descer blocos e Publicar acessíveis por teclado/toque, sem hover."
+  },
+  "ED-069": {
+    "status": "MANUAL",
+    "note": "Smoke 1280x720: estrutura vira faixa; formulário + prévia em duas colunas."
+  },
+  "ED-070": {
+    "status": "MANUAL",
+    "note": "Movimento reduzido desliga inclinação e animações; parâmetros de acabamento preservados."
+  },
+  "G-001": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/deck/validate.test.ts::validateDeck (gameplay §6) > G-001: deck de 19 ou de 21 cartas bloqueia a entrada normal",
+    "note": "validateDeck recusa 19 e 21 cartas (DECK_SIZE_INVALID); confirmar/iniciar com deck ≠ 20 também é recusado (decks.test)."
+  },
+  "G-002": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/deck/validate.test.ts::validateDeck (gameplay §6) > limita 2 cópias por deckLimitKey, inclusive entre impressões diferentes",
+    "note": "2 Faíscas normais + 1 holográfica → DECK_COPY_LIMIT_EXCEEDED pela chave de limite."
+  },
+  "G-003": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/deck/validate.test.ts::validateDeck (gameplay §6) > exige um Básico elegível; Fósseis não contam",
+    "note": "Deck sem Básico → DECK_REQUIRES_BASIC."
+  },
+  "G-004": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/deck/validate.test.ts::validateDeck (gameplay §6) > exige um Básico elegível; Fósseis não contam",
+    "note": "Fóssil como único “Básico” não satisfaz a regra."
+  },
+  "G-005": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/engine.fuzz.test.ts::motor — partidas completas por ações legais aleatórias > mão inicial sempre contém Básico elegível (G-005)",
+    "note": "Milhares de distribuições por sementes: toda mão inicial tem Básico."
+  },
+  "G-006": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::§18 abertura completa (Fraqueza explícita) > reproduz a sequência corrigida: 20 → evolução preserva dano → 60 com Fraqueza → 50",
+    "note": "Turno 1 do primeiro jogador: Zona sem Energia pronta e ataque com custo recusado (INSUFFICIENT_ENERGY)."
+  },
+  "G-007": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::abertura, evolução e Energia (G-007, G-011, G-013, G-014, G-015, G-017, G-055) > G-007: ataque sem custo é legal no primeiro turno do primeiro jogador, mesmo sem Energia",
+    "note": "Ataque de custo zero validado e aplicado no turno 1 do primeiro jogador."
+  },
+  "G-008": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::limites de turno e ações (G-008, G-016, G-018, G-019, G-020, G-022) > Básico colocado neste turno não evolui; primeiro turno próprio não evolui",
+    "note": "Primeiro turno próprio do segundo jogador: EVOLUTION_TOO_EARLY."
+  },
+  "G-009": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::limites de turno e ações (G-008, G-016, G-018, G-019, G-020, G-022) > Básico colocado neste turno não evolui; primeiro turno próprio não evolui",
+    "note": "Básico colocado no turno não é alvo de evolução."
+  },
+  "G-010": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::§18 abertura completa (Fraqueza explícita) > reproduz a sequência corrigida: 20 → evolução preserva dano → 60 com Fraqueza → 50",
+    "note": "Evolução preserva os 20 de dano (§18)."
+  },
+  "G-011": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::abertura, evolução e Energia (G-007, G-011, G-013, G-014, G-015, G-017, G-055) > G-011: duas evoluções normais da mesma linha no mesmo turno — a segunda é bloqueada",
+    "note": "Segunda evolução no mesmo turno recusada; nenhuma EVOLVE legal."
+  },
+  "G-012": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::§18 abertura completa (Fraqueza explícita) > reproduz a sequência corrigida: 20 → evolução preserva dano → 60 com Fraqueza → 50",
+    "note": "Depois do ataque a Energia continua ligada."
+  },
+  "G-013": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::abertura, evolução e Energia (G-007, G-011, G-013, G-014, G-015, G-017, G-055) > G-013: custo Incolor é pago por Energia de outro tipo",
+    "note": "Onda Quebrada (Água + Incolor) paga com Água + Fogo. Também lab.test ED-019/020."
+  },
+  "G-014": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::abertura, evolução e Energia (G-007, G-011, G-013, G-014, G-015, G-017, G-055) > G-014/G-015: aura de fornecimento não duplica o anexo; removida, o custo é recalculado sem perder a Energia",
+    "note": "Ferramenta com MODIFY ENERGY_PROVISION: 1 anexo fornece 2 unidades, sem anexo extra."
+  },
+  "G-015": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::abertura, evolução e Energia (G-007, G-011, G-013, G-014, G-015, G-017, G-055) > G-014/G-015: aura de fornecimento não duplica o anexo; removida, o custo é recalculado sem perder a Energia",
+    "note": "Remover a aura recalcula: mesmo anexo volta a 1 unidade e o custo 2 deixa de ser pago."
+  },
+  "G-016": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::limites de turno e ações (G-008, G-016, G-018, G-019, G-020, G-022) > segunda ligação manual e segundo Apoiador são bloqueados",
+    "note": "Segunda ligação manual recusada."
+  },
+  "G-017": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::abertura, evolução e Energia (G-007, G-011, G-013, G-014, G-015, G-017, G-055) > G-017: ligação extra por efeito não consome a ligação manual do turno",
+    "note": "Item que liga Energia gerada mantém manualEnergyUsed falso e a Energia pronta."
+  },
+  "G-018": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::limites de turno e ações (G-008, G-016, G-018, G-019, G-020, G-022) > segunda ligação manual e segundo Apoiador são bloqueados",
+    "note": "SUPPORTER_ALREADY_USED."
+  },
+  "G-019": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::limites de turno e ações (G-008, G-016, G-018, G-019, G-020, G-022) > Recuo consome o limite e exige pagamento exato",
+    "note": "RETREAT_ALREADY_USED no segundo Recuo."
+  },
+  "G-020": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::Recuo, troca e Habilidades (G-020, G-021, G-040, G-057) > G-020: Recuo de custo zero ainda consome o Recuo normal do turno",
+    "note": "Recuo sem custo marca retreatUsed; o segundo é recusado."
+  },
+  "G-021": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::Recuo, troca e Habilidades (G-020, G-021, G-040, G-057) > G-021: troca por efeito não cobra Recuo nem consome o Recuo normal",
+    "note": "Troca Tática: nenhuma Energia descartada e Recuo normal ainda disponível."
+  },
+  "G-022": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::limites de turno e ações (G-008, G-016, G-018, G-019, G-020, G-022) > Banco cheio bloqueia colocação",
+    "note": "Sem PLAY_BASIC legal com 3 no Banco."
+  },
+  "G-023": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::condições especiais (G-023, G-025, G-026, G-027, G-028) > Sono substitui Confusão; Veneno coexiste; Adormecido não ataca nem recua",
+    "note": "Adormecido: ataque e Recuo → SPECIAL_CONDITION_BLOCKS_ACTION."
+  },
+  "G-024": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::condições especiais — duração, acúmulo e recuperação (G-024, G-026, G-029) > G-024: Paralisia vale durante o turno do afetado e expira no checkup que encerra esse turno",
+    "note": "Não cura no fim do turno de quem aplicou; expira no checkup do turno do afetado."
+  },
+  "G-025": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::condições especiais (G-023, G-025, G-026, G-027, G-028) > Confusão com coroa faz o ataque falhar sem dano próprio",
+    "note": "ATTACK_FAILED, sem dano a si."
+  },
+  "G-026": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::condições especiais — duração, acúmulo e recuperação (G-024, G-026, G-029) > G-026: Veneno reaplicado não acumula cópia — 10 por checkup",
+    "note": "Reaplicar mantém 10 por checkup."
+  },
+  "G-027": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::condições especiais (G-023, G-025, G-026, G-027, G-028) > Sono substitui Confusão; Veneno coexiste; Adormecido não ataca nem recua",
+    "note": "Controle exclusivo: Sono substitui Confusão."
+  },
+  "G-028": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::condições especiais (G-023, G-025, G-026, G-027, G-028) > Sono substitui Confusão; Veneno coexiste; Adormecido não ataca nem recua",
+    "note": "Veneno coexiste com Sono."
+  },
+  "G-029": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::condições especiais — duração, acúmulo e recuperação (G-024, G-026, G-029) > G-029: Queimadura aplica o dano antes da moeda; a recuperação não desfaz o dano",
+    "note": "Cara remove a Queimadura e os 20 de dano permanecem."
+  },
+  "G-030": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::pontuação e Nocaute (G-030, G-031, G-032, G-033, G-035) > ex vale 2, Mega ex vale 3 e a vitória usa >= 3",
+    "note": "Nocaute de ex = 2 pontos."
+  },
+  "G-031": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::pontuação e Nocaute (G-030, G-031, G-032, G-033, G-035) > ex vale 2, Mega ex vale 3 e a vitória usa >= 3",
+    "note": "Mega ex = 3 pontos (não 5)."
+  },
+  "G-032": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::pontuação e Nocaute (G-030, G-031, G-032, G-033, G-035) > ex vale 2, Mega ex vale 3 e a vitória usa >= 3",
+    "note": "Pontuação ≥ 3 encerra com vitória (POINTS)."
+  },
+  "G-033": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::pontuação e Nocaute (G-030, G-031, G-032, G-033, G-035) > descartar por efeito não concede ponto",
+    "note": "DISCARD_POKEMON não pontua."
+  },
+  "G-034": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::resultado, comandos e decisões (G-034, G-043, G-051, G-058, G-082) > G-034: dano próprio e adversário no mesmo ataque resolvem o grupo inteiro antes do resultado (empate simultâneo)",
+    "note": "Dois Nocautes no mesmo grupo → empate SIMULTANEOUS com 3×3 pontos."
+  },
+  "G-035": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::pontuação e Nocaute (G-030, G-031, G-032, G-033, G-035) > remover Talismã com dano acumulado reavalia Nocaute (sem cura)",
+    "note": "Remover o bônus de HP reavalia e nocauteia."
+  },
+  "G-036": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::baralho, mão, Estádio e efeitos (G-037, G-038, G-039, G-041, G-042, G-036, B8) > mover Energia não dispara gatilho de ligação da Zona (G-036); ligação manual dispara",
+    "note": "MOVE_ENERGY não dispara gatilho de ligação da Zona."
+  },
+  "G-037": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::baralho, mão, Estádio e efeitos (G-037, G-038, G-039, G-041, G-042, G-036, B8) > Estádio de mesmo nome é bloqueado; outro nome substitui e vai ao descarte do dono",
+    "note": "STADIUM_SAME_NAME."
+  },
+  "G-038": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::baralho, mão, Estádio e efeitos (G-037, G-038, G-039, G-041, G-042, G-036, B8) > Estádio de mesmo nome é bloqueado; outro nome substitui e vai ao descarte do dono",
+    "note": "Estádio de outro nome substitui; o antigo vai ao descarte do dono."
+  },
+  "G-039": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::baralho, mão, Estádio e efeitos (G-037, G-038, G-039, G-041, G-042, G-036, B8) > efeito atrasado removível deixa de ocorrer quando o alvo sai do Ativo (G-039)",
+    "note": "Alvo recua/troca: o efeito atrasado é removido e não executa."
+  },
+  "G-040": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::Recuo, troca e Habilidades (G-020, G-021, G-040, G-057) > G-040: gatilho de movimento considera a carta e o momento — troca no próprio turno dispara; promoção e carta evoluída depois, não",
+    "note": "Troca por efeito no próprio turno dispara; promoção no turno adversário e evolução posterior não."
+  },
+  "G-041": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::baralho, mão, Estádio e efeitos (G-037, G-038, G-039, G-041, G-042, G-036, B8) > compra com baralho vazio não perde; mão cheia não compra",
+    "note": "DRAW_SKIPPED(DECK_EMPTY) sem derrota."
+  },
+  "G-042": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::baralho, mão, Estádio e efeitos (G-037, G-038, G-039, G-041, G-042, G-036, B8) > compra com baralho vazio não perde; mão cheia não compra",
+    "note": "Política declarada (§17.8): mão com 10 não compra."
+  },
+  "G-043": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::resultado, comandos e decisões (G-034, G-043, G-051, G-058, G-082) > G-043/G-082: escolha do adversário no turno atual — só ele responde, sem trocar o dono do turno nem iniciar turno",
+    "note": "Só B responde (A recebe NOT_YOUR_TURN); A sem ações legais enquanto pendente."
+  },
+  "G-044": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::concorrência, versões e falhas de gravação > UI-042/G-044: clique duplicado gera um único comando e uma única alteração",
+    "note": "Mesmo comando enviado duas vezes: um commit, uma alteração. Recibo idempotente por commandId em app-flow.test."
+  },
+  "G-045": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::concorrência, versões e falhas de gravação > G-045/R-022: versão incorreta — resultado obsoleto é descartado e a retomada ressincroniza sem ação indevida",
+    "note": "Sessão desatualizada recebe STATE_VERSION_MISMATCH; plano obsoleto da IA é AI_JOB_STALE; retomada traz o estado confirmado."
+  },
+  "G-046": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/economy-flow.test.ts::pacotes e recibos > G-046/C-033/DB-026/UI-043/UI-089/UI-095: abertura retomada mostra o mesmo recibo e as mesmas cartas, com um único crédito",
+    "note": "Recarregar e rever a abertura devolve as mesmas cartas; um crédito."
+  },
+  "G-047": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/commit.test.ts::commit: rollback econômico > DB-024 / DB-027: rollback devolve carteira, inventário, ledger e RNG juntos; commit válido avança o RNG",
+    "note": "Compra interrompida antes do COMMIT não altera carteira nem inventário."
+  },
+  "G-048": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/commit.test.ts::commit: recompensas e cosméticos > DB-034: o direito pendente sobrevive e a escolha credita uma única vez",
+    "note": "Resgate duplicado credita uma vez."
+  },
+  "G-049": {
+    "status": "AUTOMATED",
+    "ref": "src/content/campaign.test.ts::objetivos de composição pela impressão exata (G-049, UI-017) > G-049: carta da expansão errada não conta para objetivo de conjunto, mesmo com a mesma definição",
+    "note": "Objetivo de conjunto usa a impressão exata (setId), não a definição."
+  },
+  "G-050": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/engine.fuzz.test.ts::motor — partidas completas por ações legais aleatórias > replay com os mesmos comandos produz o mesmo hash (G-050)",
+    "note": "Mesmos comandos → mesmo hash."
+  },
+  "G-051": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::resultado, comandos e decisões (G-034, G-043, G-051, G-058, G-082) > G-051: dano arbitrário enviado pela UI é ignorado; o motor calcula pelas regras",
+    "note": "Campos forjados (dano/pontos/resultado) ignorados; dano pelas regras."
+  },
+  "G-052": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::concorrência, versões e falhas de gravação > G-052/R-035: ação ilegal do bot é rejeitada pelo mesmo validador, sem gravar",
+    "note": "runAiStep valida a ação da IA com validateAction e não grava."
+  },
+  "G-053": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/ai/fairness.test.ts::IA — payload do job (G-053, R-034) > JSON do job a partir de um estado real de meio de partida não vaza informação oculta",
+    "note": "Job da IA sem mão humana, ordem do baralho nem semente."
+  },
+  "G-054": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/animation/director.test.ts::reconciliação em lotes de partidas completas (fuzz) > modo 'Movimento reduzido': skip no meio = fim normal = projeção do after",
+    "note": "Movimento reduzido termina na mesma projeção confirmada; apresentação não toca regras (ver R-075)."
+  },
+  "G-055": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::abertura, evolução e Energia (G-007, G-011, G-013, G-014, G-015, G-017, G-055) > G-055: evoluir mantém a Ferramenta ligada e o estado coerente (HP máximo com o bônus)",
+    "note": "Ferramenta continua ligada; HP máximo com bônus e dano preservados."
+  },
+  "G-056": {
+    "status": "AUTOMATED",
+    "ref": "src/content/validation.test.ts::validador do content-build rejeita conteúdo inválido > opcode fora do registro e referência inexistente",
+    "note": "content-build recusa opcode desconhecido; validateDeck também (CARD_EFFECT_UNSUPPORTED)."
+  },
+  "G-057": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::Recuo, troca e Habilidades (G-020, G-021, G-040, G-057) > G-057: usar a Habilidade, voltar ao Banco e retornar ao Ativo não reseta o uso do turno",
+    "note": "Uso por instância/turno não reseta ao voltar ao Banco e retornar."
+  },
+  "G-058": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::resultado, comandos e decisões (G-034, G-043, G-051, G-058, G-082) > G-058: partida encerrada rejeita novo ataque",
+    "note": "MATCH_ALREADY_FINISHED; nenhuma ação legal."
+  },
+  "G-059": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/economy-flow.test.ts::pacotes e recibos > G-059: consultar a prévia e as probabilidades do Empório e cancelar não debita nem concede nada",
+    "note": "Prévia/probabilidades e cancelar não alteram revisão, carteira nem inventário."
+  },
+  "G-060": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::concorrência, versões e falhas de gravação > G-060: atualização de catálogo no meio da partida — a tentativa continua com as versões fixadas na entrada",
+    "note": "Retomada após nova versão de carta mantém as definições fixadas (faisca@1)."
+  },
+  "G-061": {
+    "status": "AUTOMATED",
+    "ref": "e2e/journeys.spec.ts::38.1 primeira sessão: novo perfil → prólogo → primeira recompensa → mapa",
+    "note": "Pacote de produção com toda requisição externa abortada: perfil novo, tutorial completo e recompensa."
+  },
+  "G-062": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/economy-flow.test.ts::relógio, saldo e acesso > G-062/C-034/UI-051: relógio do sistema adiantado não gera pacotes, Créditos nem desbloqueios",
+    "note": "Relógio 2099 ou 2101: mesmos saldos, inventário, concessões, desbloqueios e ofertas."
+  },
+  "G-063": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::pausa, retomada e reinício > G-063/C-039/R-020/UI-040: pausa real — a IA não aplica ação suspensa e o plano que chega depois é descartado",
+    "note": "Suspensa: IA não é consultada e plano tardio é descartado (AI_JOB_STALE)."
+  },
+  "G-064": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::pausa, retomada e reinício > G-064/R-018/DB-031/UI-041/C-041: retomar restaura mão, ordem do baralho, efeitos, decisão pendente e RNG",
+    "note": "Decisão obrigatória pendente restaurada igual após recarregar (resumeAttempt)."
+  },
+  "G-065": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::resultado, comandos e decisões (G-034, G-043, G-051, G-058, G-082) > G-065/R-019: reabrir depois da moeda mostra o mesmo resultado confirmado, sem novo sorteio",
+    "note": "Estado gravado após a moeda reabre com o mesmo dano e RNG; continuação idêntica."
+  },
+  "G-066": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::resultados de campanha sobre o SQLite > C-018/G-066: derrota no chefe não retira cartas, não cobra entrada e permite nova tentativa",
+    "note": "Derrota no C01-E06: inventário/carteira inalterados e nova tentativa sem custo."
+  },
+  "G-067": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::resultados de campanha sobre o SQLite > C-020/G-067/UI-022: objetivo opcional incompatível com o deck não bloqueia a batalha válida",
+    "note": "Deck que não cumpre o objetivo -DECK inicia a batalha normalmente."
+  },
+  "G-068": {
+    "status": "AUTOMATED",
+    "ref": "src/content/campaign.test.ts::prêmios por tipo de nó e repetição (C-013, C-019, C-022, C-023, C-024, C-025, C-051, G-068) > C-023/G-068: objetivos cumpridos em vitórias diferentes se unem, sem prêmio duplicado",
+    "note": "União de objetivos entre vitórias, sem prêmio duplicado."
+  },
+  "G-069": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/economy-flow.test.ts::Descoberta e cosméticos com o conteúdo real > G-069/C-026/UI-049: Descoberta registra uma escolha; recarregar preserva opções e escolha, sem nova concessão",
+    "note": "Descoberta reaberta: mesma escolha, nova tentativa recusada, uma carta."
+  },
+  "G-070": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/economy-flow.test.ts::pacotes e recibos > G-070: duas abas tentam abrir o mesmo pacote — uma única concessão confirmada",
+    "note": "CAS de revisão: uma abertura confirmada, a outra REVISION_CONFLICT."
+  },
+  "G-071": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::concorrência, versões e falhas de gravação > G-071/UI-088/R-016/DB-050: falha ao gravar o resultado final não mostra crédito nem perde a tentativa",
+    "note": "STORAGE_FULL na transação de resultado: sem crédito, tentativa RUNNING e recuperável."
+  },
+  "G-072": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/decks.test.ts::decks sobre SQLite > UI-015/G-072/UI-050: vigésima primeira carta é recusada com motivo; importar lista mostra faltantes sem conceder cartas",
+    "note": "Importar lista relata faltantes e não altera inventário."
+  },
+  "G-073": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/saves.test.ts::arquivos de perfil maliciosos ou adulterados são recusados antes de qualquer escrita (DB-049, R-080, R-027) > checksum adulterado, regras alteradas, saldo inventado e versão futura",
+    "note": "Arquivos inválidos recusados antes de qualquer escrita; perfil atual intacto."
+  },
+  "G-074": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#G-074",
+    "note": "Comparar hash final entre WebGL e compatibilidade 2D exige navegador com/sem GPU."
+  },
+  "G-075": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/animation/director.test.ts::apresentação só lê projeções confirmadas (R-033, R-072, R-075, G-075, G-085) > R-075/R-033/G-075: reproduzir, pular e replanejar nos quatro modos não altera o estado de regras nem consome sorteios",
+    "note": "Reproduzir/pular nos 4 modos não altera hash nem RNG do estado; projeções sem RNG."
+  },
+  "G-076": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#G-076",
+    "note": "Perda de contexto WebGL só é reproduzível no navegador."
+  },
+  "G-077": {
+    "status": "AUTOMATED",
+    "ref": "src/content/campaign.test.ts::dificuldade, Arena e regras (C-016, C-035, G-077) > C-016/G-077: Especialista muda só o deck/IA do NPC — decks legais, mesma regra, HP e moedas do catálogo",
+    "note": "Mesma ruleset, sem moedas roteirizadas, HP do catálogo; força relativa em domain/ai/strength.test.ts (EXPERT ≥ 50% vs STANDARD)."
+  },
+  "G-078": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#G-078",
+    "note": "Primeiro uso offline de capítulo novo depende do pacote servido no navegador."
+  },
+  "G-079": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::resultados de campanha sobre o SQLite > G-079/C-038/UI-084: concluir o final libera o pós-jogo e preserva perfil, coleção e objetivos",
+    "note": "Vitória no F00-D03: pós-jogo (COMPLETED, Arena com finais) e coleção/objetivos preservados."
+  },
+  "G-080": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::pausa, retomada e reinício > G-080/C-040: reiniciar cria tentativa e sementes novas; retomar conserva tentativa e RNG",
+    "note": "Retomar mantém attemptId/sementes; reiniciar cria tentativa e sementes novas."
+  },
+  "G-081": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::aparência congelada na tentativa e independente das regras > G-081/C-055/VS-057: trocar tapete, verso ou moeda preserva ações legais, dano, distribuição e resultado",
+    "note": "Mesmas sementes com outro tapete/conforto: mesmo estado, ações e resultado."
+  },
+  "G-082": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::resultado, comandos e decisões (G-034, G-043, G-051, G-058, G-082) > G-043/G-082: escolha do adversário no turno atual — só ele responde, sem trocar o dono do turno nem iniciar turno",
+    "note": "Escolha pendente do adversário não muda currentPlayer nem emite TURN_STARTED."
+  },
+  "G-083": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::baralho, mão, Estádio e efeitos (G-037, G-038, G-039, G-041, G-042, G-036, B8) > compra com baralho vazio não perde; mão cheia não compra",
+    "note": "Sem CARD_DRAWN fictício: DRAW_SKIPPED e nenhuma compra com mão cheia."
+  },
+  "G-084": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::compra adversária (G-084) > G-084: o evento de compra visto pelo adversário só tem dados públicos — sem carta, impressão, raridade ou acabamento",
+    "note": "Evento redigido sem carta, impressão, definição, raridade, acabamento ou flair."
+  },
+  "G-085": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/animation/director.test.ts::apresentação só lê projeções confirmadas (R-033, R-072, R-075, G-075, G-085) > R-072/G-085: pular um lote para na decisão pendente, mantém a próxima decisão e não inventa resposta",
+    "note": "Skip termina na barreira PENDING_DECISION sem responder nada; estado e RNG intactos (ver R-075)."
+  },
+  "G-086": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#G-086",
+    "note": "Separação Estádio × playmat é visual; regras do Estádio em rules.test (G-037/G-038)."
+  },
+  "G-087": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::aparência congelada na tentativa e independente das regras > G-087/UI-108: editar a aparência durante a suspensão só vale para a próxima tentativa",
+    "note": "Preset salvo durante a suspensão não altera o snapshot da tentativa; vale para a próxima."
+  },
+  "G-088": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#G-088",
+    "note": "Prévia da Oficina roda no navegador (harness de apresentação)."
+  },
+  "G-089": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/ai/aggression.test.ts::IA — agressividade com o catálogo real (G-089) > EXPERT: o NPC ataca em pelo menos 88% dos turnos em que pode atacar",
+    "note": "Catálogo real nas três dificuldades (aggression.test.ts); recuo, Nocaute que promove atacante e erro tolerado em tactics.test.ts (IA — agressividade)."
+  },
+  "R-001": {
+    "status": "AUTOMATED",
+    "ref": "e2e/journeys.spec.ts::38.1 primeira sessão: novo perfil → prólogo → primeira recompensa → mapa",
+    "note": "Contexto novo (OPFS vazio) com requisições externas abortadas."
+  },
+  "R-002": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#R-002",
+    "note": "C06 offline no navegador após fixture/backup."
+  },
+  "R-003": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#R-003",
+    "note": "Inspeção do pacote e do lockfile."
+  },
+  "R-004": {
+    "status": "AUTOMATED",
+    "ref": "e2e/journeys.spec.ts::origem isolada: COOP/COEP, crossOriginIsolated e conteúdo local íntegro",
+    "note": "Guard das jornadas reprova qualquer requisição externa; complementar com npm run audit:offline."
+  },
+  "R-005": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#R-005",
+    "note": "Não há GLB/decoders no build atual; checar no pacote."
+  },
+  "R-006": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#R-006",
+    "note": "Fontes locais observáveis no navegador offline."
+  },
+  "R-007": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#R-007",
+    "note": "Inspeção do launcher."
+  },
+  "R-008": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#R-008",
+    "note": "Porta ocupada no launcher."
+  },
+  "R-009": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#R-009",
+    "note": "Abertura via file://."
+  },
+  "R-010": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#R-010",
+    "note": "Origem diferente no navegador."
+  },
+  "R-011": {
+    "status": "AUTOMATED",
+    "ref": "e2e/journeys.spec.ts::38.4 pausar e retomar: salvar e sair, recarregar e continuar no mesmo estado",
+    "note": "Recarga restaura estado, inventário e campanha."
+  },
+  "R-012": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/app-flow.test.ts::fluxo da aplicação sobre SQLite > repetir o mesmo comando devolve o mesmo recibo sem creditar de novo"
+  },
+  "R-013": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/commit.test.ts::commit: idempotência e concessão única > DB-022: a grant key impede a segunda primeira vitória com outro commandId"
+  },
+  "R-014": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/commit.test.ts::commit: rollback econômico > DB-024 / DB-027: rollback devolve carteira, inventário, ledger e RNG juntos; commit válido avança o RNG",
+    "note": "Transação abortada: nenhum débito sem produto."
+  },
+  "R-015": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/economy-flow.test.ts::pacotes e recibos > DB-025/R-015: resposta perdida depois do COMMIT recupera o recibo gravado, sem segundo efeito",
+    "note": "Recibo recuperado com o mesmo resultado."
+  },
+  "R-016": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::concorrência, versões e falhas de gravação > G-071/UI-088/R-016/DB-050: falha ao gravar o resultado final não mostra crédito nem perde a tentativa",
+    "note": "Falha de quota devolvida como STORAGE_FULL; nunca sucesso."
+  },
+  "R-017": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::concorrência, versões e falhas de gravação > G-045/R-022: versão incorreta — resultado obsoleto é descartado e a retomada ressincroniza sem ação indevida",
+    "note": "Cada ação é confirmada no SQLite ao ser aplicada (linha da tentativa = estado da sessão) sem salvar explícito."
+  },
+  "R-018": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::pausa, retomada e reinício > G-064/R-018/DB-031/UI-041/C-041: retomar restaura mão, ordem do baralho, efeitos, decisão pendente e RNG"
+  },
+  "R-019": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::resultado, comandos e decisões (G-034, G-043, G-051, G-058, G-082) > G-065/R-019: reabrir depois da moeda mostra o mesmo resultado confirmado, sem novo sorteio"
+  },
+  "R-020": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::pausa, retomada e reinício > G-063/C-039/R-020/UI-040: pausa real — a IA não aplica ação suspensa e o plano que chega depois é descartado"
+  },
+  "R-021": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#R-021",
+    "note": "Pausa por visibilitychange é do ciclo de vida do navegador."
+  },
+  "R-022": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::concorrência, versões e falhas de gravação > G-045/R-022: versão incorreta — resultado obsoleto é descartado e a retomada ressincroniza sem ação indevida",
+    "note": "Plano da IA para revisão antiga: AI_JOB_STALE."
+  },
+  "R-023": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::concorrência, versões e falhas de gravação > DB-039/R-023/R-025: troca de perfil ou de aba — a tentativa antiga não grava no perfil seguinte nem com época antiga"
+  },
+  "R-024": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/errors.test.ts::cliente do navegador > o lock exclusivo do banco fica retido até release; a segunda aba recebe null (DATABASE_IN_USE)",
+    "note": "Segunda aba sem lock; jornada e2e “segunda aba”."
+  },
+  "R-025": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::concorrência, versões e falhas de gravação > DB-039/R-023/R-025: troca de perfil ou de aba — a tentativa antiga não grava no perfil seguinte nem com época antiga",
+    "note": "Época antiga não confirma alterações."
+  },
+  "R-026": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/errors.test.ts::cliente do navegador > checa capacidades na ordem do boot e com o código de produto certo",
+    "note": "Sem Web Locks: STORAGE_CAPABILITY_MISSING, sem fallback."
+  },
+  "R-027": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/saves.test.ts::arquivos de perfil maliciosos ou adulterados são recusados antes de qualquer escrita (DB-049, R-080, R-027) > checksum adulterado, regras alteradas, saldo inventado e versão futura"
+  },
+  "R-028": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/saves.test.ts::arquivos de perfil maliciosos ou adulterados são recusados antes de qualquer escrita (DB-049, R-080, R-027) > checksum adulterado, regras alteradas, saldo inventado e versão futura",
+    "note": "Checksum detecta alteração acidental."
+  },
+  "R-029": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/saves.test.ts::perfil portátil .campaign-profile.zip formato 4 (persistencia §24.1) > round-trip: importar cria um perfil NOVO equivalente (coleção, decks, progresso, concessões) e o duelo continua",
+    "note": "Perfil novo com recibos próprios; nada mesclado."
+  },
+  "R-030": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/open.test.ts::boot do banco > DB-006: migração com falha faz ROLLBACK e deixa user_version 0 sem tabelas"
+  },
+  "R-031": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::concorrência, versões e falhas de gravação > R-031: tentativa criada por motor/regras incompatíveis não é retomada (SAVE_VERSION_UNSUPPORTED)"
+  },
+  "R-032": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#R-032",
+    "note": "Replay é tela da UI (S39)."
+  },
+  "R-033": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/animation/director.test.ts::apresentação só lê projeções confirmadas (R-033, R-072, R-075, G-075, G-085) > R-075/R-033/G-075: reproduzir, pular e replanejar nos quatro modos não altera o estado de regras nem consome sorteios",
+    "note": "Qualidade/animação não tocam RNG funcional."
+  },
+  "R-034": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/ai/fairness.test.ts::IA — payload do job (G-053, R-034) > JSON do job a partir de um estado real de meio de partida não vaza informação oculta"
+  },
+  "R-035": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::concorrência, versões e falhas de gravação > G-052/R-035: ação ilegal do bot é rejeitada pelo mesmo validador, sem gravar"
+  },
+  "R-036": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#R-036",
+    "note": "Capacidade WebGL2 real."
+  },
+  "R-037": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#R-037",
+    "note": "Renderização 3D da carta."
+  },
+  "R-038": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#R-038",
+    "note": "Instância única de renderer."
+  },
+  "R-039": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#R-039",
+    "note": "Viewports e profundidade."
+  },
+  "R-040": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/three/core/viewport.test.ts::toViewportNdc > independe do DPR: mesmo NDC para o mesmo ponto CSS",
+    "note": "Picking por NDC idêntico em DPR 1, 1,5 e 2 (scissor por DPR nos testes vizinhos)."
+  },
+  "R-041": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#R-041",
+    "note": "Resize interativo."
+  },
+  "R-042": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#R-042",
+    "note": "Click-through de modal."
+  },
+  "R-043": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#R-043",
+    "note": "Picking com decoração."
+  },
+  "R-044": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#R-044",
+    "note": "Arrasto inválido na UI; validação no motor em rules.test."
+  },
+  "R-045": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#R-045",
+    "note": "Fluxo por teclado."
+  },
+  "R-046": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#R-046",
+    "note": "Legibilidade da carta do NPC."
+  },
+  "R-047": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#R-047",
+    "note": "Máscara de foil."
+  },
+  "R-048": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#R-048",
+    "note": "Gestão de cor no renderer."
+  },
+  "R-049": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/animation/director.test.ts::reconciliação no modo 'Normal' (R-075) > Ataque com moedas · Nocaute · pontos: skip em qualquer ponto = reprodução completa",
+    "note": "Cada passo termina uma vez e o cursor chega ao último evento; skip não reexecuta eventos (cues.test: pular não repete som)."
+  },
+  "R-050": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/animation/plan.test.ts::planPresentation em partidas completas (fuzz do motor, visão do humano) > R-071/R-050/UI-036: HP muda só no passo do impacto; o resultado só aparece depois de todo o grupo de Nocautes e pontos",
+    "note": "Resultado só depois de todos os passos de Nocaute e pontos."
+  },
+  "R-051": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#R-051",
+    "note": "Medição de memória no navegador."
+  },
+  "R-052": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/three/core/resources.test.ts::ResourceRegistry > compartilha por chave e só descarta quando a última referência sai",
+    "note": "Fechar o inspector não descarta textura ainda usada pela mesa."
+  },
+  "R-053": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#R-053",
+    "note": "Perda de contexto WebGL."
+  },
+  "R-054": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#R-054",
+    "note": "Fallback visual de arte ausente."
+  },
+  "R-055": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::conteúdo ausente (R-055) > R-055: definição ausente do catálogo é erro de conteúdo, nunca ataque inventado",
+    "note": "CONTENT_REFERENCE_MISSING; nenhum dano aplicado."
+  },
+  "R-056": {
+    "status": "NA",
+    "note": "PWA é extensão opcional (runtime §24) e não foi implementada: o build não tem service worker nem manifesto web; nada declara offline integral por PWA."
+  },
+  "R-057": {
+    "status": "NA",
+    "note": "PWA é extensão opcional (runtime §24) e não foi implementada: não há atualização de service worker durante tentativas."
+  },
+  "R-058": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/campaign/campaign.test.ts::concessões do resultado > treino e LAB não concedem nada; Arena não conclui objetivos de campanha",
+    "note": "Fixtures de LAB/treino não concedem progresso; perfil STANDARD não recebe cópias autorais (studio.test)."
+  },
+  "R-059": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#R-059",
+    "note": "Relatório de performance medido em hardware real."
+  },
+  "R-060": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#R-060",
+    "note": "Perfil de qualidade Baixa."
+  },
+  "R-061": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#R-061",
+    "note": "Compatibilidade 2D sem GPU."
+  },
+  "R-062": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#R-062",
+    "note": "Feedback sem áudio."
+  },
+  "R-063": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#R-063",
+    "note": "Rota de resultado sem recibo."
+  },
+  "R-064": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#R-064",
+    "note": "Auditoria de rede de sessão completa; jornadas e2e já reprovam requisições externas."
+  },
+  "R-065": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#R-065",
+    "note": "Material do playmat na GPU."
+  },
+  "R-066": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/three/battle/layout.test.ts::perfil desktop1080 > registro de âncoras completo, com ids canônicos e dentro da região do tabuleiro",
+    "note": "Âncoras/HUD dentro do tabuleiro nos perfis 1080p/720p e letterbox; DPR em viewport.test."
+  },
+  "R-067": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#R-067",
+    "note": "Z-fighting/silhuetas na cena."
+  },
+  "R-068": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#R-068",
+    "note": "Continuidade visual do trânsito de carta."
+  },
+  "R-069": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/animation/plan.test.ts::planPresentation em partidas completas (fuzz do motor, visão do humano) > nenhuma face oculta do adversário entra no plano do humano (R-069)"
+  },
+  "R-070": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/animation/director.test.ts::flair idempotente > a mesma chave só toca uma vez, mesmo após reconstrução de mesh ou replanejamento"
+  },
+  "R-071": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/animation/plan.test.ts::planPresentation em partidas completas (fuzz do motor, visão do humano) > R-071/R-050/UI-036: HP muda só no passo do impacto; o resultado só aparece depois de todo o grupo de Nocautes e pontos",
+    "note": "HP só muda no passo do impacto (DAMAGE/HEAL), em ordem."
+  },
+  "R-072": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/animation/director.test.ts::apresentação só lê projeções confirmadas (R-033, R-072, R-075, G-075, G-085) > R-072/G-085: pular um lote para na decisão pendente, mantém a próxima decisão e não inventa resposta"
+  },
+  "R-073": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/animation/director.test.ts::relógio de apresentação > delta acima do limite (aba oculta) vira um frame comum; pausa devolve zero"
+  },
+  "R-074": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/animation/director.test.ts::diretor > token de geração: callbacks de um plano substituído são reconhecidos como antigos"
+  },
+  "R-075": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/animation/director.test.ts::apresentação só lê projeções confirmadas (R-033, R-072, R-075, G-075, G-085) > R-075/R-033/G-075: reproduzir, pular e replanejar nos quatro modos não altera o estado de regras nem consome sorteios",
+    "note": "Quatro modos: zero sorteios e hash final preservado; reconciliação por modo nos testes “(R-075)”."
+  },
+  "R-076": {
+    "status": "NA",
+    "note": "Declarado N/A na spec (runtime §4.5): sem implementação 2.x, não há saves IndexedDB nem conversor no runtime."
+  },
+  "R-077": {
+    "status": "AUTOMATED",
+    "ref": "src/application/appearance.test.ts::validação de preset (R-077) > R-077: material, borda, ambiente e reação fora da allowlist, opacidade NaN e cor fora de #RRGGBB são recusados"
+  },
+  "R-078": {
+    "status": "NA",
+    "note": "Declarado N/A na spec (runtime §7.1): não há importador de saves JSON formato 3."
+  },
+  "R-079": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/editor.test.ts::imagens (editor §18) > ED-039/040 · aceita PNG estático; recusa APNG, GIF, SVG, executável disfarçado e excesso de pixels",
+    "note": "Limites de bytes/dimensões/formato; imageInfo em saves.test; importação só por bytes locais."
+  },
+  "R-080": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/saves.test.ts::arquivos de perfil maliciosos ou adulterados são recusados antes de qualquer escrita (DB-049, R-080, R-027) > ZIP com traversal, nomes absolutos, entrada não prevista, excesso de entradas, bomba de descompressão e link simbólico"
+  },
+  "R-081": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/saves.test.ts::perfil portátil .campaign-profile.zip formato 4 (persistencia §24.1) > DB-047: mesmo ID de versão com regras diferentes no destino bloqueia a importação sem escrita",
+    "note": "Falha na validação final da importação não deixa escrita parcial (contagens iguais); staging divergente não toca o banco (restore.test)."
+  },
+  "R-082": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/constraints.test.ts::assets, ledger e SQL parametrizado (DB-018, DB-030, DB-052, R-082) > R-082: imagem usada por tentativa/replay não é removida ao descartar um preset"
+  },
+  "R-083": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/three/core/resources.test.ts::TextureCache (LRU) > nunca despeja texturas referenciadas; despeja as livres menos recentes acima do orçamento",
+    "note": "Cache limitado por orçamento; ResourceRegistry não descarta recurso compartilhado."
+  },
+  "R-084": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#R-084",
+    "note": "Primeiro uso offline de temas, shaders e sons."
+  },
+  "UI-001": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-001",
+    "note": "1920 × 1080 — Todos os elementos essenciais dentro da área segura."
+  },
+  "UI-002": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-002",
+    "note": "1280 × 720 — Sem rolagem horizontal da página."
+  },
+  "UI-003": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-003",
+    "note": "1366 × 768 — Menus e ações legíveis no perfil compacto."
+  },
+  "UI-004": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/ui/battle/layout.test.ts::geometria da mesa > janela mais larga que 16:9 centraliza o conteúdo com margens funcionais"
+  },
+  "UI-005": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-005",
+    "note": "Redimensionamento — Estado e seleção preservados."
+  },
+  "UI-006": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-006",
+    "note": "Navegação principal — Uma área ativa inequívoca."
+  },
+  "UI-007": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-007",
+    "note": "Voltar do detalhe — Restaura filtro e rolagem."
+  },
+  "UI-008": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-008",
+    "note": "Editar a partir de desafio — Retorna ao mesmo confronto."
+  },
+  "UI-009": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/decks.test.ts::decks sobre SQLite > rascunho, versão confirmada e duelo com a última versão confirmada",
+    "note": "Rascunho é escrita leve recuperada do banco no snapshot."
+  },
+  "UI-010": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/decks.test.ts::decks sobre SQLite > excluir deck só arquiva; as cartas continuam na coleção"
+  },
+  "UI-011": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-011",
+    "note": "Coleção vazia — Não se confunde com erro de leitura do save."
+  },
+  "UI-012": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-012",
+    "note": "Arte ausente — Nome e ação continuam disponíveis."
+  },
+  "UI-013": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/deck/validate.test.ts::validateDeck (gameplay §6) > verifica posse quando há inventário (CARD_NOT_OWNED)",
+    "note": "canAdd também recusa carta não possuída."
+  },
+  "UI-014": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/decks.test.ts::decks sobre SQLite > limites de cópia, posse, importação de lista e auto-build",
+    "note": "canAdd devolve o motivo “Limite de 2 cópias por nome atingido.”"
+  },
+  "UI-015": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/decks.test.ts::decks sobre SQLite > UI-015/G-072/UI-050: vigésima primeira carta é recusada com motivo; importar lista mostra faltantes sem conceder cartas",
+    "note": "canAdd devolve motivo e a lista fica intacta."
+  },
+  "UI-016": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/deck/validate.test.ts::validateDeck (gameplay §6) > limita 2 cópias por deckLimitKey, inclusive entre impressões diferentes"
+  },
+  "UI-017": {
+    "status": "AUTOMATED",
+    "ref": "src/content/campaign.test.ts::objetivos de composição pela impressão exata (G-049, UI-017) > G-049: carta da expansão errada não conta para objetivo de conjunto, mesmo com a mesma definição"
+  },
+  "UI-018": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-018",
+    "note": "Energia manual do deck — Não muda sem consentimento."
+  },
+  "UI-019": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-019",
+    "note": "Auto-build — Exibe proposta antes de substituir."
+  },
+  "UI-020": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-020",
+    "note": "Salvar — Indica rascunho versus versão confirmada."
+  },
+  "UI-021": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/decks.test.ts::decks sobre SQLite > rascunho, versão confirmada e duelo com a última versão confirmada",
+    "note": "Deck inválido: DECK_INVALID com DECK_SIZE_INVALID e duelo não inicia."
+  },
+  "UI-022": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::resultados de campanha sobre o SQLite > C-020/G-067/UI-022: objetivo opcional incompatível com o deck não bloqueia a batalha válida"
+  },
+  "UI-023": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-023",
+    "note": "Primeiro jogador — Aviso correto sobre Energia, sem proibição absoluta de ataque."
+  },
+  "UI-024": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::preparação, seletores e informação do próprio baralho (UI-024, UI-025, UI-038, UI-039) > UI-024: a preparação só confirma com um Ativo legal (Básico da mão)"
+  },
+  "UI-025": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::preparação, seletores e informação do próprio baralho (UI-024, UI-025, UI-038, UI-039) > UI-025: a escolha de preparação de um lado não é revelada ao outro antes de ambos confirmarem"
+  },
+  "UI-026": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-026",
+    "note": "Mão com dez cartas — Todas acessíveis e inspecionáveis."
+  },
+  "UI-027": {
+    "status": "AUTOMATED",
+    "ref": "e2e/drag.spec.ts::arrastar para jogar na mesa 3D: recusa com motivo e volta; alvo realçado joga; ações flutuantes e placas",
+    "note": "Básico solto no Ativo do adversário: nega com o motivo e a carta continua na mão; mesma regra na mesa 2D."
+  },
+  "UI-028": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-028",
+    "note": "Alternativa ao arrasto — Mesma ação possível por cliques."
+  },
+  "UI-029": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-029",
+    "note": "Condições — Texto e ícones além de cor."
+  },
+  "UI-030": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-030",
+    "note": "Recuo — Mostra custo e Energias escolhidas."
+  },
+  "UI-031": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-031",
+    "note": "Troca por efeito — Não exibe custo de Recuo indevido."
+  },
+  "UI-032": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/ui/battle/affordances.test.ts::afordâncias do HUD > UI-032: Habilidade contínua não possui botão de ativação",
+    "note": "Também lab.test ED-030/031."
+  },
+  "UI-033": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-033",
+    "note": "Habilidade que termina turno — Confirmação informa consequência."
+  },
+  "UI-034": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-034",
+    "note": "Ataque com moeda — Não mostra dano definitivo antes do resultado."
+  },
+  "UI-035": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-035",
+    "note": "Ataque e finalizar — Controles claramente distintos."
+  },
+  "UI-036": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/animation/plan.test.ts::planPresentation em partidas completas (fuzz do motor, visão do humano) > R-071/R-050/UI-036: HP muda só no passo do impacto; o resultado só aparece depois de todo o grupo de Nocautes e pontos",
+    "note": "Sem banner de resultado antes do grupo de Nocautes."
+  },
+  "UI-037": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-037",
+    "note": "Decisão do adversário — Aguardando claramente indicado."
+  },
+  "UI-038": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::preparação, seletores e informação do próprio baralho (UI-024, UI-025, UI-038, UI-039) > UI-038: seletor obrigatório respeita a cardinalidade e não tem saída ilegal"
+  },
+  "UI-039": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/rules.test.ts::preparação, seletores e informação do próprio baralho (UI-024, UI-025, UI-038, UI-039) > UI-039: a projeção do próprio baralho e a busca não revelam a ordem das cartas"
+  },
+  "UI-040": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::pausa, retomada e reinício > G-063/C-039/R-020/UI-040: pausa real — a IA não aplica ação suspensa e o plano que chega depois é descartado",
+    "note": "Pausa real do motor/IA."
+  },
+  "UI-041": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::pausa, retomada e reinício > G-064/R-018/DB-031/UI-041/C-041: retomar restaura mão, ordem do baralho, efeitos, decisão pendente e RNG"
+  },
+  "UI-042": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::concorrência, versões e falhas de gravação > UI-042/G-044: clique duplicado gera um único comando e uma única alteração"
+  },
+  "UI-043": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/economy-flow.test.ts::pacotes e recibos > G-046/C-033/DB-026/UI-043/UI-089/UI-095: abertura retomada mostra o mesmo recibo e as mesmas cartas, com um único crédito"
+  },
+  "UI-044": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/economy-flow.test.ts::pacotes e recibos > G-046/C-033/DB-026/UI-043/UI-089/UI-095: abertura retomada mostra o mesmo recibo e as mesmas cartas, com um único crédito",
+    "note": "Prêmio confirmado antes da apresentação; rever/pular não reconcede (sequência “Revelar todas” em stages.test)."
+  },
+  "UI-045": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-045",
+    "note": "Compra com Créditos — Consentimento explícito, sem pagamento real."
+  },
+  "UI-046": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/economy/packs.test.ts::abertura de pacote > probabilidades exibidas somam o número de cartas do pacote",
+    "note": "Probabilidades calculadas a partir do produto, antes de comprar."
+  },
+  "UI-047": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-047",
+    "note": "Resultado — Distingue crédito e resgate."
+  },
+  "UI-048": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/commit.test.ts::commit: recompensas e cosméticos > DB-034: o direito pendente sobrevive e a escolha credita uma única vez",
+    "note": "Resgates repetidos creditam uma vez."
+  },
+  "UI-049": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/economy-flow.test.ts::Descoberta e cosméticos com o conteúdo real > G-069/C-026/UI-049: Descoberta registra uma escolha; recarregar preserva opções e escolha, sem nova concessão",
+    "note": "Uma carta, sem novo sorteio."
+  },
+  "UI-050": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/decks.test.ts::decks sobre SQLite > UI-015/G-072/UI-050: vigésima primeira carta é recusada com motivo; importar lista mostra faltantes sem conceder cartas"
+  },
+  "UI-051": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/economy-flow.test.ts::relógio, saldo e acesso > G-062/C-034/UI-051: relógio do sistema adiantado não gera pacotes, Créditos nem desbloqueios"
+  },
+  "UI-052": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-052",
+    "note": "Teclado — Fluxo principal completo sem mouse."
+  },
+  "UI-053": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-053",
+    "note": "Foco em modal — Restrito e restaurado corretamente."
+  },
+  "UI-054": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-054",
+    "note": "Toque — Sem dependência de hover."
+  },
+  "UI-055": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-055",
+    "note": "Leitor de tela — Nome, custo e condição disponíveis semanticamente."
+  },
+  "UI-056": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-056",
+    "note": "Movimento reduzido — Sem perda de informação."
+  },
+  "UI-057": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-057",
+    "note": "WebGL indisponível — Fallback funcional."
+  },
+  "UI-058": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-058",
+    "note": "Áudio desativado — Todo feedback essencial é visual."
+  },
+  "UI-059": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-059",
+    "note": "Campo de texto — Atalhos de letras não disparam ações."
+  },
+  "UI-060": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-060",
+    "note": "Tela cheia negada — Aplicação continua utilizável."
+  },
+  "UI-061": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-061",
+    "note": "Histórico — Filtros não alteram dados da partida."
+  },
+  "UI-062": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-062",
+    "note": "Replay — Não concede novas recompensas."
+  },
+  "UI-063": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-063",
+    "note": "Catálogo divergente — Replay não usa regras incorretas silenciosamente."
+  },
+  "UI-064": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-064",
+    "note": "Feature desativada — Menu não finge funcionamento."
+  },
+  "UI-065": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-065",
+    "note": "Dados de demonstração — Identificados como fictícios."
+  },
+  "UI-066": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-066",
+    "note": "Perfil local — Nenhum envio externo de dados."
+  },
+  "UI-067": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-067",
+    "note": "Aba oculta — Duelo suspenso, sem contagem regressiva."
+  },
+  "UI-068": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-068",
+    "note": "Grade grande — rolagem estável; a coleção desenha blocos de 120 com “Mostrar mais” (virtualização opcional)."
+  },
+  "UI-069": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-069",
+    "note": "Ações destrutivas — Confirmação contextual clara."
+  },
+  "UI-070": {
+    "status": "AUTOMATED",
+    "ref": "e2e/journeys.spec.ts::38.4 pausar e retomar: salvar e sair, recarregar e continuar no mesmo estado",
+    "note": "“Continuar” no Início leva à tentativa suspensa (continueTarget prioriza RESUME_ATTEMPT)."
+  },
+  "UI-071": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/ui/app/router.test.ts::rotas da v1 > UI-071: preparação, duelo, resultado e replay abrem sem o shell (sem navegação comercial)"
+  },
+  "UI-072": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/ai/fairness.test.ts::IA — payload do job (G-053, R-034) > JSON do job a partir de um estado real de meio de partida não vaza informação oculta",
+    "note": "HUD usa getPlayerView (rules.test G-053); save completo só no SQLite local."
+  },
+  "UI-073": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-073",
+    "note": "Início — Continuar é a ação primária."
+  },
+  "UI-074": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/ui/app/router.test.ts::rotas da v1 > UI-074: não existem rotas nem itens de menu sociais, online, premium ou de pagamento real"
+  },
+  "UI-075": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-075",
+    "note": "Mapa e lista — Mesmos nós, estados e desbloqueios."
+  },
+  "UI-076": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-076",
+    "note": "Picking com sidebar aberta — Seleciona objeto sob o ponteiro no viewport correto."
+  },
+  "UI-077": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-077",
+    "note": "Drag começa no mapa — Diferencia pan de clique."
+  },
+  "UI-078": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-078",
+    "note": "Modal sobre a mesa — Sem click-through."
+  },
+  "UI-079": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-079",
+    "note": "Inspector e palco — Um contexto WebGL compartilhado."
+  },
+  "UI-080": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-080",
+    "note": "Carta girada — Frente, verso e texto não espelhados."
+  },
+  "UI-081": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-081",
+    "note": "Holográfico/cromado — Textos e HP legíveis."
+  },
+  "UI-082": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-082",
+    "note": "Perfil Baixo — Continua com geometria de cartas 3D."
+  },
+  "UI-083": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-083",
+    "note": "Dez cartas na mão em 720p — Todas selecionáveis por mouse e teclado."
+  },
+  "UI-084": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::resultados de campanha sobre o SQLite > G-079/C-038/UI-084: concluir o final libera o pós-jogo e preserva perfil, coleção e objetivos"
+  },
+  "UI-085": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/saves.test.ts::perfil portátil .campaign-profile.zip formato 4 (persistencia §24.1) > round-trip: importar cria um perfil NOVO equivalente (coleção, decks, progresso, concessões) e o duelo continua",
+    "note": "Exportar/importar inteiramente local."
+  },
+  "UI-086": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-086",
+    "note": "Novo capítulo nunca visitado — Não solicita asset remoto."
+  },
+  "UI-087": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-087",
+    "note": "Sem internet — Nenhum banner de falha de rede."
+  },
+  "UI-088": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-088",
+    "note": "Falha de gravação — Nunca mostra “Salvo” antecipadamente."
+  },
+  "UI-089": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/economy-flow.test.ts::pacotes e recibos > G-046/C-033/DB-026/UI-043/UI-089/UI-095: abertura retomada mostra o mesmo recibo e as mesmas cartas, com um único crédito",
+    "note": "Todas as cartas do recibo, um crédito."
+  },
+  "UI-090": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/campaign-route.test.ts::rota principal da campanha com o catálogo real > 27 vitórias essenciais concluem o Circuito com a economia da auditoria",
+    "note": "Caminho principal concluído inteiro em História."
+  },
+  "UI-091": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-091",
+    "note": "Controles de câmera — Não alteram regras nem RNG."
+  },
+  "UI-092": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/three/core/resources.test.ts::ResourceRegistry > compartilha por chave e só descarta quando a última referência sai",
+    "note": "Contrato de refcount usado pelas cenas/rotas."
+  },
+  "UI-093": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-093",
+    "note": "Editor vindo de nó — Mantém capítulo, dificuldade e objetivo."
+  },
+  "UI-094": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-094",
+    "note": "Limpar recursos visuais — Não apaga saves."
+  },
+  "UI-095": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/economy-flow.test.ts::pacotes e recibos > G-046/C-033/DB-026/UI-043/UI-089/UI-095: abertura retomada mostra o mesmo recibo e as mesmas cartas, com um único crédito",
+    "note": "Recarregar mostra o recibo existente sem nova concessão."
+  },
+  "UI-096": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-096",
+    "note": "Perda de contexto no chefe — Retoma o mesmo duelo, sem derrota técnica."
+  },
+  "UI-097": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-097",
+    "note": "Mesa em foco — FOCUS_TABLE inicia com inspector/histórico recolhidos e Ativos integralmente visíveis."
+  },
+  "UI-098": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-098",
+    "note": "Painéis táticos — Alternar layout preserva estado, seleção e IDs dos alvos, sem redeal."
+  },
+  "UI-099": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/three/battle/layout.test.ts::perfil desktop1080 > os oito slots projetam a ±6 px dos centros-alvo",
+    "note": "Mesmo teste para compact720."
+  },
+  "UI-100": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-100",
+    "note": "Pilhas laterais — Deck/descarte humanos à direita e do NPC à esquerda; contadores/controles distintos."
+  },
+  "UI-101": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-101",
+    "note": "Playmat inteiro — Uma única superfície, sem dividir a arte em dois tapetes simultâneos."
+  },
+  "UI-102": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-102",
+    "note": "Alternância por turno — TURN_STARTED muda somente arte/material; cartas, HUD e câmera permanecem estáveis."
+  },
+  "UI-103": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-103",
+    "note": "Decisão do adversário — Responder no turno alheio não troca o playmat nem a faixa de turno."
+  },
+  "UI-104": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-104",
+    "note": "Conforto — PLAYER_FIXED e NEUTRAL entram imediatamente sem alterar lógica ou inventário."
+  },
+  "UI-105": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-105",
+    "note": "Estádio — Animação do Estádio não simula mudança cosmética da mesa."
+  },
+  "UI-106": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-106",
+    "note": "Oficina S41/S42 — Entradas por perfil/deck e retorno ao contexto preservam rascunho e rolagem."
+  },
+  "UI-107": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-107",
+    "note": "Presets — Aplicar, herdar, duplicar e cancelar têm resultados distintos e mensagens claras."
+  },
+  "UI-108": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-108",
+    "note": "Equipar durante suspensão — Mensagem informa que o novo preset vale para próxima tentativa."
+  },
+  "UI-109": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-109",
+    "note": "Produto bloqueado — Permite experimentar, explica desbloqueio/preço e não permite equipar sem posse."
+  },
+  "UI-110": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-110",
+    "note": "Material e leitura — Todas as variantes preservam nome, HP, Energia, alvo e condição sob a mesma iluminação."
+  },
+  "UI-111": {
+    "status": "AUTOMATED",
+    "ref": "e2e/appearance.spec.ts::UI-111/UI-112 imagem local do tapete: recusa antes de alterar, recorte 4:3 e aplicação",
+    "note": "Recorte 4:3 sem distorção também em src/application/appearance.test.ts (UI-111); prévia das zonas seguras na checklist manual."
+  },
+  "UI-112": {
+    "status": "AUTOMATED",
+    "ref": "e2e/appearance.spec.ts::UI-111/UI-112 imagem local do tapete: recusa antes de alterar, recorte 4:3 e aplicação"
+  },
+  "UI-113": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-113"
+  },
+  "UI-114": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-114",
+    "note": "Seleção de carta — Hover não consome ação nem dispara novamente flair de entrada."
+  },
+  "UI-115": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-115",
+    "note": "Compra própria — Carta sai do deck, revela-se ao humano e reencaixa na mão mantendo sua identidade."
+  },
+  "UI-116": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/animation/plan.test.ts::planPresentation em partidas completas (fuzz do motor, visão do humano) > nenhuma face oculta do adversário entra no plano do humano (R-069)",
+    "note": "Compra do NPC só com chaves opacas, sem face."
+  },
+  "UI-117": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-117",
+    "note": "Compra múltipla — Contagem e movimentos refletem apenas cartas realmente compradas."
+  },
+  "UI-118": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-118",
+    "note": "Mão com dez — Todas as cartas acessíveis por clique/teclado; leque não cobre ações essenciais."
+  },
+  "UI-119": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-119",
+    "note": "Arrasto sem commit — Cancelar gesto ou alvo inválido retorna à mão sem flair ou consumo."
+  },
+  "UI-120": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/animation/director.test.ts::flair idempotente > a mesma chave só toca uma vez, mesmo após reconstrução de mesh ou replanejamento",
+    "note": "Flair por evento+entidade, uma vez mesmo com replanejamento."
+  },
+  "UI-121": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-121",
+    "note": "Evolução — Nova carta assenta sobre pilha, com dano e anexos corretos e sem cura visual falsa."
+  },
+  "UI-122": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-122",
+    "note": "Revelação temporária — A identidade aparece apenas durante a autorização; não pode ser rastreada após shuffle."
+  },
+  "UI-123": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-123",
+    "note": "Destaque de ataque — Carta e nome aparecem no cut-in sem permitir interação com uma cópia fictícia."
+  },
+  "UI-124": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-124",
+    "note": "Impacto — Origem/alvo/tipo corretos; zero, redução, cura e Nocaute não usam feedback contraditório."
+  },
+  "UI-125": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/three/battle/coin-math.test.ts::COIN_FIRST > termina na face HEADS",
+    "note": "Pose final mostra exatamente a face confirmada (HEADS/TAILS, COIN_FIRST/NEXT)."
+  },
+  "UI-126": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/animation/plan.test.ts::planPresentation em partidas completas (fuzz do motor, visão do humano) > R-071/R-050/UI-036: HP muda só no passo do impacto; o resultado só aparece depois de todo o grupo de Nocautes e pontos",
+    "note": "Saídas e pontos apresentados antes do banner terminal."
+  },
+  "UI-127": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/animation/director.test.ts::reconciliação em lotes de partidas completas (fuzz) > modo 'Instantânea': skip no meio = fim normal = projeção do after",
+    "note": "Todos os modos terminam na mesma projeção; decisão pendente preservada (R-072)."
+  },
+  "UI-128": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-128",
+    "note": "Movimento reduzido — Sem tremor, zoom brusco ou flashes; toda informação permanece consultável."
+  },
+  "UI-129": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/animation/director.test.ts::diretor > pausa congela o tempo de apresentação; retomar continua do mesmo ponto",
+    "note": "Cues não repetem (cues.test); IA suspensa (attempts.test G-063)."
+  },
+  "UI-130": {
+    "status": "AUTOMATED",
+    "ref": "e2e/journeys.spec.ts::38.3 abrir um pacote: commit local → revelação → resumo → coleção",
+    "note": "Mesmo recibo do rasgo ao resumo, inclusive após recarregar."
+  },
+  "UI-131": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-131",
+    "note": "Fixture da oficina — Prévia cheia e ataque de teste não alteram a partida suspensa nem recompensas."
+  },
+  "UI-132": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-132",
+    "note": "Navegação acessível — Oficina e seleção de flair funcionam sem arrasto e preservam foco ao fechar."
+  },
+  "VS-001": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-001",
+    "note": "Boot abre shell claro sem cenário escuro ou gradiente preto."
+  },
+  "VS-002": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/three/core/tokens.test.ts::tokens de cor (VS-002, VS-003, VS-004, VS-005) > VS-002: tokens JSON e CSS correspondem em todos os valores de cor"
+  },
+  "VS-003": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/three/core/tokens.test.ts::tokens de cor (VS-002, VS-003, VS-004, VS-005) > VS-003: texto principal e secundário (e os demais pares fixos) passam 4,5:1"
+  },
+  "VS-004": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/three/core/tokens.test.ts::tokens de cor (VS-002, VS-003, VS-004, VS-005) > VS-004: o botão azul claro usa texto escuro legível (primaryInk), não branco"
+  },
+  "VS-005": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/three/core/tokens.test.ts::tokens de cor (VS-002, VS-003, VS-004, VS-005) > VS-005: laranja (Fogo/faixa adversária) não é usado como cor global de ação"
+  },
+  "VS-006": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-006",
+    "note": "Campo padrão é a arena: metade distante coral, próxima azul-clara, entorno claro em cima e azul embaixo, com aro claro."
+  },
+  "VS-007": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-007",
+    "note": "Metades da arena (coral distante, azul-clara próxima) não mudam por cor de Energia; só o turno as acende."
+  },
+  "VS-008": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/three/battle/layout.test.ts::perfil desktop1080 > registro de âncoras completo, com ids canônicos e dentro da região do tabuleiro",
+    "note": "Exatamente NPC/HUMAN_ACTIVE e BENCH_0..2 por lado (8 slots)."
+  },
+  "VS-009": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-009",
+    "note": "Pontos exibem exatamente três posições, independentemente de HP."
+  },
+  "VS-010": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-010",
+    "note": "Pilhas e contadores do fixture são compatíveis com baralho de 20."
+  },
+  "VS-011": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/ui/battle/affordances.test.ts::afordâncias do HUD > VS-011: no turno do NPC nenhum ataque, ligação ou fim de turno humano fica habilitado"
+  },
+  "VS-012": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-012",
+    "note": "Câmera quase superior mantém frente legível e sem rotação de turno."
+  },
+  "VS-013": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/three/battle/layout.test.ts::perfil compact720 > os oito slots projetam a ±6 px dos centros-alvo",
+    "note": "Também desktop1080."
+  },
+  "VS-014": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-014",
+    "note": "Inspector recolhido é o padrão de batalha."
+  },
+  "VS-015": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-015",
+    "note": "Abrir inspector não encobre uma decisão obrigatória."
+  },
+  "VS-016": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-016",
+    "note": "Campo não tem DOF ou desfoque sobre mão e slots."
+  },
+  "VS-017": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-017",
+    "note": "Borda/cartas têm espessura discreta, não placas maciças."
+  },
+  "VS-018": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-018",
+    "note": "Imagens não sofrem corte fora da composição cadastrada."
+  },
+  "VS-019": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-019",
+    "note": "Template não possui custo universal de mana."
+  },
+  "VS-020": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-020",
+    "note": "Template não exibe Resistência não suportada."
+  },
+  "VS-021": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-021",
+    "note": "Ex, foil e raridade são exibidos como eixos distintos."
+  },
+  "VS-022": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-022",
+    "note": "Arte-base utiliza ilustração estilizada clara, não estética dark fantasy."
+  },
+  "VS-023": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-023",
+    "note": "Personagem/NPC segue o mesmo catálogo de direção artística."
+  },
+  "VS-024": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-024",
+    "note": "Arte completa preserva contraste dos ataques."
+  },
+  "VS-025": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-025",
+    "note": "Foil não apaga texto no ângulo frontal."
+  },
+  "VS-026": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-026",
+    "note": "Desligar brilho não altera identidade ou regras da impressão."
+  },
+  "VS-027": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-027",
+    "note": "Carta oculta não revela raridade por material, som ou trajetória."
+  },
+  "VS-028": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-028",
+    "note": "Compra humana vai do deck à mão sem cut-in de ataque."
+  },
+  "VS-029": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/animation/plan.test.ts::planPresentation em partidas completas (fuzz do motor, visão do humano) > nenhuma face oculta do adversário entra no plano do humano (R-069)",
+    "note": "Compra do NPC permanece verso em todos os passos."
+  },
+  "VS-030": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-030",
+    "note": "Compra em lote mantém contagem e não repete flair por carta oculta."
+  },
+  "VS-031": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-031",
+    "note": "Drag inválido volta à posição sem consumir ação."
+  },
+  "VS-032": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-032",
+    "note": "Entrada básica assenta no slot, sem invocar criatura independente."
+  },
+  "VS-033": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-033",
+    "note": "Evolução preserva dano e anexos visuais."
+  },
+  "VS-034": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-034",
+    "note": "Cut-in possui carta, nome do ataque, faixa e retorno ao campo."
+  },
+  "VS-035": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-035",
+    "note": "Escurecimento do ataque é temporário, com luminosidade restaurada."
+  },
+  "VS-036": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-036",
+    "note": "Ataque composto não duplica tempos de foco/impacto."
+  },
+  "VS-037": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-037",
+    "note": "Fogo e outros tipos são localizados; não mudam o tema de menus."
+  },
+  "VS-038": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/three/battle/coin-math.test.ts::COIN_FIRST > termina na face TAILS",
+    "note": "Face final = face confirmada; velocidades reconciliam na mesma projeção (director R-075)."
+  },
+  "VS-039": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/animation/director.test.ts::reconciliação no modo 'Normal' (R-075) > Ataque com moedas · Nocaute · pontos: skip em qualquer ponto = reprodução completa",
+    "note": "Cada passo termina exatamente uma vez e o HUD avança só com o boardAfter de cada passo."
+  },
+  "VS-040": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-040",
+    "note": "Nocaute não sugere destruição permanente da carta possuída."
+  },
+  "VS-041": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/animation/plan.test.ts::planPresentation em partidas completas (fuzz do motor, visão do humano) > R-071/R-050/UI-036: HP muda só no passo do impacto; o resultado só aparece depois de todo o grupo de Nocautes e pontos"
+  },
+  "VS-042": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-042",
+    "note": "Faixa de pontos usa azul/ciano e discos amarelos legíveis."
+  },
+  "VS-043": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-043",
+    "note": "Playmat cobre a superfície inteira sem alterar hitboxes."
+  },
+  "VS-044": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-044",
+    "note": "Troca de playmat não move cartas ou câmera."
+  },
+  "VS-045": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-045",
+    "note": "Arte customizada não recolore marcadores funcionais."
+  },
+  "VS-046": {
+    "status": "AUTOMATED",
+    "ref": "src/content/campaign.test.ts::Empório, produtos e cosméticos (C-028, C-050, C-053, C-056) > VS-046: os nove temas de playmat mantêm IDs, versão 2 e desbloqueios canônicos"
+  },
+  "VS-047": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-047",
+    "note": "Pacote abre por costura/tira, com fundo claro e raios suaves."
+  },
+  "VS-048": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-048",
+    "note": "Revelação usa deslizamento de pilha, sem flip compulsório por carta."
+  },
+  "VS-049": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/three/stages/stages.test.ts::abertura de pacote (sequência pura) > máquina de estados: corte → extração → avanços → resumo; Revelar todas de qualquer fase",
+    "note": "Mesmo recibo e resumo com todas as cartas (teste vizinho “grade do resumo”)."
+  },
+  "VS-050": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-050",
+    "note": "Imersiva é opcional e retorna à posição correta."
+  },
+  "VS-051": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-051",
+    "note": "Mapa permanece estilizado; combate não herda uma sala cinematográfica."
+  },
+  "VS-052": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-052",
+    "note": "Editor de decks deriva 20/20 da soma real e respeita cópias."
+  },
+  "VS-053": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-053",
+    "note": "Estúdio usa o mesmo CardVisual, template e acabamento da batalha."
+  },
+  "VS-054": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/editor/editor.test.ts::ex, Mega ex e derivações (editor §9) > ED-005 · ativar ex: nome/chave/pontos derivados, sem mudar HP, dano, custo, raridade ou acabamento",
+    "note": "ex não muda acabamento/raridade; NORMAL/FOIL só muda material (ED-045/046)."
+  },
+  "VS-055": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-055",
+    "note": "Não há botão de geração remota de arte no fluxo offline."
+  },
+  "VS-056": {
+    "status": "AUTOMATED",
+    "ref": "src/infrastructure/storage/constraints.test.ts::catálogo publicado (DB-011, DB-012, DB-013, DB-014, DB-015) > DB-015: impressão publicada não troca asset nem definição no lugar; vínculo fora dos bindings é recusado",
+    "note": "Impressões imutáveis; nova aparência = nova impressão; RNG visual separado (R-033)."
+  },
+  "VS-057": {
+    "status": "AUTOMATED",
+    "ref": "src/tests/integration/attempts.test.ts::aparência congelada na tentativa e independente das regras > G-081/C-055/VS-057: trocar tapete, verso ou moeda preserva ações legais, dano, distribuição e resultado",
+    "note": "Conforto (tapete neutro, movimento reduzido, velocidade) não muda o estado funcional."
+  },
+  "VS-058": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-058",
+    "note": "Qualidade baixa preserva paleta, cartas 3D e informação."
+  },
+  "VS-059": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-059",
+    "note": "Retomada/perda de contexto restaura cena clara sem repetir ganhos."
+  },
+  "VS-060": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#VS-060",
+    "note": "Capturas de homologação registram build, viewport, DPR e estado."
+  },
+  "UI-133": {
+    "status": "AUTOMATED",
+    "ref": "e2e/pocket.spec.ts::preparação na mesa: aviso, Básico ao Ativo e ao Banco, devolver, Recomeçar e Iniciar duelo; faixa de turno; tutorial à direita; menu em folha",
+    "note": "Também em setup-stage.test (alvos, colocar/devolver, seleção, visão provisória)."
+  },
+  "UI-134": {
+    "status": "AUTOMATED",
+    "ref": "e2e/pocket.spec.ts::preparação na mesa: aviso, Básico ao Ativo e ao Banco, devolver, Recomeçar e Iniciar duelo; faixa de turno; tutorial à direita; menu em folha",
+    "note": "Borda direita do guia = largura da tela e abaixo da placa do adversário."
+  },
+  "UI-135": {
+    "status": "AUTOMATED",
+    "ref": "e2e/pocket.spec.ts::preparação na mesa: aviso, Básico ao Ativo e ao Banco, devolver, Recomeçar e Iniciar duelo; faixa de turno; tutorial à direita; menu em folha",
+    "note": "Aviso de preparação com “Você começa/O adversário começa”."
+  },
+  "UI-136": {
+    "status": "AUTOMATED",
+    "ref": "e2e/pocket.spec.ts::preparação na mesa: aviso, Básico ao Ativo e ao Banco, devolver, Recomeçar e Iniciar duelo; faixa de turno; tutorial à direita; menu em folha",
+    "note": "Faixa com “Turno atual: N”; cores e entrada lateral conferidas em captura."
+  },
+  "UI-137": {
+    "status": "AUTOMATED",
+    "ref": "e2e/pocket.spec.ts::preparação na mesa: aviso, Básico ao Ativo e ao Banco, devolver, Recomeçar e Iniciar duelo; faixa de turno; tutorial à direita; menu em folha",
+    "note": "Itens da folha e fechamento por Esc."
+  },
+  "UI-138": {
+    "status": "AUTOMATED",
+    "ref": "e2e/pocket.spec.ts::ataque no estilo Pocket: bloqueado avisa “Energia insuficiente”, pronto brilha; +1 ponto! e Vitória antes do S24",
+    "note": "Classes is-blocked/is-ready, texto do ataque, aviso “Energia insuficiente” e pílula Recuar."
+  },
+  "UI-139": {
+    "status": "AUTOMATED",
+    "ref": "e2e/pocket.spec.ts::ataque no estilo Pocket: bloqueado avisa “Energia insuficiente”, pronto brilha; +1 ponto! e Vitória antes do S24",
+    "note": "Nenhum botão de ataque visível logo após atacar."
+  },
+  "UI-140": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-140",
+    "note": "Visual do cut-in só observável no navegador; duração do preset coberta por catalog.test."
+  },
+  "UI-141": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-141",
+    "note": "Contagem do PS e número de dano no navegador."
+  },
+  "UI-142": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-142",
+    "note": "Orbe ciano no navegador."
+  },
+  "UI-143": {
+    "status": "AUTOMATED",
+    "ref": "e2e/pocket.spec.ts::ataque no estilo Pocket: bloqueado avisa “Energia insuficiente”, pronto brilha; +1 ponto! e Vitória antes do S24",
+    "note": "Tela “+1 ponto!” após o nocaute do tutorial; cores e medalhões conferidos em captura."
+  },
+  "UI-144": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-144",
+    "note": "O tutorial roteirizado não lança moeda; conferido em captura."
+  },
+  "UI-145": {
+    "status": "AUTOMATED",
+    "ref": "e2e/pocket.spec.ts::ataque no estilo Pocket: bloqueado avisa “Energia insuficiente”, pronto brilha; +1 ponto! e Vitória antes do S24",
+    "note": "Pílula “Vitória” depois da tela de ponto e antes do S24."
+  },
+  "UI-146": {
+    "status": "AUTOMATED",
+    "ref": "e2e/drag.spec.ts::arrastar para jogar na mesa 3D: recusa com motivo e volta; alvo realçado joga; ações flutuantes e placas",
+    "note": "Sem botões de ataque à vista; tocar no Ativo abre a ficha com Brasa e Recuar; Esc fecha. O pocket.spec confere o PS e o fechamento ao tocar fora."
+  },
+  "UI-147": {
+    "status": "AUTOMATED",
+    "ref": "e2e/journeys.spec.ts::24.2 hover: carta da mesa (dos dois lados) sobe e cresce no lugar; carta da mão abre a prévia no centro, em 3D e em 2D",
+    "note": "Largura do Ativo cresce > 8 % no hover e volta; prévia só para a mão, centrada (x = 960 ± 4). O pocket.spec confere que a prévia some ao arrastar a carta."
+  },
+  "UI-148": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-148",
+    "note": "Aparência do prato, do orbe e do halo só no navegador; conferida em captura (3D e 2D)."
+  },
+  "UI-149": {
+    "status": "AUTOMATED",
+    "ref": "e2e/pocket.spec.ts::Energia: orbe arrastado livremente; solto fora volta ao prato, solto no Ativo liga; a prévia da mão some ao arrastar a carta",
+    "note": "Mesa 3D; a mesa 2D é coberta no drag.spec (orbe arrastado até o Ativo liga a Energia)."
+  },
+  "UI-150": {
+    "status": "AUTOMATED",
+    "ref": "e2e/pocket.spec.ts::fase 3: evolução em amarelo e por arrasto; Treinador só joga na zona verde, fora volta sem aviso; prévia no centro em 2D",
+    "note": "Mesa 3D: Velocidade X solta fora da zona volta sem aviso e dentro joga. Mesa 2D: a zona aparece no arrasto do Apoiador, acende sob a carta e apaga fora dela."
+  },
+  "UI-151": {
+    "status": "AUTOMATED",
+    "ref": "e2e/pocket.spec.ts::fase 3: evolução em amarelo e por arrasto; Treinador só joga na zona verde, fora volta sem aviso; prévia no centro em 2D",
+    "note": "Rapidash na mão do T04 com .is-evolvable na mesa 2D; o contorno amarelo da 3D (marcador EVOLVE) é conferido em captura (manual-checklist)."
+  },
+  "UI-152": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-152",
+    "note": "Trajetória e giro só no navegador (harness com pauseWhen nos lotes “Fim do turno do NPC · compra” e “Jogar Básico”); a prévia 2D é conferida no pocket.spec (fase 3)."
+  },
+  "UI-153": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-153",
+    "note": "Dissolução conferida em captura do harness (lote “Jogar Treinador”); a prévia 2D com mode-trainer é conferida no pocket.spec (fase 3)."
+  },
+  "UI-154": {
+    "status": "AUTOMATED",
+    "ref": "e2e/pocket.spec.ts::Energia: orbe arrastado livremente; solto fora volta ao prato, solto no Ativo liga; a prévia da mão some ao arrastar a carta",
+    "note": "O rótulo “Próxima Energia gerada” aparece no primeiro turno próprio do T01. O aviso de deck vazio não tem cenário de tutorial; segue a mesma camada de avisos (UI-135)."
+  },
+  "UI-155": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-155",
+    "note": "Item a incluir no checklist manual: S04 → catálogo agrupado por expansão; Deluxe “4 cartas por abertura”; Lugia/Ho-Oh/Secluded Springs “5 cartas por abertura (+1 em 8,330% dos pacotes)”."
+  },
+  "UI-156": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/economy/packs-tier.test.ts::pacote por símbolo (taxas oficiais) > tabela exibida: totais oficiais por posição e valor por carta",
+    "note": "Dados da tabela S05; a tela do pacote Lugia (coluna 6ª, pacote raro e 6ª carta com 3 casas) também em e2e/sets.spec.ts."
+  },
+  "UI-157": {
+    "status": "AUTOMATED",
+    "ref": "e2e/sets.spec.ts::Deluxe Pack ex: compra no Empório e abertura de 4 cartas",
+    "note": "Quatro cartas no resumo; o selo “Pacote raro!” e o rótulo “6ª carta” são raros demais para e2e e ficam no checklist manual."
+  },
+  "UI-158": {
+    "status": "AUTOMATED",
+    "ref": "e2e/sets.spec.ts::Empório: o filtro de Expansão reduz as cartas dirigidas e mostra o restante em blocos",
+    "note": "Empório: 60 itens e “Mostrar mais (26)” no A1a; coleção (120) e editor (60) seguem o mesmo padrão, conferidos no checklist manual."
+  },
+  "UI-159": {
+    "status": "AUTOMATED",
+    "ref": "src/application/collection.test.ts::coleção por símbolo de raridade > ◊◊◊◊ separa os ex normais; ♛ do A1 só as três coroas; PROMO só cartas com impressão promocional",
+    "note": "Com setId a1, o filtro ♛ só vê as coroas do A1; a ordenação por raridade com setId está no terceiro caso do describe."
+  },
+  "UI-160": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-160",
+    "note": "Item a incluir no checklist manual: Empório › Cartas dirigidas com Expansão, raridade ✵ e “Só disponíveis” → só itens daquele set e símbolo, sem bloqueados nem adquiridos; subtítulo “A3 042 · ☆ · você tem N”; aba Pacotes com um título por set."
+  },
+  "UI-161": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-161",
+    "note": "Item a incluir no checklist manual: S08 de um Pikachu ex › Comparar com → grupo “Outras versões de Pikachu ex” antes de “Outras cartas”."
+  },
+  "UI-162": {
+    "status": "MANUAL",
+    "ref": "src/tests/manual-checklist.md#UI-162",
+    "note": "Item a incluir no checklist manual: S08 › Como obter de uma carta do A4 e de uma do A1 → “Pode sair em <pacote> · X,XXX% por pacote”, com três casas."
+  },
+  "UI-163": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/dsl-pocket.test.ts::Bolsa de Eevee (escolha 1): decisão SELECT_MODE > pede a escolha entre as duas opções, com rótulo",
+    "note": "labels na decisão; a mesa mostra o rótulo em vez de MODE:n."
+  },
+  "UI-164": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/dsl-pocket.test.ts::Ataques de evoluções anteriores (Luz da Memória, Celebi Recordação do Tempo) > com a Ferramenta, o ATAQUE com sourceCardId usa o ataque da carta de baixo",
+    "note": "Ação legal com sourceCardId; o rótulo “· <carta>” na ficha fica no checklist manual."
+  },
+  "UI-165": {
+    "status": "AUTOMATED",
+    "ref": "src/content/campaign.test.ts::perfil novo e decks iniciais (C-005, C-006, C-049) > C-005: as 76 cartas iniciais permitem montar os oito decks de 20 ao mesmo tempo",
+    "note": "starterDeckIds = os oito iniciais, que S02 oferece como destaque."
+  },
+  "UI-166": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/three/stages/stages.test.ts::inspector e temas > tema por capítulo e por produto",
+    "note": "pack-a4-lugia → porto, pack-a4b → final, pack-pb-promo → C03."
+  },
+  "UI-167": {
+    "status": "AUTOMATED",
+    "ref": "e2e/pocket.spec.ts::preparação na mesa: aviso, Básico ao Ativo e ao Banco, devolver, Recomeçar e Iniciar duelo; faixa de turno; tutorial à direita; menu em folha",
+    "note": "Abertura VS no início do P00-T01: nomes Cheren/jogador, “VS.”, dois retratos e saudação; some sozinha e a placa mostra o retrato. Retomar não repete a abertura: e2e/journeys.spec.ts (38.4). DUEL_INTRO = 2600 ms: src/presentation/animation/catalog.test.ts. Tremor e movimento reduzido no checklist manual."
+  },
+  "UI-168": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/assets/portraits.test.ts::retratos dos treinadores > avatar do jogador: a chave salva; tipo antigo, ausente ou chave inexistente → retrato padrão",
+    "note": "Todo rival com retrato empacotado (mesmo describe) e validador do content-build (src/content/validation.test.ts, “rival sem retrato empacotado”); desenho sem contorno e seletor no checklist manual."
+  },
+  "UI-169": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/assets/portraits.test.ts::bolas de Energia > uma bola para cada tipo gerável da Zona; Incolor e Dragão ficam com o ícone",
+    "note": "Oito bolas WebP, uma por tipo gerável; Incolor/Dragão sem bola. O desenho na mesa 3D e 2D fica no checklist manual."
+  },
+  "UI-170": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/ui/components/shell.test.ts::abas no topo > toda rota com shell tem grupo (ou é utilitário); sub-abas só com rotas existentes e sem repetição",
+    "note": "Cinco abas e rota → aba/sub-aba no mesmo describe. Navegação real (abas, sub-abas, Q/E, utilitários do cabeçalho): e2e/menus.spec.ts (UI-170/UI-171). Barra embaixo em retrato no checklist manual."
+  },
+  "UI-171": {
+    "status": "AUTOMATED",
+    "ref": "e2e/menus.spec.ts::UI-170/UI-171 abas no topo, sub-abas, Q/E e hubs em caixas sem rolagem horizontal",
+    "note": "Caixa do hub → Campanha, Q/E, utilitários e ausência de rolagem horizontal em 14 telas a 1920×1080 e 1280×720. Aro de foco, movimento reduzido e caixa bloqueada no checklist manual."
+  },
+  "UI-172": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/ui/battle/promotion.test.ts::promoção depois do nocaute > sem arrasto: clica num Pokémon, depois no Ativo; clicar de novo desfaz",
+    "note": "Opções, realces e soltura no mesmo describe. Arrasto na mesa 2D sem painel nem Finalizar turno: e2e/promote.spec.ts (UI-172). Mesa 3D: promoteDemo() do harness e checklist manual."
+  },
+  "UI-173": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/assets/pack-art.test.ts::arte oficial dos pacotes > os 15 pacotes de expansão têm a frente empacotada; tutorial e promocionais não",
+    "note": "Arquivos gerados por npm run inspo:packs (--check). Telas S04/S05/S33/Início e frente do pacote 3D no checklist manual."
+  },
+  "UI-174": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/three/battle/table-surface.test.ts::marcas centrais da mesa (desktop1080) > arena: círculo de tela no centro de espelho que envolve os dois Bancos; metade distante acima, próxima abaixo",
+    "note": "Também compact720; disco = ARENA.discK × largura do Ativo, linha central e tingimento só do entorno no mesmo arquivo. Cores, aro, faixa central, metade acesa pelo turno, película sobre a imagem local e a mesa 2D no checklist manual."
+  },
+  "UI-175": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/ui/battle/setup-stage.test.ts::preparação na mesa > Básicos colocados ficam virados para baixo até a revelação",
+    "note": "Conjunto de entidades provisórias viradas (stagedFaceDown). O verso na mesa 3D/2D, a ausência de volta à mão e o giro da revelação ficam no checklist manual."
+  },
+  "UI-176": {
+    "status": "AUTOMATED",
+    "ref": "e2e/pocket.spec.ts::preparação na mesa: aviso, Básico ao Ativo e ao Banco, devolver, Recomeçar e Iniciar duelo; faixa de turno; tutorial à direita; menu em folha",
+    "note": "Depois da VS: overlay coin-toss com a moeda do deck (Poké Bola), “Cara!/Coroa!” e quem começa, e o aviso da preparação com o mesmo resultado. Retomar sem moeda em e2e/journeys.spec.ts; giro e movimento reduzido no checklist manual."
+  },
+  "UI-177": {
+    "status": "AUTOMATED",
+    "ref": "src/presentation/three/battle/coin-owner.test.ts::moeda de quem lança > cada passo de moeda do plano carrega quem lançou",
+    "note": "O passo COIN leva quem lança e coinOwner escolhe a moeda do lado; as 84 moedas com cara e coroa em src/presentation/assets/coins.test.ts. A imagem na moeda 3D/2D e a oficina ficam no checklist manual."
+  },
+  "UI-178": {
+    "status": "AUTOMATED",
+    "ref": "e2e/recipes.spec.ts::UI-178/UI-179 receitas: prateleira, filtros, receita com o que falta, rascunho no editor e caixa retangular",
+    "note": "Prateleira com 55 receitas, abas e filtros, receita aberta com 12 cartas faltando na coleção inicial e Montar abrindo o editor com o rascunho; cobertura e rascunho em src/application/recipes.test.ts; sem rolagem horizontal em e2e/menus.spec.ts."
+  },
+  "UI-179": {
+    "status": "AUTOMATED",
+    "ref": "e2e/recipes.spec.ts::UI-178/UI-179 receitas: prateleira, filtros, receita com o que falta, rascunho no editor e caixa retangular",
+    "note": "Frente da caixa mais alta que larga, com a carta na janela e o emblema na lateral. O visual fino (tampa, base, cartas encostadas) fica no checklist manual."
+  },
+  "C-068": {
+    "status": "AUTOMATED",
+    "ref": "src/content/recipes.test.ts::receitas de deck > toda receita é um deck jogável de 20 cartas, com as evoluções completas e a capa (um Pokémon) na lista",
+    "note": "Contagens por categoria e por tipo e eras do meta nos outros casos do mesmo arquivo; o content-build aplica as mesmas regras."
+  },
+  "UI-180": {
+    "status": "AUTOMATED",
+    "ref": "e2e/sleeves.spec.ts::UI-180 verso do deck: Acessórios → aba Verso, sleeve do Pocket aplicado e verso das cartas na mesa",
+    "note": "Acessórios → aba Verso com os 78 sleeves, Verso Pikachu aplicado e o baralho do jogador com o sleeve na mesa 2D do Treino; conteúdo em src/presentation/assets/sleeves.test.ts. O verso na mesa 3D e o giro da prévia ficam no checklist manual."
+  },
+  "UI-181": {
+    "status": "AUTOMATED",
+    "ref": "src/domain/battle/effect-badges.test.ts::selos de efeito na visão > ataque com restrição e modificador: dois selos no Defensor (bloqueio e dano reduzido); nenhum no Banco",
+    "note": "Selos na visão (tipo, texto, Ativo para restrição de jogador, saída ao expirar) e ordem/ícones empacotados em src/presentation/ui/battle/effect-marks.test.ts. O estouro, o voo até a coluna e a saída na mesa 3D/2D ficam no checklist manual."
+  }
+}

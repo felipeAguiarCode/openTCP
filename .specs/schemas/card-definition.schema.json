@@ -1,0 +1,4291 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:card-campaign:schema:card-definition:2",
+  "title": "Card definition dataVersion 2 + effects-dsl-v1 (contrato estrutural)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "dataVersion",
+    "id",
+    "version",
+    "baseName",
+    "name",
+    "deckLimitKey",
+    "category",
+    "ruleBox",
+    "knockoutPoints",
+    "baseHp",
+    "attacks",
+    "abilities",
+    "tags"
+  ],
+  "properties": {
+    "dataVersion": {
+      "const": 2
+    },
+    "effectsDsl": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "baseName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 50
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 60
+    },
+    "deckLimitKey": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "maxLength": 100
+    },
+    "category": {
+      "enum": [
+        "POKEMON",
+        "TRAINER"
+      ]
+    },
+    "subtype": {
+      "enum": [
+        "ITEM",
+        "SUPPORTER",
+        "TOOL",
+        "STADIUM"
+      ]
+    },
+    "stage": {
+      "enum": [
+        "BASIC",
+        "STAGE_1",
+        "STAGE_2"
+      ]
+    },
+    "evolvesFrom": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+      },
+      "maxItems": 16,
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "types": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/pokemonType"
+      },
+      "maxItems": 2,
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "baseHp": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 10,
+      "maximum": 9990,
+      "multipleOf": 10
+    },
+    "retreatCost": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 10
+    },
+    "weakness": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "$ref": "#/$defs/pokemonType"
+            },
+            "operation": {
+              "enum": [
+                "ADD",
+                "MULTIPLY"
+              ]
+            },
+            "value": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            }
+          },
+          "required": [
+            "type",
+            "operation",
+            "value"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "ruleBox": {
+      "enum": [
+        "NONE",
+        "EX",
+        "MEGA_EX"
+      ]
+    },
+    "knockoutPoints": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1,
+      "maximum": 3
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 40
+      },
+      "maxItems": 32,
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "flavorText": {
+      "type": "string",
+      "maxLength": 240
+    },
+    "attacks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/attack"
+      },
+      "maxItems": 4,
+      "minItems": 0
+    },
+    "abilities": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ability"
+      },
+      "maxItems": 4,
+      "minItems": 0
+    },
+    "trainerRules": {
+      "$ref": "#/$defs/trainerRules"
+    },
+    "trainerEffects": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/effectBlock"
+      },
+      "maxItems": 16,
+      "minItems": 0
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "category": {
+            "const": "POKEMON"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "stage",
+          "evolvesFrom",
+          "types",
+          "retreatCost",
+          "weakness"
+        ],
+        "properties": {
+          "baseHp": {
+            "type": "integer"
+          },
+          "knockoutPoints": {
+            "type": "integer"
+          }
+        },
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "subtype"
+              ]
+            },
+            {
+              "required": [
+                "trainerRules"
+              ]
+            },
+            {
+              "required": [
+                "trainerEffects"
+              ]
+            }
+          ]
+        }
+      },
+      "else": {
+        "required": [
+          "subtype",
+          "trainerRules",
+          "trainerEffects"
+        ],
+        "properties": {
+          "baseHp": {
+            "type": "null"
+          },
+          "knockoutPoints": {
+            "type": "null"
+          },
+          "ruleBox": {
+            "const": "NONE"
+          },
+          "attacks": {
+            "maxItems": 0
+          },
+          "abilities": {
+            "maxItems": 0
+          }
+        },
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "stage"
+              ]
+            },
+            {
+              "required": [
+                "types"
+              ]
+            },
+            {
+              "required": [
+                "retreatCost"
+              ]
+            },
+            {
+              "required": [
+                "weakness"
+              ]
+            },
+            {
+              "required": [
+                "evolvesFrom"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "stage": {
+            "const": "BASIC"
+          }
+        },
+        "required": [
+          "stage"
+        ]
+      },
+      "then": {
+        "properties": {
+          "evolvesFrom": {
+            "maxItems": 0
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "stage": {
+            "enum": [
+              "STAGE_1",
+              "STAGE_2"
+            ]
+          }
+        },
+        "required": [
+          "stage"
+        ]
+      },
+      "then": {
+        "properties": {
+          "evolvesFrom": {
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "category": {
+            "const": "POKEMON"
+          },
+          "ruleBox": {
+            "const": "NONE"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "knockoutPoints": {
+            "const": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "ruleBox": {
+            "const": "EX"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "category": {
+            "const": "POKEMON"
+          },
+          "knockoutPoints": {
+            "const": 2
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "ruleBox": {
+            "const": "MEGA_EX"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "category": {
+            "const": "POKEMON"
+          },
+          "knockoutPoints": {
+            "const": 3
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "subtype": {
+            "const": "TOOL"
+          }
+        },
+        "required": [
+          "subtype"
+        ]
+      },
+      "then": {
+        "properties": {
+          "trainerRules": {
+            "properties": {
+              "destinationAfterPlay": {
+                "const": "ATTACHED_TOOL"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "subtype": {
+            "const": "STADIUM"
+          }
+        },
+        "required": [
+          "subtype"
+        ]
+      },
+      "then": {
+        "properties": {
+          "trainerRules": {
+            "properties": {
+              "destinationAfterPlay": {
+                "const": "STADIUM_SLOT"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "subtype": {
+            "const": "SUPPORTER"
+          }
+        },
+        "required": [
+          "subtype"
+        ]
+      },
+      "then": {
+        "properties": {
+          "trainerRules": {
+            "properties": {
+              "destinationAfterPlay": {
+                "const": "DISCARD"
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "energyType": {
+      "enum": [
+        "GRASS",
+        "FIRE",
+        "WATER",
+        "LIGHTNING",
+        "PSYCHIC",
+        "FIGHTING",
+        "DARKNESS",
+        "METAL"
+      ]
+    },
+    "pokemonType": {
+      "enum": [
+        "GRASS",
+        "FIRE",
+        "WATER",
+        "LIGHTNING",
+        "PSYCHIC",
+        "FIGHTING",
+        "DARKNESS",
+        "METAL",
+        "DRAGON",
+        "COLORLESS"
+      ]
+    },
+    "condition": {
+      "enum": [
+        "POISONED",
+        "BURNED",
+        "ASLEEP",
+        "PARALYZED",
+        "CONFUSED"
+      ]
+    },
+    "pokemonFilter": {
+      "type": "object",
+      "properties": {
+        "types": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/pokemonType"
+          },
+          "maxItems": 10,
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "stages": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "BASIC",
+              "STAGE_1",
+              "STAGE_2"
+            ]
+          },
+          "maxItems": 3,
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "ruleBoxes": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "NONE",
+              "EX",
+              "MEGA_EX"
+            ]
+          },
+          "maxItems": 3,
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "deckLimitKeys": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "maxItems": 16,
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "hasDamage": {
+          "type": "boolean"
+        },
+        "hasCondition": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "#/$defs/condition"
+            }
+          ]
+        },
+        "hasTool": {
+          "type": "boolean"
+        },
+        "hasEnergy": {
+          "type": "boolean"
+        },
+        "positions": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "ACTIVE",
+              "BENCH"
+            ]
+          },
+          "maxItems": 2,
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "excludeSelf": {
+          "type": "boolean"
+        },
+        "excludeFossils": {
+          "type": "boolean"
+        },
+        "hasAbility": {
+          "type": "boolean"
+        },
+        "abilityIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "maxItems": 8,
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "excludeAbilityIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "maxItems": 8,
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "attackIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "maxItems": 8,
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "energyTypes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/energyType"
+          },
+          "maxItems": 8,
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "evolvesFrom": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "maxItems": 16,
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "evolvedThisTurn": {
+          "type": "boolean"
+        },
+        "movedToActiveThisTurn": {
+          "type": "boolean"
+        },
+        "damagedByAttackLastOpponentTurn": {
+          "type": "boolean"
+        },
+        "enteredPlayThisTurn": {
+          "type": "boolean"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "cardFilter": {
+      "type": "object",
+      "properties": {
+        "categories": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "POKEMON",
+              "TRAINER"
+            ]
+          },
+          "maxItems": 2,
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "subtypes": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "ITEM",
+              "SUPPORTER",
+              "TOOL",
+              "STADIUM"
+            ]
+          },
+          "maxItems": 4,
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "stages": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "BASIC",
+              "STAGE_1",
+              "STAGE_2"
+            ]
+          },
+          "maxItems": 3,
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "types": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/pokemonType"
+          },
+          "maxItems": 10,
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "ruleBoxes": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "NONE",
+              "EX",
+              "MEGA_EX"
+            ]
+          },
+          "maxItems": 3,
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "deckLimitKeys": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "evolvesFromTarget": {
+          "type": "boolean"
+        },
+        "excludeFossils": {
+          "type": "boolean"
+        },
+        "evolvesFrom": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "maxItems": 16,
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "attackIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "maxItems": 8,
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "maxItems": 16,
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "pick": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "mode": {
+              "const": "ALL"
+            }
+          },
+          "required": [
+            "mode"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "mode": {
+              "const": "CHOOSE"
+            },
+            "chooser": {
+              "enum": [
+                "CONTROLLER",
+                "OPPONENT"
+              ]
+            },
+            "min": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 8
+            },
+            "max": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 8
+            }
+          },
+          "required": [
+            "mode",
+            "chooser",
+            "min",
+            "max"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "mode": {
+              "const": "RANDOM"
+            },
+            "count": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 8
+            }
+          },
+          "required": [
+            "mode",
+            "count"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "selector": {
+      "type": "object",
+      "properties": {
+        "scope": {
+          "enum": [
+            "SELF",
+            "OWN_ACTIVE",
+            "OPPONENT_ACTIVE",
+            "OWN_BENCH",
+            "OPPONENT_BENCH",
+            "OWN_POKEMON",
+            "OPPONENT_POKEMON",
+            "ALL_POKEMON",
+            "EVENT_SOURCE",
+            "EVENT_TARGET",
+            "OUTPUT",
+            "DEFENDING",
+            "TARGET"
+          ]
+        },
+        "ref": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "filter": {
+          "$ref": "#/$defs/pokemonFilter"
+        },
+        "pick": {
+          "$ref": "#/$defs/pick"
+        },
+        "outputId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        }
+      },
+      "required": [
+        "scope"
+      ],
+      "additionalProperties": false
+    },
+    "zone": {
+      "enum": [
+        "OWN_HAND",
+        "OPPONENT_HAND",
+        "OWN_DECK",
+        "OPPONENT_DECK",
+        "OWN_DISCARD",
+        "OPPONENT_DISCARD"
+      ]
+    },
+    "formula": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "op"
+      ],
+      "properties": {
+        "op": {
+          "enum": [
+            "CONST",
+            "ADD",
+            "SUBTRACT",
+            "MULTIPLY",
+            "MIN",
+            "MAX",
+            "CLAMP",
+            "COUNT_HEADS",
+            "COUNT_TAILS",
+            "COUNT_ATTACHED_ENERGIES",
+            "COUNT_PROVIDED_ENERGY_UNITS",
+            "COUNT_BENCH_POKEMON",
+            "COUNT_POKEMON",
+            "COUNT_CARDS",
+            "DAMAGE_ON_SOURCE",
+            "DAMAGE_ON_TARGET",
+            "POINTS",
+            "OUTPUT_COUNT",
+            "EXTRA_ENERGY_UNITS",
+            "DAMAGE_DEALT_BY_ATTACK",
+            "REMAINING_HP",
+            "DISTINCT_ENERGY_TYPES",
+            "RETREAT_COST",
+            "OWN_TURN_NUMBER",
+            "ATTACKS_USED",
+            "TOP_CARDS_MATCHING"
+          ]
+        },
+        "value": {
+          "type": "integer",
+          "minimum": -9990,
+          "maximum": 1000000
+        },
+        "operands": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/formula"
+          },
+          "maxItems": 8,
+          "minItems": 1
+        },
+        "reference": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "selector": {
+          "$ref": "#/$defs/selector"
+        },
+        "energyType": {
+          "$ref": "#/$defs/energyType"
+        },
+        "side": {
+          "enum": [
+            "OWN",
+            "OPPONENT",
+            "BOTH"
+          ]
+        },
+        "zone": {
+          "$ref": "#/$defs/zone"
+        },
+        "filter": {
+          "$ref": "#/$defs/cardFilter"
+        },
+        "attackId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "window": {
+          "enum": [
+            "LAST_OWN_TURN",
+            "GAME"
+          ]
+        },
+        "count": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "const": "CONST"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "value"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "enum": [
+                  "REMAINING_HP",
+                  "DISTINCT_ENERGY_TYPES",
+                  "RETREAT_COST"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "selector"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "const": "OWN_TURN_NUMBER"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "side"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "const": "ATTACKS_USED"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "attackId"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "const": "TOP_CARDS_MATCHING"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "count"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "enum": [
+                  "ADD",
+                  "MULTIPLY",
+                  "MIN",
+                  "MAX"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "operands"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "const": "SUBTRACT"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "operands"
+            ],
+            "properties": {
+              "operands": {
+                "minItems": 2,
+                "maxItems": 2
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "const": "CLAMP"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "operands"
+            ],
+            "properties": {
+              "operands": {
+                "minItems": 3,
+                "maxItems": 3
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "enum": [
+                  "COUNT_HEADS",
+                  "COUNT_TAILS",
+                  "OUTPUT_COUNT"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "reference"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "enum": [
+                  "COUNT_ATTACHED_ENERGIES",
+                  "COUNT_PROVIDED_ENERGY_UNITS",
+                  "COUNT_POKEMON"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "selector"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "enum": [
+                  "COUNT_BENCH_POKEMON",
+                  "POINTS"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "side"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "const": "COUNT_CARDS"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "zone"
+            ]
+          }
+        }
+      ]
+    },
+    "conditionExpr": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "op"
+      ],
+      "properties": {
+        "op": {
+          "enum": [
+            "ALL",
+            "ANY",
+            "NOT",
+            "COMPARE",
+            "EXISTS",
+            "CARDS_EXIST",
+            "SOURCE_POSITION",
+            "HAS_CONDITION",
+            "IS_TURN_OF",
+            "STADIUM_IN_PLAY",
+            "SUPPORTER_PLAYED_THIS_TURN",
+            "KNOCKED_OUT_LAST_OPPONENT_TURN",
+            "OUTPUT_CARDS_MATCH"
+          ]
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/conditionExpr"
+          },
+          "maxItems": 8,
+          "minItems": 1
+        },
+        "condition": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/conditionExpr"
+            },
+            {
+              "$ref": "#/$defs/condition"
+            },
+            {
+              "const": "ANY"
+            }
+          ]
+        },
+        "left": {
+          "$ref": "#/$defs/formula"
+        },
+        "right": {
+          "$ref": "#/$defs/formula"
+        },
+        "cmp": {
+          "enum": [
+            "EQ",
+            "NE",
+            "GT",
+            "GE",
+            "LT",
+            "LE"
+          ]
+        },
+        "selector": {
+          "$ref": "#/$defs/selector"
+        },
+        "zone": {
+          "$ref": "#/$defs/zone"
+        },
+        "filter": {
+          "$ref": "#/$defs/cardFilter"
+        },
+        "count": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 60
+        },
+        "position": {
+          "enum": [
+            "ACTIVE",
+            "BENCH"
+          ]
+        },
+        "side": {
+          "enum": [
+            "OWN",
+            "OPPONENT"
+          ]
+        },
+        "reference": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "enum": [
+                  "ALL",
+                  "ANY"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "conditions"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "const": "NOT"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "const": "COMPARE"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "left",
+              "cmp",
+              "right"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "const": "EXISTS"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "selector"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "const": "CARDS_EXIST"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "zone",
+              "count"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "const": "SOURCE_POSITION"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "position"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "const": "HAS_CONDITION"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "selector",
+              "condition"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "const": "IS_TURN_OF"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "side"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "const": "OUTPUT_CARDS_MATCH"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "reference"
+            ]
+          }
+        }
+      ]
+    },
+    "duration": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "enum": [
+            "INSTANT",
+            "THIS_TURN",
+            "NEXT_OPPONENT_TURN",
+            "NEXT_OWN_TURN",
+            "WHILE_SOURCE_IN_PLAY"
+          ]
+        },
+        "removeOn": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "TARGET_LEAVES_ACTIVE",
+              "TARGET_EVOLVES",
+              "TARGET_LEAVES_PLAY",
+              "SOURCE_LEAVES_ACTIVE"
+            ]
+          },
+          "maxItems": 4,
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "additionalProperties": false
+    },
+    "trigger": {
+      "type": "object",
+      "properties": {
+        "event": {
+          "enum": [
+            "TURN_STARTED",
+            "TURN_ENDING",
+            "POKEMON_ENTERED",
+            "POKEMON_EVOLVED",
+            "POKEMON_MOVED",
+            "ENERGY_ATTACHED",
+            "ATTACK_DECLARED",
+            "DAMAGE_APPLIED",
+            "CONDITION_APPLIED",
+            "POKEMON_KNOCKED_OUT",
+            "TRAINER_PLAYED"
+          ]
+        },
+        "filter": {
+          "type": "object",
+          "properties": {
+            "subject": {
+              "enum": [
+                "SELF",
+                "OWN_POKEMON",
+                "OPPONENT_POKEMON",
+                "ANY_POKEMON"
+              ]
+            },
+            "subjectRole": {
+              "enum": [
+                "TARGET",
+                "SOURCE"
+              ]
+            },
+            "turnOf": {
+              "enum": [
+                "OWN",
+                "OPPONENT"
+              ]
+            },
+            "from": {
+              "enum": [
+                "HAND",
+                "DECK",
+                "DISCARD"
+              ]
+            },
+            "reason": {
+              "enum": [
+                "RETREAT",
+                "SWITCH",
+                "PROMOTE"
+              ]
+            },
+            "to": {
+              "enum": [
+                "ACTIVE",
+                "BENCH"
+              ]
+            },
+            "energySource": {
+              "enum": [
+                "ENERGY_ZONE",
+                "DISCARD",
+                "EFFECT"
+              ]
+            },
+            "attachmentMode": {
+              "enum": [
+                "MANUAL",
+                "CARD_EFFECT"
+              ]
+            },
+            "energyType": {
+              "$ref": "#/$defs/energyType"
+            },
+            "damageCategory": {
+              "enum": [
+                "ATTACK",
+                "EFFECT",
+                "CONDITION"
+              ]
+            },
+            "minimum": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9990
+            },
+            "condition": {
+              "$ref": "#/$defs/condition"
+            },
+            "subtype": {
+              "enum": [
+                "ITEM",
+                "SUPPORTER",
+                "TOOL",
+                "STADIUM"
+              ]
+            },
+            "cause": {
+              "const": "ATTACK"
+            }
+          },
+          "required": [],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "event"
+      ],
+      "additionalProperties": false
+    },
+    "additionalCost": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "DISCARD_ENERGY"
+            },
+            "from": {
+              "const": "SELF"
+            },
+            "energyType": {
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/energyType"
+                },
+                {
+                  "const": "ANY"
+                }
+              ]
+            },
+            "count": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10
+            }
+          },
+          "required": [
+            "type",
+            "from",
+            "energyType",
+            "count"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "DISCARD_HAND_CARDS"
+            },
+            "count": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10
+            },
+            "filter": {
+              "$ref": "#/$defs/cardFilter"
+            }
+          },
+          "required": [
+            "type",
+            "count"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "operation": {
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "FLIP_COINS",
+            "DEAL_DAMAGE",
+            "HEAL_DAMAGE",
+            "APPLY_CONDITION",
+            "REMOVE_CONDITION",
+            "DRAW_CARDS",
+            "SEARCH_DECK",
+            "ATTACH_ENERGY",
+            "MOVE_ENERGY",
+            "DISCARD_ENERGY",
+            "SWITCH_ACTIVE",
+            "EVOLVE",
+            "MODIFY",
+            "PREVENT_DAMAGE",
+            "PREVENT_EFFECTS",
+            "RESTRICT_ACTION",
+            "SUPPRESS_ABILITIES",
+            "DISCARD_CARDS",
+            "RETURN_TO_HAND",
+            "SHUFFLE_INTO_DECK",
+            "DISCARD_POKEMON",
+            "KNOCK_OUT",
+            "PUT_ON_BENCH",
+            "RECOVER_FROM_DISCARD",
+            "LOOK_AT_TOP",
+            "SHUFFLE_DECK",
+            "REVEAL_HAND",
+            "SCHEDULE_DELAYED",
+            "COPY_ATTACK",
+            "CONDITIONAL",
+            "REMOVE_TOOL",
+            "END_TURN",
+            "ATTACK_FAILS",
+            "SHUFFLE_HAND_INTO_DECK",
+            "MOVE_DAMAGE",
+            "SET_REMAINING_HP",
+            "DEVOLVE",
+            "RETURN_CARDS_TO_DECK",
+            "CHANGE_ENERGY_TYPE",
+            "SET_NEXT_ENERGY",
+            "REVEAL_TOP_TAKE",
+            "REVEAL_CARDS",
+            "SWAP_HAND_WITH_DECK",
+            "CHOOSE_ONE",
+            "FORCE_COIN",
+            "COPY_TRAINER",
+            "MOVE_ENERGY_FREELY",
+            "PREVENT_CONDITIONS",
+            "PREVENT_HEALING",
+            "ATTACK_COIN_GATE",
+            "COUNTER_DAMAGE",
+            "GRANT_RULE",
+            "SURVIVE_KNOCKOUT",
+            "REROLL_COINS"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "FLIP_COINS"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "count": {
+                "oneOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 20
+                  },
+                  {
+                    "$ref": "#/$defs/formula"
+                  }
+                ]
+              },
+              "untilTails": {
+                "const": true
+              },
+              "outputId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 120
+              }
+            },
+            "required": [
+              "type",
+              "outputId"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "DEAL_DAMAGE"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "$ref": "#/$defs/selector"
+              },
+              "amount": {
+                "oneOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9990
+                  },
+                  {
+                    "$ref": "#/$defs/formula"
+                  }
+                ]
+              },
+              "category": {
+                "enum": [
+                  "ATTACK",
+                  "EFFECT"
+                ]
+              },
+              "applyWeakness": {
+                "type": "boolean"
+              },
+              "ignoreDefenderModifiers": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "type",
+              "target",
+              "amount"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "HEAL_DAMAGE"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "$ref": "#/$defs/selector"
+              },
+              "amount": {
+                "oneOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 9990
+                  },
+                  {
+                    "$ref": "#/$defs/formula"
+                  },
+                  {
+                    "const": "ALL"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "type",
+              "target",
+              "amount"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "APPLY_CONDITION"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "$ref": "#/$defs/selector"
+              },
+              "condition": {
+                "oneOf": [
+                  {
+                    "$ref": "#/$defs/condition"
+                  },
+                  {
+                    "const": "RANDOM"
+                  }
+                ]
+              },
+              "poisonDamage": {
+                "type": "integer",
+                "minimum": 10,
+                "maximum": 100
+              }
+            },
+            "required": [
+              "type",
+              "target",
+              "condition"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "REMOVE_CONDITION"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "$ref": "#/$defs/selector"
+              },
+              "conditions": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/condition"
+                    },
+                    "maxItems": 5,
+                    "minItems": 1,
+                    "uniqueItems": true
+                  },
+                  {
+                    "enum": [
+                      "ALL",
+                      "RANDOM_ONE"
+                    ]
+                  }
+                ]
+              }
+            },
+            "required": [
+              "type",
+              "target",
+              "conditions"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "DRAW_CARDS"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "player": {
+                "enum": [
+                  "OWN",
+                  "OPPONENT"
+                ]
+              },
+              "count": {
+                "oneOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 100
+                  },
+                  {
+                    "$ref": "#/$defs/formula"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "type",
+              "player",
+              "count"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "SEARCH_DECK"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "player": {
+                "const": "OWN"
+              },
+              "filter": {
+                "$ref": "#/$defs/cardFilter"
+              },
+              "count": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 20
+              },
+              "mode": {
+                "enum": [
+                  "CHOOSE",
+                  "RANDOM"
+                ]
+              },
+              "destination": {
+                "enum": [
+                  "HAND",
+                  "BENCH"
+                ]
+              },
+              "reveal": {
+                "type": "boolean"
+              },
+              "shuffleAfter": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "type",
+              "player",
+              "filter",
+              "count",
+              "mode",
+              "destination"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "ATTACH_ENERGY"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "$ref": "#/$defs/selector"
+              },
+              "energyType": {
+                "oneOf": [
+                  {
+                    "$ref": "#/$defs/energyType"
+                  },
+                  {
+                    "enum": [
+                      "READY",
+                      "RANDOM",
+                      "ZONE_RANDOM"
+                    ]
+                  }
+                ]
+              },
+              "energyTypes": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/energyType"
+                },
+                "maxItems": 8,
+                "minItems": 1
+              },
+              "count": {
+                "oneOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 10
+                  },
+                  {
+                    "$ref": "#/$defs/formula"
+                  }
+                ]
+              },
+              "source": {
+                "enum": [
+                  "GENERATED",
+                  "ENERGY_ZONE_READY",
+                  "DISCARDED_ENERGY"
+                ]
+              },
+              "consumesManualAttachment": {
+                "type": "boolean"
+              },
+              "consumesReadyEnergy": {
+                "type": "boolean"
+              },
+              "distribute": {
+                "const": true
+              },
+              "perTarget": {
+                "const": true
+              }
+            },
+            "required": [
+              "type",
+              "target",
+              "energyType",
+              "count",
+              "source"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "MOVE_ENERGY"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "from": {
+                "$ref": "#/$defs/selector"
+              },
+              "to": {
+                "$ref": "#/$defs/selector"
+              },
+              "energyType": {
+                "oneOf": [
+                  {
+                    "$ref": "#/$defs/energyType"
+                  },
+                  {
+                    "const": "ANY"
+                  }
+                ]
+              },
+              "energyTypes": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/energyType"
+                },
+                "maxItems": 8,
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "count": {
+                "oneOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 10
+                  },
+                  {
+                    "const": "ALL"
+                  }
+                ]
+              },
+              "perTarget": {
+                "const": true
+              }
+            },
+            "required": [
+              "type",
+              "from",
+              "to",
+              "count"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "DISCARD_ENERGY"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "$ref": "#/$defs/selector"
+              },
+              "energyType": {
+                "oneOf": [
+                  {
+                    "$ref": "#/$defs/energyType"
+                  },
+                  {
+                    "const": "ANY"
+                  }
+                ]
+              },
+              "energyTypes": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/energyType"
+                },
+                "maxItems": 8,
+                "minItems": 1
+              },
+              "count": {
+                "oneOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 20
+                  },
+                  {
+                    "$ref": "#/$defs/formula"
+                  },
+                  {
+                    "const": "ALL"
+                  }
+                ]
+              },
+              "chooser": {
+                "enum": [
+                  "CONTROLLER",
+                  "OPPONENT",
+                  "RANDOM"
+                ]
+              },
+              "combined": {
+                "const": true
+              }
+            },
+            "required": [
+              "type",
+              "target",
+              "count"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "SWITCH_ACTIVE"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "side": {
+                "enum": [
+                  "OWN",
+                  "OPPONENT"
+                ]
+              },
+              "chooser": {
+                "enum": [
+                  "CONTROLLER",
+                  "OPPONENT",
+                  "RANDOM"
+                ]
+              },
+              "filter": {
+                "$ref": "#/$defs/pokemonFilter"
+              },
+              "incoming": {
+                "const": "SELF"
+              }
+            },
+            "required": [
+              "type",
+              "side",
+              "chooser"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "EVOLVE"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "$ref": "#/$defs/selector"
+              },
+              "fromHand": {
+                "$ref": "#/$defs/cardFilter"
+              },
+              "skipStage": {
+                "type": "boolean"
+              },
+              "ignoreTurnRestrictions": {
+                "type": "boolean"
+              },
+              "from": {
+                "const": "DECK"
+              }
+            },
+            "required": [
+              "type",
+              "target",
+              "fromHand"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "MODIFY"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "stat": {
+                "enum": [
+                  "MAX_HP",
+                  "RETREAT_COST",
+                  "ATTACK_COST",
+                  "DAMAGE_DEALT",
+                  "DAMAGE_TAKEN",
+                  "ENERGY_PROVISION",
+                  "KNOCKOUT_POINTS",
+                  "POISON_DAMAGE"
+                ]
+              },
+              "amount": {
+                "oneOf": [
+                  {
+                    "type": "integer",
+                    "minimum": -9990,
+                    "maximum": 9990
+                  },
+                  {
+                    "$ref": "#/$defs/formula"
+                  }
+                ]
+              },
+              "target": {
+                "$ref": "#/$defs/selector"
+              },
+              "duration": {
+                "$ref": "#/$defs/duration"
+              },
+              "energyType": {
+                "$ref": "#/$defs/energyType"
+              },
+              "exclusive": {
+                "const": true
+              },
+              "appliesTo": {
+                "type": "object",
+                "properties": {
+                  "opponentActiveOnly": {
+                    "type": "boolean"
+                  },
+                  "damageCategory": {
+                    "enum": [
+                      "ATTACK",
+                      "EFFECT",
+                      "ANY"
+                    ]
+                  },
+                  "attackIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 120
+                    },
+                    "maxItems": 4,
+                    "minItems": 1,
+                    "uniqueItems": true
+                  },
+                  "attackerFilter": {
+                    "$ref": "#/$defs/pokemonFilter"
+                  },
+                  "targetFilter": {
+                    "$ref": "#/$defs/pokemonFilter"
+                  }
+                },
+                "required": [],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "type",
+              "stat",
+              "amount",
+              "target",
+              "duration"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "PREVENT_DAMAGE"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "$ref": "#/$defs/selector"
+              },
+              "categories": {
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "ATTACK",
+                    "EFFECT",
+                    "CONDITION"
+                  ]
+                },
+                "maxItems": 3,
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "amount": {
+                "oneOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 9990
+                  },
+                  {
+                    "const": "ALL"
+                  }
+                ]
+              },
+              "duration": {
+                "$ref": "#/$defs/duration"
+              },
+              "charges": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 10
+              },
+              "attackerFilter": {
+                "$ref": "#/$defs/pokemonFilter"
+              },
+              "coinFlip": {
+                "const": true
+              }
+            },
+            "required": [
+              "type",
+              "target",
+              "categories",
+              "amount",
+              "duration"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "PREVENT_EFFECTS"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "$ref": "#/$defs/selector"
+              },
+              "fromSide": {
+                "const": "OPPONENT"
+              },
+              "duration": {
+                "$ref": "#/$defs/duration"
+              }
+            },
+            "required": [
+              "type",
+              "target",
+              "fromSide",
+              "duration"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "RESTRICT_ACTION"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "$ref": "#/$defs/selector"
+              },
+              "actions": {
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "ATTACK",
+                    "RETREAT",
+                    "PLAY_ITEM",
+                    "PLAY_SUPPORTER",
+                    "USE_ABILITY",
+                    "MANUAL_ENERGY",
+                    "EVOLVE",
+                    "RECEIVE_ZONE_ENERGY"
+                  ]
+                },
+                "maxItems": 8,
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "duration": {
+                "$ref": "#/$defs/duration"
+              },
+              "attackIds": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 120
+                },
+                "maxItems": 4,
+                "minItems": 1,
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "type",
+              "target",
+              "actions",
+              "duration"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "SUPPRESS_ABILITIES"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "$ref": "#/$defs/selector"
+              },
+              "duration": {
+                "$ref": "#/$defs/duration"
+              }
+            },
+            "required": [
+              "type",
+              "target",
+              "duration"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "DISCARD_CARDS"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "zone": {
+                "enum": [
+                  "OWN_HAND",
+                  "OPPONENT_HAND",
+                  "OWN_DECK_TOP",
+                  "OPPONENT_DECK_TOP"
+                ]
+              },
+              "count": {
+                "oneOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 100
+                  },
+                  {
+                    "$ref": "#/$defs/formula"
+                  }
+                ]
+              },
+              "chooser": {
+                "enum": [
+                  "CONTROLLER",
+                  "OPPONENT",
+                  "RANDOM"
+                ]
+              },
+              "filter": {
+                "$ref": "#/$defs/cardFilter"
+              },
+              "upTo": {
+                "const": true
+              },
+              "outputId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 120
+              }
+            },
+            "required": [
+              "type",
+              "zone",
+              "count",
+              "chooser"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "RETURN_TO_HAND"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "$ref": "#/$defs/selector"
+              }
+            },
+            "required": [
+              "type",
+              "target"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "SHUFFLE_INTO_DECK"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "$ref": "#/$defs/selector"
+              }
+            },
+            "required": [
+              "type",
+              "target"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "DISCARD_POKEMON"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "$ref": "#/$defs/selector"
+              }
+            },
+            "required": [
+              "type",
+              "target"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "KNOCK_OUT"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "$ref": "#/$defs/selector"
+              }
+            },
+            "required": [
+              "type",
+              "target"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "PUT_ON_BENCH"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "from": {
+                "enum": [
+                  "HAND",
+                  "DECK",
+                  "DISCARD"
+                ]
+              },
+              "filter": {
+                "$ref": "#/$defs/cardFilter"
+              },
+              "count": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 3
+              },
+              "mode": {
+                "enum": [
+                  "CHOOSE",
+                  "RANDOM"
+                ]
+              },
+              "side": {
+                "enum": [
+                  "OWN",
+                  "OPPONENT"
+                ]
+              },
+              "chooser": {
+                "const": "CONTROLLER"
+              }
+            },
+            "required": [
+              "type",
+              "from",
+              "count",
+              "mode",
+              "side"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "RECOVER_FROM_DISCARD"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "filter": {
+                "$ref": "#/$defs/cardFilter"
+              },
+              "count": {
+                "oneOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 10
+                  },
+                  {
+                    "$ref": "#/$defs/formula"
+                  }
+                ]
+              },
+              "mode": {
+                "enum": [
+                  "CHOOSE",
+                  "RANDOM"
+                ]
+              },
+              "destination": {
+                "enum": [
+                  "HAND",
+                  "DECK"
+                ]
+              }
+            },
+            "required": [
+              "type",
+              "count",
+              "mode",
+              "destination"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "LOOK_AT_TOP"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "player": {
+                "enum": [
+                  "OWN",
+                  "OPPONENT",
+                  "CHOOSE"
+                ]
+              },
+              "count": {
+                "oneOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 10
+                  },
+                  {
+                    "$ref": "#/$defs/formula"
+                  }
+                ]
+              },
+              "reorder": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "type",
+              "player",
+              "count"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "SHUFFLE_DECK"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "player": {
+                "enum": [
+                  "OWN",
+                  "OPPONENT"
+                ]
+              }
+            },
+            "required": [
+              "type",
+              "player"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "REVEAL_HAND"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "player": {
+                "enum": [
+                  "OWN",
+                  "OPPONENT"
+                ]
+              }
+            },
+            "required": [
+              "type",
+              "player"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "SCHEDULE_DELAYED"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "$ref": "#/$defs/selector"
+              },
+              "at": {
+                "enum": [
+                  "END_OF_OPPONENT_NEXT_TURN",
+                  "START_OF_OWN_NEXT_TURN",
+                  "END_OF_THIS_TURN"
+                ]
+              },
+              "operations": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/operation"
+                },
+                "maxItems": 8,
+                "minItems": 1
+              },
+              "removeOn": {
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "TARGET_LEAVES_ACTIVE",
+                    "TARGET_EVOLVES",
+                    "TARGET_LEAVES_PLAY",
+                    "SOURCE_LEAVES_ACTIVE"
+                  ]
+                },
+                "maxItems": 4,
+                "minItems": 0,
+                "uniqueItems": true
+              },
+              "bindTo": {
+                "const": "SPOT"
+              }
+            },
+            "required": [
+              "type",
+              "target",
+              "at",
+              "operations"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "COPY_ATTACK"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "from": {
+                "$ref": "#/$defs/selector"
+              },
+              "attackFilter": {
+                "type": "object",
+                "properties": {
+                  "maxEnergyCost": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 20
+                  },
+                  "attackIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 120
+                    },
+                    "maxItems": 4,
+                    "minItems": 1,
+                    "uniqueItems": true
+                  }
+                },
+                "required": [],
+                "additionalProperties": false
+              },
+              "requireEnergy": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "type",
+              "from",
+              "requireEnergy"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "CONDITIONAL"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "condition": {
+                "$ref": "#/$defs/conditionExpr"
+              },
+              "then": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/operation"
+                },
+                "maxItems": 8,
+                "minItems": 1
+              },
+              "else": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/operation"
+                },
+                "maxItems": 8,
+                "minItems": 0
+              }
+            },
+            "required": [
+              "type",
+              "condition",
+              "then"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "REMOVE_TOOL"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "$ref": "#/$defs/selector"
+              },
+              "destination": {
+                "enum": [
+                  "DISCARD",
+                  "HAND"
+                ]
+              }
+            },
+            "required": [
+              "type",
+              "target",
+              "destination"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "END_TURN"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {},
+            "required": [
+              "type"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "ATTACK_FAILS"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {},
+            "required": [
+              "type"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "SHUFFLE_HAND_INTO_DECK"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "player": {
+                "enum": [
+                  "OWN",
+                  "OPPONENT"
+                ]
+              },
+              "outputId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 120
+              }
+            },
+            "required": [
+              "type",
+              "player"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "MOVE_DAMAGE"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "from": {
+                "$ref": "#/$defs/selector"
+              },
+              "to": {
+                "$ref": "#/$defs/selector"
+              },
+              "amount": {
+                "oneOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 10,
+                    "maximum": 9990
+                  },
+                  {
+                    "const": "ALL"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "type",
+              "from",
+              "to",
+              "amount"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "SET_REMAINING_HP"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "$ref": "#/$defs/selector"
+              },
+              "mode": {
+                "enum": [
+                  "HALF_DOWN",
+                  "VALUE"
+                ]
+              },
+              "value": {
+                "type": "integer",
+                "minimum": 10,
+                "maximum": 9990
+              }
+            },
+            "required": [
+              "type",
+              "target",
+              "mode"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "DEVOLVE"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "$ref": "#/$defs/selector"
+              }
+            },
+            "required": [
+              "type",
+              "target"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "RETURN_CARDS_TO_DECK"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "zone": {
+                "const": "OPPONENT_HAND"
+              },
+              "count": {
+                "oneOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 100
+                  },
+                  {
+                    "$ref": "#/$defs/formula"
+                  }
+                ]
+              },
+              "chooser": {
+                "enum": [
+                  "RANDOM",
+                  "CONTROLLER"
+                ]
+              },
+              "filter": {
+                "$ref": "#/$defs/cardFilter"
+              }
+            },
+            "required": [
+              "type",
+              "zone",
+              "count",
+              "chooser"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "CHANGE_ENERGY_TYPE"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "$ref": "#/$defs/selector"
+              }
+            },
+            "required": [
+              "type",
+              "target"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "SET_NEXT_ENERGY"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "player": {
+                "enum": [
+                  "OWN",
+                  "OPPONENT"
+                ]
+              }
+            },
+            "required": [
+              "type",
+              "player"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "REVEAL_TOP_TAKE"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "count": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 10
+              },
+              "filter": {
+                "$ref": "#/$defs/cardFilter"
+              },
+              "rest": {
+                "enum": [
+                  "BOTTOM",
+                  "SHUFFLE"
+                ]
+              }
+            },
+            "required": [
+              "type",
+              "count",
+              "filter",
+              "rest"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "REVEAL_CARDS"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "zone": {
+                "enum": [
+                  "OPPONENT_DECK",
+                  "OPPONENT_HAND"
+                ]
+              },
+              "filter": {
+                "$ref": "#/$defs/cardFilter"
+              }
+            },
+            "required": [
+              "type",
+              "zone"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "SWAP_HAND_WITH_DECK"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {},
+            "required": [
+              "type"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "CHOOSE_ONE"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "options": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/operation"
+                  },
+                  "maxItems": 8,
+                  "minItems": 1
+                },
+                "maxItems": 4,
+                "minItems": 2
+              }
+            },
+            "required": [
+              "type",
+              "options"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "FORCE_COIN"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {},
+            "required": [
+              "type"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "COPY_TRAINER"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "excludeKeys": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 120
+                },
+                "maxItems": 8,
+                "minItems": 0,
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "type",
+              "excludeKeys"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "MOVE_ENERGY_FREELY"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {},
+            "required": [
+              "type"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "PREVENT_CONDITIONS"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "$ref": "#/$defs/selector"
+              },
+              "duration": {
+                "$ref": "#/$defs/duration"
+              },
+              "conditions": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/condition"
+                },
+                "maxItems": 5,
+                "minItems": 1,
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "type",
+              "target",
+              "duration"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "PREVENT_HEALING"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "$ref": "#/$defs/selector"
+              },
+              "duration": {
+                "$ref": "#/$defs/duration"
+              }
+            },
+            "required": [
+              "type",
+              "target",
+              "duration"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "ATTACK_COIN_GATE"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "$ref": "#/$defs/selector"
+              },
+              "duration": {
+                "$ref": "#/$defs/duration"
+              }
+            },
+            "required": [
+              "type",
+              "target",
+              "duration"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "COUNTER_DAMAGE"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "$ref": "#/$defs/selector"
+              },
+              "duration": {
+                "$ref": "#/$defs/duration"
+              },
+              "amount": {
+                "type": "integer",
+                "minimum": 10,
+                "maximum": 9990
+              }
+            },
+            "required": [
+              "type",
+              "target",
+              "duration",
+              "amount"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "GRANT_RULE"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "$ref": "#/$defs/selector"
+              },
+              "duration": {
+                "$ref": "#/$defs/duration"
+              },
+              "rule": {
+                "enum": [
+                  "EVOLVE_ANY_TURN",
+                  "PREVIOUS_EVOLUTION_ATTACKS",
+                  "EVOLVES_AS"
+                ]
+              },
+              "evolvesAs": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 120
+                },
+                "maxItems": 8,
+                "minItems": 1,
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "type",
+              "target",
+              "duration",
+              "rule"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "SURVIVE_KNOCKOUT"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "$ref": "#/$defs/selector"
+              },
+              "duration": {
+                "$ref": "#/$defs/duration"
+              },
+              "remainingHp": {
+                "type": "integer",
+                "minimum": 10,
+                "maximum": 9990
+              }
+            },
+            "required": [
+              "type",
+              "target",
+              "duration",
+              "remainingHp"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "REROLL_COINS"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "$ref": "#/$defs/selector"
+              },
+              "duration": {
+                "$ref": "#/$defs/duration"
+              }
+            },
+            "required": [
+              "type",
+              "target",
+              "duration"
+            ]
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "effectBlock": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+        },
+        "timing": {
+          "enum": [
+            "PRE_DAMAGE",
+            "POST_DAMAGE",
+            "ON_PLAY",
+            "ON_ACTIVATE",
+            "ON_TRIGGER",
+            "CONTINUOUS",
+            "REPLACEMENT"
+          ]
+        },
+        "condition": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/conditionExpr"
+            }
+          ]
+        },
+        "optional": {
+          "type": "boolean"
+        },
+        "failurePolicy": {
+          "enum": [
+            "REQUIRE_ANY",
+            "REQUIRE_ALL",
+            "BEST_EFFORT"
+          ]
+        },
+        "operation": {
+          "$ref": "#/$defs/operation"
+        }
+      },
+      "required": [
+        "id",
+        "timing",
+        "operation"
+      ],
+      "additionalProperties": false
+    },
+    "attack": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "energyCost",
+        "baseDamage",
+        "damageFormula",
+        "damageTarget",
+        "preconditions",
+        "additionalCosts",
+        "effects",
+        "endsTurn"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "energyCost": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "GRASS": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10
+            },
+            "FIRE": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10
+            },
+            "WATER": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10
+            },
+            "LIGHTNING": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10
+            },
+            "PSYCHIC": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10
+            },
+            "FIGHTING": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10
+            },
+            "DARKNESS": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10
+            },
+            "METAL": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10
+            },
+            "COLORLESS": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10
+            }
+          }
+        },
+        "baseDamage": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 9990
+        },
+        "damageFormula": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/formula"
+            }
+          ]
+        },
+        "damageTarget": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/selector"
+            }
+          ]
+        },
+        "preconditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/conditionExpr"
+          },
+          "maxItems": 16,
+          "minItems": 0
+        },
+        "additionalCosts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/additionalCost"
+          },
+          "maxItems": 4,
+          "minItems": 0
+        },
+        "effects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/effectBlock"
+          },
+          "maxItems": 16,
+          "minItems": 0
+        },
+        "endsTurn": {
+          "type": "boolean"
+        },
+        "alternativeCost": {
+          "type": "object",
+          "properties": {
+            "condition": {
+              "$ref": "#/$defs/conditionExpr"
+            },
+            "energyCost": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "GRASS": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 10
+                },
+                "FIRE": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 10
+                },
+                "WATER": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 10
+                },
+                "LIGHTNING": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 10
+                },
+                "PSYCHIC": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 10
+                },
+                "FIGHTING": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 10
+                },
+                "DARKNESS": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 10
+                },
+                "METAL": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 10
+                },
+                "COLORLESS": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 10
+                }
+              }
+            }
+          },
+          "required": [
+            "condition",
+            "energyCost"
+          ],
+          "additionalProperties": false
+        },
+        "ignoreDefenderEffects": {
+          "const": true
+        },
+        "presentation": {
+          "type": "object",
+          "properties": {
+            "presetId": {
+              "enum": [
+                "ATTACK_STANDARD",
+                "ATTACK_SPECIAL"
+              ]
+            },
+            "vfxProfile": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            },
+            "soundCue": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [],
+          "additionalProperties": false
+        }
+      },
+      "oneOf": [
+        {
+          "properties": {
+            "baseDamage": {
+              "type": "integer"
+            },
+            "damageFormula": {
+              "type": "null"
+            }
+          }
+        },
+        {
+          "properties": {
+            "baseDamage": {
+              "type": "null"
+            },
+            "damageFormula": {
+              "$ref": "#/$defs/formula"
+            }
+          }
+        }
+      ]
+    },
+    "ability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "kind",
+        "sourcePositions",
+        "conditions",
+        "costs",
+        "effects",
+        "endsTurn"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "kind": {
+          "enum": [
+            "ACTIVATED",
+            "CONTINUOUS",
+            "TRIGGERED",
+            "REPLACEMENT"
+          ]
+        },
+        "sourcePositions": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "ACTIVE",
+              "BENCH"
+            ]
+          },
+          "maxItems": 2,
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "trigger": {
+          "$ref": "#/$defs/trigger"
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/conditionExpr"
+          },
+          "maxItems": 8,
+          "minItems": 0
+        },
+        "costs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/additionalCost"
+          },
+          "maxItems": 4,
+          "minItems": 0
+        },
+        "usageLimit": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "scope": {
+                  "enum": [
+                    "INSTANCE_TURN",
+                    "NAME_TURN",
+                    "PLAYER_TURN",
+                    "INSTANCE_MATCH",
+                    "PLAYER_MATCH",
+                    "UNLIMITED"
+                  ]
+                },
+                "count": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 10
+                }
+              },
+              "required": [
+                "scope",
+                "count"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "optional": {
+          "type": "boolean"
+        },
+        "endsTurn": {
+          "type": "boolean"
+        },
+        "effects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/effectBlock"
+          },
+          "maxItems": 16,
+          "minItems": 1
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "TRIGGERED"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "trigger"
+            ]
+          },
+          "else": {
+            "not": {
+              "required": [
+                "trigger"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "ACTIVATED"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "usageLimit"
+            ],
+            "properties": {
+              "usageLimit": {
+                "type": "object"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "endsTurn": {
+                "const": false
+              }
+            }
+          }
+        }
+      ]
+    },
+    "fieldBehavior": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "PLAY_AS_POKEMON"
+        },
+        "hp": {
+          "type": "integer",
+          "minimum": 10,
+          "maximum": 9990
+        },
+        "types": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/pokemonType"
+          },
+          "maxItems": 2,
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "retreatAllowed": {
+          "const": false
+        },
+        "knockoutPoints": {
+          "const": 1
+        },
+        "canAttack": {
+          "const": false
+        },
+        "ownerMayDiscardDuringMainPhase": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "kind",
+        "hp",
+        "types",
+        "retreatAllowed",
+        "knockoutPoints",
+        "canAttack"
+      ],
+      "additionalProperties": false
+    },
+    "trainerRules": {
+      "type": "object",
+      "properties": {
+        "playConditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/conditionExpr"
+          },
+          "maxItems": 8,
+          "minItems": 0
+        },
+        "destinationAfterPlay": {
+          "enum": [
+            "DISCARD",
+            "ATTACHED_TOOL",
+            "STADIUM_SLOT",
+            "BENCH_AS_POKEMON"
+          ]
+        },
+        "toolTarget": {
+          "$ref": "#/$defs/pokemonFilter"
+        },
+        "fieldBehavior": {
+          "$ref": "#/$defs/fieldBehavior"
+        },
+        "toolTrigger": {
+          "$ref": "#/$defs/trigger"
+        },
+        "onKnockedOut": {
+          "const": "RETURN_TO_HAND"
+        }
+      },
+      "required": [
+        "playConditions",
+        "destinationAfterPlay"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$comment": "Semântica normativa em efeitos-dsl.md. A aplicação ainda valida: nome derivado de baseName+ruleBox, deckLimitKey pelo algoritmo deck-limit-key-v2 (v1 com pré-normalização “♀” → \" f\" e “♂” → \" m\": Nidoran♀ → nidoran-f), outputId antes do uso, seletor DEFENDING e opcode ATTACK_FAILS só em efeitos de ataque, timings por contexto, profundidade de fórmulas, fieldBehavior apenas em ITEM com destino BENCH_AS_POKEMON."
+}

@@ -1,0 +1,497 @@
+{
+  "documentVersion": "3.2.0",
+  "visualProfileId": "pocket-light-v1",
+  "status": "AUTHORIAL_KEYFRAME_SPEC_NOT_EXECUTABLE_ANIMATION",
+  "phaseTimingAuthority": "Fonte única das fases visuais. Interface e direção visual citam os IDs de fase; não repetem percentuais.",
+  "easingIds": {
+    "linear": "t",
+    "easeOutCubic": "1 - (1 - t)^3",
+    "easeInOutCubic": "t < 0.5 ? 4t^3 : 1 - (-2t + 2)^3 / 2",
+    "easeOutBack": "1 + (c1 + 1)(t - 1)^3 + c1 (t - 1)^2, c1 = 1.165 (pico máximo 1,05)"
+  },
+  "easingPolicy": "Somente estes quatro IDs; curvas são dados interpretados por funções homologadas, nunca strings executáveis.",
+  "sequences": [
+    {
+      "presetId": "DRAW_SELF",
+      "totalMs": 1100,
+      "phases": [
+        {
+          "phaseId": "LIFT",
+          "startMs": 0,
+          "durationMs": 100,
+          "endMs": 100,
+          "easing": "easeOutCubic",
+          "visualInstruction": "Elevar verso a partir do topo do deck; sombra suave.",
+          "mayMutateDomain": false
+        },
+        {
+          "phaseId": "TRAVEL",
+          "startMs": 100,
+          "durationMs": 260,
+          "endMs": 360,
+          "easing": "easeInOutCubic",
+          "visualInstruction": "Levar a carta ao centro da mesa, crescendo, sem cruzar o Ativo pela frente.",
+          "mayMutateDomain": false
+        },
+        {
+          "phaseId": "REVEAL_TO_OWNER",
+          "startMs": 360,
+          "durationMs": 140,
+          "endMs": 500,
+          "easing": "easeInOutCubic",
+          "visualInstruction": "Virar no centro para o observador autorizado; sem anúncio de raridade.",
+          "mayMutateDomain": false
+        },
+        {
+          "phaseId": "PREVIEW_CENTER",
+          "startMs": 500,
+          "durationMs": 300,
+          "endMs": 800,
+          "easing": "linear",
+          "visualInstruction": "Prévia grande no centro (gameplay-pocket §5.2).",
+          "mayMutateDomain": false
+        },
+        {
+          "phaseId": "SETTLE",
+          "startMs": 800,
+          "durationMs": 300,
+          "endMs": 1100,
+          "easing": "easeOutBack",
+          "visualInstruction": "Levar à ponta direita da mão e reorganizar espaçamento.",
+          "mayMutateDomain": false
+        }
+      ],
+      "endPolicy": "RECONCILE_CONFIRMED",
+      "includesIndependentReadingTime": false,
+      "appliesGameplayEffects": false
+    },
+    {
+      "presetId": "DRAW_OPPONENT",
+      "totalMs": 360,
+      "phases": [
+        {
+          "phaseId": "LIFT_BACK",
+          "startMs": 0,
+          "durationMs": 80,
+          "endMs": 80,
+          "easing": "easeOutCubic",
+          "visualInstruction": "Elevar somente verso uniforme.",
+          "mayMutateDomain": false
+        },
+        {
+          "phaseId": "TRAVEL_BACK",
+          "startMs": 80,
+          "durationMs": 160,
+          "endMs": 240,
+          "easing": "easeInOutCubic",
+          "visualInstruction": "Mover verso até a mão do NPC.",
+          "mayMutateDomain": false
+        },
+        {
+          "phaseId": "SETTLE_BACK",
+          "startMs": 240,
+          "durationMs": 120,
+          "endMs": 360,
+          "easing": "easeOutCubic",
+          "visualInstruction": "Assentar verso; nenhum frontAsset, rarity, foil ou som específico.",
+          "mayMutateDomain": false
+        }
+      ],
+      "endPolicy": "RECONCILE_CONFIRMED",
+      "includesIndependentReadingTime": false,
+      "appliesGameplayEffects": false
+    },
+    {
+      "presetId": "PLAY_BASIC",
+      "totalMs": 1200,
+      "phases": [
+        {
+          "phaseId": "LEAVE_HAND",
+          "startMs": 0,
+          "durationMs": 150,
+          "endMs": 150,
+          "easing": "easeOutCubic",
+          "visualInstruction": "Representação sai da mão após comando confirmado.",
+          "mayMutateDomain": false
+        },
+        {
+          "phaseId": "PREVIEW_CENTER",
+          "startMs": 150,
+          "durationMs": 450,
+          "endMs": 600,
+          "easing": "easeInOutCubic",
+          "visualInstruction": "Giro em Y e prévia curta, grande no centro (gameplay-pocket §9).",
+          "mayMutateDomain": false
+        },
+        {
+          "phaseId": "PLACE",
+          "startMs": 600,
+          "durationMs": 350,
+          "endMs": 950,
+          "easing": "easeInOutCubic",
+          "visualInstruction": "Encolher e assentar no slot de destino.",
+          "mayMutateDomain": false
+        },
+        {
+          "phaseId": "SETTLE_FLAIR",
+          "startMs": 950,
+          "durationMs": 250,
+          "endMs": 1200,
+          "easing": "easeOutBack",
+          "visualInstruction": "Contorno de confirmação e flair equipado, se houver.",
+          "mayMutateDomain": false
+        }
+      ],
+      "endPolicy": "RECONCILE_CONFIRMED",
+      "includesIndependentReadingTime": false,
+      "appliesGameplayEffects": false
+    },
+    {
+      "presetId": "EVOLVE",
+      "totalMs": 780,
+      "phases": [
+        {
+          "phaseId": "FOCUS_ORIGIN",
+          "startMs": 0,
+          "durationMs": 160,
+          "endMs": 160,
+          "easing": "easeOutCubic",
+          "visualInstruction": "Destacar origem compatível.",
+          "mayMutateDomain": false
+        },
+        {
+          "phaseId": "STACK_CARD",
+          "startMs": 160,
+          "durationMs": 300,
+          "endMs": 460,
+          "easing": "easeInOutCubic",
+          "visualInstruction": "Sobrepor a nova carta na pilha com brilho claro contido.",
+          "mayMutateDomain": false
+        },
+        {
+          "phaseId": "UPDATE_LABELS",
+          "startMs": 460,
+          "durationMs": 160,
+          "endMs": 620,
+          "easing": "linear",
+          "visualInstruction": "Preservar dano e anexos; atualizar atributos derivados.",
+          "mayMutateDomain": false
+        },
+        {
+          "phaseId": "SETTLE",
+          "startMs": 620,
+          "durationMs": 160,
+          "endMs": 780,
+          "easing": "easeOutBack",
+          "visualInstruction": "Finalizar sem cura fictícia.",
+          "mayMutateDomain": false
+        }
+      ],
+      "endPolicy": "RECONCILE_CONFIRMED",
+      "includesIndependentReadingTime": false,
+      "appliesGameplayEffects": false
+    },
+    {
+      "presetId": "ATTACK_STANDARD",
+      "totalMs": 2600,
+      "phases": [
+        {
+          "phaseId": "ATTENUATE",
+          "startMs": 0,
+          "durationMs": 150,
+          "endMs": 150,
+          "easing": "linear",
+          "visualInstruction": "Atenuar temporariamente a mesa com véu discreto.",
+          "mayMutateDomain": false
+        },
+        {
+          "phaseId": "CARD_CUTIN",
+          "startMs": 150,
+          "durationMs": 500,
+          "endMs": 650,
+          "easing": "easeOutBack",
+          "visualInstruction": "Ampliar e inclinar levemente a carta; faixa horizontal do tipo com nome.",
+          "mayMutateDomain": false
+        },
+        {
+          "phaseId": "READ_ACCENT",
+          "startMs": 650,
+          "durationMs": 700,
+          "endMs": 1350,
+          "easing": "linear",
+          "visualInstruction": "Linhas de velocidade claras; leitura livre adicional pode pausar.",
+          "mayMutateDomain": false
+        },
+        {
+          "phaseId": "TRAVEL_AND_RETURN",
+          "startMs": 1350,
+          "durationMs": 300,
+          "endMs": 1650,
+          "easing": "easeInOutCubic",
+          "visualInstruction": "Retornar carta à mesa e encaminhar efeito ao alvo.",
+          "mayMutateDomain": false
+        },
+        {
+          "phaseId": "IMPACT_HP",
+          "startMs": 1650,
+          "durationMs": 950,
+          "endMs": 2600,
+          "easing": "easeOutCubic",
+          "visualInstruction": "Impacto curto, valor e barra de HP; sem somar outro DAMAGE_FEEDBACK ao mesmo grupo.",
+          "mayMutateDomain": false
+        }
+      ],
+      "endPolicy": "RECONCILE_CONFIRMED",
+      "includesIndependentReadingTime": false,
+      "appliesGameplayEffects": false
+    },
+    {
+      "presetId": "PLAYMAT_TRANSITION",
+      "totalMs": 600,
+      "phases": [
+        {
+          "phaseId": "BLEND_ALBEDO",
+          "startMs": 0,
+          "durationMs": 600,
+          "endMs": 600,
+          "easing": "linear",
+          "visualInstruction": "Crossfade simples: dois samplers no mesmo material e mescla linear da cor; geometria, cartas, câmera e iluminação estáveis.",
+          "mayMutateDomain": false
+        }
+      ],
+      "endPolicy": "RECONCILE_CONFIRMED",
+      "includesIndependentReadingTime": false,
+      "appliesGameplayEffects": false
+    },
+    {
+      "presetId": "PACK_TEAR",
+      "totalMs": 700,
+      "phases": [
+        {
+          "phaseId": "SEAM_HIGHLIGHT",
+          "startMs": 0,
+          "durationMs": 120,
+          "endMs": 120,
+          "easing": "linear",
+          "visualInstruction": "Destacar costura superior com linha clara.",
+          "mayMutateDomain": false
+        },
+        {
+          "phaseId": "TEAR_TOP",
+          "startMs": 120,
+          "durationMs": 380,
+          "endMs": 500,
+          "easing": "easeInOutCubic",
+          "visualInstruction": "Cortar a faixa superior da embalagem; fragmentos decorativos limitados.",
+          "mayMutateDomain": false
+        },
+        {
+          "phaseId": "OPEN_MOUTH",
+          "startMs": 500,
+          "durationMs": 200,
+          "endMs": 700,
+          "easing": "easeOutCubic",
+          "visualInstruction": "Assentar fita e abrir o topo sobre fundo azul-claro.",
+          "mayMutateDomain": false
+        }
+      ],
+      "endPolicy": "RECONCILE_CONFIRMED",
+      "includesIndependentReadingTime": false,
+      "appliesGameplayEffects": false
+    },
+    {
+      "presetId": "PACK_EXTRACT",
+      "totalMs": 520,
+      "phases": [
+        {
+          "phaseId": "LIFT_STACK",
+          "startMs": 0,
+          "durationMs": 180,
+          "endMs": 180,
+          "easing": "easeOutCubic",
+          "visualInstruction": "Extrair a pilha com as N cartas do produto (quantidade do recibo); sem resultados novos.",
+          "mayMutateDomain": false
+        },
+        {
+          "phaseId": "ALIGN_STACK",
+          "startMs": 180,
+          "durationMs": 180,
+          "endMs": 360,
+          "easing": "easeInOutCubic",
+          "visualInstruction": "Alinhar a pilha para leitura frontal.",
+          "mayMutateDomain": false
+        },
+        {
+          "phaseId": "FIRST_FACE",
+          "startMs": 360,
+          "durationMs": 160,
+          "endMs": 520,
+          "easing": "easeOutBack",
+          "visualInstruction": "Apresentar primeira frente autorizada; leitura controlada pelo usuário.",
+          "mayMutateDomain": false
+        }
+      ],
+      "endPolicy": "RECONCILE_CONFIRMED",
+      "includesIndependentReadingTime": false,
+      "appliesGameplayEffects": false
+    },
+    {
+      "presetId": "PACK_REVEAL",
+      "totalMs": 600,
+      "phases": [
+        {
+          "phaseId": "LIFT_FRONT",
+          "startMs": 0,
+          "durationMs": 140,
+          "endMs": 140,
+          "easing": "easeOutCubic",
+          "visualInstruction": "Realçar discretamente a carta frontal selecionada.",
+          "mayMutateDomain": false
+        },
+        {
+          "phaseId": "SLIDE_FRONT_AWAY",
+          "startMs": 140,
+          "durationMs": 260,
+          "endMs": 400,
+          "easing": "easeInOutCubic",
+          "visualInstruction": "Deslizar a carta atual para expor a próxima; sem flip obrigatório por carta.",
+          "mayMutateDomain": false
+        },
+        {
+          "phaseId": "SETTLE_NEXT",
+          "startMs": 400,
+          "durationMs": 200,
+          "endMs": 600,
+          "easing": "easeOutCubic",
+          "visualInstruction": "Assentar a próxima frente e mostrar Nova/quantidade no HTML.",
+          "mayMutateDomain": false
+        }
+      ],
+      "endPolicy": "RECONCILE_CONFIRMED",
+      "includesIndependentReadingTime": false,
+      "appliesGameplayEffects": false
+    },
+    {
+      "presetId": "COIN_FIRST",
+      "totalMs": 2400,
+      "phases": [
+        {
+          "phaseId": "TOSS",
+          "startMs": 0,
+          "durationMs": 400,
+          "endMs": 400,
+          "easing": "easeOutCubic",
+          "visualInstruction": "Lançar moeda sobre palco claro.",
+          "mayMutateDomain": false
+        },
+        {
+          "phaseId": "ROTATE",
+          "startMs": 400,
+          "durationMs": 1000,
+          "endMs": 1400,
+          "easing": "linear",
+          "visualInstruction": "Girar por trajetória controlada, sem sorteio por física.",
+          "mayMutateDomain": false
+        },
+        {
+          "phaseId": "LAND",
+          "startMs": 1400,
+          "durationMs": 500,
+          "endMs": 1900,
+          "easing": "easeOutBack",
+          "visualInstruction": "Pousar na face já registrada.",
+          "mayMutateDomain": false
+        },
+        {
+          "phaseId": "RESULT",
+          "startMs": 1900,
+          "durationMs": 500,
+          "endMs": 2400,
+          "easing": "easeOutCubic",
+          "visualInstruction": "Exibir cara/coroa com texto e símbolo.",
+          "mayMutateDomain": false
+        }
+      ],
+      "endPolicy": "RECONCILE_CONFIRMED",
+      "includesIndependentReadingTime": false,
+      "appliesGameplayEffects": false
+    },
+    {
+      "presetId": "KNOCKOUT",
+      "totalMs": 1500,
+      "phases": [
+        {
+          "phaseId": "MARK",
+          "startMs": 0,
+          "durationMs": 600,
+          "endMs": 600,
+          "easing": "linear",
+          "visualInstruction": "Marcar HP zero após o grupo completo de resolução.",
+          "mayMutateDomain": false
+        },
+        {
+          "phaseId": "REMOVE_STACK",
+          "startMs": 600,
+          "durationMs": 500,
+          "endMs": 1100,
+          "easing": "easeInOutCubic",
+          "visualInstruction": "Mover pilha e anexos para destinos lógicos confirmados.",
+          "mayMutateDomain": false
+        },
+        {
+          "phaseId": "SETTLE",
+          "startMs": 1100,
+          "durationMs": 400,
+          "endMs": 1500,
+          "easing": "easeOutCubic",
+          "visualInstruction": "Liberar slot e atualizar indicadores, sem duplicar pontos.",
+          "mayMutateDomain": false
+        }
+      ],
+      "endPolicy": "RECONCILE_CONFIRMED",
+      "includesIndependentReadingTime": false,
+      "appliesGameplayEffects": false
+    },
+    {
+      "presetId": "HEAL_FEEDBACK",
+      "totalMs": 450,
+      "phases": [
+        {
+          "phaseId": "HEAL_ACCENT",
+          "startMs": 0,
+          "durationMs": 120,
+          "endMs": 120,
+          "easing": "easeOutCubic",
+          "visualInstruction": "Partículas claras verdes localizadas.",
+          "mayMutateDomain": false
+        },
+        {
+          "phaseId": "HP_TRANSITION",
+          "startMs": 120,
+          "durationMs": 210,
+          "endMs": 330,
+          "easing": "easeInOutCubic",
+          "visualInstruction": "Atualizar HP ao valor confirmado.",
+          "mayMutateDomain": false
+        },
+        {
+          "phaseId": "CLEAR",
+          "startMs": 330,
+          "durationMs": 120,
+          "endMs": 450,
+          "easing": "linear",
+          "visualInstruction": "Retirar brilho sem apagar condições não curadas.",
+          "mayMutateDomain": false
+        }
+      ],
+      "endPolicy": "RECONCILE_CONFIRMED",
+      "includesIndependentReadingTime": false,
+      "appliesGameplayEffects": false
+    }
+  ],
+  "otherPresets": "Use animation-presets.json and interface sections 24, 25, 26 and 36.",
+  "hiddenInformationPolicy": "Only the public projection can produce public visuals. Front art, rarity, finish and corresponding audio are never passed to an opponent draw sequence.",
+  "reducedMotionPolicy": "Replace movement/cutin by short fades and semantic labels; never skip required decisions.",
+  "pausePolicy": "Freeze presentation and AI dispatch at safe checkpoints; resume confirmed state without reroll.",
+  "eventPresetMap": "interface-16x9.md#interface-event-preset-map"
+}

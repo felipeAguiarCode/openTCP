@@ -1,0 +1,178 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:card-campaign:schema:ai-profile:1",
+  "title": "Perfil de IA (política + orçamento determinístico)",
+  "type": "object",
+  "properties": {
+    "aiProfileId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+    },
+    "policy": {
+      "enum": [
+        "STORY",
+        "STANDARD",
+        "EXPERT"
+      ]
+    },
+    "budget": {
+      "type": "object",
+      "properties": {
+        "maxNodes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 200000
+        },
+        "maxDepth": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 12
+        },
+        "determinizations": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 64
+        },
+        "watchdogMs": {
+          "type": "integer",
+          "minimum": 50,
+          "maximum": 30000
+        }
+      },
+      "required": [
+        "maxNodes",
+        "maxDepth",
+        "determinizations",
+        "watchdogMs"
+      ],
+      "additionalProperties": false
+    },
+    "weights": {
+      "type": "object",
+      "properties": {
+        "points": {
+          "type": "number",
+          "minimum": -10,
+          "maximum": 10
+        },
+        "opponentPoints": {
+          "type": "number",
+          "minimum": -10,
+          "maximum": 10
+        },
+        "damageDealt": {
+          "type": "number",
+          "minimum": -10,
+          "maximum": 10
+        },
+        "knockoutThreat": {
+          "type": "number",
+          "minimum": -10,
+          "maximum": 10
+        },
+        "energyDevelopment": {
+          "type": "number",
+          "minimum": -10,
+          "maximum": 10
+        },
+        "evolution": {
+          "type": "number",
+          "minimum": -10,
+          "maximum": 10
+        },
+        "benchDevelopment": {
+          "type": "number",
+          "minimum": -10,
+          "maximum": 10
+        },
+        "handSize": {
+          "type": "number",
+          "minimum": -10,
+          "maximum": 10
+        },
+        "conditions": {
+          "type": "number",
+          "minimum": -10,
+          "maximum": 10
+        },
+        "preservePoints": {
+          "type": "number",
+          "minimum": -10,
+          "maximum": 10
+        },
+        "aggression": {
+          "type": "number",
+          "minimum": -10,
+          "maximum": 10
+        }
+      },
+      "required": [
+        "points",
+        "opponentPoints",
+        "damageDealt",
+        "knockoutThreat",
+        "energyDevelopment",
+        "evolution",
+        "benchDevelopment",
+        "handSize",
+        "conditions",
+        "preservePoints",
+        "aggression"
+      ],
+      "additionalProperties": false
+    },
+    "tolerance": {
+      "type": "object",
+      "properties": {
+        "suboptimalChance": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 0.5
+        },
+        "candidatePoolTop": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10
+        }
+      },
+      "required": [
+        "suboptimalChance",
+        "candidatePoolTop"
+      ],
+      "additionalProperties": false
+    },
+    "setupPolicy": {
+      "enum": [
+        "HIGHEST_HP_ACTIVE",
+        "BEST_ATTACKER_ACTIVE",
+        "PROTECT_KEY_BASIC"
+      ]
+    },
+    "targetPolicy": {
+      "enum": [
+        "MAX_DAMAGE",
+        "PREFER_KNOCKOUT",
+        "PREFER_HIGH_POINTS",
+        "PREFER_SUPPORT_ROLE"
+      ]
+    },
+    "promotionPolicy": {
+      "enum": [
+        "BEST_ATTACKER",
+        "HIGHEST_HP",
+        "LOWEST_POINTS_RISK"
+      ]
+    }
+  },
+  "required": [
+    "aiProfileId",
+    "policy",
+    "budget",
+    "weights",
+    "tolerance",
+    "setupPolicy",
+    "targetPolicy",
+    "promotionPolicy"
+  ],
+  "additionalProperties": false
+}

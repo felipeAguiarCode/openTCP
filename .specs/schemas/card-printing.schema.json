@@ -1,0 +1,435 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:card-campaign:schema:card-printing:1",
+  "title": "Card printing appearanceVersion 1 (contrato estrutural)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "printingId",
+    "cardDefinitionId",
+    "cardDefinitionVersion",
+    "appearanceVersion",
+    "finish",
+    "rarity",
+    "language",
+    "templateId",
+    "setId",
+    "collectorNumber",
+    "artist",
+    "artMode",
+    "artKey",
+    "artAssetId",
+    "crop",
+    "artTransform",
+    "finishSettings",
+    "variant",
+    "assetBindings"
+  ],
+  "properties": {
+    "printingId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,99}$"
+    },
+    "cardDefinitionId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "cardDefinitionVersion": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "appearanceVersion": {
+      "const": 1
+    },
+    "finish": {
+      "enum": [
+        "NORMAL",
+        "HOLOGRAPHIC",
+        "FOIL",
+        "CHROME"
+      ]
+    },
+    "rarity": {
+      "enum": [
+        "COMMON",
+        "UNCOMMON",
+        "RARE",
+        "ULTRA",
+        "PROMO"
+      ]
+    },
+    "language": {
+      "type": "string",
+      "pattern": "^[a-z]{2}(-[A-Z]{2})?$"
+    },
+    "templateId": {
+      "enum": [
+        "pocket-light-card-v1/pokemon-classic",
+        "pocket-light-card-v1/pokemon-ex",
+        "pocket-light-card-v1/pokemon-full-art",
+        "pocket-light-card-v1/trainer",
+        "pocket-light-card-v1/fossil"
+      ]
+    },
+    "setId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,39}$"
+    },
+    "collectorNumber": {
+      "type": "string",
+      "pattern": "^[0-9A-Z]{1,6}(/[0-9]{1,4})?$"
+    },
+    "artist": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 80
+    },
+    "artMode": {
+      "enum": [
+        "ART_WINDOW",
+        "FULL_ART",
+        "FULL_PRINTING",
+        "TEMPLATE_ONLY"
+      ]
+    },
+    "artKey": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9:._-]{0,119}$"
+        }
+      ]
+    },
+    "artAssetId": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      ]
+    },
+    "crop": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "x",
+        "y",
+        "width",
+        "height"
+      ],
+      "properties": {
+        "x": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "y": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "width": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        },
+        "height": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "artTransform": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scale",
+        "offsetX",
+        "offsetY",
+        "rotationDegrees",
+        "mirrorIllustration",
+        "exposure"
+      ],
+      "properties": {
+        "scale": {
+          "type": "number",
+          "minimum": 0.25,
+          "maximum": 4
+        },
+        "offsetX": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1
+        },
+        "offsetY": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1
+        },
+        "rotationDegrees": {
+          "type": "number",
+          "minimum": -15,
+          "maximum": 15
+        },
+        "mirrorIllustration": {
+          "type": "boolean"
+        },
+        "exposure": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1
+        }
+      }
+    },
+    "finishSettings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "presetId",
+        "intensity",
+        "roughness",
+        "metalness",
+        "maskMode",
+        "protectText"
+      ],
+      "properties": {
+        "presetId": {
+          "enum": [
+            "normal-matte",
+            "holo-soft-art",
+            "foil-diagonal",
+            "foil-spectral",
+            "chrome-border"
+          ]
+        },
+        "intensity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "roughness": {
+          "type": "number",
+          "minimum": 0.05,
+          "maximum": 1
+        },
+        "metalness": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "patternAngleDegrees": {
+          "type": "number",
+          "minimum": -180,
+          "maximum": 180
+        },
+        "patternScale": {
+          "type": "number",
+          "minimum": 0.25,
+          "maximum": 8
+        },
+        "ambientSpeed": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 0.25
+        },
+        "normalStrength": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "emissive": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 0.25
+        },
+        "tiltResponse": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "foilPalette": {
+          "enum": [
+            "SPECTRAL",
+            "PASTEL",
+            "SILVER",
+            "GOLD"
+          ]
+        },
+        "chromeEnvironment": {
+          "enum": [
+            "STUDIO_LIGHT",
+            "TABLE_LIGHT",
+            "NEUTRAL"
+          ]
+        },
+        "maskMode": {
+          "enum": [
+            "ART_WINDOW",
+            "IMPORTED",
+            "PAINTED"
+          ]
+        },
+        "protectText": {
+          "const": true
+        },
+        "foilMaskAssetId": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "variant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "shiny",
+        "immersiveSceneId"
+      ],
+      "properties": {
+        "shiny": {
+          "type": "boolean"
+        },
+        "immersiveSceneId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 80
+        }
+      }
+    },
+    "assetBindings": {
+      "type": "array",
+      "minItems": 0,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "role",
+          "assetId"
+        ],
+        "properties": {
+          "role": {
+            "enum": [
+              "ART_MASTER",
+              "FRONT_COMPOSITE",
+              "FOIL_MASK",
+              "NORMAL_MAP",
+              "ROUGHNESS_MAP",
+              "BACK_DEFAULT",
+              "IMMERSIVE_SCENE"
+            ]
+          },
+          "assetId": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "fixtureNote": {
+      "type": "string"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "artMode": {
+            "const": "TEMPLATE_ONLY"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "artKey": {
+            "type": "null"
+          },
+          "artAssetId": {
+            "type": "null"
+          }
+        }
+      },
+      "else": {
+        "oneOf": [
+          {
+            "properties": {
+              "artKey": {
+                "type": "string"
+              },
+              "artAssetId": {
+                "type": "null"
+              }
+            }
+          },
+          {
+            "properties": {
+              "artKey": {
+                "type": "null"
+              },
+              "artAssetId": {
+                "type": "string"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "finishSettings": {
+            "properties": {
+              "maskMode": {
+                "enum": [
+                  "IMPORTED",
+                  "PAINTED"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "finishSettings": {
+            "required": [
+              "foilMaskAssetId"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "finish": {
+            "const": "NORMAL"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "finishSettings": {
+            "properties": {
+              "intensity": {
+                "const": 0
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$comment": "artKey = arte BUNDLED lógica do pacote (resolvida pelo manifest; pode ser atualizada sem mudar printingId). artAssetId = arte importada (BLOB sha256, imutável) e deve repetir o binding ART_MASTER. A aplicação valida: x+width<=1, y+height<=1, proporção real da imagem, papéis únicos, máscara existente, template compatível com categoria/ruleBox."
+}

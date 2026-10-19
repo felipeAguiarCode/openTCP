@@ -1,0 +1,545 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:card-campaign:schema:product:1",
+  "title": "Produto do Empório / pacote",
+  "type": "object",
+  "properties": {
+    "productId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 999
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 60
+    },
+    "kind": {
+      "enum": [
+        "RANDOM_PACK",
+        "FIXED_PACK",
+        "DIRECTED_CARD",
+        "COSMETIC"
+      ]
+    },
+    "price": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "credits": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100000
+            }
+          },
+          "required": [
+            "credits"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "availability": {
+      "type": "object",
+      "properties": {
+        "fromStart": {
+          "type": "boolean"
+        },
+        "afterNodeId": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^(P00-T0[1-6]|C0[1-6]-E0[1-6]|F00-D0[1-3])$"
+            }
+          ]
+        }
+      },
+      "required": [
+        "fromStart",
+        "afterNodeId"
+      ],
+      "additionalProperties": false
+    },
+    "repeatable": {
+      "type": "boolean"
+    },
+    "cardsPerPack": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10
+    },
+    "slots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "position": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10
+          },
+          "categoryWeights": {
+            "type": "object",
+            "properties": {
+              "COMMON": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 10000
+              },
+              "UNCOMMON": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 10000
+              },
+              "RARE": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 10000
+              },
+              "ULTRA": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 10000
+              }
+            },
+            "required": [
+              "COMMON",
+              "UNCOMMON",
+              "RARE",
+              "ULTRA"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "position",
+          "categoryWeights"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 10,
+      "minItems": 1
+    },
+    "pools": {
+      "type": "object",
+      "properties": {
+        "COMMON": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "printingId": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+              },
+              "weight": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 10000
+              }
+            },
+            "required": [
+              "printingId",
+              "weight"
+            ],
+            "additionalProperties": false
+          },
+          "maxItems": 200,
+          "minItems": 0
+        },
+        "UNCOMMON": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "printingId": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+              },
+              "weight": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 10000
+              }
+            },
+            "required": [
+              "printingId",
+              "weight"
+            ],
+            "additionalProperties": false
+          },
+          "maxItems": 200,
+          "minItems": 0
+        },
+        "RARE": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "printingId": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+              },
+              "weight": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 10000
+              }
+            },
+            "required": [
+              "printingId",
+              "weight"
+            ],
+            "additionalProperties": false
+          },
+          "maxItems": 200,
+          "minItems": 0
+        },
+        "ULTRA": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "printingId": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+              },
+              "weight": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 10000
+              }
+            },
+            "required": [
+              "printingId",
+              "weight"
+            ],
+            "additionalProperties": false
+          },
+          "maxItems": 200,
+          "minItems": 0
+        }
+      },
+      "required": [
+        "COMMON",
+        "UNCOMMON",
+        "RARE",
+        "ULTRA"
+      ],
+      "additionalProperties": false
+    },
+    "tierSlots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "position": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10
+          },
+          "weights": {
+            "type": "object",
+            "propertyNames": {
+              "enum": [
+                "◊",
+                "◊◊",
+                "◊◊◊",
+                "◊◊◊◊",
+                "☆",
+                "☆☆",
+                "☆☆☆",
+                "✵",
+                "✵✵",
+                "♛",
+                "PROMO"
+              ]
+            },
+            "additionalProperties": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100000
+            },
+            "minProperties": 1
+          }
+        },
+        "required": [
+          "position",
+          "weights"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 10,
+      "minItems": 1
+    },
+    "tierPools": {
+      "type": "object",
+      "propertyNames": {
+        "enum": [
+          "◊",
+          "◊◊",
+          "◊◊◊",
+          "◊◊◊◊",
+          "☆",
+          "☆☆",
+          "☆☆☆",
+          "✵",
+          "✵✵",
+          "♛",
+          "PROMO"
+        ]
+      },
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+        },
+        "maxItems": 400,
+        "minItems": 1,
+        "uniqueItems": true
+      }
+    },
+    "bonusSlot": {
+      "type": "object",
+      "properties": {
+        "chance": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100000
+        },
+        "weights": {
+          "type": "object",
+          "propertyNames": {
+            "enum": [
+              "◊",
+              "◊◊",
+              "◊◊◊",
+              "◊◊◊◊",
+              "☆",
+              "☆☆",
+              "☆☆☆",
+              "✵",
+              "✵✵",
+              "♛",
+              "PROMO"
+            ]
+          },
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "minProperties": 1
+        },
+        "pools": {
+          "type": "object",
+          "propertyNames": {
+            "enum": [
+              "◊",
+              "◊◊",
+              "◊◊◊",
+              "◊◊◊◊",
+              "☆",
+              "☆☆",
+              "☆☆☆",
+              "✵",
+              "✵✵",
+              "♛",
+              "PROMO"
+            ]
+          },
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+            },
+            "maxItems": 400,
+            "minItems": 1,
+            "uniqueItems": true
+          }
+        }
+      },
+      "required": [
+        "chance",
+        "weights",
+        "pools"
+      ],
+      "additionalProperties": false
+    },
+    "rarePack": {
+      "type": "object",
+      "properties": {
+        "chance": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100000
+        },
+        "symbols": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "☆",
+              "☆☆",
+              "☆☆☆",
+              "✵",
+              "✵✵",
+              "♛"
+            ]
+          },
+          "maxItems": 6,
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "chance",
+        "symbols"
+      ],
+      "additionalProperties": false
+    },
+    "fixedContents": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+      },
+      "maxItems": 10,
+      "minItems": 1
+    },
+    "directedPrintingId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+    },
+    "cosmeticId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+    },
+    "coverPrintingId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "productId",
+    "version",
+    "name",
+    "kind",
+    "price",
+    "availability",
+    "repeatable"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "RANDOM_PACK"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "cardsPerPack"
+        ],
+        "oneOf": [
+          {
+            "required": [
+              "slots",
+              "pools"
+            ]
+          },
+          {
+            "required": [
+              "tierSlots",
+              "tierPools"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "if": {
+        "anyOf": [
+          {
+            "required": [
+              "bonusSlot"
+            ]
+          },
+          {
+            "required": [
+              "rarePack"
+            ]
+          }
+        ]
+      },
+      "then": {
+        "required": [
+          "tierSlots"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "FIXED_PACK"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "fixedContents"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "DIRECTED_CARD"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "directedPrintingId"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "COSMETIC"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "cosmeticId"
+        ],
+        "properties": {
+          "repeatable": {
+            "const": false
+          }
+        }
+      }
+    }
+  ]
+}

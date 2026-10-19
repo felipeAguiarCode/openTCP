@@ -1,0 +1,245 @@
+{
+  "draftFormat": 1,
+  "mode": "NEW_DEFINITION",
+  "target": {
+    "definitionId": "custom-braseiro-ex",
+    "version": 1
+  },
+  "rules": {
+    "dataVersion": 2,
+    "effectsDsl": 1,
+    "id": "custom-braseiro-ex",
+    "version": 1,
+    "baseName": "Braseiro",
+    "name": "Braseiro ex",
+    "deckLimitKey": "braseiro-ex",
+    "category": "POKEMON",
+    "stage": "STAGE_1",
+    "evolvesFrom": [
+      "faisca"
+    ],
+    "types": [
+      "FIRE"
+    ],
+    "baseHp": 140,
+    "retreatCost": 2,
+    "weakness": {
+      "type": "WATER",
+      "operation": "ADD",
+      "value": 20
+    },
+    "ruleBox": "EX",
+    "knockoutPoints": 2,
+    "tags": [],
+    "attacks": [
+      {
+        "id": "ember-strike",
+        "name": "Golpe de Brasa",
+        "energyCost": {
+          "FIRE": 1,
+          "COLORLESS": 1
+        },
+        "baseDamage": 50,
+        "damageFormula": null,
+        "damageTarget": {
+          "scope": "OPPONENT_ACTIVE"
+        },
+        "preconditions": [],
+        "additionalCosts": [],
+        "effects": [],
+        "endsTurn": true
+      },
+      {
+        "id": "ember-rain",
+        "name": "Chuva de Brasas",
+        "energyCost": {
+          "FIRE": 2,
+          "COLORLESS": 1
+        },
+        "baseDamage": null,
+        "damageFormula": {
+          "op": "MULTIPLY",
+          "operands": [
+            {
+              "op": "CONST",
+              "value": 40
+            },
+            {
+              "op": "COUNT_HEADS",
+              "reference": "attackCoins"
+            }
+          ]
+        },
+        "damageTarget": {
+          "scope": "OPPONENT_ACTIVE"
+        },
+        "preconditions": [],
+        "additionalCosts": [],
+        "effects": [
+          {
+            "id": "coins",
+            "timing": "PRE_DAMAGE",
+            "operation": {
+              "type": "FLIP_COINS",
+              "count": 2,
+              "outputId": "attackCoins"
+            }
+          }
+        ],
+        "endsTurn": true
+      }
+    ],
+    "abilities": []
+  },
+  "printings": [
+    {
+      "printingId": "print-custom-braseiro-ex-normal-v1",
+      "cardDefinitionId": "custom-braseiro-ex",
+      "cardDefinitionVersion": 1,
+      "appearanceVersion": 1,
+      "finish": "NORMAL",
+      "rarity": "RARE",
+      "language": "pt-BR",
+      "templateId": "pocket-light-card-v1/pokemon-ex",
+      "setId": "custom-lab",
+      "collectorNumber": "001",
+      "artist": null,
+      "artMode": "ART_WINDOW",
+      "artKey": null,
+      "artAssetId": "431ced6916a2a21a156e38701afe55bbd7f88969fbbfc56d7fe099d47f265460",
+      "crop": {
+        "x": 0.0,
+        "y": 0.0,
+        "width": 1.0,
+        "height": 1.0
+      },
+      "artTransform": {
+        "scale": 1,
+        "offsetX": 0,
+        "offsetY": 0,
+        "rotationDegrees": 0,
+        "mirrorIllustration": false,
+        "exposure": 0
+      },
+      "finishSettings": {
+        "presetId": "normal-matte",
+        "intensity": 0.0,
+        "roughness": 0.65,
+        "metalness": 0.0,
+        "patternAngleDegrees": 35,
+        "patternScale": 1.0,
+        "ambientSpeed": 0.0,
+        "maskMode": "ART_WINDOW",
+        "protectText": true
+      },
+      "variant": {
+        "shiny": false,
+        "immersiveSceneId": null
+      },
+      "assetBindings": [
+        {
+          "role": "ART_MASTER",
+          "assetId": "431ced6916a2a21a156e38701afe55bbd7f88969fbbfc56d7fe099d47f265460"
+        }
+      ],
+      "fixtureNote": "A amostra SQLite usa um PNG de 1 pixel apenas para testar bytes e relacionamentos; não é arte de produção."
+    },
+    {
+      "printingId": "print-custom-braseiro-ex-foil-v1",
+      "cardDefinitionId": "custom-braseiro-ex",
+      "cardDefinitionVersion": 1,
+      "appearanceVersion": 1,
+      "finish": "FOIL",
+      "rarity": "RARE",
+      "language": "pt-BR",
+      "templateId": "pocket-light-card-v1/pokemon-ex",
+      "setId": "custom-lab",
+      "collectorNumber": "001F",
+      "artist": null,
+      "artMode": "ART_WINDOW",
+      "artKey": null,
+      "artAssetId": "431ced6916a2a21a156e38701afe55bbd7f88969fbbfc56d7fe099d47f265460",
+      "crop": {
+        "x": 0.0,
+        "y": 0.0,
+        "width": 1.0,
+        "height": 1.0
+      },
+      "artTransform": {
+        "scale": 1,
+        "offsetX": 0,
+        "offsetY": 0,
+        "rotationDegrees": 0,
+        "mirrorIllustration": false,
+        "exposure": 0
+      },
+      "finishSettings": {
+        "presetId": "foil-diagonal",
+        "intensity": 0.55,
+        "roughness": 0.35,
+        "metalness": 0.35,
+        "patternAngleDegrees": 35,
+        "patternScale": 1.0,
+        "ambientSpeed": 0.0,
+        "maskMode": "ART_WINDOW",
+        "protectText": true
+      },
+      "variant": {
+        "shiny": false,
+        "immersiveSceneId": null
+      },
+      "assetBindings": [
+        {
+          "role": "ART_MASTER",
+          "assetId": "431ced6916a2a21a156e38701afe55bbd7f88969fbbfc56d7fe099d47f265460"
+        }
+      ],
+      "fixtureNote": "A amostra SQLite usa um PNG de 1 pixel apenas para testar bytes e relacionamentos; não é arte de produção."
+    }
+  ],
+  "authoring": {
+    "notes": "Referência de teste do Estúdio (editor §33).",
+    "setId": "custom-lab"
+  },
+  "testScenarios": [
+    {
+      "id": "coin-0",
+      "kind": "ATTACK",
+      "attackId": "ember-rain",
+      "fixture": "default",
+      "forcedCoins": [
+        "TAILS",
+        "TAILS"
+      ],
+      "expect": {
+        "baseDamage": 0
+      }
+    },
+    {
+      "id": "coin-1",
+      "kind": "ATTACK",
+      "attackId": "ember-rain",
+      "fixture": "default",
+      "forcedCoins": [
+        "HEADS",
+        "TAILS"
+      ],
+      "expect": {
+        "baseDamage": 40
+      }
+    },
+    {
+      "id": "coin-2",
+      "kind": "ATTACK",
+      "attackId": "ember-rain",
+      "fixture": "default",
+      "forcedCoins": [
+        "HEADS",
+        "HEADS"
+      ],
+      "expect": {
+        "baseDamage": 80
+      }
+    }
+  ]
+}

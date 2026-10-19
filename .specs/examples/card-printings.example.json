@@ -1,0 +1,106 @@
+[
+  {
+    "printingId": "print-custom-braseiro-ex-normal-v1",
+    "cardDefinitionId": "custom-braseiro-ex",
+    "cardDefinitionVersion": 1,
+    "appearanceVersion": 1,
+    "finish": "NORMAL",
+    "rarity": "RARE",
+    "language": "pt-BR",
+    "templateId": "pocket-light-card-v1/pokemon-ex",
+    "setId": "custom-lab",
+    "collectorNumber": "001",
+    "artist": null,
+    "artMode": "ART_WINDOW",
+    "artKey": null,
+    "artAssetId": "431ced6916a2a21a156e38701afe55bbd7f88969fbbfc56d7fe099d47f265460",
+    "crop": {
+      "x": 0.0,
+      "y": 0.0,
+      "width": 1.0,
+      "height": 1.0
+    },
+    "artTransform": {
+      "scale": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "rotationDegrees": 0,
+      "mirrorIllustration": false,
+      "exposure": 0
+    },
+    "finishSettings": {
+      "presetId": "normal-matte",
+      "intensity": 0.0,
+      "roughness": 0.65,
+      "metalness": 0.0,
+      "patternAngleDegrees": 35,
+      "patternScale": 1.0,
+      "ambientSpeed": 0.0,
+      "maskMode": "ART_WINDOW",
+      "protectText": true
+    },
+    "variant": {
+      "shiny": false,
+      "immersiveSceneId": null
+    },
+    "assetBindings": [
+      {
+        "role": "ART_MASTER",
+        "assetId": "431ced6916a2a21a156e38701afe55bbd7f88969fbbfc56d7fe099d47f265460"
+      }
+    ],
+    "fixtureNote": "A amostra SQLite usa um PNG de 1 pixel apenas para testar bytes e relacionamentos; não é arte de produção."
+  },
+  {
+    "printingId": "print-custom-braseiro-ex-foil-v1",
+    "cardDefinitionId": "custom-braseiro-ex",
+    "cardDefinitionVersion": 1,
+    "appearanceVersion": 1,
+    "finish": "FOIL",
+    "rarity": "RARE",
+    "language": "pt-BR",
+    "templateId": "pocket-light-card-v1/pokemon-ex",
+    "setId": "custom-lab",
+    "collectorNumber": "001F",
+    "artist": null,
+    "artMode": "ART_WINDOW",
+    "artKey": null,
+    "artAssetId": "431ced6916a2a21a156e38701afe55bbd7f88969fbbfc56d7fe099d47f265460",
+    "crop": {
+      "x": 0.0,
+      "y": 0.0,
+      "width": 1.0,
+      "height": 1.0
+    },
+    "artTransform": {
+      "scale": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "rotationDegrees": 0,
+      "mirrorIllustration": false,
+      "exposure": 0
+    },
+    "finishSettings": {
+      "presetId": "foil-diagonal",
+      "intensity": 0.55,
+      "roughness": 0.35,
+      "metalness": 0.35,
+      "patternAngleDegrees": 35,
+      "patternScale": 1.0,
+      "ambientSpeed": 0.0,
+      "maskMode": "ART_WINDOW",
+      "protectText": true
+    },
+    "variant": {
+      "shiny": false,
+      "immersiveSceneId": null
+    },
+    "assetBindings": [
+      {
+        "role": "ART_MASTER",
+        "assetId": "431ced6916a2a21a156e38701afe55bbd7f88969fbbfc56d7fe099d47f265460"
+      }
+    ],
+    "fixtureNote": "A amostra SQLite usa um PNG de 1 pixel apenas para testar bytes e relacionamentos; não é arte de produção."
+  }
+]

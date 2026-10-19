@@ -1,0 +1,186 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:card-campaign:schema:cosmetic:1",
+  "title": "Cosmético (playmat, verso, moeda ou flair)",
+  "type": "object",
+  "properties": {
+    "cosmeticId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+    },
+    "kind": {
+      "enum": [
+        "PLAYMAT",
+        "SLEEVE",
+        "COIN",
+        "FLAIR"
+      ]
+    },
+    "definitionVersion": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 99
+    },
+    "names": {
+      "type": "object",
+      "properties": {
+        "pt-BR": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 60
+        }
+      },
+      "required": [
+        "pt-BR"
+      ],
+      "additionalProperties": false
+    },
+    "acquisition": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "enum": [
+            "FREE",
+            "EMPORIUM",
+            "GRANT"
+          ]
+        },
+        "requiredCompletedNodeId": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^(P00-T0[1-6]|C0[1-6]-E0[1-6]|F00-D0[1-3])$"
+            }
+          ]
+        },
+        "credits": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100000
+        },
+        "grantMilestoneId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "kind",
+        "requiredCompletedNodeId",
+        "credits"
+      ],
+      "additionalProperties": false
+    },
+    "visual": {
+      "type": "object",
+      "properties": {
+        "palette": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^#[0-9A-F]{6}$"
+          },
+          "maxItems": 6,
+          "minItems": 2
+        },
+        "pattern": {
+          "enum": [
+            "NONE",
+            "LINES",
+            "LEAVES",
+            "WAVES",
+            "CIRCUITS",
+            "STARS",
+            "SYMBOLS",
+            "PAGES",
+            "CHAPTERS"
+          ]
+        },
+        "assetKey": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "variants": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+          },
+          "maxItems": 4,
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "accentHex": {
+          "type": "string",
+          "pattern": "^#[0-9A-F]{6}$"
+        }
+      },
+      "required": [
+        "palette",
+        "pattern",
+        "assetKey",
+        "variants",
+        "accentHex"
+      ],
+      "additionalProperties": false
+    },
+    "flair": {
+      "type": "object",
+      "properties": {
+        "triggers": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "PUBLIC_ENTRY",
+              "EVOLUTION",
+              "PROMOTION"
+            ]
+          },
+          "maxItems": 3,
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "particleBudget": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 200
+        },
+        "durationMs": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2000
+        },
+        "reducedVariant": {
+          "enum": [
+            "FADE",
+            "NONE"
+          ]
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "fallbackCosmeticId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "cosmeticId",
+    "kind",
+    "definitionVersion",
+    "names",
+    "acquisition",
+    "visual",
+    "fallbackCosmeticId"
+  ],
+  "additionalProperties": false
+}

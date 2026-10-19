@@ -1,0 +1,25 @@
+{
+  "presetId": "preset-academy-demo",
+  "revision": 2,
+  "profileId": "demo-profile",
+  "name": "Mesa da Academia",
+  "playmat": {
+    "playmatId": "mat-academy",
+    "definitionVersion": 2,
+    "variantId": "calm",
+    "crop": {
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 1
+    },
+    "accentHex": "#357DE4",
+    "materialProfile": "MATTE",
+    "patternOpacity": 0.1,
+    "ambientLevel": "LOW",
+    "impactReaction": "OFF"
+  },
+  "sleeveId": "sleeve-neutral",
+  "coinId": "coin-neutral",
+  "defaultEntryFlairId": "flair-basic"
+}

@@ -1,0 +1,71 @@
+/* Pocket Light v1 - authorial approximation (spec 3.2.0). No remote fonts/assets. */
+:root {
+  color-scheme: light;
+  --pocket-canvas: #F4F8FC;
+  --pocket-surface: #FFFFFF;
+  --pocket-surface-soft: #EAF4FA;
+  --pocket-surface-inset: #DFEBF5;
+  --pocket-text: #263A50;
+  --pocket-text-secondary: #526780;
+  --pocket-text-disabled: #8797AA;
+  --pocket-line: #CBDCEB;
+  --pocket-primary: #75C7FA;
+  --pocket-primary-strong: #357DE4;
+  --pocket-primary-ink: #153F65;
+  --pocket-cyan: #2DECE5;
+  --pocket-cyan-soft: #C8FAF5;
+  --pocket-player-band: #22DCEA;
+  --pocket-opponent-band: #F2857D;
+  --pocket-board-near: #86BCE7;
+  --pocket-board-far: #D8D5F4;
+  --pocket-board-line: #F5FAFF;
+  --pocket-rim: #F4F8FF;
+  --pocket-point-gold: #F6CE3D;
+  --pocket-success: #15704B;
+  --pocket-hp-fill: #57D995;
+  --pocket-warning: #875600;
+  --pocket-danger: #A93243;
+  --pocket-shadow: #647D9A;
+  --pocket-type-grass: #72B75D;
+  --pocket-type-fire: #EF785B;
+  --pocket-type-water: #60ADE7;
+  --pocket-type-lightning: #E8C83E;
+  --pocket-type-psychic: #A279CB;
+  --pocket-type-fighting: #C48D61;
+  --pocket-type-darkness: #536A80;
+  --pocket-type-metal: #A2B1BC;
+  --pocket-type-dragon: #B8A65D;
+  --pocket-type-colorless: #BAC5D0;
+  /* Attack strips: darker type shades, white text >= 4.5:1 (visual-tokens.json attackStripColors). */
+  --pocket-strip-grass: #4B823A;
+  --pocket-strip-fire: #D83B15;
+  --pocket-strip-water: #1D79BF;
+  --pocket-strip-lightning: #8A7310;
+  --pocket-strip-psychic: #8F5EC0;
+  --pocket-strip-fighting: #A0683C;
+  --pocket-strip-darkness: #475B6D;
+  --pocket-strip-metal: #627888;
+  --pocket-strip-dragon: #837439;
+  --pocket-strip-colorless: #61778E;
+  --pocket-radius-panel: 20px;
+  --pocket-radius-dialog: 24px;
+  --pocket-radius-pill: 999px;
+  --pocket-font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  /* Card face: bundled OFL font file (local, never remote) so generated card textures match on every OS. */
+  --pocket-card-font: "Nunito", var(--pocket-font);
+  --pocket-shadow-panel: 0 6px 24px rgb(100 125 154 / 0.12);
+}
+.pocket-shell { background: var(--pocket-canvas); color: var(--pocket-text); font-family: var(--pocket-font); }
+.pocket-panel { background: var(--pocket-surface); border: 1px solid var(--pocket-line); border-radius: var(--pocket-radius-panel); box-shadow: var(--pocket-shadow-panel); }
+.pocket-button { color: var(--pocket-primary-ink); background: var(--pocket-primary); border: 1px solid transparent; border-radius: var(--pocket-radius-pill); min-height: 44px; padding: 10px 20px; font: 600 16px/1.2 var(--pocket-font); }
+.pocket-button:focus-visible, .pocket-shell :focus-visible { outline: 3px solid var(--pocket-primary-strong); outline-offset: 3px; }
+.pocket-button[disabled] { opacity: 0.55; cursor: not-allowed; }
+.pocket-surface-inset { background: var(--pocket-surface-inset); }
+.pocket-board-backdrop { background: linear-gradient(180deg, var(--pocket-board-far), var(--pocket-board-near)); }
+.pocket-rule-text { color: var(--pocket-text); font-variant-numeric: tabular-nums; }
+.pocket-attack-strip { color: #FFFFFF; font-family: var(--pocket-card-font); }
+@media (prefers-reduced-motion: reduce) {
+  .pocket-shell *, .pocket-shell *::before, .pocket-shell *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+/* CSS motion override never changes the gameplay clock or Three.js event resolution.
+   The animation director also reads the user's reduced-motion preference. */

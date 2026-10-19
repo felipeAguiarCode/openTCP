@@ -1,0 +1,50 @@
+// Nomes PT-BR que estreiam no Mythical Island (A1a): ataques, Habilidades e Treinadores, pelo nome em inglês do `.inspo`.
+// Pokémon mantêm o nome do jogo (formas regionais em pocket/names/pokemon.ts). O texto de regras é gerado do DSL.
+
+export const ATTACK_NAMES: Readonly<Record<string, string>> = {
+  'Aqua Liner': 'Linha Aquática',
+  'Bloomshine': 'Brilho Floral',
+  'Continuous Steps': 'Passos Contínuos',
+  'Dive': 'Mergulho',
+  'Division': 'Divisão',
+  'Dragon Claw': 'Garra de Dragão',
+  'Electroweb': 'Eletroteia',
+  'Energy Whip': 'Chicote de Energia',
+  'Fairy Wind': 'Vento de Fada',
+  'Fighting Tackle': 'Investida de Luta',
+  'Flickering Spores': 'Esporos Bruxuleantes',
+  'Focus Fist': 'Punho Focado',
+  'Genome Hacking': 'Hackeamento Genômico',
+  'Gigashock': 'Gigachoque',
+  'Guard Press': 'Prensa Defensiva',
+  'Hypnotic Gaze': 'Olhar Hipnótico',
+  'Leaf Drain': 'Dreno de Folha',
+  'Leap Out': 'Saltar para Fora',
+  'Light Punch': 'Soco Leve',
+  'Lunge Out': 'Arremetida',
+  'Mega Kick': 'Megachute',
+  'Mimic': 'Mímica',
+  'Mind Jack': 'Invasão Mental',
+  'Poison Claws': 'Garras Venenosas',
+  'Powerful Bloom': 'Florada Poderosa',
+  'Rampaging Whirlpool': 'Redemoinho Desenfreado',
+  'Revenge': 'Vingança',
+  'Rising Lunge': 'Estocada Ascendente',
+  'Scattering Cyclone': 'Ciclone Dispersor',
+  'Smokescreen': 'Cortina de Fumaça',
+  'Solar Beam': 'Raio Solar',
+  'Spike Draw': 'Compra Espinhosa',
+};
+export const ABILITY_NAMES: Readonly<Record<string, string>> = {
+  'Jungle Totem': 'Totem da Selva',
+  'Primeval Law': 'Lei Primordial',
+  'Rough Skin': 'Pele Áspera',
+  'Wash Out': 'Enxurrada',
+};
+export const TRAINER_NAMES: Readonly<Record<string, string>> = {
+  'Blue': 'Blue',
+  'Budding Expeditioner': 'Expedicionária Novata',
+  'Leaf': 'Leaf',
+  'Mythical Slab': 'Tábua Mítica',
+  'Pokémon Flute': 'Flauta Pokémon',
+};

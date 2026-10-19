@@ -1,0 +1,53 @@
+// Nomes PT-BR que estreiam no Extradimensional Crisis (A3a): ataques, Habilidades e Treinadores, pelo nome em inglês do `.inspo`.
+// Pokémon mantêm o nome do jogo (formas regionais em pocket/names/pokemon.ts). O texto de regras é gerado do DSL.
+
+export const ATTACK_NAMES: Readonly<Record<string, string>> = {
+  'Big Beat': 'Batidão',
+  'Brave Buddies': 'Amigos Valentes',
+  'Cut': 'Cortar',
+  'Electric Ball': 'Bola Elétrica',
+  'Electro House': 'Eletrofunk',
+  'Fake Out': 'Finta',
+  'Giga Impact': 'Gigaimpacto',
+  'Grindcore': 'Moagem Brutal',
+  'Happened to Headbutt': 'Cabeçada por Acaso',
+  'High Jump Kick': 'Chute de Pulo Alto',
+  'Jump Blues': 'Blues Saltitante',
+  'Let’s Throw': 'Vamos Arremessar',
+  'Lycanfang': 'Licanpresa',
+  'Meddle': 'Intrometer-se',
+  'Moombahton': 'Batida Tropical',
+  'Moon Kick': 'Chute Lunar',
+  'New Wave': 'Nova Onda',
+  'Poaching Fangs': 'Presas Furtivas',
+  'Quick Blow': 'Golpe Rápido',
+  'Rock Throw': 'Lançamento de Rocha',
+  'Sand Tomb': 'Tumba de Areia',
+  'Sandy Shot': 'Tiro de Areia',
+  'Sharp Fang': 'Presa Afiada',
+  'Sniping Arrow': 'Flecha Certeira',
+  'Spike Sting': 'Ferrão de Espinho',
+  'Static Shock': 'Choque Estático',
+  'Superpowered Hug': 'Abraço Superpoderoso',
+  'Trip Over': 'Tropeçar',
+  'Triplet Headbutt': 'Cabeçada Trigêmea',
+  'Tyrannical Hole': 'Buraco Tirânico',
+};
+export const ABILITY_NAMES: Readonly<Record<string, string>> = {
+  'Guard Dog Visage': 'Cara de Cão de Guarda',
+  'Heal Block': 'Bloqueio de Cura',
+  'Illuminate': 'Iluminação',
+  'Intimidating Fang': 'Presa Intimidadora',
+  'More Poison': 'Mais Veneno',
+  'Steel Spikes': 'Espinhos de Aço',
+  'Ultra Thrusters': 'Ultrapropulsores',
+};
+export const TRAINER_NAMES: Readonly<Record<string, string>> = {
+  'Beast Wall': 'Muralha das Feras',
+  'Beastite': 'Bestita',
+  'Electrical Cord': 'Cabo Elétrico',
+  'Gladion': 'Gladion',
+  'Looker': 'Looker',
+  'Lusamine': 'Lusamine',
+  'Repel': 'Repelente',
+};

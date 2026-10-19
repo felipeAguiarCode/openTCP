@@ -1,0 +1,60 @@
+{
+  "name": "open-tcgp",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Card Campaign — jogo de cartas single-player offline (Pocket Light), Three.js + SQLite WASM/OPFS.",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "vendor": "node tools/copy-vendor.mjs",
+    "dev": "npm run vendor && npm run content:build && vite",
+    "build": "npm run vendor && npm run content:build && tsc --noEmit -p tsconfig.json && vite build",
+    "preview": "node runner/server.mjs --dist dist --no-open",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "pretest:e2e": "npm run build",
+    "test:e2e": "playwright test",
+    "content:build": "node --experimental-strip-types tools/content-build/index.ts",
+    "inspo:import": "node --experimental-strip-types tools/inspo-import/index.ts",
+    "inspo:energy": "python tools/inspo-import/energy-orbs.py",
+    "inspo:packs": "python tools/inspo-import/pack-art.py",
+    "inspo:coins": "python tools/inspo-import/coins.py",
+    "inspo:sleeves": "python tools/inspo-import/sleeves.py",
+    "inspo:effects": "python tools/inspo-import/effect-icons.py",
+    "specs:validate": "node tools/run-python.mjs .specs/scripts/validate_specs.py",
+    "criteria:report": "node --experimental-strip-types tools/criteria/index.ts",
+    "audit:offline": "node tools/audit-offline.mjs dist",
+    "package": "npm run build && node tools/package.mjs",
+    "licenses": "node tools/licenses.mjs"
+  },
+  "dependencies": {
+    "@fontsource/nunito": "5.3.0",
+    "@preact/signals": "2.11.2",
+    "@sqlite.org/sqlite-wasm": "3.53.4-build1",
+    "fflate": "0.8.2",
+    "preact": "10.29.8",
+    "three": "0.186.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.39.5",
+    "@playwright/test": "1.63.0",
+    "@preact/preset-vite": "2.10.6",
+    "@types/node": "22.20.4",
+    "@types/three": "0.186.0",
+    "ajv": "8.20.0",
+    "eslint": "9.39.5",
+    "fast-check": "4.10.1",
+    "globals": "17.12.0",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.71.0",
+    "vite": "7.3.6",
+    "vitest": "3.2.7"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true
+  }
+}

@@ -1,0 +1,729 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:card-campaign:schema:battle-fixture:1",
+  "title": "Fixture de batalha (tutorial, puzzle, laboratório)",
+  "type": "object",
+  "properties": {
+    "fixtureId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+    },
+    "kind": {
+      "enum": [
+        "TUTORIAL",
+        "PUZZLE",
+        "LAB",
+        "TEST"
+      ]
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "startPhase": {
+      "enum": [
+        "SETUP",
+        "MAIN"
+      ]
+    },
+    "firstPlayer": {
+      "enum": [
+        "HUMAN",
+        "NPC"
+      ]
+    },
+    "currentPlayer": {
+      "enum": [
+        "HUMAN",
+        "NPC"
+      ]
+    },
+    "globalTurnNumber": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 60
+    },
+    "ownTurns": {
+      "type": "object",
+      "properties": {
+        "HUMAN": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 30
+        },
+        "NPC": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 30
+        }
+      },
+      "required": [
+        "HUMAN",
+        "NPC"
+      ],
+      "additionalProperties": false
+    },
+    "stadiumPrintingId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "players": {
+      "type": "object",
+      "properties": {
+        "HUMAN": {
+          "type": "object",
+          "properties": {
+            "deck": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+              },
+              "maxItems": 20,
+              "minItems": 0
+            },
+            "hand": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+              },
+              "maxItems": 10,
+              "minItems": 0
+            },
+            "discard": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+              },
+              "maxItems": 20,
+              "minItems": 0
+            },
+            "active": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "stack": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+                      },
+                      "maxItems": 3,
+                      "minItems": 1
+                    },
+                    "damage": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 9990
+                    },
+                    "energies": {
+                      "type": "array",
+                      "items": {
+                        "enum": [
+                          "GRASS",
+                          "FIRE",
+                          "WATER",
+                          "LIGHTNING",
+                          "PSYCHIC",
+                          "FIGHTING",
+                          "DARKNESS",
+                          "METAL"
+                        ]
+                      },
+                      "maxItems": 12,
+                      "minItems": 0
+                    },
+                    "toolPrintingId": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "conditions": {
+                      "type": "array",
+                      "items": {
+                        "enum": [
+                          "POISONED",
+                          "BURNED",
+                          "ASLEEP",
+                          "PARALYZED",
+                          "CONFUSED"
+                        ]
+                      },
+                      "maxItems": 3,
+                      "minItems": 0,
+                      "uniqueItems": true
+                    },
+                    "enteredPlayOnTurn": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 60
+                    }
+                  },
+                  "required": [
+                    "stack"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            },
+            "bench": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "stack": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+                    },
+                    "maxItems": 3,
+                    "minItems": 1
+                  },
+                  "damage": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9990
+                  },
+                  "energies": {
+                    "type": "array",
+                    "items": {
+                      "enum": [
+                        "GRASS",
+                        "FIRE",
+                        "WATER",
+                        "LIGHTNING",
+                        "PSYCHIC",
+                        "FIGHTING",
+                        "DARKNESS",
+                        "METAL"
+                      ]
+                    },
+                    "maxItems": 12,
+                    "minItems": 0
+                  },
+                  "toolPrintingId": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "conditions": {
+                    "type": "array",
+                    "items": {
+                      "enum": [
+                        "POISONED",
+                        "BURNED",
+                        "ASLEEP",
+                        "PARALYZED",
+                        "CONFUSED"
+                      ]
+                    },
+                    "maxItems": 3,
+                    "minItems": 0,
+                    "uniqueItems": true
+                  },
+                  "enteredPlayOnTurn": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 60
+                  }
+                },
+                "required": [
+                  "stack"
+                ],
+                "additionalProperties": false
+              },
+              "maxItems": 3,
+              "minItems": 0
+            },
+            "energyZone": {
+              "type": "object",
+              "properties": {
+                "types": {
+                  "type": "array",
+                  "items": {
+                    "enum": [
+                      "GRASS",
+                      "FIRE",
+                      "WATER",
+                      "LIGHTNING",
+                      "PSYCHIC",
+                      "FIGHTING",
+                      "DARKNESS",
+                      "METAL"
+                    ]
+                  },
+                  "maxItems": 3,
+                  "minItems": 1,
+                  "uniqueItems": true
+                },
+                "ready": {
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "enum": [
+                        "GRASS",
+                        "FIRE",
+                        "WATER",
+                        "LIGHTNING",
+                        "PSYCHIC",
+                        "FIGHTING",
+                        "DARKNESS",
+                        "METAL"
+                      ]
+                    }
+                  ]
+                },
+                "next": {
+                  "enum": [
+                    "GRASS",
+                    "FIRE",
+                    "WATER",
+                    "LIGHTNING",
+                    "PSYCHIC",
+                    "FIGHTING",
+                    "DARKNESS",
+                    "METAL"
+                  ]
+                }
+              },
+              "required": [
+                "types",
+                "ready",
+                "next"
+              ],
+              "additionalProperties": false
+            },
+            "points": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 2
+            },
+            "usage": {
+              "type": "object",
+              "properties": {
+                "supporterUsed": {
+                  "type": "boolean"
+                },
+                "retreatUsed": {
+                  "type": "boolean"
+                },
+                "manualEnergyUsed": {
+                  "type": "boolean"
+                }
+              },
+              "required": [],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "deck",
+            "hand",
+            "discard",
+            "active",
+            "bench",
+            "energyZone",
+            "points"
+          ],
+          "additionalProperties": false
+        },
+        "NPC": {
+          "type": "object",
+          "properties": {
+            "deck": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+              },
+              "maxItems": 20,
+              "minItems": 0
+            },
+            "hand": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+              },
+              "maxItems": 10,
+              "minItems": 0
+            },
+            "discard": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+              },
+              "maxItems": 20,
+              "minItems": 0
+            },
+            "active": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "stack": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+                      },
+                      "maxItems": 3,
+                      "minItems": 1
+                    },
+                    "damage": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 9990
+                    },
+                    "energies": {
+                      "type": "array",
+                      "items": {
+                        "enum": [
+                          "GRASS",
+                          "FIRE",
+                          "WATER",
+                          "LIGHTNING",
+                          "PSYCHIC",
+                          "FIGHTING",
+                          "DARKNESS",
+                          "METAL"
+                        ]
+                      },
+                      "maxItems": 12,
+                      "minItems": 0
+                    },
+                    "toolPrintingId": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "conditions": {
+                      "type": "array",
+                      "items": {
+                        "enum": [
+                          "POISONED",
+                          "BURNED",
+                          "ASLEEP",
+                          "PARALYZED",
+                          "CONFUSED"
+                        ]
+                      },
+                      "maxItems": 3,
+                      "minItems": 0,
+                      "uniqueItems": true
+                    },
+                    "enteredPlayOnTurn": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 60
+                    }
+                  },
+                  "required": [
+                    "stack"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            },
+            "bench": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "stack": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+                    },
+                    "maxItems": 3,
+                    "minItems": 1
+                  },
+                  "damage": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9990
+                  },
+                  "energies": {
+                    "type": "array",
+                    "items": {
+                      "enum": [
+                        "GRASS",
+                        "FIRE",
+                        "WATER",
+                        "LIGHTNING",
+                        "PSYCHIC",
+                        "FIGHTING",
+                        "DARKNESS",
+                        "METAL"
+                      ]
+                    },
+                    "maxItems": 12,
+                    "minItems": 0
+                  },
+                  "toolPrintingId": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "conditions": {
+                    "type": "array",
+                    "items": {
+                      "enum": [
+                        "POISONED",
+                        "BURNED",
+                        "ASLEEP",
+                        "PARALYZED",
+                        "CONFUSED"
+                      ]
+                    },
+                    "maxItems": 3,
+                    "minItems": 0,
+                    "uniqueItems": true
+                  },
+                  "enteredPlayOnTurn": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 60
+                  }
+                },
+                "required": [
+                  "stack"
+                ],
+                "additionalProperties": false
+              },
+              "maxItems": 3,
+              "minItems": 0
+            },
+            "energyZone": {
+              "type": "object",
+              "properties": {
+                "types": {
+                  "type": "array",
+                  "items": {
+                    "enum": [
+                      "GRASS",
+                      "FIRE",
+                      "WATER",
+                      "LIGHTNING",
+                      "PSYCHIC",
+                      "FIGHTING",
+                      "DARKNESS",
+                      "METAL"
+                    ]
+                  },
+                  "maxItems": 3,
+                  "minItems": 1,
+                  "uniqueItems": true
+                },
+                "ready": {
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "enum": [
+                        "GRASS",
+                        "FIRE",
+                        "WATER",
+                        "LIGHTNING",
+                        "PSYCHIC",
+                        "FIGHTING",
+                        "DARKNESS",
+                        "METAL"
+                      ]
+                    }
+                  ]
+                },
+                "next": {
+                  "enum": [
+                    "GRASS",
+                    "FIRE",
+                    "WATER",
+                    "LIGHTNING",
+                    "PSYCHIC",
+                    "FIGHTING",
+                    "DARKNESS",
+                    "METAL"
+                  ]
+                }
+              },
+              "required": [
+                "types",
+                "ready",
+                "next"
+              ],
+              "additionalProperties": false
+            },
+            "points": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 2
+            },
+            "usage": {
+              "type": "object",
+              "properties": {
+                "supporterUsed": {
+                  "type": "boolean"
+                },
+                "retreatUsed": {
+                  "type": "boolean"
+                },
+                "manualEnergyUsed": {
+                  "type": "boolean"
+                }
+              },
+              "required": [],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "deck",
+            "hand",
+            "discard",
+            "active",
+            "bench",
+            "energyZone",
+            "points"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "HUMAN",
+        "NPC"
+      ],
+      "additionalProperties": false
+    },
+    "scriptedRandom": {
+      "type": "object",
+      "properties": {
+        "coins": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "HEADS",
+              "TAILS"
+            ]
+          },
+          "maxItems": 60,
+          "minItems": 0
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        }
+      },
+      "required": [
+        "coins",
+        "label"
+      ],
+      "additionalProperties": false
+    },
+    "npcScript": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "command": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "command"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 60,
+      "minItems": 0
+    },
+    "solution": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "actor": {
+            "enum": [
+              "HUMAN"
+            ]
+          },
+          "command": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "actor",
+          "command"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 60,
+      "minItems": 0
+    },
+    "guidance": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "step": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 60
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 240
+          },
+          "highlight": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "step",
+          "text",
+          "highlight"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 30,
+      "minItems": 0
+    }
+  },
+  "required": [
+    "fixtureId",
+    "kind",
+    "label",
+    "startPhase",
+    "firstPlayer",
+    "currentPlayer",
+    "globalTurnNumber",
+    "ownTurns",
+    "stadiumPrintingId",
+    "players"
+  ],
+  "additionalProperties": false
+}

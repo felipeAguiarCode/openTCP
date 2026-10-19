@@ -1,0 +1,21 @@
+Card Campaign — projeto de fã não oficial, sem fins comerciais.
+Código, motor de regras, campanha e textos de interface pertencem ao projeto open-tcgp. Os rivais são
+treinadores da franquia Pokémon, com falas escritas para o projeto.
+Dados das cartas (conteúdo 3.5.0): sets do Pokémon TCG Pocket do Genetic Apex (A1) ao Deluxe Pack ex (A4b),
+Promo-A e Promo-B — nomes, números, atributos e efeitos são de terceiros (© The Pokémon Company / Nintendo /
+Creatures / GAME FREAK), usados apenas localmente; Pokémon é marca registrada dos seus titulares.
+Imagens das cartas (dist/assets, “Impressão completa”): a carta impressa de cada impressão, de terceiros
+(© The Pokémon Company; ilustradores creditados em cada carta), obtidas via Limitless TCG — uso local, não
+redistribuir. Retratos dos treinadores (avatares do jogador e dos rivais), bolas de Energia e a frente oficial
+dos pacotes (fornecidas pelo autor; as do Genetic Apex, do Serebii), as moedas do Pokémon TCG Pocket (a face, do
+Serebii; a coroa, derivada dela), os sleeves do Pocket (versos, do Serebii) e os ícones de efeito (fornecidos pelo
+autor): imagens de terceiros (© The Pokémon Company) — uso local, não redistribuir.
+Tapetes e as demais moedas são texturas procedurais; o verso foi fornecido pelo autor.
+
+Bibliotecas incluídas:
+- three — MIT — three.txt
+- preact — MIT — preact.txt
+- @preact/signals — MIT — preact_signals.txt
+- fflate — MIT — fflate.txt
+- @fontsource/nunito (fonte Nunito) — OFL-1.1 — fontsource_nunito_fonte_Nunito.txt
+- @sqlite.org/sqlite-wasm (SQLite) — Public Domain — sqlite.org_sqlite-wasm_SQLite.txt

@@ -1,0 +1,370 @@
+{
+  "environment": "Native SQLite through Python sqlite3; not WASM, OPFS or a browser",
+  "sqliteVersion": "3.50.4",
+  "schemaSha256": "9941bbccba8e360b5b1e08ac197af037629f4261ebc67dc8924d1f5b19f90d13",
+  "testCount": 89,
+  "passed": 89,
+  "results": [
+    {
+      "name": "seed_file_matches_generator",
+      "passed": true
+    },
+    {
+      "name": "ddl_has_no_transaction_or_pragma",
+      "passed": true
+    },
+    {
+      "name": "failed_migration_keeps_user_version_0",
+      "passed": true
+    },
+    {
+      "name": "failed_migration_creates_no_table",
+      "passed": true
+    },
+    {
+      "name": "schema_version",
+      "passed": true
+    },
+    {
+      "name": "application_id",
+      "passed": true
+    },
+    {
+      "name": "migration_row_same_transaction",
+      "passed": true
+    },
+    {
+      "name": "foreign_keys_enabled",
+      "passed": true
+    },
+    {
+      "name": "rollback_journal",
+      "passed": true
+    },
+    {
+      "name": "integrity_check",
+      "passed": true
+    },
+    {
+      "name": "foreign_key_check",
+      "passed": true
+    },
+    {
+      "name": "47_reference_tables",
+      "passed": true
+    },
+    {
+      "name": "seed_covers_tables_except_dependencies",
+      "passed": true
+    },
+    {
+      "name": "generated_ex_fields",
+      "passed": true
+    },
+    {
+      "name": "rules_hash_is_jcs_sha256",
+      "passed": true
+    },
+    {
+      "name": "appearance_hash_is_jcs_sha256",
+      "passed": true
+    },
+    {
+      "name": "appearance_hash_is_jcs_sha256",
+      "passed": true
+    },
+    {
+      "name": "two_printings_one_rule_version",
+      "passed": true
+    },
+    {
+      "name": "finishes_are_independent",
+      "passed": true
+    },
+    {
+      "name": "blob_sha256",
+      "passed": true
+    },
+    {
+      "name": "blob_length",
+      "passed": true
+    },
+    {
+      "name": "two_printings_reuse_one_asset",
+      "passed": true
+    },
+    {
+      "name": "publication_links_project_and_operation",
+      "passed": true
+    },
+    {
+      "name": "negative_wallet",
+      "passed": true
+    },
+    {
+      "name": "unknown_wallet_resource",
+      "passed": true
+    },
+    {
+      "name": "fractional_inventory",
+      "passed": true
+    },
+    {
+      "name": "missing_printing_fk",
+      "passed": true
+    },
+    {
+      "name": "immutable_card_update",
+      "passed": true
+    },
+    {
+      "name": "retained_card_delete",
+      "passed": true
+    },
+    {
+      "name": "immutable_printing_update",
+      "passed": true
+    },
+    {
+      "name": "immutable_asset_update",
+      "passed": true
+    },
+    {
+      "name": "referenced_asset_delete",
+      "passed": true
+    },
+    {
+      "name": "immutable_operation_update",
+      "passed": true
+    },
+    {
+      "name": "immutable_ledger_update",
+      "passed": true
+    },
+    {
+      "name": "immutable_printing_asset_update",
+      "passed": true
+    },
+    {
+      "name": "undeclared_printing_asset_rejected",
+      "passed": true
+    },
+    {
+      "name": "thumbnail_not_a_printing_role",
+      "passed": true
+    },
+    {
+      "name": "thumbnail_absent_from_role_check",
+      "passed": true
+    },
+    {
+      "name": "package_cards_append_only",
+      "passed": true
+    },
+    {
+      "name": "test_runs_immutable",
+      "passed": true
+    },
+    {
+      "name": "preset_immutable",
+      "passed": true
+    },
+    {
+      "name": "preset_asset_refs_immutable",
+      "passed": true
+    },
+    {
+      "name": "editor_revision_immutable",
+      "passed": true
+    },
+    {
+      "name": "published_revision_not_pruned",
+      "passed": true
+    },
+    {
+      "name": "head_revision_not_pruned",
+      "passed": true
+    },
+    {
+      "name": "old_auto_revision_prunable",
+      "passed": true
+    },
+    {
+      "name": "profile_imports_append_only",
+      "passed": true
+    },
+    {
+      "name": "same_profile_zip_imported_twice_as_new_profile",
+      "passed": true
+    },
+    {
+      "name": "ex_with_one_point_rejected",
+      "passed": true
+    },
+    {
+      "name": "wrong_rule_id_rejected",
+      "passed": true
+    },
+    {
+      "name": "non_step_hp_rejected",
+      "passed": true
+    },
+    {
+      "name": "trainer_with_hp_rejected",
+      "passed": true
+    },
+    {
+      "name": "missing_name_rejected",
+      "passed": true
+    },
+    {
+      "name": "missing_base_name_rejected",
+      "passed": true
+    },
+    {
+      "name": "invalid_json_rejected",
+      "passed": true
+    },
+    {
+      "name": "dependency_rows_immutable_after_insert",
+      "passed": true
+    },
+    {
+      "name": "card_dependencies_retained",
+      "passed": true
+    },
+    {
+      "name": "invalid_finish_rejected",
+      "passed": true
+    },
+    {
+      "name": "appearance_version_binding_rejected",
+      "passed": true
+    },
+    {
+      "name": "base_definition_with_owner_rejected",
+      "passed": true
+    },
+    {
+      "name": "custom_definition_without_owner_rejected",
+      "passed": true
+    },
+    {
+      "name": "duplicate_command_rejected",
+      "passed": true
+    },
+    {
+      "name": "duplicate_revision_rejected",
+      "passed": true
+    },
+    {
+      "name": "duplicate_business_reward_rejected",
+      "passed": true
+    },
+    {
+      "name": "cross_profile_operation_reference_rejected",
+      "passed": true
+    },
+    {
+      "name": "second_active_attempt_rejected",
+      "passed": true
+    },
+    {
+      "name": "terminal_state_requires_result",
+      "passed": true
+    },
+    {
+      "name": "campaign_attempt_requires_node",
+      "passed": true
+    },
+    {
+      "name": "training_never_progression_eligible",
+      "passed": true
+    },
+    {
+      "name": "progress_not_fragmented_by_content_version",
+      "passed": true
+    },
+    {
+      "name": "deck_position_21_rejected",
+      "passed": true
+    },
+    {
+      "name": "draft_head_invalid_source_rejected",
+      "passed": true
+    },
+    {
+      "name": "publication_with_project_requires_operation",
+      "passed": true
+    },
+    {
+      "name": "pending_reward_partial_choice_rejected",
+      "passed": true
+    },
+    {
+      "name": "binder_slot_requires_printing",
+      "passed": true
+    },
+    {
+      "name": "unknown_collection_mark",
+      "passed": true
+    },
+    {
+      "name": "stale_revision_changes_zero_rows",
+      "passed": true
+    },
+    {
+      "name": "stale_revision_preserves_profile",
+      "passed": true
+    },
+    {
+      "name": "rollback_preserves_wallet",
+      "passed": true
+    },
+    {
+      "name": "rollback_preserves_inventory",
+      "passed": true
+    },
+    {
+      "name": "rollback_removes_uncommitted_operation",
+      "passed": true
+    },
+    {
+      "name": "bound_text_not_executed",
+      "passed": true
+    },
+    {
+      "name": "reopen_preserves_rules",
+      "passed": true
+    },
+    {
+      "name": "reopen_preserves_blob",
+      "passed": true
+    },
+    {
+      "name": "reopen_preserves_pending_attempt",
+      "passed": true
+    },
+    {
+      "name": "native_backup_integrity",
+      "passed": true
+    },
+    {
+      "name": "native_backup_rows",
+      "passed": true
+    },
+    {
+      "name": "final_integrity",
+      "passed": true
+    },
+    {
+      "name": "final_foreign_keys",
+      "passed": true
+    }
+  ],
+  "limitations": [
+    "No gameplay engine or card-editor UI is implemented by these tests.",
+    "Browser isolation, OPFS, crashes and shader output are not tested here.",
+    "The seeded publication is a technical fixture, not a fully validated release."
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "documentVersion": "3.2.0",
+  "status": "ILLUSTRATIVE_PLAN_NOT_A_FULL_BATTLE_SAVE",
+  "scenario": "Opponent draws one hidden card; do not provide a front texture, rarity, finish or flair.",
+  "contract": "runtime-offline-threejs.md section 19.2 (PresentationBatch + PresentationStep)",
+  "attemptId": "attempt-demo-0001",
+  "batchId": "batch-0014",
+  "fromStateVersion": 41,
+  "toStateVersion": 42,
+  "firstEventSequence": 28,
+  "lastEventSequence": 28,
+  "presentationVersion": "pocket-light-v1",
+  "events": [
+    {
+      "eventId": "event-0028",
+      "sequence": 28,
+      "type": "CARD_DRAWN",
+      "playerId": "npc",
+      "visibility": "PUBLIC",
+      "card": {
+        "opaqueId": "opaque-npc-hand-05",
+        "sleeveId": "sleeve-neutral"
+      },
+      "fromZone": "DECK",
+      "toZone": "HAND",
+      "publicDeckCountAfter": 12,
+      "publicHandCountAfter": 5,
+      "face": "BACK_ONLY"
+    }
+  ],
+  "finalProjection": {
+    "excerpt": true,
+    "stateVersion": 42,
+    "opponent": {
+      "deckCount": 12,
+      "handCount": 5
+    }
+  },
+  "barrier": "READY_FOR_ACTION",
+  "steps": [
+    {
+      "stepId": "step-npc-draw",
+      "eventIds": [
+        "event-0028"
+      ],
+      "presetId": "DRAW_OPPONENT",
+      "sourceAnchorIds": [
+        "NPC_DECK_TOP"
+      ],
+      "targetAnchorIds": [
+        "NPC_HAND_ENTRY"
+      ],
+      "durationMs": 360,
+      "visibility": "PUBLIC",
+      "finishPolicy": "RECONCILE_CONFIRMED"
+    }
+  ],
+  "forbiddenFieldsForHiddenCards": [
+    "definitionId",
+    "printingId",
+    "rarity",
+    "finish",
+    "entryFlairId",
+    "frontTextureKey"
+  ],
+  "callbacksMayMutateDomain": false,
+  "visualProfileId": "pocket-light-v1"
+}

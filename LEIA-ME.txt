@@ -1,0 +1,36 @@
+CARD CAMPAIGN — jogo de cartas para um jogador, inteiramente offline
+====================================================================
+
+REQUISITOS
+- Node.js 20 ou mais recente já instalado (https://nodejs.org — o jogo nunca baixa nada sozinho).
+- Um navegador atual baseado em Chromium, Firefox ou Safari com suporte a WebAssembly,
+  OPFS (armazenamento privado de arquivos) e Web Locks. WebGL2 é recomendado para a mesa 3D;
+  sem ele o jogo usa a apresentação 2D.
+
+COMO INICIAR
+- Windows: clique duas vezes em start-local.cmd
+- macOS/Linux: execute ./start-local.sh no terminal
+- O navegador abre em http://localhost:4173/ . Mantenha a janela do terminal aberta enquanto joga.
+- Para não abrir o navegador automaticamente: start-local.cmd --no-open
+
+ENDEREÇO FIXO E SEUS SAVES
+- Os saves ficam no navegador, ligados exatamente ao endereço http://localhost:4173 .
+  Outro endereço (127.0.0.1, outra porta, outro navegador ou perfil do navegador) mostra outro
+  conjunto de dados. Se a porta 4173 estiver ocupada, feche o outro programa — o jogo não troca de porta.
+- Limpar os dados do site ou usar navegação privada pode apagar o progresso.
+- Faça cópias em "Saves e backups" (perfil .campaign-profile.zip ou backup completo .sqlite3).
+
+SEM INTERNET
+- Todo o conteúdo (catálogo, campanha, regras, fontes e o banco SQLite WASM) está nesta pasta.
+  Nenhuma conexão externa é feita durante o jogo.
+
+CONTEÚDO DA PASTA
+- dist/        o jogo (única pasta servida ao navegador)
+- runner/      servidor local mínimo (somente módulos nativos do Node)
+- LICENSES/    licenças do jogo e das bibliotecas incluídas
+- LEIA-ME.txt  este arquivo
+
+Card Campaign é um projeto de fã, não oficial e sem fins comerciais. Campanha e textos de interface são
+originais; os rivais são treinadores da franquia Pokémon. As cartas (dados e imagens, do Genetic Apex ao Deluxe
+Pack ex, Promo-A e Promo-B), os retratos dos treinadores, as bolas de Energia, a arte dos pacotes, as moedas, os
+sleeves e os ícones de efeito são do Pokémon TCG Pocket e da franquia (© The Pokémon Company), para uso local — não redistribuir.

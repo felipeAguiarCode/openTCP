@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:card-campaign:schema:deck-recipe:1",
+  "title": "Receita de deck (por tipo, meta ou comunidade)",
+  "type": "object",
+  "properties": {
+    "recipeId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 999
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 40
+    },
+    "category": {
+      "enum": [
+        "TYPE",
+        "META",
+        "COMMUNITY"
+      ]
+    },
+    "era": {
+      "type": "string",
+      "pattern": "^A[1-9][a-z]?$"
+    },
+    "energyTypes": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "GRASS",
+          "FIRE",
+          "WATER",
+          "LIGHTNING",
+          "PSYCHIC",
+          "FIGHTING",
+          "DARKNESS",
+          "METAL"
+        ]
+      },
+      "maxItems": 3,
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "difficulty": {
+      "enum": [
+        "EASY",
+        "MEDIUM",
+        "HARD"
+      ]
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "printingId": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2
+          }
+        },
+        "required": [
+          "printingId",
+          "count"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 20,
+      "minItems": 1
+    },
+    "coverPrintingId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300
+    }
+  },
+  "required": [
+    "recipeId",
+    "version",
+    "name",
+    "category",
+    "era",
+    "energyTypes",
+    "difficulty",
+    "entries",
+    "coverPrintingId",
+    "summary"
+  ],
+  "additionalProperties": false,
+  "$comment": "A soma de count deve ser 20, o limite por deckLimitKey é 2, toda evolução tem o estágio anterior na lista e a capa é um Pokémon da lista (validação semântica do build; campanha §3.7)."
+}

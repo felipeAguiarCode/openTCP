@@ -1,0 +1,23 @@
+{
+  "format": "card-campaign-database-backup",
+  "formatVersion": 1,
+  "schemaVersion": 1,
+  "applicationId": 1128354372,
+  "databaseFile": "card-campaign-2026-10-14.sqlite3",
+  "databaseSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "databaseBytes": 0,
+  "createdAt": "2026-10-14T00:00:00Z",
+  "appVersion": "1.0.0",
+  "sqliteVersion": "<release fixada no manifesto>",
+  "includesAllProfiles": true,
+  "includesImportedAssetBytes": true,
+  "bundledAssetsIncluded": false,
+  "requiredContentPackages": [
+    {
+      "packageId": "base",
+      "version": "1.0.0",
+      "contentHash": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  ],
+  "exampleNote": "Valores 0/placeholder são ilustrativos; o export real grava sha256, bytes e versões medidos."
+}

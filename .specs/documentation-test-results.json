@@ -1,0 +1,132 @@
+{
+  "documentVersion": "3.2.0",
+  "scope": "STATIC_DOCUMENTATION_CONFIG_AND_NATIVE_DEMO_INTEGRITY",
+  "passed": true,
+  "issues": [],
+  "statistics": {
+    "markdownFilesChecked": 27,
+    "relativeLinksChecked": 653,
+    "explicitAnchors": 271,
+    "fencedJsonBlocks": 35,
+    "jsonFilesChecked": 30,
+    "jsonSchemaChecks": 29,
+    "schemas": 14,
+    "dslOpcodes": 54,
+    "grantKeySamples": 38,
+    "contrasts": [
+      {
+        "foreground": "text",
+        "background": "surface",
+        "ratio": 11.644
+      },
+      {
+        "foreground": "textSecondary",
+        "background": "surface",
+        "ratio": 5.816
+      },
+      {
+        "foreground": "primaryInk",
+        "background": "primary",
+        "ratio": 5.856
+      },
+      {
+        "foreground": "text",
+        "background": "cyanSoft",
+        "ratio": 10.229
+      },
+      {
+        "foreground": "success",
+        "background": "surface",
+        "ratio": 6.085
+      },
+      {
+        "foreground": "danger",
+        "background": "surface",
+        "ratio": 6.513
+      },
+      {
+        "foreground": "#FFFFFF",
+        "background": "strip:GRASS",
+        "ratio": 4.612
+      },
+      {
+        "foreground": "#FFFFFF",
+        "background": "strip:FIRE",
+        "ratio": 4.609
+      },
+      {
+        "foreground": "#FFFFFF",
+        "background": "strip:WATER",
+        "ratio": 4.626
+      },
+      {
+        "foreground": "#FFFFFF",
+        "background": "strip:LIGHTNING",
+        "ratio": 4.625
+      },
+      {
+        "foreground": "#FFFFFF",
+        "background": "strip:PSYCHIC",
+        "ratio": 4.636
+      },
+      {
+        "foreground": "#FFFFFF",
+        "background": "strip:FIGHTING",
+        "ratio": 4.625
+      },
+      {
+        "foreground": "#FFFFFF",
+        "background": "strip:DARKNESS",
+        "ratio": 7.035
+      },
+      {
+        "foreground": "#FFFFFF",
+        "background": "strip:METAL",
+        "ratio": 4.604
+      },
+      {
+        "foreground": "#FFFFFF",
+        "background": "strip:DRAGON",
+        "ratio": 4.644
+      },
+      {
+        "foreground": "#FFFFFF",
+        "background": "strip:COLORLESS",
+        "ratio": 4.628
+      }
+    ],
+    "layoutProfiles": 2,
+    "slotsPerProfile": 8,
+    "animationPresets": 38,
+    "uiPresets": 4,
+    "phaseSequences": 12,
+    "playmats": 9,
+    "artBriefs": 7,
+    "routes": 53,
+    "plannedCaptureScenarios": 18,
+    "plannedProductRequirements": {
+      "campanha.md": 68,
+      "direcao-visual-pocket.md": 60,
+      "editor-de-cartas.md": 70,
+      "efeitos-dsl.md": 41,
+      "gameplay-pocket.md": 22,
+      "gameplay.md": 89,
+      "interface-16x9.md": 159,
+      "persistencia-sqlite.md": 55,
+      "runtime-offline-threejs.md": 84
+    },
+    "plannedProductRequirementsTotal": 648,
+    "demoIntegrity": "ok",
+    "demoForeignKeyViolations": 0,
+    "demoTables": 47,
+    "notExecuted": [
+      "game",
+      "card-editor",
+      "WebGL-render",
+      "GPU-performance",
+      "SQLite-WASM-OPFS",
+      "browser-import",
+      "visual-capture"
+    ]
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "documentVersion": "3.2.0",
+  "baseline": {
+    "version": "3.1.0",
+    "gitCommit": "2c567b9"
+  },
+  "legacyAnchorPreservation": {
+    "campanha.md": {
+      "original": 26,
+      "preserved": 26,
+      "missing": []
+    },
+    "direcao-visual-pocket.md": {
+      "original": 18,
+      "preserved": 18,
+      "missing": []
+    },
+    "editor-de-cartas.md": {
+      "original": 36,
+      "preserved": 36,
+      "missing": []
+    },
+    "gameplay.md": {
+      "original": 36,
+      "preserved": 36,
+      "missing": []
+    },
+    "interface-16x9.md": {
+      "original": 51,
+      "preserved": 51,
+      "missing": []
+    },
+    "persistencia-sqlite.md": {
+      "original": 31,
+      "preserved": 31,
+      "missing": []
+    },
+    "runtime-offline-threejs.md": {
+      "original": 34,
+      "preserved": 34,
+      "missing": []
+    }
+  },
+  "intentionallyChangedFiles": [
+    "CHANGELOG.md",
+    "README.md",
+    "VALIDACAO.md",
+    "campanha.md",
+    "database/README.md",
+    "database/demo.sqlite3",
+    "database/schema-v1.sql",
+    "database/seed-demo.sql",
+    "database/sqlite-test-results.json",
+    "database/test_schema.py",
+    "design/theme-pocket.css",
+    "direcao-visual-pocket.md",
+    "documentation-test-results.json",
+    "editor-de-cartas.md",
+    "examples/animation-presets.json",
+    "examples/art-briefs.json",
+    "examples/battle-layout.json",
+    "examples/card-definition.example.json",
+    "examples/card-printings.example.json",
+    "examples/cosmetic-preset.example.json",
+    "examples/database-backup-manifest.example.json",
+    "examples/editor-project.example.json",
+    "examples/motion-choreography.json",
+    "examples/playmats.example.json",
+    "examples/presentation-plan.example.json",
+    "examples/visual-capture-matrix.json",
+    "examples/visual-tokens.json",
+    "gameplay.md",
+    "interface-16x9.md",
+    "persistencia-sqlite.md",
+    "referencias-visuais.md",
+    "runtime-offline-threejs.md",
+    "schemas/card-definition.schema.json",
+    "schemas/card-printing.schema.json",
+    "scripts/validate_specs.py"
+  ],
+  "note": "Arquivos de referência (DDL, seed, schemas, exemplos, demo) foram alterados intencionalmente na 3.2.0; ver CHANGELOG. Todas as âncoras explícitas da 3.1.0 continuam existindo (verificado por validate_specs.py)."
+}

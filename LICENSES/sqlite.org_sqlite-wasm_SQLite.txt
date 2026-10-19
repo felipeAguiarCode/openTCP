@@ -1,0 +1,4 @@
+SQLite — domínio público.
+O código-fonte do SQLite foi dedicado ao domínio público pelos seus autores.
+Detalhes: https://sqlite.org/copyright.html (texto informativo; o jogo não acessa este endereço).
+O pacote @sqlite.org/sqlite-wasm distribui o build WebAssembly oficial do SQLite.
