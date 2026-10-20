@@ -2884,7 +2884,7 @@
   "UI-173": {
     "status": "AUTOMATED",
     "ref": "src/presentation/assets/pack-art.test.ts::arte oficial dos pacotes > os 15 pacotes de expansão têm a frente empacotada; tutorial e promocionais não",
-    "note": "Arquivos gerados por npm run inspo:packs (--check). Telas S04/S05/S33/Início e frente do pacote 3D no checklist manual."
+    "note": "Arquivos gerados por npm run assets:packs (--check). Telas S04/S05/S33/Início e frente do pacote 3D no checklist manual."
   },
   "UI-174": {
     "status": "AUTOMATED",

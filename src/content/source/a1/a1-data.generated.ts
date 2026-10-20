@@ -1,4 +1,4 @@
-// GERADO por tools/inspo-import a partir de .inspo/Genetic Apex (A1) (dados do Limitless TCG, em inglês). Não editar à mão.
+// GERADO por tools/asset-import a partir de src/content/source/pocket/raw/a1 (dados do Limitless TCG, em inglês). Não editar à mão.
 // Dados de terceiros (The Pokémon Company): uso local. Uma linha por impressão; cartas de jogo idênticas são agrupadas em a1/cards.ts.
 
 export type A1Row = {

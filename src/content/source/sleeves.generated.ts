@@ -1,4 +1,4 @@
-// Gerado por tools/inspo-import/sleeves.py (npm run inspo:sleeves) — não editar à mão.
+// Gerado por tools/asset-import/sleeves.py (npm run assets:sleeves) — não editar à mão.
 // Sleeves do Pokémon TCG Pocket (imagens em src/presentation/assets/sleeves): stem, nome e cores para o fallback.
 export const POCKET_SLEEVES: readonly { readonly stem: string; readonly name: string; readonly base: string; readonly edge: string }[] = [
   { stem: "megacharizardx", name: "Mega Charizard X", base: '#736D80', edge: '#1D4A8E' },

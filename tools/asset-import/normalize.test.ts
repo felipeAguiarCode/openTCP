@@ -1,13 +1,13 @@
 import { describe, expect, it } from 'vitest';
 import { POCKET_ROWS } from '../../src/content/source/pocket/data/index.ts';
 import { pocketSet } from '../../src/content/source/pocket/registry.ts';
-import { artFileName, cleanText, normalizeSet, portraitFileName, type Raw } from './normalize.ts';
+import { artFileName, cleanText, normalizeSet, type Raw } from './normalize.ts';
 
 const raw = (over: Partial<Raw> & { number: number }): Raw => ({
   name: 'Teste', category: 'Pokémon', subtype: 'Basic', element: 'Grass', hp: 60, abilities: [], attacks: [], rarity: '◊', pack: null, ...over,
 });
 
-describe('normalização do .inspo', () => {
+describe('normalização da origem bruta (pocket/raw)', () => {
   it('texto canônico: menos tipográfico, apóstrofo curvo, Pokemon, ponto colado e "],["', () => {
     expect(cleanText('takes −10  damage.It’s a Pokemon  with [R],[W]')).toBe("takes -10 damage. It's a Pokémon with [R], [W]");
     expect(cleanText(null)).toBeNull();
@@ -16,10 +16,6 @@ describe('normalização do .inspo', () => {
   it('nome do arquivo de arte em maiúsculas', () => {
     expect(artFileName(pocketSet('A1a'), 1)).toBe('A1A-001.webp');
     expect(artFileName(pocketSet('P-B'), 42)).toBe('PB-042.webp');
-    expect(portraitFileName('Lt._Surge_Emote_1_Masters.png')).toBe('lt-surge-emote-1.png');
-    expect(portraitFileName('Blue_Masters_Emote_2.png')).toBe('blue-emote-2.png');
-    expect(portraitFileName('Erika_Holiday_2020_Emote_3_Masters.png')).toBe('erika-holiday-2020-emote-3.png');
-    expect(portraitFileName('Bea_Emote_4_Masters (1).png')).toBeNull();
   });
 
   it('brilhantes = ☆/☆☆ depois do último ☆☆☆; contagens conferidas', () => {

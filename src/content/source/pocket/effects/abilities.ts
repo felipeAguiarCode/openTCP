@@ -1,4 +1,4 @@
-// Habilidades dos sets do Pocket depois do A1: texto em inglês do `.inspo` → Habilidade do effects-dsl.
+// Habilidades dos sets do Pocket depois do A1: texto em inglês do Limitless → Habilidade do effects-dsl.
 import type { Condition, Operation, PokemonFilter } from '../../../../domain/cards/types.ts';
 import {
   activate, activated, ACTIVE, atLeastHeads, attachZone, BENCH, BOTH, c, choose, cont, conditionOn, continuousAbility, discardRandomFrom, E, EX, exists,

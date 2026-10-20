@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """Arte oficial dos pacotes: a frente de cada booster para as telas de pacotes e a abertura 3D.
 
-Origem (decisão do autor, 16/10/2026): as imagens de `.inspo/boosters/` fornecidas pelo autor e, para os três pacotes
-do Genetic Apex, as da página do set no Serebii, baixadas uma vez para `.inspo/boosters/serebii/` (o Bulbagarden
-recusa acesso automatizado). As do Serebii são JPG com fundo branco: o branco ligado às bordas vira transparente.
+Origem (decisão do autor, 16/10/2026): as imagens fornecidas pelo autor, em `src/presentation/assets/source/packs/`,
+e, para os três pacotes do Genetic Apex, as da página do set no Serebii, baixadas uma vez para `packs/serebii/` (o
+Bulbagarden recusa acesso automatizado). As do Serebii são JPG com fundo branco: o branco ligado às bordas vira transparente.
 
 Saída: `src/presentation/assets/packs/<productId>.webp` — margens transparentes cortadas, no máximo 640 px de
 altura, WebP qualidade 88 com transparência. Pacote tutorial e promocionais não têm arte oficial: não saem daqui.
 
-Uso: python tools/inspo-import/pack-art.py [--check]   (--check: não grava; sai com 1 se algo difere do disco)
+Uso: python tools/asset-import/pack-art.py [--check]   (--check: não grava; sai com 1 se algo difere do disco)
 Requer Pillow.
 """
 from pathlib import Path
@@ -18,7 +18,7 @@ import sys
 from PIL import Image, ImageDraw, ImageFilter
 
 ROOT = Path(__file__).resolve().parents[2]
-SRC = ROOT / '.inspo' / 'boosters'
+SRC = ROOT / 'src' / 'presentation' / 'assets' / 'source' / 'packs'
 OUT = ROOT / 'src' / 'presentation' / 'assets' / 'packs'
 MAX_H = 640
 
@@ -80,7 +80,7 @@ def main() -> int:
     check = '--check' in sys.argv[1:]
     missing = [n for n in PACKS.values() if not (SRC / n).exists()]
     if missing:
-        print('origem ausente em .inspo/boosters: ' + ', '.join(missing), file=sys.stderr)
+        print('origem ausente em source/packs: ' + ', '.join(missing), file=sys.stderr)
         return 1
     diffs, written = [], 0
     expected = {f'{pid}.webp' for pid in PACKS}
@@ -99,9 +99,9 @@ def main() -> int:
     if check:
         diffs += [p.relative_to(ROOT).as_posix() for p in stale]
         if diffs:
-            print('difere de .inspo/boosters: ' + ', '.join(diffs), file=sys.stderr)
+            print('difere da origem (source/packs): ' + ', '.join(diffs), file=sys.stderr)
             return 1
-        print(f'arte dos pacotes igual a .inspo/boosters ({len(PACKS)})')
+        print(f'arte dos pacotes igual à origem (source/packs) ({len(PACKS)})')
         return 0
     for p in stale:
         p.unlink()

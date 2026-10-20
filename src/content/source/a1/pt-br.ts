@@ -1,5 +1,5 @@
 // Nomes PT-BR do Genetic Apex (A1). Os Pokémon mantêm o nome do jogo (iguais no Brasil); ataques, Habilidades e
-// Treinadores são traduzidos aqui, pelo nome em inglês do `.inspo`. O texto de regras não passa por aqui: é gerado
+// Treinadores são traduzidos aqui, pelo nome em inglês do Limitless. O texto de regras não passa por aqui: é gerado
 // do DSL. Falta de tradução faz a1/cards.ts falhar ao carregar.
 
 export const TRAINER_NAMES: Readonly<Record<string, string>> = {

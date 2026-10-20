@@ -3,15 +3,15 @@
 
 Origem (pedido do autor, 16/10/2026): a categoria de moedas do Bulbagarden recusa acesso automatizado; as imagens vêm da
 página de moedas do Serebii (https://www.serebii.net/tcgpocket/coins.shtml), baixadas uma vez com `--fetch` para
-`.inspo/coins/serebii/` (imagens + index.json com nome e origem). Cada imagem traz só a face da moeda (cara) sobre fundo
-claro, com a espessura embaixo.
+`src/presentation/assets/source/coins/` (imagens + index.json com nome e origem). Cada imagem traz só a face da moeda
+(cara) sobre fundo claro, com a espessura embaixo.
 
 Saída:
 - `src/presentation/assets/coins/<stem>-heads.webp`: a face recortada num círculo (256×256, com transparência);
 - `src/presentation/assets/coins/<stem>-tails.webp`: o verso (coroa), gerado da face em prata dessaturada com aro claro;
 - `src/content/source/coins.generated.ts`: a lista (stem, nome, cor de base e de borda) para os cosméticos de moeda.
 
-Uso: python tools/inspo-import/coins.py [--fetch] [--check]   (--check: não grava; sai com 1 se algo difere do disco)
+Uso: python tools/asset-import/coins.py [--fetch] [--check]   (--check: não grava; sai com 1 se algo difere do disco)
 Requer Pillow.
 """
 from pathlib import Path
@@ -25,7 +25,7 @@ import urllib.request
 from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageOps
 
 ROOT = Path(__file__).resolve().parents[2]
-SRC = ROOT / '.inspo' / 'coins' / 'serebii'
+SRC = ROOT / 'src' / 'presentation' / 'assets' / 'source' / 'coins'
 OUT = ROOT / 'src' / 'presentation' / 'assets' / 'coins'
 LIST = ROOT / 'src' / 'content' / 'source' / 'coins.generated.ts'
 PAGE = 'https://www.serebii.net/tcgpocket/coins.shtml'
@@ -157,7 +157,7 @@ def main() -> int:
             path.write_bytes(data)
             written += 1
     ts = (
-        '// Gerado por tools/inspo-import/coins.py (npm run inspo:coins) — não editar à mão.\n'
+        '// Gerado por tools/asset-import/coins.py (npm run assets:coins) — não editar à mão.\n'
         '// Moedas do Pokémon TCG Pocket (imagens em src/presentation/assets/coins): stem, nome e cores para o fallback.\n'
         'export const POCKET_COINS: readonly { readonly stem: string; readonly name: string; readonly base: string; readonly edge: string }[] = [\n'
         + ''.join(f"  {{ stem: {json.dumps(s)}, name: {json.dumps(n, ensure_ascii=False)}, base: '{b}', edge: '{e}' }},\n" for s, n, b, e in rows)
@@ -169,9 +169,9 @@ def main() -> int:
             diffs.append(LIST.relative_to(ROOT).as_posix())
         diffs += [p.relative_to(ROOT).as_posix() for p in stale]
         if diffs:
-            print('difere de .inspo/coins: ' + ', '.join(diffs[:8]) + (' …' if len(diffs) > 8 else ''), file=sys.stderr)
+            print('difere da origem (source/coins): ' + ', '.join(diffs[:8]) + (' …' if len(diffs) > 8 else ''), file=sys.stderr)
             return 1
-        print(f'moedas iguais a .inspo/coins ({len(rows)})')
+        print(f'moedas iguais à origem (source/coins) ({len(rows)})')
         return 0
     LIST.write_text(ts, encoding='utf-8', newline='\n')
     for p in stale:

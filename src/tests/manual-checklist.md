@@ -211,7 +211,7 @@ Formato: `- [ ] ID — passos → resultado esperado`.
 - [ ] UI-141 — Dano e cura → número grande no centro da carta (sem sinal de menos no dano, verde na cura); PS vermelho contando de 10 em 10; com movimento reduzido, troca direta.
 - [ ] UI-142 — Nocaute → orbe e anel ciano no slot da carta antes de ela ir ao descarte.
 - [ ] UI-144 — Ataque com moeda (ex.: um ataque "jogue 1 moeda") → véu na cor de quem joga e "Cara!"/"Coroa!" digitado letra a letra; várias moedas mostram a sequência em pílula.
-- [ ] UI-148 — Zona de Energia nos dois lados, com e sem Energia pronta (3D e 2D) → prato branco-lilás com aro; orbe do tipo com halo ciano pulsando; próxima Energia escura na borda de baixo (direita no seu prato, esquerda no do adversário); compare com .inspo/scene/battle/energy-*.png.
+- [ ] UI-148 — Zona de Energia nos dois lados, com e sem Energia pronta (3D e 2D) → prato branco-lilás com aro; orbe do tipo com halo ciano pulsando; próxima Energia escura na borda de baixo (direita no seu prato, esquerda no do adversário); compare com .specs/referencias/batalha/energy-*.png.
 - [ ] UI-151 — Mesa 3D com uma evolução jogável na mão (T04, Rapidash) → contorno amarelo nela; as outras jogáveis em ciano.
 - [ ] UI-152 — Compra própria no início do turno e Básico jogado (3D, harness ou partida) → verso vai ao centro, vira grande e desce à ponta direita da mão; o Básico gira em Y, fica grande no centro e encolhe até o slot, com o PS só depois; o do adversário vira do verso.
 - [ ] UI-153 — Item e Apoiador jogados (3D) → prévia grande no centro, placa branca e molduras na cor do subtipo (Item ciano, Apoiador dourado) se expandindo; a carta reaparece no descarte; na 2D, a prévia HTML faz a mesma dissolução.
@@ -227,7 +227,7 @@ Formato: `- [ ] ID — passos → resultado esperado`.
 
 - [ ] UI-167 — Inicie um encontro pelo briefing (S16), outro pela Arena e use “Reiniciar encontro”, na mesa 3D e na 2D → faixa vermelha do rival em cima entrando pela esquerda e azul do jogador embaixo pela direita, retratos caindo com tremor curto, “VS.”, os dois nomes e a saudação do rival; some em ~2,6 s e só então a preparação aceita toques e a IA age; com movimento reduzido, só a pose final com fade (~1,2 s); depois de Salvar e sair, retomar o duelo não mostra a abertura.
 - [ ] UI-168 — Novo jogo (S02) e Perfil › Identidade (S34): escolha um retrato no seletor agrupado por treinador → o escolhido cresce, os demais esmaecem, sem contorno; placa da mesa, “+1 ponto!”, abertura VS, cabeçalho, briefing S16, caderno S29/S30 (não encontrado em silhueta) e Arena mostram retratos inteiros, sem borda, sombra ou fundo; um perfil antigo com avatar por tipo abre com o retrato padrão.
-- [ ] UI-169 — Ligue Energias de vários tipos e observe a Zona dos dois lados, na mesa 3D e na 2D → Energias ligadas, orbe pronto, próxima Energia (esmaecida, aro branco) e voo da ligação com a bola do tipo (compare com .inspo/scene/battle/energys.png); um custo Incolor nos ataques continua com o ícone de tipo.
+- [ ] UI-169 — Ligue Energias de vários tipos e observe a Zona dos dois lados, na mesa 3D e na 2D → Energias ligadas, orbe pronto, próxima Energia (esmaecida, aro branco) e voo da ligação com a bola do tipo (compare com src/presentation/assets/source/energy/energys.png); um custo Incolor nos ataques continua com o ícone de tipo.
 
 ## Menus em caixas, promoção por arrasto, arte dos pacotes e mesa em arena (16/10/2026; interface §2.2, §5.6, §8.5, §23.2, §26.1; gameplay-pocket §2, §6.2)
 

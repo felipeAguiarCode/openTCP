@@ -1,5 +1,5 @@
-// Arte oficial dos pacotes (frente do booster): `.inspo/boosters/` e, no Genetic Apex, o Serebii, recortadas por
-// `npm run inspo:packs` (tools/inspo-import/pack-art.py) para packs/<productId>.webp, até 640 px de altura e com
+// Arte oficial dos pacotes (frente do booster): `source/packs/` e, no Genetic Apex, o Serebii, recortadas por
+// `npm run assets:packs` (tools/asset-import/pack-art.py) para packs/<productId>.webp, até 640 px de altura e com
 // transparência. Usada nas telas de pacotes, no Empório, nas caixas do Início e na frente do pacote 3D da abertura.
 // Pacote tutorial e promocionais não têm arte oficial e seguem com a arte gerada. Origem e restrições em ASSETS.md.
 

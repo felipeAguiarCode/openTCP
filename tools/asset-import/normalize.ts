@@ -1,6 +1,6 @@
-// Normalização das linhas do `.inspo/decks` (JSON do Limitless, em inglês) para o formato enxuto do conteúdo:
-// só campos de jogo, símbolo de raridade resolvido (brilhantes separados), pacote, artista, caixa de regra, bebês da
-// 6ª carta e origem das promos. Funções puras (testadas em normalize.test.ts); o index.ts só lê e escreve arquivos.
+// Normalização das linhas de `src/content/source/pocket/raw` (JSON do Limitless, em inglês) para o formato enxuto do
+// conteúdo: só campos de jogo, símbolo de raridade resolvido (brilhantes separados), pacote, artista, caixa de regra,
+// bebês da 6ª carta e origem das promos. Funções puras (testadas em normalize.test.ts); o index.ts só lê e escreve arquivos.
 import type { PocketRarity, PocketRow, PromoSource } from '../../src/content/source/pocket/rows.ts';
 import type { PocketSet } from '../../src/content/source/pocket/registry.ts';
 
@@ -129,15 +129,5 @@ export function a1LegacyRow(r: Raw) {
 
 /** Nome do arquivo de arte no pacote: `A1a-001.webp` → `A1A-001.webp`, `P-B-001.webp` → `PB-001.webp`. */
 export const artFileName = (set: PocketSet, number: number): string => `${set.setId.toUpperCase()}-${String(number).padStart(3, '0')}.webp`;
-/**
- * Retrato de `.inspo/portraits` → nome no pacote: minúsculo, sem o sufixo `_Masters`, `_` e `.` viram `-`
- * (`Lt._Surge_Emote_1_Masters.png` → `lt-surge-emote-1.png`). Cópias `(1)` da origem são descartadas (null).
- */
-export function portraitFileName(source: string): string | null {
-  if (!/\.png$/i.test(source) || /\(\d+\)/.test(source)) return null;
-  const stem = source.replace(/\.png$/i, '').replace(/_Masters/g, '').replace(/[._\s]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '').toLowerCase();
-  return `${stem}.png`;
-}
-
-/** Nome do arquivo na origem (`.inspo/decks/<pasta>/<código>-NNN`). */
+/** Nome do arquivo na origem (`pocket/raw/<setId>/<código>-NNN`). */
 export const sourceBaseName = (set: PocketSet, number: number): string => `${set.code}-${String(number).padStart(3, '0')}`;

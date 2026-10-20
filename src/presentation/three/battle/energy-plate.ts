@@ -1,4 +1,4 @@
-// Zona de Energia como “prato” (gameplay-pocket §5.2; referências .inspo/scene/battle/energy-empty.png e
+// Zona de Energia como “prato” (gameplay-pocket §5.2; referências .specs/referencias/batalha/energy-empty.png e
 // energy-fullfiled.png): disco branco-lilás com aro claro; com Energia pronta, um orbe brilhante do tipo com halo ciano
 // pulsando; o ícone escuro da próxima Energia fica na borda de baixo (à direita do seu prato, à esquerda do adversário).
 // O orbe de arrasto (camada de trânsito, px CSS) segue o ponteiro com um rastro na cor do tipo.

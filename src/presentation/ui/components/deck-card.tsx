@@ -1,4 +1,4 @@
-// Cartão de deck das prateleiras (S11 “Escolha um baralho” e S51 “Receitas de deck”; referência .inspo/scene/deck):
+// Cartão de deck das prateleiras (S11 “Escolha um baralho” e S51 “Receitas de deck”; referência .specs/referencias/decks):
 // faixa na cor da Energia com o número ou um selo, a caixa 3D com a capa, duas cartas em destaque, o nome e a linha de
 // estado — nas receitas, também a barra de quantas cartas a coleção já cobre.
 import type { JSX } from 'preact';

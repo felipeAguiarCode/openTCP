@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """Ícones de efeito do Pokémon TCG Pocket nas cartas em campo (interface §25.21): Condições Especiais e efeitos temporários.
 
-Origem: `.inspo/effects/` (ícones fornecidos pelo autor, 17/10/2026; nomes `ba_icn_sp_*` para as Condições e
-`ba_icn_cont_*` para os efeitos contínuos). Cada ícone tem as margens transparentes cortadas, é centrado num quadrado e
-gravado em `src/presentation/assets/effects/<id>.webp` (128×128, sem perda, com transparência).
+Origem: `src/presentation/assets/source/effects/` (ícones fornecidos pelo autor, 17/10/2026; nomes `ba_icn_sp_*` para
+as Condições e `ba_icn_cont_*` para os efeitos contínuos). Cada ícone tem as margens transparentes cortadas, é centrado
+num quadrado e gravado em `src/presentation/assets/effects/<id>.webp` (128×128, sem perda, com transparência).
 
-Uso: python tools/inspo-import/effect-icons.py [--check]   (--check: não grava; sai com 1 se algo difere do disco)
+Uso: python tools/asset-import/effect-icons.py [--check]   (--check: não grava; sai com 1 se algo difere do disco)
 Requer Pillow.
 """
 from pathlib import Path
@@ -15,11 +15,11 @@ import sys
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[2]
-SRC = ROOT / '.inspo' / 'effects'
+SRC = ROOT / 'src' / 'presentation' / 'assets' / 'source' / 'effects'
 OUT = ROOT / 'src' / 'presentation' / 'assets' / 'effects'
 SIZE = 128
 
-# id do ícone → arquivo do .inspo
+# id do ícone → arquivo da origem
 ICONS = {
     'asleep': 'ba_icn_sp_asleep.png',
     'burned': 'ba_icn_sp_burned.png',
@@ -73,9 +73,9 @@ def main() -> int:
     if check:
         diffs += [p.relative_to(ROOT).as_posix() for p in stale]
         if diffs:
-            print('difere de .inspo/effects: ' + ', '.join(diffs), file=sys.stderr)
+            print('difere da origem (source/effects): ' + ', '.join(diffs), file=sys.stderr)
             return 1
-        print(f'ícones de efeito iguais a .inspo/effects ({len(ICONS)})')
+        print(f'ícones de efeito iguais à origem (source/effects) ({len(ICONS)})')
         return 0
     for p in stale:
         p.unlink()

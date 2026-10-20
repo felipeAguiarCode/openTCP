@@ -1,4 +1,4 @@
-// Linha normalizada de uma impressão de qualquer set do Pocket (gerada por tools/inspo-import em pocket/data/). Os
+// Linha normalizada de uma impressão de qualquer set do Pocket (gerada por tools/asset-import em pocket/data/). Os
 // campos de jogo são os mesmos do A1Row (a1/a1-data.generated.ts), então a mesma carta de jogo tem a mesma chave em
 // qualquer set e reimpressões apontam para a mesma definição.
 

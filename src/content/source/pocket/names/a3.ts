@@ -1,4 +1,4 @@
-// Nomes PT-BR que estreiam no Celestial Guardians (A3): ataques, Habilidades e Treinadores, pelo nome em inglês do `.inspo`.
+// Nomes PT-BR que estreiam no Celestial Guardians (A3): ataques, Habilidades e Treinadores, pelo nome em inglês do Limitless.
 // Pokémon mantêm o nome do jogo (formas regionais em pocket/names/pokemon.ts). O texto de regras é gerado do DSL.
 
 export const ATTACK_NAMES: Readonly<Record<string, string>> = {

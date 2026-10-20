@@ -1,7 +1,7 @@
 // Arte das impressões em “Impressão completa” (FULL_PRINTING, editor-de-cartas §18): a imagem já é a carta inteira,
 // então a face HTML e a face 3D não desenham moldura, nome, PS, ataques nem rodapé por cima dela. Duas origens:
-// - arte empacotada: `artKey` `art:<set>:<NNN>` → src/presentation/assets/cards/<set>/<SET>-<NNN>.webp (copiada do
-//   `.inspo` por `npm run inspo:import`; o Vite publica com hash, sem rede — runtime §20.1, §20.5);
+// - arte empacotada: `artKey` `art:<set>:<NNN>` → src/presentation/assets/cards/<set>/<SET>-<NNN>.webp (conferida
+//   por `npm run assets:import`; o Vite publica com hash, sem rede — runtime §20.1, §20.5);
 // - arte importada no Estúdio: `artAssetId` (BLOB no SQLite), por um resolvedor instalado no boot.
 import type { CardFaceData } from '../../domain/cards/text.ts';
 

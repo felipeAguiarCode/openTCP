@@ -1,5 +1,5 @@
 // Bolas de Energia ligadas nas cartas (Planta, Fogo, Água, Elétrico, Psíquico, Lutador, Noturno e Metal): recortadas
-// do atlas `.inspo/scene/battle/energys.png` por `npm run inspo:energy` (tools/inspo-import/energy-orbs.py), 128×128
+// do atlas `source/energy/energys.png` por `npm run assets:energy` (tools/asset-import/energy-orbs.py), 128×128
 // com transparência. Usadas nas Energias ligadas aos Pokémon e na Zona de Energia; os custos dos ataques continuam
 // com os ícones de tipo. Origem e restrições em ASSETS.md.
 

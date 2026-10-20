@@ -1,6 +1,6 @@
 // Receitas de deck (decisão do autor, 16/10/2026): listas prontas para montar um deck — por tipo, do meta e conhecidas na
 // comunidade do Pokémon TCG Pocket, adaptadas às cartas deste pacote (Genetic Apex até Deluxe Pack ex, Promo-A e
-// Promo-B). As listas usam os nomes em inglês das cartas (os do .inspo/Limitless), resolvidos para a definição e a
+// Promo-B). As listas usam os nomes em inglês das cartas (os do Limitless), resolvidos para a definição e a
 // impressão canônica; nome com mais de uma versão de regras exige o set (ou o número). O content-build valida cada
 // receita como deck jogável de 20 cartas (campanha §3.7).
 import type { CardDefinition, EnergyType } from '../../domain/cards/types.ts';

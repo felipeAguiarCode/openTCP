@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Recorta as 8 bolas de Energia que vão ligadas nas cartas do atlas `.inspo/scene/battle/energys.png`.
+"""Recorta as 8 bolas de Energia que vão ligadas nas cartas do atlas `src/presentation/assets/source/energy/energys.png`.
 
 Saída: `src/presentation/assets/energy/<tipo>.webp` (128×128, sem perda, com transparência). O atlas tem outros
 elementos de interface (deck, sinal de mais, anéis) e as bolas de Incolor e Dragão, que não são Energia ligada: só
 as 8 dos tipos geráveis da Zona saem daqui. O centro de cada bola é refinado pelo alfa a partir do ponto medido no
 atlas, e um círculo de raio 64 recorta o que vaza das vizinhas (as bolas encostam umas nas outras).
 
-Uso: python tools/inspo-import/energy-orbs.py [--check]   (--check: não grava; sai com 1 se algo difere do disco)
+Uso: python tools/asset-import/energy-orbs.py [--check]   (--check: não grava; sai com 1 se algo difere do disco)
 Requer Pillow.
 """
 from pathlib import Path
@@ -16,7 +16,7 @@ import sys
 from PIL import Image, ImageDraw
 
 ROOT = Path(__file__).resolve().parents[2]
-ATLAS = ROOT / '.inspo' / 'scene' / 'battle' / 'energys.png'
+ATLAS = ROOT / 'src' / 'presentation' / 'assets' / 'source' / 'energy' / 'energys.png'
 OUT = ROOT / 'src' / 'presentation' / 'assets' / 'energy'
 SIZE = 128
 RADIUS = 64

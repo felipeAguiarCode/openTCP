@@ -202,7 +202,7 @@ function Piles({ side, prefix, props }: { readonly side: SideView; readonly pref
 }
 
 /**
- * Zona de Energia como prato (gameplay-pocket §5.2; referências .inspo/scene/battle/energy-*.png): disco branco-lilás;
+ * Zona de Energia como prato (gameplay-pocket §5.2; referências .specs/referencias/batalha/energy-*.png): disco branco-lilás;
  * com Energia pronta, o orbe brilhante do tipo com halo ciano pulsando (arrastável no seu turno); o ícone escuro da
  * próxima Energia na borda de baixo — à direita do seu prato, à esquerda do adversário.
  */

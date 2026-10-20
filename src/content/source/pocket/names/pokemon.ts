@@ -20,7 +20,7 @@ const SPECIAL: Readonly<Record<string, string>> = {
   'Type: Null': 'Tipo: Nulo',
 };
 
-/** Nome-base PT-BR (sem "ex"/"Mega … ex") a partir do nome-base em inglês do `.inspo`. */
+/** Nome-base PT-BR (sem "ex"/"Mega … ex") a partir do nome-base em inglês do Limitless. */
 export function pokemonName(englishBase: string): string {
   const special = SPECIAL[englishBase];
   if (special) return special;

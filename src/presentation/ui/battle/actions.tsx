@@ -1,5 +1,5 @@
 // Ações do turno. Ataques, Habilidades, Fóssil e Recuo ficam na ficha do Pokémon tocado (decisão do autor, 15/10/2026;
-// referência .inspo/scene/battle): a carta sobe ampliada para o centro da mesa e as ações aparecem sobre ela. Na região
+// referência .specs/referencias/batalha): a carta sobe ampliada para o centro da mesa e as ações aparecem sobre ela. Na região
 // `actionButtons` ficam só a dica do alvo pendente (Energia, Recuo) com Cancelar e o “Jogar” de uma carta da mão
 // selecionada. Jogar cartas é arrastar até o campo; o clique numa carta da mão é a alternativa.
 import type { JSX } from 'preact';
@@ -60,7 +60,7 @@ function AbilityButton({ name, text, action, reason, onAction, onBlocked }: {
 }
 
 /**
- * Ficha do Pokémon tocado (decisão do autor, 15/10/2026; referência .inspo/scene/battle/attack.png): a carta ampliada
+ * Ficha do Pokémon tocado (decisão do autor, 15/10/2026; referência .specs/referencias/batalha/attack.png): a carta ampliada
  * no centro da mesa com o PS atual no canto e, sobre a metade de baixo dela, os ataques (só do Ativo), as Habilidades
  * ativáveis, o descarte de Fóssil e a pílula Recuar (só do Ativo). Fora do seu turno, as linhas aparecem bloqueadas.
  * Tocar fora da ficha ou Esc fecha.

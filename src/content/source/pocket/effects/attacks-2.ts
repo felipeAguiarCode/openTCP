@@ -1,4 +1,4 @@
-// Efeitos de ataque dos sets do Pocket depois do A1 (parte 2): texto em inglês do `.inspo` → blocos do effects-dsl.
+// Efeitos de ataque dos sets do Pocket depois do A1 (parte 2): texto em inglês do Limitless → blocos do effects-dsl.
 import type { Condition, EnergyType, Formula, Operation, PokemonFilter, Selector } from '../../../../domain/cards/types.ts';
 import {
   add, anyEnergy, attachZone, base, bonusIf, c, choose, conditionOn, count, DEFENDING, discardOwn, discardRandomFrom, E, energyCount, EX, exists,

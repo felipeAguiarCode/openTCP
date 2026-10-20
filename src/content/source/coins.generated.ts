@@ -1,4 +1,4 @@
-// Gerado por tools/inspo-import/coins.py (npm run inspo:coins) — não editar à mão.
+// Gerado por tools/asset-import/coins.py (npm run assets:coins) — não editar à mão.
 // Moedas do Pokémon TCG Pocket (imagens em src/presentation/assets/coins): stem, nome e cores para o fallback.
 export const POCKET_COINS: readonly { readonly stem: string; readonly name: string; readonly base: string; readonly edge: string }[] = [
   { stem: "megacharizardx", name: "Mega Charizard X", base: '#3C5E6C', edge: '#10465F' },

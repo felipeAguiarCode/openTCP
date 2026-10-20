@@ -21,7 +21,7 @@ export const once = { scope: 'INSTANCE_TURN', count: 1 } as const;
 export const unlimited = { scope: 'UNLIMITED', count: 1 } as const;
 
 const T: Readonly<Record<string, EnergyType>> = { G: 'GRASS', R: 'FIRE', W: 'WATER', L: 'LIGHTNING', P: 'PSYCHIC', F: 'FIGHTING', D: 'DARKNESS', M: 'METAL' };
-/** Tipo de Energia pela letra do `.inspo` (G, R, W, L, P, F, D, M). */
+/** Tipo de Energia pela letra do Limitless (G, R, W, L, P, F, D, M). */
 export const E = (letter: string): EnergyType => T[letter]!;
 
 export const base = (n: number | null): number => n ?? 0;

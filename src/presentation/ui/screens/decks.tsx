@@ -1,4 +1,4 @@
-// Decks (interface §13–§15; inspiração .inspo/scene/deck, Pokémon TCG Pocket). S11 “Escolha um baralho”: grade de
+// Decks (interface §13–§15; inspiração .specs/referencias/decks, Pokémon TCG Pocket). S11 “Escolha um baralho”: grade de
 // cartões com faixa na cor da Energia, número, caixa 3D com a capa escolhida, duas cartas em destaque e o nome; o deck
 // selecionado ganha ações em ícones flutuantes. S12 ficha do deck: nome editável, caixa 3D (trocar capa), Energia,
 // acessórios e destaques, as 20 vagas em cartas e a coleção ao lado — ações em ícones, rascunho automático, validação

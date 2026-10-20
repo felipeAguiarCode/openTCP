@@ -1,4 +1,4 @@
-// Efeitos de ataque dos sets do Pocket depois do A1 (parte 1): texto em inglês do `.inspo` → blocos do effects-dsl.
+// Efeitos de ataque dos sets do Pocket depois do A1 (parte 1): texto em inglês do Limitless → blocos do effects-dsl.
 // Chave = texto normalizado pelo importador; o texto exibido na carta é gerado em PT-BR (domain/cards/text.ts).
 import type { Operation } from '../../../../domain/cards/types.ts';
 import {

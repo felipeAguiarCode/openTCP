@@ -1,5 +1,5 @@
-// Ícones de efeito do Pokémon TCG Pocket (`.inspo/effects`, fornecidos pelo autor), copiados por
-// `npm run inspo:effects` (tools/inspo-import/effect-icons.py) para effects/<id>.webp, 128×128 com transparência:
+// Ícones de efeito do Pokémon TCG Pocket (`source/effects`, fornecidos pelo autor), copiados por
+// `npm run assets:effects` (tools/asset-import/effect-icons.py) para effects/<id>.webp, 128×128 com transparência:
 // as cinco Condições Especiais e os efeitos temporários nas cartas em campo (interface §25.21). Origem em ASSETS.md.
 
 const FILES: Readonly<Record<string, string>> = import.meta.glob<string>('./effects/*.webp', { query: '?url', import: 'default', eager: true });

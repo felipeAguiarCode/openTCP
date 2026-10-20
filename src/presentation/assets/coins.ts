@@ -1,5 +1,5 @@
 // Moedas do Pokémon TCG Pocket: a cara (face da página de moedas do Serebii) e a coroa (gerada da face, em prata),
-// recortadas por `npm run inspo:coins` (tools/inspo-import/coins.py) para coins/<stem>-heads.webp e -tails.webp,
+// recortadas por `npm run assets:coins` (tools/asset-import/coins.py) para coins/<stem>-heads.webp e -tails.webp,
 // 256×256 com transparência. Cosméticos de moeda com `assetKey` `coin-art:<stem>`; origem e restrições em ASSETS.md.
 
 const FILES: Readonly<Record<string, string>> = import.meta.glob<string>('./coins/*.webp', { query: '?url', import: 'default', eager: true });

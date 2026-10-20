@@ -29,7 +29,7 @@ export const ORPHAN_EVOLUTIONS: Readonly<Record<string, string>> = {
   pawmot: 'pawmo', cinderace: 'raboot', haxorus: 'fraxure', noivern: 'noibat', 'mega-sceptile-ex': 'grovyle', meowstic: 'espurr',
 };
 
-/** Números do P-A que já existiam (promo-a.ts) e os nomes em inglês que eles têm no `.inspo`. */
+/** Números do P-A que já existiam (promo-a.ts) e os nomes em inglês que eles têm no Limitless. */
 const LEGACY_PA: Readonly<Record<number, string>> = { 1: 'Potion', 2: 'X Speed', 3: 'Hand Scope', 5: 'Poké Ball', 6: 'Red Card', 7: "Professor's Research" };
 export const isLegacyPromo = (setId: string, number: number): boolean => setId === 'pa' && number in LEGACY_PA;
 
@@ -41,7 +41,7 @@ const a1Rows = [...A1_ROWS].sort((a, b) => a.number - b.number);
 for (const r of a1Rows) seeds.set(gameplayKey(r), A1_KEYS.get(gameplayKey(r))!);
 for (const p of PROMO_A) {
   const row = POCKET_ROWS.pa!.find((r) => r.number === p.number);
-  if (!row || row.name !== LEGACY_PA[p.number]) throw new Error(`P-A ${p.number}: esperado ${LEGACY_PA[p.number]} no .inspo, veio ${row?.name}`);
+  if (!row || row.name !== LEGACY_PA[p.number]) throw new Error(`P-A ${p.number}: esperado ${LEGACY_PA[p.number]} no Limitless, veio ${row?.name}`);
   seeds.set(gameplayKey(row), p.card);
 }
 

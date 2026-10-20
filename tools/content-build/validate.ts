@@ -279,33 +279,33 @@ export function bundledArtErrors(p: CardPrinting): string[] {
   const dir = resolve(ROOT, 'src', 'presentation', 'assets', 'cards', m[1]!);
   const name = `${m[1]!.toUpperCase()}-${m[2]}.webp`;
   // Caixa exata: o glob do Vite diferencia maiúsculas; existsSync no Windows não (A1a-001.webp passaria e faltaria).
-  return artFiles(dir).has(name) ? [] : [`arte ${p.artKey} ausente (${resolve(dir, name).slice(ROOT.length + 1)}); rode npm run inspo:import`];
+  return artFiles(dir).has(name) ? [] : [`arte ${p.artKey} ausente (${resolve(dir, name).slice(ROOT.length + 1)}); rode npm run assets:import`];
 }
 
-/** Moeda com imagem (`coin-art:<stem>`): cara e coroa empacotadas em src/presentation/assets/coins (inspo:coins). */
+/** Moeda com imagem (`coin-art:<stem>`): cara e coroa empacotadas em src/presentation/assets/coins (assets:coins). */
 export function coinArtErrors(assetKey: string | null): string[] {
   if (!assetKey) return [];
   const m = /^coin-art:([a-z0-9-]+)$/.exec(assetKey);
   if (!m) return [`assetKey de moeda inválida (${assetKey}); esperado coin-art:<stem>`];
   const dir = resolve(ROOT, 'src', 'presentation', 'assets', 'coins');
-  return ['heads', 'tails'].filter((f) => !artFiles(dir).has(`${m[1]}-${f}.webp`)).map((f) => `moeda ${assetKey} sem ${f} em src/presentation/assets/coins; rode npm run inspo:coins`);
+  return ['heads', 'tails'].filter((f) => !artFiles(dir).has(`${m[1]}-${f}.webp`)).map((f) => `moeda ${assetKey} sem ${f} em src/presentation/assets/coins; rode npm run assets:coins`);
 }
 
-/** Sleeve com imagem (`sleeve-art:<stem>`): o verso empacotado em src/presentation/assets/sleeves (inspo:sleeves). */
+/** Sleeve com imagem (`sleeve-art:<stem>`): o verso empacotado em src/presentation/assets/sleeves (assets:sleeves). */
 export function sleeveArtErrors(assetKey: string | null): string[] {
   if (!assetKey) return [];
   const m = /^sleeve-art:([a-z0-9-]+)$/.exec(assetKey);
   if (!m) return [`assetKey de verso inválida (${assetKey}); esperado sleeve-art:<stem>`];
   const dir = resolve(ROOT, 'src', 'presentation', 'assets', 'sleeves');
-  return artFiles(dir).has(`${m[1]}.webp`) ? [] : [`verso ${assetKey} sem imagem em src/presentation/assets/sleeves; rode npm run inspo:sleeves`];
+  return artFiles(dir).has(`${m[1]}.webp`) ? [] : [`verso ${assetKey} sem imagem em src/presentation/assets/sleeves; rode npm run assets:sleeves`];
 }
 
-/** Retrato de NPC: `portrait:<arquivo>` com o PNG em src/presentation/assets/portraits (copiado por inspo:import). */
+/** Retrato de NPC: `portrait:<arquivo>` com o PNG em src/presentation/assets/portraits (a própria origem, sem importador). */
 export function portraitErrors(key: string | null): string[] {
   const m = key ? /^portrait:([a-z0-9-]+)$/.exec(key) : null;
   if (!m) return [`retrato inválido (${key ?? 'ausente'}); esperado portrait:<arquivo>`];
   const dir = resolve(ROOT, 'src', 'presentation', 'assets', 'portraits');
-  return artFiles(dir).has(`${m[1]}.png`) ? [] : [`retrato ${key} ausente em src/presentation/assets/portraits; rode npm run inspo:import`];
+  return artFiles(dir).has(`${m[1]}.png`) ? [] : [`retrato ${key} ausente em src/presentation/assets/portraits`];
 }
 
 const ART_DIRS = new Map<string, ReadonlySet<string>>();

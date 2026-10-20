@@ -1,5 +1,5 @@
 // Promo-A (P-A): os 6 Treinadores básicos do Pokémon TCG Pocket que o Genetic Apex não traz — compra, busca, cura,
-// troca e informação. Escritos à mão (não estão no `.inspo`), com os números de coleção do P-A. Dados de terceiros
+// troca e informação. Escritos à mão (não estão em `pocket/raw`), com os números de coleção do P-A. Dados de terceiros
 // (The Pokémon Company), uso local.
 import type { TrainerCard } from '../../domain/cards/types.ts';
 import { choose, onPlay, trainer } from '../builders.ts';

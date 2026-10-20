@@ -1,5 +1,5 @@
 // Sleeves do Pokémon TCG Pocket: o verso das cartas de um deck (página de sleeves do Serebii), recortado por
-// `npm run inspo:sleeves` (tools/inspo-import/sleeves.py) para sleeves/<stem>.webp, 367×512 com os cantos da carta
+// `npm run assets:sleeves` (tools/asset-import/sleeves.py) para sleeves/<stem>.webp, 367×512 com os cantos da carta
 // transparentes. Cosméticos de verso com `assetKey` `sleeve-art:<stem>`; origem e restrições em ASSETS.md.
 
 const FILES: Readonly<Record<string, string>> = import.meta.glob<string>('./sleeves/*.webp', { query: '?url', import: 'default', eager: true });

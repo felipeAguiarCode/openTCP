@@ -1,4 +1,4 @@
-// Regras do Genetic Apex (A1) em effects-dsl: cada texto de efeito do `.inspo` (inglês, normalizado pelo importador)
+// Regras do Genetic Apex (A1) em effects-dsl: cada texto de efeito do Limitless (inglês, normalizado pelo importador)
 // mapeia para os blocos que o motor executa. O texto exibido na carta é gerado em PT-BR a partir destes blocos
 // (src/domain/cards/text.ts) — nada do inglês vai para a tela. Carta com efeito fora destas tabelas não carrega
 // (a1/cards.ts falha), então um set novo sempre passa por aqui.

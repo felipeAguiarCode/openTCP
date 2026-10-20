@@ -468,7 +468,7 @@
 
 /* ---------------------------------------------------------------- ficha de ações (decisão do autor, 15/10/2026) */
 /* Tocar num Pokémon seu: a carta sobe ampliada para o centro da mesa (região attackCutin) com o PS atual no canto e,
-   sobre a metade de baixo dela, ataques, Habilidades, Fóssil e a pílula Recuar (referência .inspo/scene/battle). */
+   sobre a metade de baixo dela, ataques, Habilidades, Fóssil e a pílula Recuar (referência .specs/referencias/batalha). */
 .card-actions-scrim { position: fixed; inset: 0; z-index: 12; border: 0; padding: 0; margin: 0; background: rgb(20 30 45 / 0.22); cursor: default; animation: scrim-in 160ms ease-out both; }
 .card-actions { position: absolute; z-index: 13; container-type: inline-size; display: flex; flex-direction: column; align-items: center; justify-content: center; pointer-events: none; }
 .card-actions > * { pointer-events: auto; }
@@ -512,7 +512,7 @@
 @media (prefers-reduced-motion: reduce) { .board2d .b2-slot:not(.is-empty):hover .card-face { animation: none; } .card-preview { animation: none; } }
 
 /* ---------------------------------------------------------------- prato da Zona de Energia (mesa 2D) */
-/* Referências .inspo/scene/battle/energy-empty.png e energy-fullfiled.png: disco branco-lilás com aro claro; o orbe
+/* Referências .specs/referencias/batalha/energy-empty.png e energy-fullfiled.png: disco branco-lilás com aro claro; o orbe
    brilhante do tipo com halo ciano pulsando; a próxima Energia escura, com borda branca, na borda de baixo. */
 .b2-zone { display: grid; place-items: center; }
 .b2-plate { position: relative; flex: none; border-radius: 50%; display: grid; place-items: center;

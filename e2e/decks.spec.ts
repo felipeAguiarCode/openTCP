@@ -1,4 +1,4 @@
-// Decks (interface §13–§14; inspiração .inspo/scene/deck): biblioteca com caixas 3D e capa escolhida, ações em ícones
+// Decks (interface §13–§14; inspiração .specs/referencias/decks): biblioteca com caixas 3D e capa escolhida, ações em ícones
 // flutuantes; ficha do deck com troca de capa, vagas em cartas (clique remove), coleção ao lado (clique adiciona) e
 // Salvar versão.
 import { expect, newGame, test } from './support.ts';

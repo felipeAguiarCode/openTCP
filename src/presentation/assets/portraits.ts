@@ -1,6 +1,6 @@
 // Retratos (emotes) de treinadores da franquia, usados como avatar do jogador e dos rivais. Cada PNG (128×128) já é
 // um emblema redondo com aro próprio, e o cabelo ou os acessórios podem sair do disco: a interface desenha só a
-// imagem, sem contorno, sombra nem recorte. Copiados de `.inspo/portraits` por `npm run inspo:import`; chave
+// imagem, sem contorno, sombra nem recorte. A pasta portraits/ é a própria origem (sem importador); chave
 // `portrait:<stem>` (`portrait:erika-emote-1` → portraits/erika-emote-1.png). Origem e restrições em ASSETS.md.
 
 const FILES: Readonly<Record<string, string>> = import.meta.glob<string>('./portraits/*.png', { query: '?url', import: 'default', eager: true });

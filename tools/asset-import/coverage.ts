@@ -1,6 +1,6 @@
 // Cobertura das tabelas de efeito e de nomes PT-BR por set: lista os textos (inglês) e nomes que ainda não têm entrada
 // em pocket/effects e pocket/names (só das cartas que não são reimpressão do A1 ou das promos antigas).
-//   node --experimental-strip-types tools/inspo-import/coverage.ts [setId…] [--json arquivo]
+//   node --experimental-strip-types tools/asset-import/coverage.ts [setId…] [--json arquivo]
 import fs from 'node:fs';
 import { A1_KEYS } from '../../src/content/source/a1/cards.ts';
 import { gameplayKey } from '../../src/content/source/pocket/build.ts';

@@ -213,7 +213,7 @@
 .workshop-hand .card-back { box-shadow: 0 0 0 2px var(--sleeve-a, #fff); }
 .workshop-footer { justify-content: flex-end; margin-top: var(--space-5); }
 
-/* ---------------------------------------------------------------- decks (S11/S12; inspiração .inspo/scene/deck) */
+/* ---------------------------------------------------------------- decks (S11/S12; inspiração .specs/referencias/decks) */
 .mt-sm { margin-top: var(--space-3); }
 .spacer { flex: 1; }
 

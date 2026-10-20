@@ -1,4 +1,4 @@
-// Caixa de deck 3D (interface §13.6; referência .inspo/scene/deck, Pokémon TCG Pocket): caixa retangular em pé, em CSS
+// Caixa de deck 3D (interface §13.6; referência .specs/referencias/decks, Pokémon TCG Pocket): caixa retangular em pé, em CSS
 // 3D — na frente, a carta de capa inteira numa janela, com a tampa na cor da Energia principal em cima e a base clara
 // embaixo; a lateral repete a divisão e leva o emblema do tipo; a tampa fecha em cima. Só apresentação: girar ou trocar
 // a capa não muda o deck.

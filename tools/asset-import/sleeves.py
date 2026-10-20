@@ -3,15 +3,15 @@
 
 Origem (pedido do autor, 17/10/2026): a página de sleeves do Serebii (https://www.serebii.net/tcgpocket/sleeves.shtml),
 com as imagens em tamanho cheio (`sleeves/<nome>.jpg`, 734×1024, a proporção da carta), baixadas uma vez com
-`--fetch` para `.inspo/sleeves/serebii/` (imagens + index.json com nome e origem). Cada imagem é o verso inteiro, com
-borda colorida e cantos retos.
+`--fetch` para `src/presentation/assets/source/sleeves/` (imagens + index.json com nome e origem). Cada imagem é o
+verso inteiro, com borda colorida e cantos retos.
 
 Saída:
 - `src/presentation/assets/sleeves/<stem>.webp`: o verso em 367×512 com os cantos arredondados da carta (raio = 0,052
   da largura, o mesmo da geometria 3D) e transparência fora deles;
 - `src/content/source/sleeves.generated.ts`: a lista (stem, nome, cor média e cor da borda) para os cosméticos de verso.
 
-Uso: python tools/inspo-import/sleeves.py [--fetch] [--check]   (--check: não grava; sai com 1 se algo difere do disco)
+Uso: python tools/asset-import/sleeves.py [--fetch] [--check]   (--check: não grava; sai com 1 se algo difere do disco)
 Requer Pillow.
 """
 from pathlib import Path
@@ -26,7 +26,7 @@ import urllib.request
 from PIL import Image, ImageDraw
 
 ROOT = Path(__file__).resolve().parents[2]
-SRC = ROOT / '.inspo' / 'sleeves' / 'serebii'
+SRC = ROOT / 'src' / 'presentation' / 'assets' / 'source' / 'sleeves'
 OUT = ROOT / 'src' / 'presentation' / 'assets' / 'sleeves'
 LIST = ROOT / 'src' / 'content' / 'source' / 'sleeves.generated.ts'
 PAGE = 'https://www.serebii.net/tcgpocket/sleeves.shtml'
@@ -110,7 +110,7 @@ def main() -> int:
         path.write_bytes(data)
         written += 1
     ts = (
-        '// Gerado por tools/inspo-import/sleeves.py (npm run inspo:sleeves) — não editar à mão.\n'
+        '// Gerado por tools/asset-import/sleeves.py (npm run assets:sleeves) — não editar à mão.\n'
         '// Sleeves do Pokémon TCG Pocket (imagens em src/presentation/assets/sleeves): stem, nome e cores para o fallback.\n'
         'export const POCKET_SLEEVES: readonly { readonly stem: string; readonly name: string; readonly base: string; readonly edge: string }[] = [\n'
         + ''.join(f"  {{ stem: {json.dumps(s)}, name: {json.dumps(n, ensure_ascii=False)}, base: '{b}', edge: '{e}' }},\n" for s, n, b, e in rows)
@@ -122,9 +122,9 @@ def main() -> int:
             diffs.append(LIST.relative_to(ROOT).as_posix())
         diffs += [p.relative_to(ROOT).as_posix() for p in stale]
         if diffs:
-            print('difere de .inspo/sleeves: ' + ', '.join(diffs[:8]) + (' …' if len(diffs) > 8 else ''), file=sys.stderr)
+            print('difere da origem (source/sleeves): ' + ', '.join(diffs[:8]) + (' …' if len(diffs) > 8 else ''), file=sys.stderr)
             return 1
-        print(f'sleeves iguais a .inspo/sleeves ({len(rows)})')
+        print(f'sleeves iguais à origem (source/sleeves) ({len(rows)})')
         return 0
     LIST.write_text(ts, encoding='utf-8', newline='\n')
     for p in stale:

@@ -1,26 +1,28 @@
-// Importa os sets do Pokémon TCG Pocket de `.inspo/decks/<Set (CÓDIGO)>/` (JSON do Limitless, em inglês) para módulos
-// de dados enxutos e determinísticos, e copia a imagem de cada impressão (a carta impressa inteira, webp) para
-// `src/presentation/assets/cards/<setId>/<SETID>-NNN.webp` (modo de arte “Impressão completa”).
+// Importa os sets do Pokémon TCG Pocket de `src/content/source/pocket/raw/<setId>/` (JSON do Limitless, em inglês, um
+// `<CÓDIGO>-NNN.json` por impressão) para módulos de dados enxutos e determinísticos, e confere a imagem de cada impressão
+// (a carta impressa inteira, webp) em `src/presentation/assets/cards/<setId>/<SETID>-NNN.webp` (modo de arte “Impressão
+// completa”). Num set novo, a imagem `<CÓDIGO>-NNN.webp` posta ao lado do JSON é copiada para lá com o nome do pacote.
 //   - Genetic Apex (A1) continua em `src/content/source/a1/a1-data.generated.ts`, no formato legado (byte a byte igual).
 //   - Os demais sets vão para `src/content/source/pocket/data/<setId>.generated.ts` (PocketRow, ver pocket/rows.ts).
-// Também copia os retratos (emotes) de `.inspo/portraits/` para `src/presentation/assets/portraits/` (avatares do
-// jogador e dos rivais), com o nome normalizado de `portraitFileName`.
-// O build não lê o `.inspo`; rode `npm run inspo:import` só quando a origem mudar. Opções:
+// O build não lê a origem bruta; rode `npm run assets:import` só quando ela mudar. Opções:
 //   --set <código>   importa só um set (repetível)
 //   --check          não grava nada; sai com 1 se algum arquivo gerado ou imagem difere do disco
 // As regras viram DSL em pocket/effects e os nomes PT-BR em pocket/names (falta = o conteúdo não carrega).
 import fs from 'node:fs';
 import path from 'node:path';
-import { POCKET_SETS, type PocketSet } from '../../src/content/source/pocket/registry.ts';
-import { a1LegacyRow, artFileName, normalizeSet, portraitFileName, sourceBaseName, type Raw } from './normalize.ts';
+import { POCKET_SETS } from '../../src/content/source/pocket/registry.ts';
+import { a1LegacyRow, artFileName, normalizeSet, sourceBaseName, type Raw } from './normalize.ts';
 
 const root = path.resolve(import.meta.dirname, '..', '..');
-const decks = path.join(root, '.inspo', 'decks');
+const raw = path.join(root, 'src', 'content', 'source', 'pocket', 'raw');
 const args = process.argv.slice(2);
 const check = args.includes('--check');
 const only = args.flatMap((a, i) => (a === '--set' && args[i + 1] ? [args[i + 1]!] : []));
 
-const A1_HEADER = `// GERADO por tools/inspo-import a partir de .inspo/Genetic Apex (A1) (dados do Limitless TCG, em inglês). Não editar à mão.
+const generatedBy = (setId: string) =>
+  `// GERADO por tools/asset-import a partir de src/content/source/pocket/raw/${setId} (dados do Limitless TCG, em inglês). Não editar à mão.`;
+
+const A1_HEADER = `${generatedBy('a1')}
 // Dados de terceiros (The Pokémon Company): uso local. Uma linha por impressão; cartas de jogo idênticas são agrupadas em a1/cards.ts.
 
 export type A1Row = {
@@ -44,7 +46,7 @@ export type A1Row = {
 export const A1_ROWS: readonly A1Row[] = [
 `;
 
-const pocketHeader = (set: PocketSet) => `// GERADO por tools/inspo-import a partir de .inspo/decks/${set.folder} (dados do Limitless TCG, em inglês). Não editar à mão.
+const pocketHeader = (setId: string) => `${generatedBy(setId)}
 // Dados de terceiros (The Pokémon Company): uso local. Uma linha por impressão; cartas de jogo idênticas (inclusive entre
 // sets) são agrupadas em pocket/cards.ts.
 import type { PocketRow } from '../rows.ts';
@@ -70,16 +72,11 @@ function emit(file: string, content: string | Buffer): void {
   written++;
 }
 
-if (!fs.existsSync(decks)) {
-  process.stderr.write(`origem ausente: ${decks}\n`);
-  process.exit(1);
-}
-
 for (const set of POCKET_SETS) {
   if (only.length && !only.includes(set.code) && !only.includes(set.setId)) continue;
-  const source = path.join(decks, set.folder);
+  const source = path.join(raw, set.setId);
   if (!fs.existsSync(source)) {
-    process.stderr.write(`origem ausente: ${source}\n`);
+    process.stderr.write(`origem ausente: ${path.relative(root, source)}\n`);
     process.exit(1);
   }
   const pattern = new RegExp(`^${escape(set.code)}-\\d{3}\\.json$`);
@@ -92,62 +89,37 @@ for (const set of POCKET_SETS) {
     emit(path.join(root, 'src', 'content', 'source', 'a1', 'a1-data.generated.ts'), `${A1_HEADER}${legacy.map((r) => `  ${JSON.stringify(r)},`).join('\n')}\n];\n`);
   } else {
     emit(path.join(root, 'src', 'content', 'source', 'pocket', 'data', `${set.setId}.generated.ts`),
-      `${pocketHeader(set)}${rows.map((r) => `  ${JSON.stringify(r)},`).join('\n')}\n];\n`);
+      `${pocketHeader(set.setId)}${rows.map((r) => `  ${JSON.stringify(r)},`).join('\n')}\n];\n`);
   }
 
-  // Imagens: uma por impressão; falta de imagem é erro (toda impressão usa “Impressão completa”).
+  // Imagens: uma por impressão, da origem quando houver, senão a já empacotada; falta é erro (toda impressão usa
+  // “Impressão completa”).
   const artDir = path.join(root, 'src', 'presentation', 'assets', 'cards', set.setId);
+  const packed = new Set(fs.existsSync(artDir) ? fs.readdirSync(artDir) : []);
   const expected = new Set(rows.map((r) => artFileName(set, r.number)));
   const missing: string[] = [];
   for (const r of rows) {
     const image = path.join(source, `${sourceBaseName(set, r.number)}.webp`);
-    if (!fs.existsSync(image)) missing.push(path.basename(image));
-    else emit(path.join(artDir, artFileName(set, r.number)), fs.readFileSync(image));
+    if (fs.existsSync(image)) emit(path.join(artDir, artFileName(set, r.number)), fs.readFileSync(image));
+    else if (!packed.has(artFileName(set, r.number))) missing.push(artFileName(set, r.number));
   }
   if (missing.length) {
-    process.stderr.write(`imagens ausentes em ${source}: ${missing.join(', ')}\n`);
+    process.stderr.write(`imagens ausentes em ${path.relative(root, artDir)} (ou ${path.relative(root, source)}): ${missing.join(', ')}\n`);
     process.exit(1);
   }
   const ownPattern = new RegExp(`^${escape(set.setId.toUpperCase())}-\\d{3}\\.webp$`);
-  if (fs.existsSync(artDir)) {
-    for (const old of fs.readdirSync(artDir)) {
-      if (!ownPattern.test(old) || expected.has(old)) continue;
-      if (check) diffs.push(path.relative(root, path.join(artDir, old)));
-      else fs.rmSync(path.join(artDir, old));
-    }
+  for (const old of packed) {
+    if (!ownPattern.test(old) || expected.has(old)) continue;
+    if (check) diffs.push(path.relative(root, path.join(artDir, old)));
+    else fs.rmSync(path.join(artDir, old));
   }
   process.stdout.write(`${set.code}: ${rows.length} impressões, ${expected.size} imagens\n`);
 }
 
-// Retratos (só na importação completa): um PNG por emote, sem as cópias “(1)” da origem.
-const portraits = path.join(root, '.inspo', 'portraits');
-if (!only.length && fs.existsSync(portraits)) {
-  const outDir = path.join(root, 'src', 'presentation', 'assets', 'portraits');
-  const expected = new Set<string>();
-  for (const file of fs.readdirSync(portraits).sort()) {
-    const name = portraitFileName(file);
-    if (!name) continue;
-    if (expected.has(name)) {
-      process.stderr.write(`retrato repetido depois de normalizar: ${file} → ${name}\n`);
-      process.exit(1);
-    }
-    expected.add(name);
-    emit(path.join(outDir, name), fs.readFileSync(path.join(portraits, file)));
-  }
-  if (fs.existsSync(outDir)) {
-    for (const old of fs.readdirSync(outDir)) {
-      if (expected.has(old)) continue;
-      if (check) diffs.push(path.relative(root, path.join(outDir, old)));
-      else fs.rmSync(path.join(outDir, old));
-    }
-  }
-  process.stdout.write(`retratos: ${expected.size}\n`);
-}
-
 if (check) {
   if (diffs.length) {
-    process.stderr.write(`difere do .inspo (${diffs.length}):\n${diffs.slice(0, 40).map((d) => `  ${d}`).join('\n')}\n`);
+    process.stderr.write(`difere da origem (${diffs.length}):\n${diffs.slice(0, 40).map((d) => `  ${d}`).join('\n')}\n`);
     process.exit(1);
   }
-  process.stdout.write('tudo igual ao .inspo\n');
+  process.stdout.write('tudo igual à origem\n');
 } else process.stdout.write(`${written} arquivo(s) gravado(s)\n`);

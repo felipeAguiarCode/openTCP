@@ -1,4 +1,4 @@
-// Construtor de definições de carta a partir das linhas do `.inspo` (A1Row ou PocketRow), das tabelas de efeito
+// Construtor de definições de carta a partir das linhas do Limitless (A1Row ou PocketRow), das tabelas de efeito
 // (texto em inglês → DSL) e dos nomes PT-BR. Mesma carta de jogo (nome, estágio, PS, ataques, Habilidades, regras) ⇔
 // mesma gameplayKey, em qualquer set. Efeito, nome ou símbolo sem entrada nas tabelas é erro.
 import { deckLimitKeyV1 } from '../../../domain/cards/naming.ts';
