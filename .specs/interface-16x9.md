@@ -549,7 +549,7 @@ Não criar um renderer por componente. A listagem de coleção usa miniaturas HT
 
 ### 5.5. Retratos (avatares)
 
-**Decisão do autor (16/10/2026, conteúdo 3.1.0):** o avatar do jogador e o de cada rival é o retrato (emote) de um treinador da franquia — 204 PNGs de 128×128 de 55 treinadores, copiados de `.inspo/portraits/` para `src/presentation/assets/portraits/` por `npm run inspo:import` (nome normalizado: minúsculo, sem `_Masters`, `_`/`.`/espaço viram `-`; `Lt._Surge_Emote_1_Masters.png` → `lt-surge-emote-1.png`). A chave é `portrait:<arquivo>`; o resolvedor `src/presentation/assets/portraits.ts` agrupa os retratos por treinador, com o nome em PT-BR (`lt-surge` → “Tenente Surge”) e a variante de roupa.
+**Decisão do autor (16/10/2026, conteúdo 3.1.0):** o avatar do jogador e o de cada rival é o retrato (emote) de um treinador da franquia — 204 PNGs de 128×128 de 55 treinadores em `src/presentation/assets/portraits/`, a própria origem, sem importador (nome normalizado: minúsculo, sem `_Masters`, `_`/`.`/espaço viram `-`; `Lt._Surge_Emote_1_Masters.png` → `lt-surge-emote-1.png`). A chave é `portrait:<arquivo>`; o resolvedor `src/presentation/assets/portraits.ts` agrupa os retratos por treinador, com o nome em PT-BR (`lt-surge` → “Tenente Surge”) e a variante de roupa.
 
 - **Desenho:** cada PNG já é um emblema redondo, com aro próprio e a marca do emote. A interface desenha a imagem inteira (`<img>`, `object-fit: contain`) e **não acrescenta** contorno, outline, sombra, raio, recorte nem fundo — sem contorno, só o emote. Cabelo e acessórios podem sair do disco.
 - **Jogador:** a escolha fica na configuração `avatar` como `portrait:<arquivo>`. Perfil novo começa em `portrait:marnie-academy-emote-1` (`DEFAULT_PLAYER_PORTRAIT`); valor antigo (os avatares por tipo, como `WATER`), ausente ou chave sem arquivo no pacote resolvem para o mesmo padrão (`playerPortraitKey`), sem gravar migração.
@@ -717,7 +717,7 @@ As taxas dos sets seguintes são as oficiais do Pokémon TCG Pocket e podem ser 
 
 Pacote com faces frente/verso/lateral, dobras simples e material com brilho leve. Rotação limitada, com botão “Frente”. Não exigir simulação física de rasgo.
 
-**Arte oficial dos pacotes (decisão do autor, 16/10/2026):** a frente do pacote é a imagem oficial do booster quando ela está empacotada. Fontes: as frentes fornecidas pelo autor em `.inspo/boosters/` e, para os três pacotes do Genetic Apex, as imagens da página do set no Serebii (`https://www.serebii.net/tcgpocket/geneticapex/<pikachu|charizard|mewtwo>.jpg`, baixadas uma vez para `.inspo/boosters/serebii/`); o Bulbagarden recusa acesso automatizado. `npm run inspo:packs` (`tools/inspo-import/pack-art.py`, com `--check`) recorta as margens transparentes — nos JPG, o fundo branco ligado às bordas vira transparente —, limita a 640 px de altura e grava WebP q88 com alfa em `src/presentation/assets/packs/<productId>.webp`.
+**Arte oficial dos pacotes (decisão do autor, 16/10/2026):** a frente do pacote é a imagem oficial do booster quando ela está empacotada. Fontes: as frentes fornecidas pelo autor (origem em `src/presentation/assets/source/packs/`) e, para os três pacotes do Genetic Apex, as imagens da página do set no Serebii (`https://www.serebii.net/tcgpocket/geneticapex/<pikachu|charizard|mewtwo>.jpg`, baixadas uma vez para `source/packs/serebii/`); o Bulbagarden recusa acesso automatizado. `npm run assets:packs` (`tools/asset-import/pack-art.py`, com `--check`) recorta as margens transparentes — nos JPG, o fundo branco ligado às bordas vira transparente —, limita a 640 px de altura e grava WebP q88 com alfa em `src/presentation/assets/packs/<productId>.webp`.
 
 - **Com arte (15 pacotes de expansão):** `pack-a1-pikachu`, `pack-a1-charizard`, `pack-a1-mewtwo`, `pack-a1a-mew`, `pack-a2-dialga`, `pack-a2-palkia`, `pack-a2a-arceus`, `pack-a3-solgaleo`, `pack-a3-lunala`, `pack-a3a`, `pack-a3b`, `pack-a4-lugia`, `pack-a4-ho-oh`, `pack-a4a` e `pack-a4b`.
 - **Sem arte oficial:** o pacote tutorial e os promocionais Promo-A e Promo-B continuam com o pacote gerado (gradiente do tipo da carta de capa, costura e nome).
@@ -989,7 +989,7 @@ A galeria também oferece grade HTML. Perda de GPU não impede editar posições
 
 ### 13.1. Visão
 
-**[DP] 15/10/2026 (inspiração `.inspo/scene/deck`, Pokémon TCG Pocket):** a tela “Escolha um baralho” é uma grade de cartões de deck. Cada cartão tem faixa superior diagonal na cor da Energia principal, o número do deck em destaque, a **caixa de deck 3D** com a **capa escolhida** na frente (§13.6), duas cartas em destaque encostadas na frente da caixa e, embaixo, o nome e a contagem 20/20 com o estado (rascunho, favorito, em uso). O cabeçalho tem **Receitas** (S51), e a biblioteca vazia oferece “Ver receitas” ao lado de “Criar deck”. Selecionar marca o cartão com borda escura e selo de confirmação e gira a caixa; clique duplo abre a ficha.
+**[DP] 15/10/2026 (inspiração `referencias/decks/`, Pokémon TCG Pocket):** a tela “Escolha um baralho” é uma grade de cartões de deck. Cada cartão tem faixa superior diagonal na cor da Energia principal, o número do deck em destaque, a **caixa de deck 3D** com a **capa escolhida** na frente (§13.6), duas cartas em destaque encostadas na frente da caixa e, embaixo, o nome e a contagem 20/20 com o estado (rascunho, favorito, em uso). O cabeçalho tem **Receitas** (S51), e a biblioteca vazia oferece “Ver receitas” ao lado de “Criar deck”. Selecionar marca o cartão com borda escura e selo de confirmação e gira a caixa; clique duplo abre a ficha.
 
 As ações do deck selecionado ficam numa barra flutuante de **botões só de ícone** (Jogar, Editar, Duplicar, Aparência, Favoritar, Exportar, Excluir), com o nome como dica e rótulo acessível.
 
@@ -1062,7 +1062,7 @@ O deck da tentativa suspensa é identificado como “Em uso neste duelo”; edit
 
 O jogador deve ver simultaneamente **o que pode adicionar**, **o que já está no deck** e **por que aquela escolha funciona ou falha**.
 
-**[DP] 15/10/2026 (inspiração `.inspo/scene/deck`):** o editor vira uma **ficha do deck** minimalista, com ações em **ícones** em vez de botões escritos:
+**[DP] 15/10/2026 (inspiração `referencias/decks/`):** o editor vira uma **ficha do deck** minimalista, com ações em **ícones** em vez de botões escritos:
 
 - topo com faixa diagonal na cor da Energia, nome numa pílula editável (lápis), indicador de gravação e favoritar;
 - caixa 3D com ícone “Trocar capa” (escolha entre as cartas do deck);
@@ -1770,7 +1770,7 @@ Energia: ficha atual maior, previsão menor e rótulos equivalentes em HTML. A f
 
 A próxima Energia não recebe a aparência de “disponível agora”. Não desenhar seis cartas de Prêmio ou um sexto espaço de Banco herdado de outro TCG.
 
-**Bolas de Energia (decisão do autor, 16/10/2026):** Planta, Fogo, Água, Elétrico, Psíquico, Lutador, Noturno e Metal usam a bola do tipo recortada do atlas `.inspo/scene/battle/energys.png` por `npm run inspo:energy` (`src/presentation/assets/energy/<tipo>.webp`, 128×128 com transparência) nas Energias ligadas aos Pokémon, no orbe pronto da Zona, na próxima Energia — a mesma bola um pouco esmaecida, com aro branco — e no voo da ligação. Na mesa 3D são texturas de canvas (`three/card/energy-orbs.ts`), com o desenho procedural enquanto as imagens carregam e a mesa redesenhada quando chegam; na 2D, `<img>` (`Board2D`). Incolor e Dragão, que a Zona não gera, mantêm o ícone de tipo, e os custos de ataque continuam com os ícones.
+**Bolas de Energia (decisão do autor, 16/10/2026):** Planta, Fogo, Água, Elétrico, Psíquico, Lutador, Noturno e Metal usam a bola do tipo recortada do atlas `src/presentation/assets/source/energy/energys.png` por `npm run assets:energy` (`src/presentation/assets/energy/<tipo>.webp`, 128×128 com transparência) nas Energias ligadas aos Pokémon, no orbe pronto da Zona, na próxima Energia — a mesma bola um pouco esmaecida, com aro branco — e no voo da ligação. Na mesa 3D são texturas de canvas (`three/card/energy-orbs.ts`), com o desenho procedural enquanto as imagens carregam e a mesa redesenhada quando chegam; na 2D, `<img>` (`Board2D`). Incolor e Dragão, que a Zona não gera, mantêm o ícone de tipo, e os custos de ataque continuam com os ícones.
 
 ### 23.11. Informação de turno e de resolução
 
@@ -2460,7 +2460,7 @@ Não aplicar todos os VFX simultaneamente sem hierarquia. Condições coexistent
 
 Ao remover condição, fazer o ícone desaparecer com indicação curta. Animação de cura de condição não restaura dano acumulado.
 
-**Selos com os ícones do Pocket (decisão do autor, 17/10/2026):** toda carta em campo afetada por uma Condição ou por um efeito temporário mostra o ícone dele, como no Pokémon TCG Pocket (ícones de `.inspo/effects`, `src/presentation/assets/effects`).
+**Selos com os ícones do Pocket (decisão do autor, 17/10/2026):** toda carta em campo afetada por uma Condição ou por um efeito temporário mostra o ícone dele, como no Pokémon TCG Pocket (origem em `src/presentation/assets/source/effects`, ícones em `src/presentation/assets/effects`).
 - **Onde:** coluna de selos na borda direita da carta, a partir de 30 % da altura — Condições primeiro (Adormecido, Paralisado, Confuso, Envenenado, Queimado), depois um selo por tipo de efeito. Mesa 3D (overlay HTML sobre a carta) e 2D, pelo mesmo componente (`ui/battle/effect-marks.tsx`).
 - **Tipos de efeito** (`domain/battle/effect-badges.ts`, `EntityView.effects`): **bloqueio** (não pode atacar, recuar, evoluir, usar ou receber; Habilidades sem efeito); **carta azul** (o jogador não pode jogar Itens ou Apoiadores nem ligar Energia — um selo, no Ativo dele); **escudo** (dano, efeitos ou Condições prevenidos); **▲** e **▼** (modificador a favor ou contra quem o recebe: dano, dano recebido, PS, Recuo, custos); **estrelas** laranja e azul (os demais efeitos, a favor ou contra). Só efeitos temporários (ataques, Treinadores, Habilidades com duração); Ferramentas, Estádio e Habilidades contínuas ficam na própria carta.
 - **Ao aplicar:** o ícone estoura grande no centro da carta (escala 0,2 → 1,2 → 1), com um anel e um brilho na cor do efeito, segura e voa para a coluna (~1 s); efeitos que chegam juntos estouram um de cada vez (360 ms de intervalo). Na mesa 3D, o selo entra no passo do `EFFECT_STARTED` e sai no `EFFECT_EXPIRED`; carta coberta ou virada guarda o estouro até voltar à vista. Retomar um duelo não repete estouros.

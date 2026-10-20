@@ -1305,7 +1305,7 @@ Regras acrescentadas no conteúdo 3.0.0 (`tools/content-build/validate.ts`):
 
 Regra acrescentada no conteúdo 3.1.0:
 
-- **Retrato do NPC** (`portraitErrors`): todo NPC tem `portraitAssetKey` no formato `portrait:<arquivo>`, e o PNG existe em `src/presentation/assets/portraits/` (copiado de `.inspo/portraits/` por `npm run inspo:import`). Chave ausente (`null`), malformada ou sem arquivo falha o build (`src/content/validation.test.ts`, “rival sem retrato empacotado”). O schema `npc.schema.json` continua aceitando `null`; a exigência é do validador do conteúdo `base`.
+- **Retrato do NPC** (`portraitErrors`): todo NPC tem `portraitAssetKey` no formato `portrait:<arquivo>`, e o PNG existe em `src/presentation/assets/portraits/` (a pasta é a própria origem, sem importador). Chave ausente (`null`), malformada ou sem arquivo falha o build (`src/content/validation.test.ts`, “rival sem retrato empacotado”). O schema `npc.schema.json` continua aceitando `null`; a exigência é do validador do conteúdo `base`.
 
 ## 20.6. Identidade das cartas entre sets
 

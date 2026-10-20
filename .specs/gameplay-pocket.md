@@ -2,7 +2,7 @@
 
 > **Versão da spec:** 3.2.0 (revisão 3.3.0 em preparação)
 > **Data:** 15 de outubro de 2026
-> **Origem:** pedido do autor (`.inspo/gameplay/prompt.txt`) — observar o vídeo de uma partida real e adaptar a gameplay para ficar o mais fiel possível em comportamento, botões, visões, animações e ordem das coisas.
+> **Origem:** pedido do autor (`referencias/gameplay/prompt.txt`) — observar o vídeo de uma partida real e adaptar a gameplay para ficar o mais fiel possível em comportamento, botões, visões, animações e ordem das coisas.
 > **Complementa:** [interface-16x9.md](interface-16x9.md) (telas e mesa), [runtime-offline-threejs.md](runtime-offline-threejs.md) (animação e câmera) e [direcao-visual-pocket.md](direcao-visual-pocket.md) (aparência). Onde esta spec diverge delas, ela prevalece para a mesa de batalha.
 > **Observações completas:** [referencias/gameplay-pocket-observacoes.md](referencias/gameplay-pocket-observacoes.md).
 
@@ -12,7 +12,7 @@
 
 ## 🎥 0. Fonte, método e limites
 
-- **Vídeo:** `.inspo/gameplay/video.mp4` — 755,5 s, 576×1280 em retrato, 52 fps. Partida ranqueada real do Pokémon TCG Pocket, do lobby ao resultado. O jogador de baixo começa e perde por 1×3 no turno 20.
+- **Vídeo:** gravação de referência do autor, não versionada (142 MB) — 755,5 s, 576×1280 em retrato, 52 fps. Partida ranqueada real do Pokémon TCG Pocket, do lobby ao resultado. O jogador de baixo começa e perde por 1×3 no turno 20.
 - **Método:** 756 quadros a 1 fps, 312 trocas de cena e ~75 sequências densas (0,1–0,2 s) nos momentos de animação. Posições medidas em % do quadro; tempos em segundos do vídeo. O que é inferência está marcado no relatório.
 - **Limites:** o vídeo é um celular em retrato; a mesa daqui é 16:9 em paisagem. Posições viram **regiões equivalentes**, não cópias de coordenadas. Tempos e cores são aproximações para implementação, não medições internas do jogo.
 
@@ -187,12 +187,12 @@ Ordem do vídeo, adaptada:
 
 ### 6.1. Prato e arrasto da Energia
 
-**Decisão do autor (15/10/2026; referências `.inspo/scene/battle/energy-empty.png` e `energy-fullfiled.png`):**
+**Decisão do autor (15/10/2026; referências `referencias/batalha/energy-empty.png` e `energy-fullfiled.png`):**
 
 - **Prato:** disco branco-lilás com aro claro e bisel suave, sempre visível nos dois lados.
   - **Cheio:** orbe brilhante do tipo com **halo ciano pulsando**.
   - **Próxima Energia:** a mesma bola do tipo, esmaecida e com aro branco, na borda de baixo do prato, à direita no seu e à esquerda no do adversário.
-  - **Bolas de Energia (decisão do autor, 16/10/2026):** o orbe, a próxima Energia, as Energias ligadas aos Pokémon e o voo da ligação usam a bola do tipo recortada do atlas `.inspo/scene/battle/energys.png` (`npm run inspo:energy`), nos oito tipos que a Zona gera, em 3D e em 2D. Incolor e Dragão mantêm o ícone de tipo; os custos de ataque não mudam. Detalhes em [interface §23.10](interface-16x9.md#interface-23).
+  - **Bolas de Energia (decisão do autor, 16/10/2026):** o orbe, a próxima Energia, as Energias ligadas aos Pokémon e o voo da ligação usam a bola do tipo recortada do atlas `src/presentation/assets/source/energy/energys.png` (`npm run assets:energy`), nos oito tipos que a Zona gera, em 3D e em 2D. Incolor e Dragão mantêm o ícone de tipo; os custos de ataque não mudam. Detalhes em [interface §23.10](interface-16x9.md#interface-23).
 - **Arrasto livre:** no seu turno, o orbe pode ser pego e levado a qualquer ponto. Ele segue o ponteiro com um rastro na cor do tipo, e o prato fica vazio enquanto isso.
   - Os alvos possíveis ficam em ciano e o aviso do topo pede o Pokémon.
   - Finalizar turno e a dica de ações somem durante o arrasto.
@@ -262,7 +262,7 @@ Segue a região `endTurn`. Some com a mão expandida, durante o arrasto, com esc
 
 ### 7.4. Ficha de ações
 
-**Decisão do autor (15/10/2026; referência `.inspo/scene/battle/attack.png`):** ataques, Habilidades e Recuar **não ficam à vista o tempo todo**. Tocar num Pokémon seu abre a ficha dele:
+**Decisão do autor (15/10/2026; referência `referencias/batalha/attack.png`):** ataques, Habilidades e Recuar **não ficam à vista o tempo todo**. Tocar num Pokémon seu abre a ficha dele:
 
 - **Carta ampliada** no centro da mesa (região `attackCutin`, ~48 % da largura dela), subindo com leve elástico, e o **PS atual** num selo branco no canto superior direito, com a barra de PS.
 - **Sobre a metade de baixo da carta**, as linhas de ação (§10.1), mais largas que a carta:

@@ -2,7 +2,7 @@
 
 > Base factual da spec [gameplay-pocket.md](../gameplay-pocket.md). Quadros, notas por trecho e sheets ficaram fora do repositório (imagens de terceiros); aqui são citados só pelo nome.
 
-Fonte: `.inspo/gameplay/video.mp4`. Pedido original: `.inspo/gameplay/prompt.txt`.
+Fonte: a gravação de referência do autor, não versionada (142 MB). Pedido original: `gameplay/prompt.txt` (nesta pasta).
 
 Convenções:
 - Posições em **% do quadro** 576×1280 (retrato): x da esquerda para a direita, y de cima para baixo. "x 35–65, y 47–66" é um retângulo.

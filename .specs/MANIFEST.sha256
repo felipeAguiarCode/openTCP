@@ -1,6 +1,6 @@
 # SHA-256 manifest; excludes this manifest. Sizes shown on preceding comment lines.
-# 116117 bytes
-5d568c04a0fb63892a8d4148cabac5ca96844db7bd89ce72d6a12d5c7471d87e  campanha.md
+# 116104 bytes
+89677f06689570b8948832787324d306cd679009c653b94d003b0efc4c0fca51  campanha.md
 # 60246 bytes
 fdd6993a56955d635a30486513d9d894a39ca34aa6be047cba92c76d6d59c719  catalogo/cartas-a1.md
 # 19378 bytes
@@ -27,8 +27,8 @@ b05cee8dc763fa8bb5dccdaf5d91196aa40c287214fccd000c40d690a013bf01  catalogo/carta
 e71ffd68216243ebc6d180f117cc2caaeeda197c6dfda58e8a0e6017c0ebb2f0  catalogo/cartas-pb.md
 # 180460 bytes
 2336a3c4aba9bea240289b98cf77f64168f78e1fd5cf2c3e9f50dbd891462485  catalogo-conteudo.md
-# 57059 bytes
-876d94a790e0e67f2678bc408de89a38ef63fc8c12615372349fd4a94b7b2bcd  CHANGELOG.md
+# 58370 bytes
+f2636256985c8dd364789258e73e65468595b5927db5c87d1f4a825728575041  CHANGELOG.md
 # 15649 bytes
 7b42ed4273ef590b600047a87c3b4e9655b08a164b0e03eaaada4288ace59d4d  database/build_seed.py
 # 581632 bytes
@@ -45,8 +45,8 @@ c9e3bcb64a9c2a17ed6f4e7823ce33f51e62c32fdc22d3b803e56c3aa5b49a77  database/READM
 46e8d85508b4aecf54548b9a2669f5f4eff917499b7bc54b746c82559a8ed21a  database/test_schema.py
 # 3500 bytes
 d473a98b2b3e6639434dd19a9deffaf4c00f63e42aa74de8c3197a59d13e1998  design/theme-pocket.css
-# 57425 bytes
-11734eed2eaa73be89c150e114b4b4985541ac1d0e5616616dd1ca4e96d172f2  direcao-visual-pocket.md
+# 57444 bytes
+287f3baab446dea1ecd7a617fd4bd4ed479c7bfe8cb4b02347765f5390db75ee  direcao-visual-pocket.md
 # 3043 bytes
 7a95ef6d10119fe1d34802fc48b19387eee55e43c31f43a28758b8b95dd43581  documentation-test-results.json
 # 76863 bytes
@@ -79,18 +79,32 @@ e8eda4b27fc27da7d1b1a603a870b05c4bc713bfbbf6ef7ea1593cfaa9966a64  examples/art-b
 9a524eaccb52e14fb7195236a46c36f106fa4bb241172b0feebf53a4318a6dd0  examples/visual-capture-matrix.json
 # 4331 bytes
 e55098c4e24023e3b22b96b4598ac4efab29e128226093729d5611d806f8c12d  examples/visual-tokens.json
-# 39695 bytes
-5a00b5a9334d38c951952740a7df8d2d92071d587feb230cbaac67b1f80ee24a  gameplay-pocket.md
+# 39752 bytes
+d1484c4debd25d7791a0663ab9704bda2ffdc82f791acdf4ec1f68b36d545c05  gameplay-pocket.md
 # 133581 bytes
 3765312a09ffaf727e00ab54e0262d34467073cb3a82ce75180acc5b87eaaf0a  gameplay.md
-# 255647 bytes
-a1895b2629cca58020fc646e09dabca13f32c74b7362375869e6c98443e419f7  interface-16x9.md
+# 255703 bytes
+408a1e9928a7bf03850f4418ba7bc1082b434634c6867c980c67b8b0cebb27d1  interface-16x9.md
 # 101365 bytes
 c585ee18a191d7b8a3074c6aa1fbf8a93953b181444c84ec44d5e2f661f6b196  persistencia-sqlite.md
 # 10658 bytes
 987890bb304e5b6837fb8ddb25699fb981d2b14d3ced3628b6ecc7927a24ba66  README.md
-# 55284 bytes
-567c0172fcf136a8fb7bd7a73246fca93e1aff9930ee669bc455def3b47d6fe2  referencias/gameplay-pocket-observacoes.md
+# 973729 bytes
+aa26799516e723725ebd33d5c06977b08ae06eddedff26bafb04077815a7a8ed  referencias/batalha/attack.png
+# 29516 bytes
+39c1814f64c1521e8de575e63f72b2765171d296b12eeff8ab49ba5b53ea7725  referencias/batalha/energy-empty.png
+# 35037 bytes
+b8274c26de41e96e5517f7c45ea91dc18876a3f4927b04376c6913cbd6ece0fb  referencias/batalha/energy-fullfiled.png
+# 370545 bytes
+4eeafb86120d617298fbf373044aa4ff63b4808f708518aef2f53345aa85dbba  referencias/batalha/Pokemon_TCG_Pocket_Fantastical_Parade_Random_Battle_Screenshot_03.jpg
+# 169446 bytes
+c39518832a54f4efd33117277dfd4e7c2f54ddf6591376bd6fe125097243daf4  referencias/decks/001.png
+# 313514 bytes
+97b4bc7d87e2e03cb42aaba8860773f37ea612cfe4ede700946f6f32188923ca  referencias/decks/002.png
+# 1259 bytes
+2362fbdddc9566a0794594352c12bd81a6d37c461911b4fd6d119f70d96eb571  referencias/gameplay/prompt.txt
+# 55326 bytes
+e8d26e837520343f4b647dd55f50708797cd6ad6c7eda36b9f4933501562761c  referencias/gameplay-pocket-observacoes.md
 # 8417 bytes
 81a8a1cae32fc0ee771bfd95233ffd28b567572b267b93c2f2644665310b0426  referencias-visuais.md
 # 125745 bytes
